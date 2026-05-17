@@ -201,7 +201,9 @@ ls 04_analysis/experiments/my_water_test_2026/
 | RMSE가 매우 큼 (>10 K) | 1) 실험 압력이 학습 압력과 다름 / 2) Fluid가 학습 분포 외 (FC-77 등) / 3) ONB 시점 식별 오류 |
 | Coverage가 0% | ensemble undercoverage. 학습 분포 외 가능성 — applicability report 확인 |
 | `extrapolation_flags` 행이 많음 | 학습 분포 밖. 결과 해석은 정성적으로만 사용 |
-| `merged` 매칭 후 PINN 결과만 있고 상관식 컬럼이 비어 있음 | join key 불일치. surface_id, fluid, q_flux 정확히 일치하는지 확인 |
+| `merged` 매칭 후 PINN 결과만 있고 상관식 컬럼이 비어 있음 | (df22132에서 해결됨) — 구버전 사용 시 fix commit으로 업데이트 |
+| **동일 표면의 다른 q'' trial이 같은 PINN 예측을 받음** | **정상 동작** — 모델은 surface features만 입력으로 사용. Q6 참조 |
+| **PINN 평균이 관측보다 크지만 CI는 관측을 cover** | **OOD 신호** — wide σ는 모델이 미학습 표면임을 인지한 것. Q7 참조 |
 
 ---
 
@@ -221,6 +223,26 @@ ls 04_analysis/experiments/my_water_test_2026/
 
 **Q5.** 새 실험으로 모델을 fine-tune 하고 싶다.
 > Phase 1 학습 파이프라인의 transfer learning 코드 (`03_model/src/training/train.py`)를 재사용해 새 데이터 + 기존 ensemble checkpoint로 재학습 가능. Phase 1 plan 4.5절 Phase 3 (실험 미세조정) 참조. 자세한 방법은 별도 요청 시 작성.
+
+**Q6.** 동일 표면에서 q'' 만 다른 여러 trial을 입력했는데 PINN 예측이 모두 동일하다. 왜?
+> 정상 동작. 본 PINN은 (Ra, θ, category) 등 **표면 특성만을 입력**으로 받는다.
+> $q''$는 학습 중 PDE residual + 경계조건에 들어가서 ΔT_ONB 라벨과의 잠재 관계를 학습할 뿐, 추론 시 직접 입력이 아니다. 따라서 같은 표면이면 단일 ΔT_ONB 예측값이 나오고, 같은 표면의 multiple trials는 ensemble σ 범위 안에서 sampling variance로 해석한다.
+> 만약 q''에 따라 명시적으로 변하는 예측이 필요하다면 고전 상관식 5종 (`Hsu`, `Davis-Anderson`, `Bergles-Rohsenow`, `Sato-Matsumura`, `Basu`)이 모두 $\sqrt{q''}$ 형태로 q-의존성을 가지므로 별도 panel에서 직접 확인 가능.
+
+**Q7.** 예측 평균이 관측과 크게 다른데(예: PINN 17 K vs 관측 5 K), 모델이 틀린 건가?
+> **σ_total 과 95% CI를 확인하라**. Smoke test 결과(2026-05-18):
+> - 학습 분포 외 표면(`in_house` category 미학습) 입력 시 PINN 평균 17.7 K, σ_total 7.0 K, 95% CI [3.94, 31.45] K.
+> - 관측 4.8-5.2 K는 CI 안에 들어옴 → ensemble UQ는 **모르는 표면임을 정확히 인지**.
+> - 동일 입력에 대해 고전식 Bergles-Rohsenow RMSE 1.82 K로 더 정확.
+> 해석: **wide CI** (σ > 5 K) 시 모델이 OOD 신호를 emit하는 것이므로 (1) Bergles-Rohsenow / Basu 등 동시 출력을 우선 참고, (2) 가능하면 fine-tune (Q5), (3) 더 많은 유사 표면 SEM/AFM 보강으로 학습 분포 확장.
+> Narrow CI (σ < 2 K) 인데 mean이 어긋날 때만 모델 오류로 의심.
+
+**Q8.** 새 표면 카드를 만들었지만 `category` 를 무엇으로 할지 모름.
+> `category` 는 stratified-sampling tag일 뿐 모델 입력은 아니다. 다만 `category_id` (학습 시 만든 임베딩) 가 PINN에 주입되므로 영향은 있다.
+> 권장:
+> 1. 기존 카테고리에 매칭되면 그것 사용 (`betz`, `bourdon12`, `bourdon15`, `jabardo`, `jabardo_br`, `jabardo_ss`, `jones`, `jones_F`, `jones_w`, `jo`, `phan`)
+> 2. 새 카테고리라면 `in_house` 또는 `external` 등 자유 명칭 사용 — 모델은 "unknown" embedding으로 fallback (neutral default)
+> 3. category_id 영향이 크면 (CI가 매우 wide) 표면 metadata가 부족하다는 신호
 
 ---
 
