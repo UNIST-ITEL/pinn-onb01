@@ -69,6 +69,11 @@ __pycache__/
 05_manuscript/supplementary/*.pdf
 05_manuscript/supplementary/*.docx
 
+# Submission build outputs (regenerable from sources)
+05_manuscript/SUBMISSION/*.pdf
+05_manuscript/SUBMISSION/*.zip
+05_manuscript/SUBMISSION/figures_pdf/
+
 # LaTeX auxiliary files
 *.aux
 *.bbl

@@ -1,7 +1,7 @@
 # PINN-ONB01 — Phase 진척 상태
 
-**최종 갱신:** 2026-05-17 (manuscript polishing pass 완료)
-**전체 진척:** Phase 1-4 완료 / Phase 5 (논문) ~99% — 투고 직전
+**최종 갱신:** 2026-05-18 (D-시리즈 + E6-E12 보강 + 컨설팅 02 + bib 검증 완료)
+**전체 진척:** Phase 1-4 완료 / Phase 5 (논문) ~99.5% — 투고 패키지 준비 완료
 
 ---
 
@@ -111,16 +111,73 @@
 
 ---
 
+## 2026-05-18 추가 작업 (D-시리즈 + 정밀 검수)
+
+### 컨설팅 보고서 02 반영
+- §3 FC-77 제외 사유 학술적 방어 1단락 추가
+- Title 변경: 사용자 결정 — 현재 유지
+
+### 신규 인용 3건 CrossRef 검증
+- `jalili2025pinn`: IJHMT 241, 126680 (2025), DOI 10.1016/j.ijheatmasstransfer.2025.126680
+- `huang2024bubble`: IJMF 179, 104928 (2024) — Huang/Chang/Suh/Mudawar/Won/Kharangate
+- `li2025cryogenic`: ASME J Heat Mass Transf 147(4), 041603 (2025), DOI 10.1115/1.4067339
+
+### D11 — Reviewer Rebuttal 정식 문서
+- 파일: `04_analysis/reviewer_rebuttal.md` (35 KB, 4,650 단어, 20 questions)
+- Top-5 (컨설팅 01+02 식별) + Methodology 5 + Data/Validation 5 + Generalization 5
+- 각 질문당 200-350 단어 학술 영어 Rebuttal + manuscript reference + action item
+- 15/20 본문이 이미 강력 대응, 5건만 추가 보강 권장 (Appendix B)
+
+### D12 — Supplementary HPO 표 (§S5)
+- Optuna TPE 30 trials (21 성공 / 9 가지치기), 3.1시간 M1 CPU
+- Top-5 trials 표 (rank/trial#/val_RMSE/test_RMSE/4 weights)
+- Importance: hidden_dim 0.30 > lr_Adam 0.22 > w_data 0.21 > d_z 0.17 > w_ONB 0.07
+
+### D13 — Supplementary Phase progression 표 (§S6)
+- A(concat) 6.20 → B(FiLM) 5.50 → C/C-A/C-D 7-8.6 → D 7.04 → **Dbal 3.42** → E 9.50
+- Over-regularization 민감도 입증
+
+### D14 — Author info
+- Jaeseon Lee ORCID **0000-0003-1996-6086** main.tex frontmatter 추가
+- 공저자 3명 ORCID: TBD (submission portal 입력 시 수집)
+
+### D15 — Graphical Abstract
+- `05_manuscript/figures/graphical_abstract.{png,pdf,eps}` 16×5.5 cm, 300 dpi
+- 3-패널: 데이터셋 / 아키텍처 / Forward parity headline
+
+### E6-E9 무결성 점검 (모두 통과)
+- E6 표 캡션 위치: 10/10 above tabular ✅
+- E7 cross-ref: 0 undefined, 0 broken ✅
+- E8 nomenclature: K (Zuber), p_r (reduced pressure) 추가 (현재 Roman 34 + Greek 17 + Abbrev 20)
+- E9 인용 매핑: 31/31 완전 매칭 ✅
+
+### E12 LanguageTool grammar 패스
+- 6,811 단어 본문 분석, 30 issues, 3 actionable 수정:
+  - §1: "consequences including" → "consequences that include"
+  - §4: "checkpoint so" → "checkpoint, so"
+  - §5.2: "(best classical, Basu et al.)" → "(the best classical correlation, ...)"
+
+### 투고 패키지 (`05_manuscript/SUBMISSION/`)
+- main.pdf (36p), supplementary.pdf (7p), cover_letter.pdf (2p), graphical_abstract.pdf
+- figures_pdf/ (9 figures, fig01-fig09 본문 번호 일치)
+- ZIP 3.7 MB
+
+---
+
 ## 남은 작업 (Optional, 외부 단계)
 
 | 항목 | 시간 | 효과 |
 |---|---|---|
-| Reviewer-anticipator로 예상 질문 30개 + Rebuttal 준비 | 1일 | 리뷰 대응 |
-| Native-speaker / professional editing service | 외주 | 영문 자연스러움 (현재 자체 native-tone 패스 완료) |
+| Reviewer Appendix B 5건 본문 사전 보강 (Q1/Q4/Q6/Q9/Q11) | 1시간 | 사전 방어 |
+| Native-speaker / professional editing service | 외주 | 영문 자연스러움 |
 | Co-author / 지도교수 검토 | 외부 | 학술 review |
 | §2 잔여 overfull 31pt fine-tune | 30분 | cosmetic |
-| Git 초기화 + 커밋 | F19 | 버전 관리 |
 | 백업 파일 정리 (3 세대) | 사용자 결정 | 리포 정리 |
+| 누적 변경분 git commit (D-시리즈 이후) | 5분 | 버전 관리 |
+| Git tag `v1.0-submitted` | 5분 | submission 시점 마커 |
+| Git remote(GitHub) push | 사용자 | 외부 백업/공유 |
+| 데이터셋 Zenodo/OSF DOI 발급 | 사용자 | open-source 약속 실행 |
+| 공저자 ORCID 수집 | 사용자 | submission portal 메타데이터 |
 | IJHMT submission portal 업로드 | 사용자 | 최종 |
 
 ---

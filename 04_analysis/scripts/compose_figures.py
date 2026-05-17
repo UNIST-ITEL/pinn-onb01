@@ -165,11 +165,11 @@ _STEM_TO_ANALYSIS: dict[str, str] = {
     "fig02_level1_pde_convergence": "level1_pde_residual_convergence.png",
     "fig03_level1_nc_nu":           "level1_nc_nu_comparison.png",
     "fig04_level1_autograd":        "level1_autograd_accuracy.png",
-    "fig05_correlation_parity":     "correlation_parity.png",
-    "fig06_pinn_parity":            "pinn_parity_baseline_phaseDbal.png",
-    "fig07_ensemble_errorbars":     "ensemble_parity_with_errorbars.png",
-    "fig08_std_vs_qflux":           "ensemble_std_vs_qflux.png",
-    "fig09_std_by_category":        "ensemble_std_by_category.png",
+    "fig02_correlation_parity":     "correlation_parity.png",
+    "fig03_pinn_parity":            "pinn_parity_baseline_phaseDbal.png",
+    "fig04_ensemble_errorbars":     "ensemble_parity_with_errorbars.png",
+    "fig06_std_vs_qflux":           "ensemble_std_vs_qflux.png",
+    "fig05_std_by_category":        "ensemble_std_by_category.png",
     "fig10_std_by_fluid":           "ensemble_std_by_fluid.png",
     "fig11_epi_vs_ale":             "ensemble_epistemic_vs_aleatoric.png",
     "fig12_physics_qflux":          "physics_trend_qflux.png",
@@ -178,9 +178,9 @@ _STEM_TO_ANALYSIS: dict[str, str] = {
     "fig15_physics_pressure":       "physics_trend_pressure.png",
     "fig16_physics_subcool":        "physics_trend_subcool.png",
     "fig17_physics_summary":        "physics_summary.png",
-    "fig18_inverse_rc_vs_Ra":       "inverse_r_c_vs_Ra.png",
+    "fig08_inverse_rc_vs_Ra":       "inverse_r_c_vs_Ra.png",
     "fig19_inverse_rc_by_surface":  "inverse_r_c_by_surface.png",
-    "fig20_inverse_rc_by_category": "inverse_r_c_by_category.png",
+    "fig09_inverse_rc_by_category": "inverse_r_c_by_category.png",
     "fig21_inverse_pinn_vs_hsu":    "inverse_pinn_vs_hsu.png",
     "fig22_onb_overview":           "onb_overview.png",
 }
@@ -533,7 +533,7 @@ def fig05_correlation_parity(df_onb: pd.DataFrame, formats: list[str]) -> dict[s
                   framealpha=0.85)
 
     fig.tight_layout(pad=1.2)
-    return _save_fig(fig, "fig05_correlation_parity", formats)
+    return _save_fig(fig, "fig02_correlation_parity", formats)
 
 
 # ===========================================================================
@@ -599,7 +599,7 @@ def fig06_pinn_parity(df_onb: pd.DataFrame, formats: list[str]) -> dict[str, Pat
     ax.grid(True)
 
     fig.tight_layout(pad=1.2)
-    return _save_fig(fig, "fig06_pinn_parity", formats)
+    return _save_fig(fig, "fig03_pinn_parity", formats)
 
 
 # ===========================================================================
@@ -667,7 +667,7 @@ def fig07_ensemble_errorbars(df_onb: pd.DataFrame, formats: list[str]) -> dict[s
     ax.grid(True)
 
     fig.tight_layout(pad=1.2)
-    return _save_fig(fig, "fig07_ensemble_errorbars", formats)
+    return _save_fig(fig, "fig04_ensemble_errorbars", formats)
 
 
 # ===========================================================================
@@ -715,7 +715,7 @@ def fig08_std_vs_qflux(df_onb: pd.DataFrame, formats: list[str]) -> dict[str, Pa
     ax.grid(True, which="both")
 
     fig.tight_layout(pad=1.2)
-    return _save_fig(fig, "fig08_std_vs_qflux", formats)
+    return _save_fig(fig, "fig06_std_vs_qflux", formats)
 
 
 # ===========================================================================
@@ -767,7 +767,7 @@ def fig09_std_by_category(df_onb: pd.DataFrame, formats: list[str]) -> dict[str,
     ax.grid(True, axis="y")
 
     fig.tight_layout(pad=1.2)
-    return _save_fig(fig, "fig09_std_by_category", formats)
+    return _save_fig(fig, "fig05_std_by_category", formats)
 
 
 # ===========================================================================
@@ -1155,7 +1155,7 @@ def fig18_inverse_rc_vs_Ra(df_onb: pd.DataFrame, formats: list[str]) -> dict[str
     ax.grid(True, which="both")
 
     fig.tight_layout(pad=1.2)
-    return _save_fig(fig, "fig18_inverse_rc_vs_Ra", formats)
+    return _save_fig(fig, "fig08_inverse_rc_vs_Ra", formats)
 
 
 # ===========================================================================
@@ -1274,7 +1274,7 @@ def fig20_inverse_rc_by_category(df_onb: pd.DataFrame, formats: list[str]) -> di
     ax.grid(True, axis="y", which="both")
 
     fig.tight_layout(pad=1.2)
-    return _save_fig(fig, "fig20_inverse_rc_by_category", formats)
+    return _save_fig(fig, "fig09_inverse_rc_by_category", formats)
 
 
 # ===========================================================================

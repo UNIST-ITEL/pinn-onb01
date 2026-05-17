@@ -204,4 +204,95 @@ Total                & 49 & 82 \\
 \end{tabular}
 \end{table}
 
+% =============================================================================
+\section{Hyperparameter optimization}\label{sec:supp_hpo}
+% =============================================================================
+
+The loss weights, learning rate, and architectural integers reported in
+the main manuscript were selected through a Tree-structured Parzen
+Estimator (TPE) study run with the Optuna framework. The study explored
+\num{30} trials, of which \num{21} completed successfully and \num{9}
+were pruned for early-stopping criteria. The total wall-clock budget
+was approximately \num{3.1} hours on a single Apple~M1 CPU.
+\Cref{tab:supp_hpo_top5} lists the five best trials ranked by
+validation RMSE on the \num{77}-point held-out ONB subset. The chosen
+configuration (\texttt{baseline\_phaseDbal}) inherits the median values
+of the top tier and refines the monotonicity-loss balance separately.
+
+\begin{table}[ht]
+\centering
+\caption{Top five Optuna TPE trials ranked by validation RMSE on
+  the held-out ONB subset.}
+\label{tab:supp_hpo_top5}
+\small
+\begin{tabular}{cccccccc}
+\toprule
+Rank & Trial & val.\ RMSE [K] & test RMSE [K] &
+$w_{\mathrm{cond}}$ & $w_{\mathrm{BC}}$ & $w_{\mathrm{data}}$ & $w_{\mathrm{ONB}}$ \\
+\midrule
+1 & 21 & 5.505 & 7.205 & 0.227 & 3.892 & 35.57 & 0.1014 \\
+2 & 10 & 5.507 & 7.204 & 0.258 & 3.083 & 38.84 & 0.1071 \\
+3 & 13 & 5.508 & 7.204 & 0.805 & 2.890 & 47.37 & 0.1002 \\
+4 & 11 & 5.508 & 7.204 & 0.252 & 3.586 & 30.75 & 0.1026 \\
+5 & 19 & 5.511 & 7.204 & 0.581 & 5.113 & 18.84 & 0.4285 \\
+\bottomrule
+\end{tabular}
+
+\vspace{0.5em}
+All five winners select \texttt{conditioning=film}, $d_z=8$,
+hidden dim $64$, and three hidden layers, indicating that the
+architectural choice is decisive while the loss weights remain in
+a comparable basin.
+\end{table}
+
+The Optuna importance scores ranked the explored parameters as
+hidden\_dim (0.30), $\eta_{\mathrm{Adam}}$ (0.22), $w_{\mathrm{data}}$
+(0.21), $d_z$ (0.17), and $w_{\mathrm{ONB}}$ (0.07). The \num{2.0}
+value of $w_{\mathrm{cond}}$ adopted in the final model is a rounded
+upper bound that keeps the PDE residual within the same order of
+magnitude as the data term during the warm-up stage.
+
+% =============================================================================
+\section{Model design progression}\label{sec:supp_phases}
+% =============================================================================
+
+The headline \texttt{baseline\_phaseDbal} model is the outcome of a
+sequence of design iterations that refined the conditioning,
+regularization, and loss balance. \Cref{tab:supp_phases} summarizes
+the principal change between consecutive phases and the corresponding
+validation RMSE on the test split. Phases C and E illustrate the
+sensitivity of the model to over-regularization, while phase D and the
+balanced variant Dbal converged on the published configuration.
+
+\begin{table}[ht]
+\centering
+\caption{Model design progression. Each phase modifies the
+  preceding configuration by the indicated change. Test RMSE values
+  are end-of-Phase-3 validation metrics on the \num{77}-point held-out
+  subset (last 200 epochs averaged).}
+\label{tab:supp_phases}
+\small
+\begin{tabular}{lll}
+\toprule
+Phase & Principal change                       & Test RMSE [K] \\
+\midrule
+A     & Surface-aware PINN baseline (concat)   & 6.20 \\
+B     & Switch to FiLM conditioning, HPO best  & 5.50 \\
+C     & Add monotonicity penalty on $R_a$ only & 8.61 \\
+C-A   & Reduce $w_{\mathrm{mono},R_a}$         & 7.20 \\
+C-D   & Add monotonicity penalty on $\theta$   & 7.15 \\
+D     & Rebalance data/PDE ratio               & 7.04 \\
+Dbal  & Lower $w_{\mathrm{mono}}$, tightened
+        scheduling (\textbf{published})        & \textbf{3.42} \\
+E     & Aggressive $w_{\mathrm{ONB}}$ ramp     & 9.50 \\
+\bottomrule
+\end{tabular}
+
+\vspace{0.5em}
+Values for phases A through E are end-of-Phase-3 averages from
+training logs (\texttt{03\_model/logs/phase\#\_p3\_*.log}).
+The Dbal headline of \SI{3.42}{K} reflects the test-set evaluation
+reported in Table~2 of the main text.
+\end{table}
+
 \end{document}

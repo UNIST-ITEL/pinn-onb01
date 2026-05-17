@@ -196,7 +196,13 @@
       "Bash(awk -F\"'\" '{print $2}')",
       "Bash(xargs -I {} du -sb \"{}\")",
       "Bash(awk '{sum+=$1} END {print sum/1024/1024, \"MB\"}')",
-      "Bash(awk -F/ '{print $1\"/\"$2}')"
+      "Bash(awk -F/ '{print $1\"/\"$2}')",
+      "Bash(bibtex main *)",
+      "Bash(pdflatex -interaction=nonstopmode main.tex)",
+      "Bash(awk NR>=93 && NR<=190 *)",
+      "Bash(awk 'NR>=93 && NR<=190' \"/Users/myhomemini/Library/CloudStorage/OneDrive-개인/Projects/PINN-ONB01/05_manuscript/논문 투고 전략 컨설팅.md\")",
+      "WebFetch(domain:api.crossref.org)",
+      "Bash(open \"/Users/myhomemini/Library/CloudStorage/OneDrive-개인/Projects/PINN-ONB01/05_manuscript/SUBMISSION/\")"
     ]
   }
 }

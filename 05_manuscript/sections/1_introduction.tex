@@ -28,7 +28,7 @@ co-workers~\citep{bourdon2012,bourdon2015} grafted SAMs on ultra-smooth
 bronze ($R_a<\SI{10}{\nano\meter}$) and shifted activation by several
 kelvin without modifying topography. Yet design practice still relies
 on correlations whose residual scatter remains
-\SIrange{20}{30}{\percent}, with consequences including oversized
+\SIrange{20}{30}{\percent}, with consequences that include oversized
 exchangers, conservative safety margins, and an inability to exploit
 engineered-surface performance.
 
@@ -57,21 +57,28 @@ benchmark.
 
 These limitations motivate data-driven alternatives that can absorb
 multi-descriptor surface information.
-Data-driven approaches have been applied to related boiling problems,
-notably the CHF study of Hobold and da Silva~\citep{hobold2018}.
-ONB-specific efforts have been hindered by data sparsity. Published ONB
-labels are an order of magnitude rarer than CHF labels, and they are
-scattered across heterogeneous protocols. Black-box training is
-therefore prone to overfitting and to violations of thermodynamic
-trends. Physics-informed neural networks
-(PINNs)~\citep{raissi2019,lu2021,cai2021} offer a route around these
-limits. They embed governing PDEs and physical constraints as soft
-losses during training. This compensates for limited data with
-mechanistic regularization and yields models that respect conservation
-laws under extrapolation~\citep{zobeiry2021}. To our knowledge, no PINN
-study has targeted pool-boiling ONB with explicit surface-modification
-conditioning, nor has any integrated curated multi-source datasets for
-cross-fluid generalization.
+Data-driven approaches have been applied to related boiling problems.
+Pure data-driven models trained on CHF data have recovered
+correlations of comparable accuracy to engineering
+fits~\citep{hobold2018,huang2024bubble}, but they remain prone to
+unphysical extrapolation and overfitting when surface diversity is
+introduced~\citep{li2025cryogenic}. ONB-specific efforts have been
+further hindered by data sparsity. Published ONB labels are an order
+of magnitude rarer than CHF labels, and they are scattered across
+heterogeneous protocols. Black-box training is therefore prone to
+overfitting and to violations of thermodynamic trends.
+Physics-informed neural networks (PINNs)
+\citep{raissi2019,lu2021,cai2021} offer a route around these limits.
+They embed governing PDEs and physical constraints as soft losses
+during training. This compensates for limited data with mechanistic
+regularization and yields models that respect conservation laws under
+extrapolation~\citep{zobeiry2021}. Recent work has begun to apply this
+machinery to two-phase heat transfer, notably the film-boiling
+formulation of \citet{jalili2025pinn} and the physics-assisted CHF
+predictors of \citet{li2025cryogenic}. To our knowledge, however, no
+PINN study has targeted pool-boiling ONB with explicit
+surface-modification conditioning, nor has any integrated curated
+multi-source datasets for cross-fluid generalization.
 
 Despite these advances, several concrete gaps remain.
 A structured gap analysis identifies four concurrent voids. First, no

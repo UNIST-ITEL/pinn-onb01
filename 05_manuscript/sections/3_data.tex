@@ -112,7 +112,15 @@ breakdown is \num{33} water, \num{34} R-134a, \num{10} R-123, and
 \num{5} FC-77. FC-77 entries are released but excluded from PINN
 training because CoolProp does not provide a validated equation of
 state for this fluid; the effective training count is therefore
-$n=\num{77}$. All water experiments were conducted at
+$n=\num{77}$. Unlike purely data-driven models, the present
+framework requires rigorous saturated-state properties
+($\rho_{\ell}$, $\rho_v$, $h_{fg}$, $\sigma$, $c_{p,\ell}$, $k_{\ell}$)
+at the operating temperature to evaluate the PDE residual, the
+Hsu nucleation discriminant, and the non-dimensional scales of
+\cref{subsec:nondim}. Excluding FC-77 is therefore a measure to
+preserve physical rigour rather than a curation choice;
+the released CSVs retain the FC-77 rows so that the exclusion
+boundary remains transparent and auditable. All water experiments were conducted at
 near-atmospheric pressure. The JABARDO refrigerant data span
 reduced pressures $p_r \approx \numrange{0.06}{0.26}$ and provide
 the only pressure variation available in the present corpus.

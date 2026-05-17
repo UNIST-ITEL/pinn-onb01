@@ -104,7 +104,7 @@ Basu et al.\ (2002)                 & 7.21  & 5.85  & $-0.21$  & 106.7 & 22 \\
 \end{tabular}
 \end{table}
 
-The PINN reduces RMSE from \SI{7.21}{K} (best classical, Basu et al.)
+The PINN reduces RMSE from \SI{7.21}{K} (the best classical correlation, Basu et al.)
 to \SI{3.42}{K}, a $52.6\%$ reduction. MAE falls to \SI{2.21}{K}
 (from \SI{5.85}{K}), the coefficient of determination becomes
 positive ($R^2=+0.44$) for the first time, and the mean relative
@@ -121,7 +121,7 @@ Figs.~\ref{fig:correlation_parity} (classical) and
 
 \begin{figure}[!htbp]
   \centering
-  \includegraphics[width=0.85\linewidth]{figures/fig05_correlation_parity}
+  \includegraphics[width=0.85\linewidth]{figures/fig02_correlation_parity}
   \caption{Parity plots of the five classical correlations on the
     FC-77-excluded ONB dataset. Diagonal: $y=x$; dashed: $\pm 50\%$ band.}
   \label{fig:correlation_parity}
@@ -130,7 +130,7 @@ Figs.~\ref{fig:correlation_parity} (classical) and
 
 \begin{figure}[!htbp]
   \centering
-  \includegraphics[width=0.65\linewidth]{figures/fig06_pinn_parity}
+  \includegraphics[width=0.65\linewidth]{figures/fig03_pinn_parity}
   \caption{Parity plot of the PINN \texttt{baseline\_phaseDbal} model on
     $n=77$ ONB points (RMSE $\SI{3.42}{K}$, $R^2=+0.44$); markers
     colored by fluid.}
@@ -271,7 +271,7 @@ regions. The parity plot is Fig.~\ref{fig:ensemble_parity}.
 
 \begin{figure}[!htbp]
   \centering
-  \includegraphics[width=0.75\linewidth]{figures/fig07_ensemble_errorbars}
+  \includegraphics[width=0.75\linewidth]{figures/fig04_ensemble_errorbars}
   \caption{Deep-ensemble ($K=10$) parity plot with $95\%$ intervals on
     \texttt{baseline\_phaseDbal}; empirical coverage $98.7\%$.}
   \label{fig:ensemble_parity}
@@ -298,7 +298,7 @@ envelope.
 
 \begin{figure}[!htbp]
   \centering
-  \includegraphics[width=0.85\linewidth]{figures/fig09_std_by_category}
+  \includegraphics[width=0.85\linewidth]{figures/fig05_std_by_category}
   \caption{Epistemic uncertainty by source paper for the \texttt{phaseDbal}
     ensemble; BOURDON\_2015, BETZ\_2013, and PHAN\_2009 show the largest
     spread, JABARDO\_2009 the smallest.}
@@ -307,7 +307,7 @@ envelope.
 
 \begin{figure}[!htbp]
   \centering
-  \includegraphics[width=0.7\linewidth]{figures/fig08_std_vs_qflux}
+  \includegraphics[width=0.7\linewidth]{figures/fig06_std_vs_qflux}
   \caption{Epistemic uncertainty $\sigma_{\mathrm{epi}}$ versus heat flux;
     no systematic broadening outside the training envelope.}
   \label{fig:ensemble_std_vs_qflux}
@@ -379,7 +379,7 @@ $\rho=+1.000$ (Fig.~\ref{fig:physics_trends_composite}d, e).
 
 \begin{figure}[!htbp]
   \centering
-  \includegraphics[width=0.95\linewidth]{figures/fig08_physics_trends_composite}
+  \includegraphics[width=0.95\linewidth]{figures/fig07_physics_trends_composite}
   \caption{Physics-trend audit on synthetic sweeps for \texttt{phaseDbal}.
     Spearman correlations:
     (a) $q''\uparrow\Rightarrow\Delta T_{\mathrm{ONB}}\uparrow$
@@ -438,7 +438,7 @@ smoother surfaces host larger cavities
 
 \begin{figure}[!htbp]
   \centering
-  \includegraphics[width=0.75\linewidth]{figures/fig18_inverse_rc_vs_Ra}
+  \includegraphics[width=0.75\linewidth]{figures/fig08_inverse_rc_vs_Ra}
   \caption{Inferred $r_c$ (Hsu inverse) against $R_a$; markers colored by
     fluid. The pooled negative trend reverses sign within fluid-stratified
     subsets (Simpson's paradox).}
@@ -448,10 +448,23 @@ smoother surfaces host larger cavities
 Stratifying by fluid resolves this apparent contradiction. Water
 yields $\rho=+0.30$, while R-134a yields $\rho=-0.77$. The reversal
 is a textbook Simpson's paradox~\citep{simpson1951} driven by
-fluid-by-$q''$ confounding. Water data come from low-$q''$,
-near-atmospheric operation on rougher, lower-density surfaces.
-R-134a data come from high-pressure, high-$q''$ operation on
-smoother, higher-density surfaces. Stratified mean radii are
+fluid-by-$q''$ confounding. The mechanism is, however, more than
+statistical. The Hsu activation band depends on the group
+$8\,C_2\,\sigma\,T_{\mathrm{sat}}/(\rho_v\,h_{fg})$
+(\cref{eq:hsu_rc_range}), which collapses sharply in moving from
+atmospheric water (high $\sigma$, high $h_{fg}$, low $\rho_v$) to
+high-pressure refrigerants. Atmospheric water therefore requires
+macro-cavities of $1$--$\SI{15}{\micro\meter}$ formed by surface
+roughening, so increased $R_a$ correlates with larger active radii.
+Refrigerants, in contrast, activate sub-micron cavities even on
+polished surfaces, and the residual variation in $R_a$ across the
+JABARDO refrigerant subset is dominated by the heater-material
+choice. Water data come from low-$q''$, near-atmospheric operation
+on rougher, lower-density surfaces. R-134a data come from
+high-pressure, high-$q''$ operation on smoother, higher-density
+surfaces. The pooled trend is thus a textbook example of a
+thermodynamic scaling effect masquerading as a geometric correlation.
+Stratified mean radii are
 $\SI{4.70}{\micro\meter}$ (water), $\SI{0.68}{\micro\meter}$
 (R-134a), and $\SI{2.44}{\micro\meter}$ (R-123). These values are
 consistent with higher-pressure refrigerants activating smaller
@@ -464,7 +477,7 @@ the corresponding SEM features.
 
 \begin{figure}[!htbp]
   \centering
-  \includegraphics[width=0.85\linewidth]{figures/fig20_inverse_rc_by_category}
+  \includegraphics[width=0.85\linewidth]{figures/fig09_inverse_rc_by_category}
   \caption{Per-category distribution of $r_c$. Refrigerant categories
     cluster sub-micron; water categories span
     $1$--$\SI{15}{\micro\meter}$.}

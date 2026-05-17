@@ -7,7 +7,7 @@ Reduces:
 
 Outputs:
 - 05_manuscript/figures/fig01_level1_composite.{eps,pdf,png}
-- 05_manuscript/figures/fig09_physics_trends_composite.{eps,pdf,png}
+- 05_manuscript/figures/fig07_physics_trends_composite.{eps,pdf,png}
 """
 from __future__ import annotations
 
@@ -198,7 +198,7 @@ def make_physics_trends_composite(formats: list[str]) -> list[Path]:
     fig.tight_layout(pad=1.0, h_pad=1.6, w_pad=1.4)
     out_paths: list[Path] = []
     for fmt in formats:
-        out = OUT / f"fig08_physics_trends_composite.{fmt}"
+        out = OUT / f"fig07_physics_trends_composite.{fmt}"
         fig.savefig(out)
         out_paths.append(out)
         print(f"  [Physics trends composite] {fmt} → {out}")

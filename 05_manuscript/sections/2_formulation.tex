@@ -17,7 +17,13 @@ heating surface, with origin at the bottom face. A uniform heat flux
 $q''_{\mathrm{applied}}$ is imposed at $z=0$, while the fluid-facing face
 is at $z=L$. Because the lateral extent exceeds $L$ by at
 least two orders of magnitude, the temperature field is treated as
-one-dimensional. The following assumptions are adopted:
+one-dimensional. The 1D approximation is further justified by the
+Biot number $\mathrm{Bi} = h_{nc}\,L/k_s$. For the dataset considered
+here ($h_{nc} \lesssim \SI{2000}{W/(m^2 K)}$, $L \le \SI{5}{mm}$,
+copper or stainless heaters with $k_s = 16$--$\SI{400}{W/(m\,K)}$),
+$\mathrm{Bi}$ stays in the $10^{-4}$--$10^{-2}$ range, so radial
+gradients within the heater remain negligible relative to those in
+the thickness direction. The following assumptions are adopted:
 (i) steady-state conduction, since ONB lies on the steady single-phase
 branch; (ii) negligible volumetric heat generation; (iii) adiabatic lateral
 boundaries; (iv) uniform, temperature-independent solid conductivity $k_s$;

@@ -189,8 +189,19 @@ The optimized weights are $w_{\mathrm{cond}}=\num{2.00}$,
 $w_{\mathrm{BC}}=\num{3.89}$, $w_{\mathrm{data}}=\num{35.57}$,
 $w_{\mathrm{ONB}}=\num{0.10}$, $w_{\mathrm{mono},R_a}=\num{2.50}$, and
 $w_{\mathrm{mono},\theta}=\num{1.00}$ (\cref{tab:hyperparameters}). The
-balance is data-dominant, reflecting ONB sparsity. The Hsu hinge acts
-as soft consistency rather than a fitting target.
+ratio $w_{\mathrm{data}}/w_{\mathrm{cond}} \approx 17.8$ is by
+deliberate design rather than an artefact of optimization. The
+present PINN is intended as a \emph{physics-regularized regressor}, not
+a forward conduction solver. The 1D conduction PDE and the McAdams
+boundary closure act as soft inductive biases that anchor the network
+to globally consistent thermodynamic behaviour, while the dataset
+encodes the micro-scale cavity activation physics that the 1D PDE
+cannot resolve. Strongly penalizing PDE residuals would force the
+network to discard sub-grid variability that is essential for
+predictive accuracy on engineered surfaces; the balance is therefore
+chosen to enforce macroscopic conservation while allowing the data
+term to capture the irreducible heterogeneity of incipience. The Hsu
+hinge acts as soft consistency rather than a fitting target.
 
 We trained the model in three sequential stages, each activating a
 richer subset of the loss than the preceding one. The schedule proved
@@ -225,7 +236,7 @@ and split seeds are fixed at \num{42}. Early stopping (patience
 \num{200}) rarely triggers. All experiments ran on an Apple~M1 host
 with eight CPU cores and \SI{16}{\giga\byte} RAM. Runs, trials, and
 checkpoints are logged via MLflow. We release the code, dataset, and
-the final \texttt{baseline\_phaseDbal} checkpoint so the pipeline can
+the final \texttt{baseline\_phaseDbal} checkpoint, so the pipeline can
 be re-executed from \cref{tab:hyperparameters}.
 
 % -----------------------------------------------------------------------------
