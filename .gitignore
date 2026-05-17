@@ -30,8 +30,18 @@ __pycache__/
 # ---------------------------------------------------------------------------
 # Data — raw literature PDFs / WPD raw exports, large generated files
 # Keep: 02_data/processed/*.csv, 02_data/surface_cards/, 02_data/scripts/
+# Also keep: experiment templates + guides (documentation, not raw data)
+# Note: parent 02_data/raw/ is NOT directly ignored so per-subdirectory
+# inclusions work; specific raw-data subdirs are excluded instead.
 # ---------------------------------------------------------------------------
-02_data/raw/
+02_data/raw/literature/
+02_data/raw/synthetic/
+02_data/raw/.DS_Store
+# Inside experiment/: keep only templates + docs, ignore actual measurement CSVs
+02_data/raw/experiment/*
+!02_data/raw/experiment/*template*.csv
+!02_data/raw/experiment/MEASUREMENT_GUIDE.md
+!02_data/raw/experiment/README.md
 02_data/wpd_raw/
 02_data/external/
 02_data/processed/*.npz

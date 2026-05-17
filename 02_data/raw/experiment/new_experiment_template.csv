@@ -1,0 +1,43 @@
+source_paper,figure_ref,surface_id,surface_label,fluid,delta_T_wall,delta_T_sub,q_flux,Ra_um,theta_deg,category,notes
+# === REMOVE THIS COMMENT BLOCK BEFORE RUNNING ============================
+# Replace the example rows below with your own measurements. Keep the same
+# 12-column order and the column headers above. The wrapper
+# 04_analysis/scripts/predict_new_experiment.py consumes this file.
+#
+# Field reference (units in square brackets):
+#   source_paper   free-text label for your experiment, e.g. "in_house_2026"
+#   figure_ref     free-text run identifier, e.g. "run01", "trial_A_1atm"
+#   surface_id     either an existing SFC-NNN id or your own (e.g. "MY-001")
+#   surface_label  human-readable name, e.g. "Cu_polished_Ra0p5"
+#   fluid          one of: water, R-123, R-134a (case-insensitive)
+#   delta_T_wall   [K] wall superheat at observed ONB; LEAVE EMPTY for
+#                  prediction-only runs (no ground-truth comparison)
+#   delta_T_sub    [K] subcooling = T_sat - T_bulk; 0 for saturated tests
+#   q_flux         [W/m^2] heat flux at observed ONB; e.g. 50_000 = 50 kW/m^2
+#                  WARNING: enter in W/m^2 NOT kW/m^2
+#   Ra_um          [um] arithmetic-mean roughness; e.g. 30 nm => 0.030
+#   theta_deg      [deg] static contact angle; LEAVE EMPTY if not measured
+#   category       coarse tag for stratification, e.g. "in_house"; unknown
+#                  categories fall back to a neutral default embedding
+#   notes          free-text provenance / QA notes
+#
+# Supported fluids for this PINN build (training pressures hard-coded):
+#   water    at 1 atm (101_325 Pa)
+#   R-123    at 1 atm (101_325 Pa)
+#   R-134a   at 5 bar (500_000 Pa)
+# Fluids NOT supported by CoolProp 7.2 (rows will be dropped from inference):
+#   FC-77, FC-72, HFE-7100, Novec-649
+#
+# Applicability domain (model trained on these ranges):
+#   delta_T_wall  : 0.7 - 24.9 K
+#   delta_T_sub   : 0 - 15 K
+#   q_flux        : 100 - 1_434_000 W/m^2
+#   Ra_um         : 0.0004 - 10.5 um
+#   theta_deg     : 0 - 165 deg (or empty)
+# Rows outside these bounds are flagged in applicability_report.md.
+#
+# Example rows below — DELETE before adding your own.
+# =========================================================================
+in_house_2026,run01,MY-001,Cu_polished_Ra0p5,water,5.2,0.0,50000,0.5,85.0,in_house,trial 1 - clearly visible ONB at this point
+in_house_2026,run02,MY-001,Cu_polished_Ra0p5,water,4.8,0.0,45000,0.5,85.0,in_house,trial 2 - repeat
+in_house_2026,run03,MY-001,Cu_polished_Ra0p5,water,,0.0,60000,0.5,85.0,in_house,prediction-only - ONB not observed cleanly
