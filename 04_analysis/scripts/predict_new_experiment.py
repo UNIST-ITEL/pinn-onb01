@@ -351,35 +351,50 @@ def run_pipeline(
     df_corr = load_with_correlations(data_csv=csv_path)
 
     # ---- Step 5: merge ---------------------------------------------------
-    keep_corr = [c for c in df_corr.columns if c.endswith("_dT_K")]
-    pinn_join_keys = ["surface_id", "fluid", "q_flux_W_m2"]
-    corr_rename = {"q_flux": "q_flux_W_m2"}
-    df_corr_j = df_corr.rename(columns=corr_rename)
-    join_cols = [c for c in pinn_join_keys if c in df_corr_j.columns]
-    if not join_cols:
-        join_cols = ["surface_id"]
+    # Use a composite STRING key to avoid float-precision merge failures.
+    # Both pipelines preserve input CSV row order (modulo FC-77 dropping),
+    # so we construct a stable key from non-float fields.
+    def _key(df):
+        return (df["source_paper"].astype(str) + "||"
+                + df["figure_ref"].astype(str) + "||"
+                + df["surface_id"].astype(str))
 
-    # df_pinn already has obs_dT_K and meta columns; merge correlation
-    # predictions in on common keys
+    # Rename classical-correlation columns to the public *_dT_K names used
+    # downstream in plots and metrics
+    corr_rename = {
+        "pred_hsu":  "Hsu_dT_K",
+        "pred_da":   "Davis_dT_K",
+        "pred_br":   "BR_dT_K",
+        "pred_sm":   "SM_dT_K",
+        "pred_basu": "Basu_dT_K",
+    }
+    df_corr = df_corr.rename(columns=corr_rename)
+    keep_corr = [c for c in corr_rename.values() if c in df_corr.columns]
+
+    df_pinn = df_pinn.copy()
+    df_corr_j = df_corr.copy()
+    df_pinn["_row_key"] = _key(df_pinn)
+    df_corr_j["_row_key"] = _key(df_corr_j)
+
     merged = df_pinn.merge(
-        df_corr_j[join_cols + keep_corr],
-        on=join_cols, how="left", suffixes=("", "_corr"),
+        df_corr_j[["_row_key"] + keep_corr],
+        on="_row_key", how="left",
     )
 
     # Restore the input-CSV ground truth into a uniform column name
     if "obs_dT_K" in merged.columns:
         merged["delta_T_wall"] = merged["obs_dT_K"]
 
-    # Add the per-row extrapolation flag back into the merged frame
-    flag_keys = [c for c in ["surface_id", "fluid", "q_flux_W_m2"]
-                 if c in df_checked.columns or c in df_checked.columns]
-    df_checked_for_merge = df_checked.rename(columns={"q_flux": "q_flux_W_m2"})
-    keep_flag_cols = [c for c in flag_keys if c in df_checked_for_merge.columns]
-    if "extrapolation_flags" in df_checked_for_merge.columns and keep_flag_cols:
+    # Add the per-row extrapolation flag (also key-merge to avoid float issues)
+    if "extrapolation_flags" in df_checked.columns:
+        df_checked_j = df_checked.copy()
+        df_checked_j["_row_key"] = _key(df_checked_j)
         merged = merged.merge(
-            df_checked_for_merge[keep_flag_cols + ["extrapolation_flags"]],
-            on=keep_flag_cols, how="left",
+            df_checked_j[["_row_key", "extrapolation_flags"]],
+            on="_row_key", how="left",
         )
+
+    merged = merged.drop(columns=["_row_key"], errors="ignore")
 
     pred_csv = out_dir / "predictions.csv"
     merged.to_csv(pred_csv, index=False)
