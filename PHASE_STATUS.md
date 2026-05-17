@@ -1,7 +1,7 @@
 # PINN-ONB01 — Phase 진척 상태
 
-**최종 갱신:** 2026-05-18 (D-시리즈 + E6-E12 보강 + 컨설팅 02 + bib 검증 완료)
-**전체 진척:** Phase 1-4 완료 / Phase 5 (논문) ~99.5% — 투고 패키지 준비 완료
+**최종 갱신:** 2026-05-18 (오후 세션: 공개 release artifacts 준비 + 의존성 감사 + Table 2 정정)
+**전체 진척:** Phase 1-4 완료 / Phase 5 (논문) **100% — 투고 가능 상태** / 공개 release 준비 ~85%
 
 ---
 
@@ -164,21 +164,85 @@
 
 ---
 
-## 남은 작업 (Optional, 외부 단계)
+## 2026-05-18 오후 세션 — 공개 release 준비
 
-| 항목 | 시간 | 효과 |
+### 결정 사항 (4가지)
+| 항목 | 결정 |
+|---|---|
+| 공개 시점 | 게재 **수락 후** (proof 단계에서 DOI 삽입) |
+| GitHub repo | **`github.com/UNIST-ITEL/pinn-onb01`** (org 계정) |
+| Data license | **CC-BY-4.0** |
+| Code license | **MIT** |
+| Digitization metadata | **포함** (per-paper WPD `.tar.gz`) |
+
+### Release artifacts (신규)
+- `LICENSE-CODE` (MIT, 저자 4명, 인용 정보 포함)
+- `LICENSE-DATA` (CC-BY-4.0, 적용 범위 + 원본 figure 비재배포 명시)
+- `CITATION.cff` (기계 가독, ORCID 포함)
+- `README_PUBLIC.md` (공개 repo용 README 초안)
+- `RELEASE_CHECKLIST.md` (Phase 0/1/2 timeline + 책임자 배정 + 위험 관리)
+- `SETUP_GITHUB_ZENODO_GUIDE.md` (7단계 setup 가이드 + 검증 체크리스트 + 트러블슈팅)
+- `02_data/processed/README.md` (CSV schema, source mapping, FC-77 exclusion, citation)
+
+### 본문 / 메타데이터 갱신
+- `main.tex` § Data availability: Zenodo + GitHub URL + CC-BY-4.0/MIT 명시
+- `02_data/surface_cards/_index.md`: 30 → **49 surfaces** (JABARDO 20면 + SFC-030 결번 안내)
+- §3 Table 2 **fluid column 정정**: `JABARDO_2009` "R-123/R-134a/FC-77" → **"R-123/R-134a"**
+  (실제 데이터 검증 결과 JABARDO는 R-123/R-134a만; FC-77은 JONES_2009 단독 출처)
+- `CLAUDE.md`, `README_PUBLIC.md`: "PyTorch + DeepXDE" → "PyTorch" (코드는 DeepXDE 비의존, 인용만 유지)
+
+### Python 의존성 감사
+| 작업 | 변경 |
+|---|---|
+| 제거 (0 imports) | `deepxde`, `xgboost`, `seaborn`, `pypdf`, `tqdm`, `ipywidgets` |
+| 추가 | `plotly>=5.18,<7.0` (8 imports) |
+| 상한 추가 | `torch<3.0`, `numpy<3.0`, `mlflow<4.0`, `optuna<5.0`, `CoolProp<8.0` 등 |
+| 신규 | `environment.yml` (conda variant; torch/CoolProp/pdfplumber는 pip 섹션) |
+
+### 본 세션 git commits
+| Hash | 내용 |
+|---|---|
+| `5cab831` | Release artifacts + dataset Table 2 fluid 정정 |
+| `e555ae9` | requirements.txt 정리 + environment.yml + DeepXDE 표기 정정 |
+| `e34548b` | UNIST-ITEL + Zenodo setup 가이드 |
+
+---
+
+## 남은 작업
+
+### 제출 직전 / 제출 단계
+| 항목 | 담당 | 상태 |
 |---|---|---|
-| Reviewer Appendix B 5건 본문 사전 보강 (Q1/Q4/Q6/Q9/Q11) | 1시간 | 사전 방어 |
-| Native-speaker / professional editing service | 외주 | 영문 자연스러움 |
-| Co-author / 지도교수 검토 | 외부 | 학술 review |
-| §2 잔여 overfull 31pt fine-tune | 30분 | cosmetic |
-| 백업 파일 정리 (3 세대) | 사용자 결정 | 리포 정리 |
-| 누적 변경분 git commit (D-시리즈 이후) | 5분 | 버전 관리 |
-| Git tag `v1.0-submitted` | 5분 | submission 시점 마커 |
-| Git remote(GitHub) push | 사용자 | 외부 백업/공유 |
-| 데이터셋 Zenodo/OSF DOI 발급 | 사용자 | open-source 약속 실행 |
-| 공저자 ORCID 수집 | 사용자 | submission portal 메타데이터 |
-| IJHMT submission portal 업로드 | 사용자 | 최종 |
+| Reviewer Appendix B 5건 본문 사전 보강 (Q1/Q4/Q6/Q9/Q11) | 저자 | ☐ 선택 |
+| Native-speaker / professional editing service | 외주 | ☐ 선택 |
+| Co-author / 지도교수 검토 | 외부 | ☐ 권장 |
+| §2 잔여 overfull 31pt fine-tune | 저자 | ☐ cosmetic only |
+| 백업 파일 정리 (3 세대 .bak_*) | 저자 | ☐ 선택 |
+| Git tag `v1.0-submitted` | 저자 | ☐ |
+| 공저자 ORCID 수집 | 저자 | ☐ submission portal 입력 시 |
+| IJHMT submission portal 업로드 | 저자 | ☐ 사용자 작업 |
+
+### 공개 Release 준비 (수락 대기 중 가능)
+| 항목 | 담당 | 상태 |
+|---|---|---|
+| UNIST-ITEL GitHub org 생성 + 멤버 초대 | Jaeseon Lee | ☐ 가이드: `SETUP_GITHUB_ZENODO_GUIDE.md` § 1 |
+| `pinn-onb01` private repo + 로컬 push | Jaeseon Lee | ☐ 가이드 § 2 |
+| Zenodo 계정 (ORCID 로그인) + GitHub 통합 | Jaeseon Lee | ☐ 가이드 § 3-4 |
+| Dataset DOI 사전 예약 (draft record) | Jaeseon Lee | ☐ 가이드 § 5 |
+| Per-paper digitization metadata `.tar.gz` 패키징 | Eunjeong Ko | ☐ |
+| `requirements-lock.txt` 생성 (release 직전) | Gyuchang Kim | ☐ |
+| 02_data/processed/README.md placeholder DOI 치환 (수락 후) | Jaeseon Lee | ☐ |
+
+### 게재 수락 후 (Activation)
+| 항목 | 가이드 | 상태 |
+|---|---|---|
+| proof DOI를 placeholder에 치환 | `SETUP_GITHUB_ZENODO_GUIDE.md` § 6 | ☐ |
+| Repo private → public 전환 | 동일 § 6 | ☐ |
+| `v1.0-published` Git tag + GitHub Release | 동일 § 6 | ☐ |
+| Zenodo code DOI 자동 발급 확인 | 동일 § 6 | ☐ |
+| Zenodo dataset record publish + DOI 활성화 | 동일 § 6 | ☐ |
+| 두 DOI를 README/CITATION.cff/main.tex 반영 | 동일 § 6 | ☐ |
+| (선택) Papers with Code / ML4Sci / HF Datasets 등록 | 동일 § 7 | ☐ |
 
 ---
 
@@ -222,4 +286,15 @@ python ../04_analysis/scripts/compose_composites.py
 05_manuscript/figures/                 # 22 단일 + 2 composite, 300 dpi
 05_manuscript/supplementary/
   supplementary.tex                    # 10 supp figs + 1 supp table
+
+# 공개 release 준비물 (2026-05-18 오후 추가)
+LICENSE-CODE                           # MIT
+LICENSE-DATA                           # CC-BY-4.0
+CITATION.cff                           # 기계 가독 인용 메타데이터
+README_PUBLIC.md                       # 공개 repo README 초안
+RELEASE_CHECKLIST.md                   # Phase 0/1/2 timeline
+SETUP_GITHUB_ZENODO_GUIDE.md           # 7단계 setup 가이드
+requirements.txt                       # 14 패키지, 상한 포함
+environment.yml                        # conda variant
+02_data/processed/README.md            # CSV schema + citation 의무
 ```
