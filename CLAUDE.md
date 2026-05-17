@@ -7,7 +7,7 @@ PINN을 이용한 풀비등 핵비등 개시점(ONB, Onset of Nucleate Boiling) 
 
 - **분야**: 비등 열전달, 표면 공학, Physics-Informed Neural Networks
 - **핵심 물리**: 풀비등 핵생성, Hsu 기준, 자연대류 경계조건
-- **프레임워크**: PyTorch + DeepXDE
+- **프레임워크**: PyTorch (DeepXDE는 방법론 reference 인용만; 런타임 비의존)
 - **데이터**: 문헌 실험 + 합성(2D 열전도 해석)
 - **유체**: 물(대기압 기본), FC-72/HFE-7100(비교)
 - **가열 형상**: 수평 평판(상면), 수평 원형관 외면

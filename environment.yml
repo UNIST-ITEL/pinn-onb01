@@ -1,0 +1,54 @@
+# PINN-ONB01 — Conda environment for Phase 1 (Pool Boiling ONB)
+#
+# Create:    conda env create -f environment.yml
+# Activate:  conda activate pinn-onb01
+# Update:    conda env update -f environment.yml --prune
+#
+# Notes:
+#   * PyTorch is installed via pip rather than conda-forge because the
+#     conda-forge feedstock can lag behind upstream wheels, and the CUDA
+#     variant must match the local CUDA toolkit. Adjust the torch
+#     installation line below if you need a specific CUDA build (see
+#     https://pytorch.org/get-started/locally/).
+#   * CoolProp is installed via pip on conda-forge platforms that do not
+#     yet ship the latest CoolProp release.
+#   * For bit-exact replay of the published results, see
+#     `requirements-lock.txt` in the Zenodo archive accompanying the
+#     paper.
+
+name: pinn-onb01
+channels:
+  - conda-forge
+  - defaults
+
+dependencies:
+  # ── Python interpreter ────────────────────────────────────
+  - python>=3.10,<3.14
+
+  # ── Core scientific Python (conda-forge builds) ───────────
+  - numpy>=1.26,<3.0
+  - pandas>=2.1,<3.0
+  - scipy>=1.11,<2.0
+  - scikit-learn>=1.4,<2.0
+  - pyyaml>=6.0,<7.0
+
+  # ── Visualization ─────────────────────────────────────────
+  - matplotlib>=3.8,<4.0
+  - plotly>=5.18,<7.0
+
+  # ── Experiment tracking + HPO ─────────────────────────────
+  - mlflow>=2.10,<4.0
+  - optuna>=3.5,<5.0
+
+  # ── Notebook (optional) ───────────────────────────────────
+  - jupyter>=1.0
+
+  # ── Dev / testing ─────────────────────────────────────────
+  - pytest>=7.4,<9.0
+
+  # ── pip-only or rapidly-moving packages ───────────────────
+  - pip
+  - pip:
+      - torch>=2.1,<3.0
+      - CoolProp>=6.6,<8.0
+      - pdfplumber>=0.11,<1.0

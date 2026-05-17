@@ -76,7 +76,7 @@ CPU runs work but are noticeably slower.
 │   └── raw/
 │       └── digitization/          # WebPlotDigitizer metadata per paper
 ├── 03_model/
-│   ├── src/pinn_onb/              # PyTorch + DeepXDE source
+│   ├── src/pinn_onb/              # PyTorch source
 │   ├── configs/                   # YAML hyperparameter configs
 │   └── checkpoints/ensemble_k10/  # 10 trained PINN ensemble members
 ├── 04_analysis/
