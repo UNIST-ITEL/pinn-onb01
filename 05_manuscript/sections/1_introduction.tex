@@ -1,0 +1,133 @@
+% =============================================================================
+% Section 1 — Introduction
+% PINN-ONB01 Phase 1 manuscript (IJHMT submission)
+% Target length: ~870 words (6 paragraphs, single flow)
+% =============================================================================
+
+\section{Introduction}\label{sec:introduction}
+
+Pool boiling is a passive mechanism capable of dissipating high heat
+fluxes. Typical applications span nuclear safety systems, electronics
+thermal management, refrigeration evaporators, and process-industry
+reboilers.
+The onset of nucleate boiling (ONB) marks a regime transition. It is
+the wall superheat at which the first sustained vapor embryos detach
+from surface cavities, separating inefficient single-phase natural
+convection from the high-heat-flux nucleate regime. Accurate knowledge
+of $\Delta T_{\mathrm{ONB}} = T_w - T_{\mathrm{sat}}$ is critical. It
+sets the lower bound of the design window for evaporators and immersion
+cooling. It also defines the safety margin against premature dry-out.
+Engineered surfaces now combine roughness control, wettability
+tailoring, biphilic patterning, and nano-/micro-structuring;
+collectively, these treatments shift $\Delta T_{\mathrm{ONB}}$ by more
+than \SI{50}{\percent} relative to a polished
+baseline~\citep{betz2013,phan2009,jo2011,bourdon2012,bourdon2015}.
+\citet{betz2013} reported an order-of-magnitude reduction in incipience
+superheat through biphilic patterning on copper. Bourdon and
+co-workers~\citep{bourdon2012,bourdon2015} grafted SAMs on ultra-smooth
+bronze ($R_a<\SI{10}{\nano\meter}$) and shifted activation by several
+kelvin without modifying topography. Yet design practice still relies
+on correlations whose residual scatter remains
+\SIrange{20}{30}{\percent}, with consequences including oversized
+exchangers, conservative safety margins, and an inability to exploit
+engineered-surface performance.
+
+These persistent design penalties trace back to the structure of the
+classical analytical framework itself.
+The dominant analytical framework dates to Hsu~\citep{hsu1962}, who
+derived an upper- and lower-bound cavity-radius range supporting
+nucleation under a linear thermal-boundary-layer assumption. Equivalent
+formulations were proposed by Sato and Matsumura~\citep{sato1964}.
+Davis and Anderson~\citep{davis1966} derived an explicit closed-form
+expression for the minimum superheat, and Bergles and
+Rohsenow~\citep{bergles1964} fitted an empirical water-specific
+expression with strong predictive power within its calibration band.
+Basu et al.~\citep{basu2002} extended the Hsu picture with a
+contact-angle modifier $F(\theta)$. These correlations share two
+structural limitations. First, each presupposes a single characteristic
+cavity radius, precluding multi-modal populations introduced by
+engineered patterning. Second, each treats surface character through a
+single scalar, most often $R_a$ or $\theta$. Evidence using multiple
+descriptors contradicts this
+simplification. \citet{jones2009,jabardo2009,betz2013} report
+non-additive $\Delta T_{\mathrm{ONB}}$ shifts under joint
+roughness--wettability control. As quantified in Section~\ref{sec:results}, these correlations
+exhibit RMSEs of \SIrange{7}{16}{K} on a 77-point cross-fluid
+benchmark.
+
+These limitations motivate data-driven alternatives that can absorb
+multi-descriptor surface information.
+Data-driven approaches have been applied to related boiling problems,
+notably the CHF study of Hobold and da Silva~\citep{hobold2018}.
+ONB-specific efforts have been hindered by data sparsity. Published ONB
+labels are an order of magnitude rarer than CHF labels, and they are
+scattered across heterogeneous protocols. Black-box training is
+therefore prone to overfitting and to violations of thermodynamic
+trends. Physics-informed neural networks
+(PINNs)~\citep{raissi2019,lu2021,cai2021} offer a route around these
+limits. They embed governing PDEs and physical constraints as soft
+losses during training. This compensates for limited data with
+mechanistic regularization and yields models that respect conservation
+laws under extrapolation~\citep{zobeiry2021}. To our knowledge, no PINN
+study has targeted pool-boiling ONB with explicit surface-modification
+conditioning, nor has any integrated curated multi-source datasets for
+cross-fluid generalization.
+
+Despite these advances, several concrete gaps remain.
+A structured gap analysis identifies four concurrent voids. First, no
+published PINN study addresses pool-boiling ONB. Second, none addresses
+surface modification, although correlation- and CFD-based baselines
+exist for individual surface families. Third, no consolidated
+standardized ONB dataset spanning multiple fluids is publicly
+available. Fourth, inverse recovery of active cavity radii from
+measured ONB data has not been combined with literature-scale
+validation against Hsu's canonical bounds~\citep{hsu1962}. Although
+\citet{raissi2019} pioneered forward PINN formulations and
+\citet{cai2021} extended them to thermal inverse problems, neither
+addressed pool-boiling ONB. The present study addresses these four gaps
+in a single framework and provides a reproducible baseline for
+benchmarking subsequent PINN-for-boiling efforts.
+
+We address these gaps through five contributions.
+(i) A curated standardized pool-boiling dataset was assembled from
+seven literature sources, comprising $1\,361$ boiling-curve points and
+$82$ ONB labels across four fluids (water, R-134a, R-123, FC-77). The
+dataset is accompanied by $49$ surface-descriptor cards, of which $37$
+are newly digitized; each encodes $R_a$, $\theta$, $r_c$, $N_s$, and a
+categorical paper tag.
+(ii) A surface-conditioned PINN architecture is proposed. A compact
+encoder modulates the temperature-field network through feature-wise
+linear modulation (FiLM); the total parameter count is $24\,005$.
+One backbone can represent qualitatively distinct surface families.
+(iii) A five-term composite loss combines the conduction PDE residual,
+the natural-convection boundary condition, the experimental ONB data,
+a soft Hsu nucleation criterion, and monotonicity regularizers. The
+regularizers enforce
+$\partial \Delta T_{\mathrm{ONB}}/\partial R_a \le 0$ and
+$\partial \Delta T_{\mathrm{ONB}}/\partial \theta \le 0$.
+(iv) An inverse-problem study recovered active cavity radii from ONB
+observations using the Hsu relation; the recovered radii were evaluated
+against the physical band $r_c \in [1,100]\,\si{\micro\meter}$ and
+revealed a Simpson-type reversal in the $R_a$--$r_c$ correlation
+across fluids (overall $\rho=-0.27$, water $+0.30$, R-134a $-0.77$).
+(v) The framework passed all four Level-1 code-verification tests
+(maximum relative error $0.026\%$) and eight of nine Level-3
+physical-consistency tests. A deep-ensemble ($K=10$) uncertainty
+quantification step is reported. The model attains an ONB RMSE of
+\SI{3.42}{K} with $R^2 = +0.44$ on $n=77$ held-out points. This
+represents a \SI{53}{\percent} reduction relative to the best classical
+correlation. The reduction reaches \SIrange{65}{67}{\percent} on the
+refrigerant subset.
+
+The remainder of the paper is organized as follows.
+The heat-conduction equation, its natural-convection boundary
+condition, the Hsu nucleation criterion, and the non-dimensional scales
+are introduced in Section~\ref{sec:formulation}.
+Section~\ref{sec:data} then describes the literature sources,
+characterization protocol, and preprocessing, while
+Section~\ref{sec:architecture} details the PINN architecture, surface
+encoder, composite loss, and training. Code verification, forward
+accuracy against five baselines, physical-trend consistency, UQ, and
+the cavity-radius inverse problem are reported in
+Section~\ref{sec:results}. Section~\ref{sec:conclusions} summarizes
+findings and outlines the extension to forced-convection boiling.

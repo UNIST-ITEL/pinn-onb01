@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 02_data/scripts/pdf_text.py *)",
+      "mcp__notebooklm__notebook_query"
+    ]
+  }
+}

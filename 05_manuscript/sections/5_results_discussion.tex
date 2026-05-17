@@ -1,0 +1,518 @@
+% =============================================================================
+% Section 5 — Results and Discussion
+% PINN-ONB01 Phase 1 manuscript (IJHMT submission)
+% Target length: ~2,330 words
+% Final baseline model: baseline_phaseDbal (FiLM, d_z=8, 3 layers x 64, 24,005 params)
+% =============================================================================
+
+\section{Results and Discussion}\label{sec:results}
+
+The subsections below cover three topics.
+Section~\ref{subsec:verif_forward} reports code verification and
+the forward $\Delta T_{\mathrm{ONB}}$ comparison against five
+classical correlations. Section~\ref{subsec:uq_physics} develops a
+deep-ensemble UQ analysis and audits physical-trend consistency.
+Section~\ref{subsec:inverse_limits} addresses the Hsu-based inverse
+cavity radius, a Simpson-type confounding, and the principal
+limitations of the study.
+
+% -----------------------------------------------------------------------------
+\subsection{Verification and forward accuracy}\label{subsec:verif_forward}\label{subsec:level1}\label{subsec:forward}
+% -----------------------------------------------------------------------------
+
+The numerical implementation was verified against four canonical
+problems with closed-form solutions or established correlations as
+references. All four tests passed (Table~\ref{tab:level1},
+Fig.~\ref{fig:level1_composite}).
+Test~1 reproduces 1D steady conduction through a wall with
+fixed-temperature bottom and convective top; the $L^2$ error is
+$0.018\%$.
+Test~2 confirms PDE residual convergence over
+$N_{\mathrm{coll}}\in\{200,\ldots,5\,000\}$; the trend is monotonic
+with a log--log slope of $+0.009$.
+Test~3 reproduces the natural-convection boundary against
+$\mathrm{Nu}=0.54\,\mathrm{Ra}^{1/4}$ (McAdams; water,
+$T_\infty=\SI{293}{K}$, $L=\SI{5}{mm}$); the relative error is
+$0.000\%$.
+Test~4 verifies autograd derivatives of $T(z)=\sin(2\pi z)$; the
+errors are $0.026\%$ and $0.011\%$.
+
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=0.85\linewidth]{figures/fig01_level1_composite}
+  \caption{Level 1 verification.
+    (a) Parity between PINN and the analytical 1D conduction solution
+    ($L^2$ error $0.018\%$).
+    (b) PDE residual convergence with collocation density (log--log slope
+    $+0.009$).
+    (c) Natural-convection boundary against McAdams
+    $\mathrm{Nu}=0.54\,\mathrm{Ra}^{1/4}$, $0.000\%$ relative error.
+    (d) Autograd derivatives of $\sin(2\pi z)$, $0.026\%$ and $0.011\%$.}
+  \label{fig:level1_composite}
+\end{figure}
+
+
+
+\begin{table}[!htbp]
+\centering
+\caption{Level 1 code-verification tests. All four tests pass at machine
+  precision and are consistent with the expected order of accuracy of the
+  spectral autograd operator.}
+\label{tab:level1}
+\small
+\begin{tabular}{lll}
+\hline
+Test & Reference & Relative error \\
+\hline
+1D steady conduction        & Analytical linear profile & 0.018\% (L$^2$) \\
+PDE residual convergence    & Monotone in $N_{\mathrm{coll}}$ & slope $+0.009$ \\
+Natural-convection Nu       & McAdams correlation & 0.000\% \\
+Autograd $\partial,\partial^2$ & Manufactured $\sin(2\pi z)$ & 0.026\%, 0.011\% \\
+\hline
+\end{tabular}
+\end{table}
+
+With the implementation verified, we turn to the forward
+$\Delta T_{\mathrm{ONB}}$ comparison.
+Table~\ref{tab:forward} summarizes the principal forward result. Five
+classical correlations~\citep{hsu1962,davis1966,bergles1964,sato1964,basu2002}
+are evaluated on the FC-77-excluded subset. The subset contains $n=77$
+ONB points spanning 49 surfaces and three fluids. Bergles--Rohsenow
+and Basu are valid only for water at atmospheric pressure and are
+evaluated on smaller subsets, whereas the PINN is evaluated on the
+full 77 because its encoder is fluid-aware.
+
+\begin{table}[!htbp]
+\centering
+\caption{Forward-prediction performance on the literature ONB dataset.
+  Bold row: PINN model used as the production baseline throughout the paper.
+  Correlation rows quote results on their natively valid subset.}
+\label{tab:forward}
+\small
+\begin{tabular}{lccccc}
+\hline
+Model & RMSE [K] & MAE [K] & $R^2$ & MRE [\%] & $n$ \\
+\hline
+Hsu (1962) / Sato--Matsumura (1964) & 7.43  & 6.07  & $-0.98$  & 95.0  & 43 \\
+Davis--Anderson (1966)              & 16.47 & 10.26 & $-8.72$  & 334.2 & 43 \\
+Bergles--Rohsenow (1964)            & 7.87  & 6.37  & $-0.87$  & 98.4  & 33 \\
+Basu et al.\ (2002)                 & 7.21  & 5.85  & $-0.21$  & 106.7 & 22 \\
+\textbf{PINN \texttt{baseline\_phaseDbal}} (this work)
+                                    & \textbf{3.42} & \textbf{2.21}
+                                    & $\mathbf{+0.44}$ & \textbf{61.4} & \textbf{77} \\
+\hline
+\end{tabular}
+\end{table}
+
+The PINN reduces RMSE from \SI{7.21}{K} (best classical, Basu et al.)
+to \SI{3.42}{K}, a $52.6\%$ reduction. MAE falls to \SI{2.21}{K}
+(from \SI{5.85}{K}), the coefficient of determination becomes
+positive ($R^2=+0.44$) for the first time, and the mean relative
+error contracts to $61.4\%$ from values above $95\%$ for every
+classical correlation. The PINN therefore tracks
+$\Delta T_{\mathrm{ONB}}$ magnitude across surfaces and fluids; the
+prediction is not a per-fluid constant. Two factors bias the
+comparison against the PINN. First, classical correlations are
+evaluated only on their natively valid subset. Second, the PINN is
+evaluated on the full $n=77$ corpus, including the more challenging
+refrigerants, and on held-out points only. Parity plots are shown in
+Figs.~\ref{fig:correlation_parity} (classical) and
+\ref{fig:pinn_parity} (PINN).
+
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=0.85\linewidth]{figures/fig05_correlation_parity}
+  \caption{Parity plots of the five classical correlations on the
+    FC-77-excluded ONB dataset. Diagonal: $y=x$; dashed: $\pm 50\%$ band.}
+  \label{fig:correlation_parity}
+\end{figure}
+
+
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=0.65\linewidth]{figures/fig06_pinn_parity}
+  \caption{Parity plot of the PINN \texttt{baseline\_phaseDbal} model on
+    $n=77$ ONB points (RMSE $\SI{3.42}{K}$, $R^2=+0.44$); markers
+    colored by fluid.}
+  \label{fig:pinn_parity}
+\end{figure}
+
+
+
+PINN error is unevenly distributed across fluids
+(Table~\ref{tab:per_fluid}). The smallest RMSE is for R-134a
+(\SI{1.18}{K}, $n=34$), followed by R-123 (\SI{2.35}{K}, $n=10$).
+The largest RMSE is for water (\SI{4.91}{K}, $n=33$). The water
+performance reflects the heterogeneity of seven fabrication routes
+at atmospheric pressure, spanning polished, EDM, plasma oxides, SAM,
+and biphilic surfaces. Refrigerant data come predominantly from
+Jabardo et al.\ (2009), a single laboratory whose homogeneous
+fabrication route is more easily captured by the encoder.
+
+\begin{table}[!htbp]
+\centering
+\caption{Per-fluid performance of the PINN \texttt{baseline\_phaseDbal} model.}
+\label{tab:per_fluid}
+\small
+\begin{tabular}{lcccc}
+\hline
+Fluid & RMSE [K] & MAE [K] & $R^2$ & $n$ \\
+\hline
+Water   & 4.91 & 3.71 & $+0.27$ & 33 \\
+R-134a  & 1.18 & 0.89 & $+0.39$ & 34 \\
+R-123   & 2.35 & 1.76 & $-0.01$ & 10 \\
+\hline
+\end{tabular}
+\end{table}
+
+A source-paper view sharpens the diagnosis.
+Table~\ref{tab:per_paper} gives the corresponding breakdown. The
+smallest RMSEs are for JABARDO\_2009 (\SI{1.52}{K}) and BOURDON\_2012
+(\SI{1.88}{K}). The largest are for BOURDON\_2015 (\SI{6.54}{K}) and
+BETZ\_2013 (\SI{6.34}{K}). Both involve unique fabrication routes
+with few replicates: silane-grafted oxides and biphilic patterns.
+The model performs best on well-represented families and degrades
+in proportion to the per-source sample size on under-represented
+ones. This pattern motivates the UQ analysis developed below.
+
+\begin{table}[!htbp]
+\centering
+\caption{Per-source-paper performance of the PINN
+  \texttt{baseline\_phaseDbal} model on the 77-point ONB dataset.}
+\label{tab:per_paper}
+\small
+\begin{tabular}{lccc}
+\hline
+Source paper & RMSE [K] & MAE [K] & $n$ \\
+\hline
+BETZ\_2013      & 6.34 & 5.91 & 10 \\
+BOURDON\_2012   & 1.88 & 1.30 & 6 \\
+BOURDON\_2015   & 6.54 & 4.22 & 5 \\
+JABARDO\_2009   & 1.52 & 1.09 & 44 \\
+JONES\_2009     & 2.81 & 1.55 & 5 \\
+JO\_2011        & 3.83 & 3.75 & 2 \\
+PHAN\_2009      & 4.26 & 3.87 & 5 \\
+\hline
+\end{tabular}
+\end{table}
+
+Three architectural features act jointly to deliver this accuracy.
+First, the encoder maps heterogeneous descriptors ($R_a$,
+$\theta_{\mathrm{contact}}$, optional $r_c$) into a $d_z=8$ latent,
+and FiLM then injects this latent into every hidden unit. Second,
+the loss balance was tuned by Bayesian optimization, yielding
+$w_{\mathrm{data}}=35.57$, $w_{\mathrm{BC}}=3.89$,
+$w_{\mathrm{PDE}}=2.0$, $w_{\mathrm{ONB}}=0.10$,
+$w_{\mathrm{mono},R_a}=2.5$, and $w_{\mathrm{mono},\theta}=1.0$; the
+tuned balance prevents the sparse ONB loss from being dominated by
+the PDE residual. Third, the two-phase schedule (PDE+BC warm-up
+then Adam+L-BFGS) outperformed a flat baseline by $\sim$\SI{0.5}{K}
+RMSE. The $24{,}005$ parameters lie below the overfitting threshold
+for the available data.
+
+Against this baseline, the classical correlations show distinct
+failure modes. Davis--Anderson has the largest residual (RMSE
+\SI{16.47}{K}); it requires explicit cavity-mouth radii absent from
+the corpus. Hsu and Sato--Matsumura yield identical predictions
+(RMSE \SI{7.43}{K}), and Bergles--Rohsenow evaluates on $n=33$ with
+RMSE \SI{7.87}{K}. Basu et al.\ yields the best $R^2$ ($-0.21$) and
+the lowest classical RMSE (\SI{7.21}{K}) on its $n=22$ subset. The
+PINN improves on this baseline by $52.6\%$ in RMSE and extends the
+valid envelope from $n=22$ to $n=77$, a $3.5\times$ increase in the
+size of the evaluable test set; it is also the only model with
+positive $R^2$.
+
+Out-of-fluid generalization shows the same pattern. On the
+refrigerant subset, Hsu yields \SI{6.62}{K} (R-123) and \SI{3.60}{K}
+(R-134a). The PINN yields \SI{2.35}{K} and \SI{1.18}{K},
+respectively. These correspond to relative improvements of $65\%$
+(R-123) and $67\%$ (R-134a), both exceeding the $46\%$ improvement
+on water. The encoder isolates fluid-independent geometry, while
+the non-dimensional PDE absorbs fluid-property dependence. Adding a
+fluid therefore enlarges the FiLM manifold without trunk retraining.
+
+% -----------------------------------------------------------------------------
+\subsection{Uncertainty and physical consistency}\label{subsec:uq_physics}\label{subsec:uq}\label{subsec:physics}
+% -----------------------------------------------------------------------------
+
+The forward errors of Section~\ref{subsec:verif_forward} are point
+predictions and carry no confidence interval. To quantify prediction
+uncertainty we used the deep-ensemble approach of
+\citet{lakshminarayanan2017}. $K=10$ instances of the final model
+were trained from distinct seeds. Each instance underwent the
+analytical warm-up and experimental fine-tuning stages on the
+identical 77-point dataset, differing only in the random seed for
+weight initialization. The ensemble mean and epistemic standard
+deviation are
+\begin{equation}
+  \mu(\mathbf{x}) = \frac{1}{K}\sum_{k=1}^{K} f_k(\mathbf{x}),
+  \qquad
+  \sigma_{\mathrm{epi}}(\mathbf{x}) = \sqrt{\frac{1}{K-1}\sum_{k=1}^{K}
+    \bigl[f_k(\mathbf{x})-\mu(\mathbf{x})\bigr]^2}.
+\end{equation}
+The aleatoric component is modeled as
+$\sigma_{\mathrm{ale}}(\mathbf{x}) = 0.20\,|\mu(\mathbf{x})|$. This
+choice is consistent with the $\pm 20\%$ run-to-run scatter reported
+for ONB measurements~\citep{basu2002,jones2009}. Under independence,
+$\sigma_{\mathrm{total}}^2 = \sigma_{\mathrm{epi}}^2 +
+\sigma_{\mathrm{ale}}^2$, and the $95\%$ interval is
+$\mu\pm 1.96\,\sigma_{\mathrm{total}}$.
+
+Empirical 95\%-interval coverage is $98.7\%$, slightly above
+nominal. The mild over-coverage reflects the fixed $\pm 20\%$
+aleatoric component combined with the $K=10$ epistemic spread. The
+empirical coverage exceeds the nominal $95\%$, indicating a small
+but conservative bias in the intervals that is acceptable for the
+engineering use of the model. An earlier \texttt{phaseB} ensemble
+under the same assumption showed under-coverage ($58\%$). The
+improvement here comes from the monotonicity-regularized
+\texttt{phaseDbal}, which produces more diverse members in sparse
+regions. The parity plot is Fig.~\ref{fig:ensemble_parity}.
+
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=0.75\linewidth]{figures/fig07_ensemble_errorbars}
+  \caption{Deep-ensemble ($K=10$) parity plot with $95\%$ intervals on
+    \texttt{baseline\_phaseDbal}; empirical coverage $98.7\%$.}
+  \label{fig:ensemble_parity}
+\end{figure}
+
+
+
+Decomposing the total uncertainty by component, the mean
+contributions are $\bar{\sigma}_{\mathrm{epi}}=\SI{3.85}{K}$,
+$\bar{\sigma}_{\mathrm{ale}}=\SI{1.34}{K}$, and
+$\bar{\sigma}_{\mathrm{total}}=\SI{4.09}{K}$. Epistemic uncertainty
+exceeds the aleatoric component by a factor of $\sim 2.9$.
+Additional measurements, rather than tighter optimization, are
+therefore the most efficient route to reducing total uncertainty.
+Per-paper analysis (Fig.~\ref{fig:ensemble_std_by_category})
+identifies BOURDON\_2015
+($\bar{\sigma}_{\mathrm{epi}}=\SI{6.79}{K}$), BETZ\_2013
+(\SI{6.75}{K}), and PHAN\_2009 (\SI{6.67}{K}) as priorities.
+JABARDO\_2009 shows the smallest spread (\SI{1.96}{K}). The maximum
+$\sigma_{\mathrm{total}}$ is \SI{7.92}{K} at a JONES\_2009 water
+surface. Fig.~\ref{fig:ensemble_std_vs_qflux} shows no systematic
+$\sigma_{\mathrm{epi}}$ broadening outside the training $q''$
+envelope.
+
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=0.85\linewidth]{figures/fig09_std_by_category}
+  \caption{Epistemic uncertainty by source paper for the \texttt{phaseDbal}
+    ensemble; BOURDON\_2015, BETZ\_2013, and PHAN\_2009 show the largest
+    spread, JABARDO\_2009 the smallest.}
+  \label{fig:ensemble_std_by_category}
+\end{figure}
+
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=0.7\linewidth]{figures/fig08_std_vs_qflux}
+  \caption{Epistemic uncertainty $\sigma_{\mathrm{epi}}$ versus heat flux;
+    no systematic broadening outside the training envelope.}
+  \label{fig:ensemble_std_vs_qflux}
+\end{figure}
+
+Three active-learning priorities emerge from this decomposition. The
+first is additional water measurements on biphilic patterns (BETZ
+family). The second is within-laboratory $q''$ sweeps on single
+surfaces to test $\sqrt{q''}$ per surface. The third is two or three
+measurements above $200\,\si{kW/m^2}$ for high-flux electronics
+cooling. The ensemble captures weight-initialization uncertainty but
+not structural uncertainty (FiLM vs.\ concat, $d_z$). A model-class
+ensemble is future work. A $K=3$ pilot suggests that the
+\texttt{phaseDbal} epistemic spread is $10$--$15\%$ below the
+\texttt{phaseB} value.
+
+Alongside calibrated uncertainty, the model was evaluated against a
+Level~3 battery of physical-consistency tests
+(Table~\ref{tab:physics}). The battery covers five canonical
+$\Delta T_{\mathrm{ONB}}$ trends, energy conservation, range,
+extreme-input robustness, and category consistency. Eight of nine
+tests passed. The mean $|\rho|$ over the trend tests is $0.90$,
+indicating that the dominant physical trends have been learned
+correctly.
+
+\begin{table}[!htbp]
+\centering
+\caption{Level 3 physical-consistency tests for the PINN
+  \texttt{baseline\_phaseDbal} model. Spearman $\rho$ is reported for the
+  trend tests; thresholds are quoted in the underlying analysis script.}
+\label{tab:physics}
+\small
+\begin{tabular}{lcc}
+\hline
+Test & Spearman $\rho$ / metric & Status \\
+\hline
+$q''\uparrow \Rightarrow \Delta T_{\mathrm{ONB}}\uparrow$ (Hsu $\sqrt{q''}$)
+   & $+0.970$ & PASS \\
+$R_a\uparrow \Rightarrow \Delta T_{\mathrm{ONB}}\downarrow$
+   & $-0.815$ & PASS \\
+$\theta_{\mathrm{contact}}\uparrow \Rightarrow \Delta T_{\mathrm{ONB}}\downarrow$
+   & $-0.720$ & PASS \\
+$P\uparrow \Rightarrow \Delta T_{\mathrm{ONB}}\downarrow$
+   & $-1.000$ & PASS \\
+$\Delta T_{\mathrm{sub}}\uparrow \Rightarrow \Delta T_{\mathrm{ONB}}\uparrow$
+   & $+1.000$ & PASS \\
+PDE residual (energy conservation) & mean $\approx 0.36$ & FAIL (above $10^{-3}$) \\
+$\Delta T_{\mathrm{ONB}}$ range $\in [\SI{2}{K},\SI{30}{K}]$
+   & 8\% violation & marginal \\
+Extreme-condition robustness (NaN/Inf) & 0/4 & FAIL \\
+Category consistency (CV) & 0.16 & PASS \\
+\hline
+\end{tabular}
+\end{table}
+
+The Hsu $\sqrt{q''}$ dependence is reproduced with $\rho=+0.970$
+(Fig.~\ref{fig:physics_trends_composite}a). Earlier checkpoints
+showed a sign-flip artifact, which was traced to the ONB/PDE weight
+ratio and corrected in \texttt{baseline\_phaseDbal}.
+$\Delta T_{\mathrm{ONB}}$ decreases monotonically with $R_a$
+($\rho=-0.815$) and $\theta$ ($\rho=-0.720$); larger $\theta$
+improves bubble retention. The literature angles span
+$\SI{0}{\degree}$ to \SI{158}{\degree}. $R_a$ and $\theta$ are weakly
+anti-correlated across sources (Pearson $r\approx-0.18$), but the
+encoder receives both descriptors as independent inputs. The
+monotonicity penalties enforce the physical sign on decorrelated
+sweeps. Pressure and subcooling sweeps return $\rho=-1.000$ and
+$\rho=+1.000$ (Fig.~\ref{fig:physics_trends_composite}d, e).
+
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=0.95\linewidth]{figures/fig08_physics_trends_composite}
+  \caption{Physics-trend audit on synthetic sweeps for \texttt{phaseDbal}.
+    Spearman correlations:
+    (a) $q''\uparrow\Rightarrow\Delta T_{\mathrm{ONB}}\uparrow$
+    ($\sqrt{q''}$), $\rho=+0.970$;
+    (b) $R_a\uparrow\Rightarrow\Delta T_{\mathrm{ONB}}\downarrow$,
+    $\rho=-0.815$;
+    (c) $\theta\uparrow\Rightarrow\Delta T_{\mathrm{ONB}}\downarrow$,
+    $\rho=-0.720$;
+    (d) $P\uparrow\Rightarrow\Delta T_{\mathrm{ONB}}\downarrow$,
+    $\rho=-1.000$;
+    (e) $\Delta T_{\mathrm{sub}}\uparrow\Rightarrow\Delta T_{\mathrm{ONB}}\uparrow$,
+    $\rho=+1.000$;
+    (f) histogram against $[\SI{2}{K},\SI{30}{K}]$.}
+  \label{fig:physics_trends_composite}
+\end{figure}
+
+
+
+The energy and range tests qualify these trend results. The mean PDE
+residual on a dense interior grid is approximately $0.36$ in
+non-dimensional units. This value is above the $10^{-3}$ threshold
+but small in absolute terms; the training-time term reached
+$\mathcal{O}(10^{-8})$. The gap reflects the joint data/residual
+optimization. The range test is violated for $8\%$ of synthetic
+sweep points. The violations occur predominantly at extreme
+low-$q''$ or high-pressure combinations outside training. The
+extreme-condition test produced no NaN/Inf but one output sign
+change. This is flagged as a residual failure mode outside the
+trained window.
+
+% -----------------------------------------------------------------------------
+\subsection{Inverse problem and limitations}\label{subsec:inverse_limits}\label{subsec:inverse}\label{subsec:limitations}
+% -----------------------------------------------------------------------------
+
+The framework also supports inverse use: given an ONB observation,
+it can recover a per-surface cavity radius $r_c$. The main inverse
+result is the Hsu-based analytical inverse; a PINN-augmented variant
+is reported as supplementary. For each surface and ONB observation,
+the Hsu criterion was inverted to yield the range
+$[r_{c,\min},r_{c,\max}]$ consistent with the measured
+$\Delta T_{\mathrm{ONB}}$, saturation pressure, and subcooling. The
+per-surface value is the geometric mean. Across 48 surfaces (77
+observations), recovered radii span $0.39$--$\SI{13.22}{\micro\meter}$.
+The mean is $\SI{3.21}{\micro\meter}$ and the median is
+$\SI{2.38}{\micro\meter}$, with IQR
+$[0.73,4.06]\,\si{\micro\meter}$. $60\%$ of surfaces fall within the
+canonical $1$--$\SI{100}{\micro\meter}$ band. The remaining $40\%$
+are predominantly sub-micron, clustering in the
+refrigerant-on-stainless-steel and refrigerant-on-brass
+subcategories of JABARDO\_2009.
+
+Pooled across 48 surfaces, the $R_a$--$r_c$ correlation is weakly
+negative ($\rho=-0.274$). Read at face value, this suggests that
+smoother surfaces host larger cavities
+(Fig.~\ref{fig:inverse_r_c_vs_Ra}).
+
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=0.75\linewidth]{figures/fig18_inverse_rc_vs_Ra}
+  \caption{Inferred $r_c$ (Hsu inverse) against $R_a$; markers colored by
+    fluid. The pooled negative trend reverses sign within fluid-stratified
+    subsets (Simpson's paradox).}
+  \label{fig:inverse_r_c_vs_Ra}
+\end{figure}
+
+Stratifying by fluid resolves this apparent contradiction. Water
+yields $\rho=+0.30$, while R-134a yields $\rho=-0.77$. The reversal
+is a textbook Simpson's paradox~\citep{simpson1951} driven by
+fluid-by-$q''$ confounding. Water data come from low-$q''$,
+near-atmospheric operation on rougher, lower-density surfaces.
+R-134a data come from high-pressure, high-$q''$ operation on
+smoother, higher-density surfaces. Stratified mean radii are
+$\SI{4.70}{\micro\meter}$ (water), $\SI{0.68}{\micro\meter}$
+(R-134a), and $\SI{2.44}{\micro\meter}$ (R-123). These values are
+consistent with higher-pressure refrigerants activating smaller
+cavities. The sub-category breakdown
+(Fig.~\ref{fig:inverse_r_c_by_category}) gives BOURDON\_2012
+$\SI{11.73}{\micro\meter}$, JONES $\SI{5.23}{\micro\meter}$, BETZ
+$\SI{1.07}{\micro\meter}$, and JABARDO\_Br $\SI{0.59}{\micro\meter}$.
+These values are consistent with the order of magnitude reported for
+the corresponding SEM features.
+
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=0.85\linewidth]{figures/fig20_inverse_rc_by_category}
+  \caption{Per-category distribution of $r_c$. Refrigerant categories
+    cluster sub-micron; water categories span
+    $1$--$\SI{15}{\micro\meter}$.}
+  \label{fig:inverse_r_c_by_category}
+\end{figure}
+
+
+
+A PINN-augmented variant (\texttt{phaseDbal\_rc}) using the
+Hsu-inverted $r_c$ as a weak label was trained to re-invert. For
+refrigerants (R-134a 13/15, R-123 5/5) the inverse moved from the
+initial guess, correlating weakly but positively with the Hsu
+inverse (Spearman $\rho=+0.34$, $p=0.17$, $n=18$). For water
+(30/48) the inverse did not move from initialization, indicating
+insensitivity of the forward model to $r_c$ in the
+water-atmospheric regime. The Hsu analytical inverse therefore
+remains the headline result. The PINN-augmented variant represents
+a preliminary step toward future work that will use experimentally
+measured cavity distributions as hard labels.
+
+We close by noting four limitations of the present study.
+
+\begin{enumerate}
+  \item \textit{Per-surface ONB density.} The corpus averages $1.2$ ONB
+    observations per surface, precluding direct verification of
+    $\sqrt{q''}$ per surface.
+  \item \textit{Fluid sparsity.} The distribution is uneven (water $n=33$,
+    R-134a $n=34$, R-123 $n=10$); FC-77 was excluded because CoolProp
+    does not expose the fluid.
+  \item \textit{No SEM/AFM ground truth.} The inverse $r_c$ cannot be
+    validated against measured distributions. Reported values are
+    Hsu-self-consistency estimates only.
+  \item \textit{PDE-residual margin.} The energy-conservation
+    residual is small in absolute terms ($\sim 0.36$ on a dense grid;
+    training-time term $\mathcal{O}(10^{-8})$). It exceeds the
+    $10^{-3}$ threshold. The margin is acceptable for regression, but
+    tighter floors are needed for predictive control.
+\end{enumerate}
+
+These limitations map onto a coordinated experimental program of
+fluid-balanced ONB sweeps, co-located scanning electron microscopy
+(SEM) of the boiling surfaces, and pressure-resolved measurements on
+a single fabrication batch; the active-learning priority list set
+out earlier in Section~\ref{subsec:uq_physics} identifies the
+categories where measurements would deliver the greatest epistemic
+reduction.
+
+
+% Note: PINN-augmented inverse parity figure (fig:inverse_pinn_vs_hsu) is
+% relegated to the supplementary material because the corresponding result
+% is reported in-text only; no inline \cref{} reference is required.

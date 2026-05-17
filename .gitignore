@@ -1,0 +1,112 @@
+# =============================================================================
+# PINN-ONB01 — .gitignore
+# Minimal set: keep source, manuscript, configs, analysis reports.
+# Exclude generated artifacts, large binaries, third-party PDFs, backups.
+# =============================================================================
+
+# ---------------------------------------------------------------------------
+# Backup files (three generations preserved locally)
+# ---------------------------------------------------------------------------
+*.bak
+*.bak[0-9]*
+*.bak_*
+
+# ---------------------------------------------------------------------------
+# Python build artifacts
+# ---------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# ---------------------------------------------------------------------------
+# Survey — third-party literature PDFs (copyright)
+# ---------------------------------------------------------------------------
+01_survey/pdfs/
+01_survey/raw/
+
+# ---------------------------------------------------------------------------
+# Data — raw literature PDFs / WPD raw exports, large generated files
+# Keep: 02_data/processed/*.csv, 02_data/surface_cards/, 02_data/scripts/
+# ---------------------------------------------------------------------------
+02_data/raw/
+02_data/wpd_raw/
+02_data/external/
+02_data/processed/*.npz
+02_data/processed/*.h5
+
+# ---------------------------------------------------------------------------
+# Model — checkpoints, training/inference logs, MLflow runs
+# Keep: 03_model/configs/, 03_model/src/
+# ---------------------------------------------------------------------------
+03_model/checkpoints/
+03_model/experiments/
+03_model/logs/
+03_model/wandb/
+03_model/mlruns/
+
+# ---------------------------------------------------------------------------
+# Analysis — generated figures, large outputs
+# Keep: 04_analysis/scripts/, 04_analysis/*.md, 04_analysis/tables/
+# ---------------------------------------------------------------------------
+04_analysis/figures/
+04_analysis/*.png
+04_analysis/*.pdf
+04_analysis/*.eps
+
+# ---------------------------------------------------------------------------
+# Manuscript — generated figures and LaTeX build artifacts
+# Keep: 05_manuscript/*.tex, *.bib, sections/, supplementary/*.tex
+# ---------------------------------------------------------------------------
+05_manuscript/figures/
+05_manuscript/main.pdf
+05_manuscript/main.docx
+05_manuscript/main.spl
+05_manuscript/cover_letter.pdf
+05_manuscript/supplementary.pdf
+05_manuscript/supplementary/*.pdf
+05_manuscript/supplementary/*.docx
+
+# LaTeX auxiliary files
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc
+*.lot
+*.lof
+*.nav
+*.snm
+*.vrb
+
+# ---------------------------------------------------------------------------
+# OS / editor noise
+# ---------------------------------------------------------------------------
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+Thumbs.db
+
+# ---------------------------------------------------------------------------
+# Local Claude / agent transient files
+# ---------------------------------------------------------------------------
+.claude/local/
+.claude/cache/
+
+# ---------------------------------------------------------------------------
+# Misc
+# ---------------------------------------------------------------------------
+*.tmp
+*.temp
+.env
+.env.local
+.env.*.local

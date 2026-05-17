@@ -1,0 +1,69 @@
+% =============================================================================
+% Section 6 — Conclusions and Future Work
+% PINN-ONB01 Phase 1 manuscript (IJHMT submission)
+% Target length: ~500 words (single flowing narrative)
+% =============================================================================
+
+\section{Conclusions and Future Work}\label{sec:conclusions}
+
+This study realized the five contributions outlined in
+\cref{subsec:intro_contributions}. We curated an open dataset of $1\,361$
+boiling-curve points, $82$ ONB labels, and $49$ surface descriptor cards
+from seven literature sources spanning four fluids. We built a
+surface-conditioned PINN with $24\,005$ parameters, combining a
+nine-channel encoder, a ten-token categorical embedding, and a FiLM
+modulation layer. We trained the network with a five-term composite loss
+comprising the conduction residual, the natural-convection BC, an ONB
+data term, a soft Hsu prior, and $R_a$/$\theta$ monotonicity
+regularizers. We performed an inverse $r_c$ study over $48$ surfaces,
+which revealed a Simpson-type reversal in $R_a$--$r_c$ across fluids.
+We adopted a three-level verification protocol covering code accuracy,
+physical trends, and deep-ensemble UQ ($K=10$).
+
+These contributions yielded the following empirical findings. On $n=77$
+held-out ONB labels, the forward RMSE was \SI{3.42}{K} with MAE
+\SI{2.21}{K} and $R^2=+0.44$, a \SI{52.6}{\percent} reduction relative to
+the strongest classical baseline (Basu et al., \SI{7.21}{K}) and the
+only configuration with positive $R^2$. The improvement was larger on
+refrigerant subsets than on the full set. RMSE reductions on R-134a and
+R-123 reached \SIrange{65}{67}{\percent} (\SI{1.18}{K} and \SI{2.35}{K},
+respectively), compared with \SI{46}{\percent} for water. The five
+canonical monotonic trends were recovered with mean $|\rho|=0.90$, and
+pressure and subcooling reached $|\rho|=1.00$. The Hsu-analytical
+inverse produced mean $r_c$ \SI{3.21}{\micro\meter} with
+\SI{60}{\percent} of the $48$ surfaces falling within
+$[1,100]\,\si{\micro\meter}$. Stratifying by fluid revealed a sign
+reversal, from $\rho=-0.27$ overall to $+0.30$ on water and $-0.77$ on
+R-134a. The ensemble returned $\bar{\sigma}_{\mathrm{total}}=\SI{4.09}{K}$
+(epistemic-dominated, $\bar{\sigma}_{\mathrm{epi}}=\SI{3.85}{K}$) with
+$98.7\%$ empirical $\pm 2\sigma$ coverage against the nominal $95\%$.
+Training took \SIrange{17}{20}{min} per replica on a single Apple~M1 CPU.
+
+Several limitations frame the interpretation of these results. Many
+surfaces have only a single ONB observation, so within-surface $q''$
+dependence must be learned through the Hsu prior. Fluid coverage is
+uneven, and FC-77 was excluded because its properties are not available
+in CoolProp. No co-located SEM/AFM cavity measurements are available,
+so the inverse $r_c$ is validated only through Hsu self-consistency.
+The PDE residual on dense interior grids exceeds the $10^{-3}$ threshold
+despite the training-time term converging to $\mathcal{O}(10^{-8})$,
+reflecting a regression-vs-solver trade-off.
+
+Future work will address these gaps along four directions. First, the
+surface-card corpus will be enlarged with experimental partners to
+include \numrange{5}{10} surfaces with direct SEM/AFM measurements and
+$+50$ ONB labels from three-to-five additional sources. Second, the
+framework will be extended to forced-convection subcooled boiling. The
+encoder and Hsu/monotonicity regularizers will be retained, with
+Reynolds number and inlet subcooling added as conditioning inputs.
+Third, the 1D kernel will be promoted to two dimensions to capture
+lateral spreading and instability, a prerequisite for biphilic patterns
+whose ONB localizes at hydrophobic islands. Fourth, a heteroscedastic
+aleatoric head will be added on top of the ensemble. The
+$\sigma_{\mathrm{epi}}$ ranking will then drive an active-learning loop
+with experimental collaborators.
+
+To support these extensions and broader community use, the dataset,
+trained ensemble, and training/evaluation scripts have been released
+under an open-source license, providing a reproducible baseline for
+future ONB studies.

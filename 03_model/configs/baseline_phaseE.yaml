@@ -1,0 +1,62 @@
+run_name: baseline_phaseE
+seed: 42
+device: cpu
+data:
+  csv_path: 02_data/processed/boiling_curves.csv
+  skip_unsupported_fluids: true
+  train_val_test_split:
+  - 0.8
+  - 0.1
+  - 0.1
+  batch_size: 32
+  max_delta_T_wall_K: 30.0
+  max_q_flux_W_m2: 1.5e6
+model:
+  conditioning: film
+  surface_encoder:
+    latent_dim: 32
+  pinn:
+    hidden_dim: 128
+    n_layers: 3
+    latent_dim: 32
+domain:
+  L_plate_m: 0.001
+  fluid_default: water
+  P_default: 101325.0
+collocation:
+  n_points: 2000
+  resample_every: 100
+loss_weights:
+  w_pde: 0.8795
+  w_bc: 3.9690
+  w_data: 8.8630
+  w_onb: 1.5301
+training:
+  phase1:
+    epochs: 500
+    lr: 0.001
+    optimizer: adam
+    early_stop_patience: 200
+  phase2:
+    epochs: 0
+    lr: 0.001
+    optimizer: adam
+    data_source: synthetic
+  phase3:
+    adam_epochs: 2000
+    lbfgs_epochs: 1000
+    lr_adam: 0.0002411
+    early_stop_patience: 200
+    freeze_heads_for_lbfgs: true
+    data_source: experiment
+  phase4:
+    epochs: 3000
+    lr: 0.001
+    inverse_mode: true
+    optimize:
+    - r_c
+    data_source: experiment
+logging:
+  mlflow_uri: 03_model/experiments
+  checkpoint_dir: 03_model/checkpoints
+  log_every: 50

@@ -1,0 +1,143 @@
+% =============================================================================
+% Section 3 — Data and Surface Characterization
+% PINN-ONB01 Phase 1 manuscript (IJHMT submission)
+% Target length: ~700 words (equations and tables excluded)
+% =============================================================================
+
+\section{Data and Surface Characterization}\label{sec:data}
+
+Training and validating the PINN required a curated pool-boiling
+corpus, which we assembled as described below. This section
+documents a four-stage curation pipeline --- selection, digitization,
+standardization, and per-surface bookkeeping --- that produced the
+dataset summarized in \cref{tab:dataset}. We release the dataset
+together with the per-figure preprocessing records to allow
+independent auditing.
+
+% -----------------------------------------------------------------------------
+\subsection{Curation pipeline}\label{subsec:curation}\label{subsec:selection}\label{subsec:digitize}\label{subsec:standardize}
+% -----------------------------------------------------------------------------
+
+Candidates were drawn from a structured literature survey that
+screened \num{25} primary references, of which seven
+(\citealp{betz2013,bourdon2012,bourdon2015,jabardo2009,jones2009,jo2011,phan2009})
+ultimately supplied data. Four criteria were applied:
+(i) pool boiling on a planar or large-cylinder heater (so that a 1D
+treatment is justified);
+(ii) a published boiling curve from which the ONB can be localized;
+(iii) at least one quantitative surface descriptor ($R_a$, $\theta$,
+or an unambiguous coating identity);
+(iv) an explicitly stated working fluid and pressure.
+Seven primary sources passed all four criteria. They span
+hydrophilic/superhydrophobic patterns~\citep{betz2013}, grafted
+SAMs~\citep{bourdon2012,bourdon2015}, roughness ladders on copper,
+brass, and stainless steel~\citep{jabardo2009}, EDM-textured
+copper~\citep{jones2009}, hydrophilic/hydrophobic
+stripes~\citep{jo2011}, and nanoparticle oxides~\citep{phan2009}. Four
+fluids are represented: water, R-123, R-134a, and FC-77.
+
+The selected boiling curves were then digitized with
+WebPlotDigitizer~v5.x~\citep{rohatgi_wpd}.
+Axes were calibrated from tick labels, and logarithmic scales were
+verified by hand before point-by-point tracing. Mask-based
+auto-detection was reserved for densely sampled monochrome curves
+and always followed by visual confirmation. We required each series
+to be monotonic in $q''$; violations were flagged for review rather
+than deleted. The digitized numerical ranges were cross-checked
+against the values reported in the source text. Raw extraction
+metadata are preserved alongside each trace. The protocol produced
+\num{53} raw curve files containing \num{1361} points in total
+(mean \num{25.7} points per figure).
+
+The digitized traces were converted to a common schema using an
+open-source standardization script. The script converts units to SI
+(e.g., kW/m$^{2} \to$ W/m$^{2}$). When the heat-transfer
+coefficient $h$ is reported on either the abscissa or the ordinate,
+the script reconstructs $\Delta T_{\mathrm{wall}} = q''/h$.
+Per-paper figure schemas with column-by-column unit specifications
+are released in the supplementary material. The standardized
+entries record source paper, figure reference, surface identifier,
+working fluid, wall superheat, subcooling, heat flux, roughness,
+contact angle, surface category, an ONB flag, and free-text notes.
+
+% -----------------------------------------------------------------------------
+\subsection{Surface cards and ONB labels}\label{subsec:cards}\label{subsec:sfc}\label{subsec:onb_label}
+% -----------------------------------------------------------------------------
+
+Each unique heater is registered as a \emph{surface card}, and
+\num{49} cards are populated. A card lists material, surface
+treatment, $R_a$, $\theta$, fluid-side environment, source paper, and
+any literature-reported cavity statistics ($r_c$, $N_s$). Some
+surfaces are tested with multiple fluids. For example, the polished
+copper substrate of \citet{jabardo2009} was tested in both R-123 and
+R-134a; the corresponding surface card therefore carries a
+one-to-many fluid mapping. Ten high-level categories, grouped by
+source paper and material, support stratified sampling. The
+category list and per-card entries are released as part of the
+supplementary material.
+
+Building on this per-surface bookkeeping, the pipeline produced
+\num{82} ONB labels. Of these, \num{24} were
+assigned manually from clearly identifiable inflection points (see
+Fig.~4 of BETZ, Fig.~3 of JO, Fig.~12a of PHAN, Fig.~4 of
+BOURDON-2012, Fig.~3 of BOURDON-2015, and Fig.~9a/9c of JABARDO).
+The remaining \num{58} were assigned by a slope-change heuristic in
+$\log q''$--$\log\Delta T_{\mathrm{wall}}$ space: the heuristic
+selects the first point at which the local slope exceeds the
+natural-convection slope by a factor of approximately \num{1.5}.
+Nine heuristic labels were overridden when they fell outside the
+physically admissible interval
+$2 \le \Delta T_{\mathrm{ONB}} \le \SI{30}{\kelvin}$ or violated the
+Hsu envelope; in each case the manual label was retained. For each
+label, the procedure of \cref{subsec:hsu} infers an effective $r_c$
+that is retained as a weak supervisory signal. The pipeline produced
+two release tables: the full curated curve table (\num{1361} rows,
+14 columns) and the ONB-label subset (\num{82} rows, 12 columns).
+
+% -----------------------------------------------------------------------------
+\subsection{Dataset statistics}\label{subsec:stats}
+% -----------------------------------------------------------------------------
+
+The curated dataset (\cref{tab:dataset}) covers \num{49} surfaces,
+\num{1361} curve points, and \num{82} ONB labels across four fluids.
+The incipience superheat spans
+$\SI{0.7}{\kelvin} \le \Delta T_{\mathrm{ONB}} \le \SI{24.9}{\kelvin}$,
+covering most of the canonical water window
+(\SIrange{2}{30}{\kelvin}) and extending below it into the
+low-superheat regime characteristic of refrigerants. After removing
+points beyond the critical heat flux (CHF) of each surface, the
+labeled heat flux spans approximately
+\SIrange{0.1}{1434}{\kilo\watt\per\square\meter}. The fluid
+breakdown is \num{33} water, \num{34} R-134a, \num{10} R-123, and
+\num{5} FC-77. FC-77 entries are released but excluded from PINN
+training because CoolProp does not provide a validated equation of
+state for this fluid; the effective training count is therefore
+$n=\num{77}$. All water experiments were conducted at
+near-atmospheric pressure. The JABARDO refrigerant data span
+reduced pressures $p_r \approx \numrange{0.06}{0.26}$ and provide
+the only pressure variation available in the present corpus.
+
+\begin{table}[!htbp]
+\centering
+\caption{Curated pool-boiling dataset by source paper. Curve points are
+post-standardization counts in \texttt{boiling\_curves.csv}; ONB labels
+are the rows in \texttt{onb\_dataset.csv}. The wall-superheat range is
+reported over the ONB labels of each paper.}
+\label{tab:dataset}
+\small
+\begin{tabular}{lccccc}
+\hline
+Source & Surfaces & Curve pts & ONB labels & Fluids & $\Delta T_{\mathrm{ONB}}$ range [K] \\
+\hline
+BETZ\_2013      &  7 & 168 & 10 & water                  & 3.1--11.4 \\
+BOURDON\_2012   &  5 & 144 &  6 & water                  & 4.5--11.0 \\
+BOURDON\_2015   &  4 &  75 &  5 & water                  & 1.3--10.5 \\
+JABARDO\_2009   & 20 & 589 & 44 & R-123/R-134a/FC-77     & 0.7--24.9 \\
+JONES\_2009     &  6 & 320 & 10 & water/FC-77            & 6.1--17.9 \\
+JO\_2011        &  2 &  14 &  2 & water                  & 6.9--8.5  \\
+PHAN\_2009      &  5 &  51 &  5 & water                  & 8.5--18.9 \\
+\hline
+Total           & 49 & \num{1361} & 82 & 4 fluids              & 0.7--24.9 \\
+\hline
+\end{tabular}
+\end{table}

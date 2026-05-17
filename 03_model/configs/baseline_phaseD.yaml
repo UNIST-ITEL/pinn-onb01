@@ -1,0 +1,64 @@
+run_name: baseline_phaseD
+seed: 42
+device: cpu
+data:
+  csv_path: 02_data/processed/boiling_curves.csv
+  skip_unsupported_fluids: true   # FC-77 자동 제외
+  train_val_test_split:
+  - 0.8
+  - 0.1
+  - 0.1
+  batch_size: 32
+  max_delta_T_wall_K: 30.0   # post-CHF/film 영역 컷
+  max_q_flux_W_m2: 1.5e6
+model:
+  conditioning: film
+  surface_encoder:
+    latent_dim: 8
+  pinn:
+    hidden_dim: 64
+    n_layers: 3
+    latent_dim: 8
+domain:
+  L_plate_m: 0.001
+  fluid_default: water
+  P_default: 101325.0
+collocation:
+  n_points: 2000
+  resample_every: 100
+loss_weights:
+  w_pde: 0.2271
+  w_bc: 3.8921
+  w_data: 35.5677     # 보일링 커브 회귀 + ONB 라벨 모두 적용
+  w_onb: 0.1014       # Hsu soft constraint
+  w_mono_ra: 5.0       # Ra↑→ΔT↓ synthetic sweep penalty
+  w_mono_th: 2.0       # θ↑→ΔT↓ synthetic sweep penalty
+training:
+  phase1:
+    epochs: 500
+    lr: 0.001
+    optimizer: adam
+    early_stop_patience: 200
+  phase2:
+    epochs: 0
+    lr: 0.001
+    optimizer: adam
+    data_source: synthetic
+  phase3:
+    adam_epochs: 2000
+    lbfgs_epochs: 1000
+    lr_adam: 0.002609
+    early_stop_patience: 200
+    freeze_heads_for_lbfgs: true
+    data_source: experiment
+  phase4:
+    epochs: 3000
+    lr: 0.001
+    inverse_mode: true
+    optimize:
+    - r_c
+    data_source: experiment
+logging:
+  mlflow_uri: 03_model/experiments
+  checkpoint_dir: 03_model/checkpoints
+  log_every: 50

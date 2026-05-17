@@ -1,0 +1,40 @@
+% =============================================================================
+% Abstract — PINN-ONB01 Phase 1 manuscript (IJHMT submission)
+% Target length: 200--250 words
+% =============================================================================
+
+\begin{abstract}
+The onset of nucleate boiling (ONB) governs efficient two-phase heat
+removal in pool-boiling systems. Classical correlations rest on
+idealized cavity-distribution assumptions. Their residual scatter is
+\SIrange{20}{30}{\percent}, and they cannot accommodate engineered
+surface modifications such as wettability tailoring, biphilic
+patterning, or roughness-controlled cavity populations. This work
+presents a physics-informed neural network (PINN) framework. The model
+integrates the steady heat-conduction equation, a natural-convection
+boundary condition, and a Hsu-type soft nucleation constraint. A
+feature-wise linear modulation (FiLM) surface encoder conditions the
+temperature field on $R_a$, $\theta$, $r_c$, $N_s$, and a categorical
+surface descriptor. A curated database of \num{1361} boiling-curve points
+and \num{82} ONB labels was assembled. It spans seven literature sources,
+four fluids, and \num{49} surfaces. A five-term composite loss combines PDE
+residual, boundary, data, Hsu, and monotonicity terms. The trained
+model yields an ONB-superheat RMSE of \SI{3.42}{K} ($n=\num{77}$) with
+$R^{2}=+0.44$. This is a \SI{53}{\percent} reduction over the best
+classical correlation (Basu et al., \SI{7.21}{K}) and
+\SIrange{65}{67}{\percent} on the refrigerant subset. Eight of nine
+physics tests pass. A deep-ensemble estimate yields empirical coverage
+of \SI{98.7}{\percent} at the nominal \SI{95}{\percent}. An Hsu-based
+inverse recovers active cavity radii with mean
+\SI{3.21}{\micro\meter}; \SI{60}{\percent} fall within
+$[1,100]\,\si{\micro\meter}$. The inversion reveals a Simpson-type
+reversal in the roughness--cavity correlation across fluids. The
+dataset, model, and pipeline are released open-source.
+\end{abstract}
+
+\vspace{1ex}
+
+\begin{keyword}
+pool boiling \sep onset of nucleate boiling \sep physics-informed neural
+network \sep surface modification \sep cavity radius inverse problem
+\end{keyword}

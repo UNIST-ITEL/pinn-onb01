@@ -1,0 +1,196 @@
+% =============================================================================
+% Section 2 — Mathematical Formulation
+% PINN-ONB01 Phase 1 manuscript (IJHMT submission)
+% Target length: ~800 words (equations and tables excluded)
+% =============================================================================
+
+\section{Mathematical Formulation}\label{sec:formulation}
+
+% -----------------------------------------------------------------------------
+\subsection{Governing equations and boundary conditions}\label{subsec:governing}%
+\label{subsec:setup}\label{subsec:pde}\label{subsec:bc}
+% -----------------------------------------------------------------------------
+
+We consider a horizontal heater of thickness $L$ immersed in a quiescent
+liquid pool at saturation pressure. The $z$-axis is taken normal to the
+heating surface, with origin at the bottom face. A uniform heat flux
+$q''_{\mathrm{applied}}$ is imposed at $z=0$, while the fluid-facing face
+is at $z=L$. Because the lateral extent exceeds $L$ by at
+least two orders of magnitude, the temperature field is treated as
+one-dimensional. The following assumptions are adopted:
+(i) steady-state conduction, since ONB lies on the steady single-phase
+branch; (ii) negligible volumetric heat generation; (iii) adiabatic lateral
+boundaries; (iv) uniform, temperature-independent solid conductivity $k_s$;
+and (v) laminar natural convection above $z=L$, closed by a Nusselt-type
+correlation evaluated at $T(L)$.
+The same framework applies to large-diameter horizontal cylinders; for
+brevity, the derivation is presented for the flat-plate geometry.
+
+Under these assumptions, the temperature distribution $T(z)$ within the
+heater is governed by the steady, source-free, one-dimensional heat
+equation
+%
+\begin{equation}\label{eq:laplace}
+\frac{\mathrm{d}^{2} T}{\mathrm{d} z^{2}} \;=\; 0
+\qquad \text{for } z \in [0,L].
+\end{equation}
+%
+With $q'''=0$, \cref{eq:laplace} admits the exact linear solution
+$T(z) = T(0) - (q''_{\mathrm{applied}}/k_s)\, z$ once
+\cref{eq:neumann_wall} is enforced. This closed form does not supplant
+the PINN; rather, it serves three roles: (i) an analytical reference for
+Level-1 verification, (ii) a regularizing signal during warm-up, and (iii)
+the basis for the thermal-boundary-layer thickness $\delta_t$ that enters
+\cref{eq:hsu_rc_range}.
+
+Equation~\eqref{eq:laplace} is closed by a Neumann condition at $z=0$ and
+a Robin condition at $z=L$, given respectively by the prescribed applied
+flux,
+%
+\begin{equation}\label{eq:neumann_wall}
+-k_s\,\left.\frac{\mathrm{d}T}{\mathrm{d}z}\right|_{z=0}
+\;=\; q''_{\mathrm{applied}},
+\end{equation}
+%
+while conjugate coupling with the pool is enforced via Newton's law of
+cooling, using the natural-convection coefficient $h_{nc}$:
+%
+\begin{equation}\label{eq:nc_bc}
+-k_l\,\left.\frac{\mathrm{d}T}{\mathrm{d}z}\right|_{z=L}
+\;=\; h_{nc}\,\bigl(T_L - T_{\infty}\bigr),
+\end{equation}
+%
+where $k_l$ denotes the liquid thermal conductivity,
+$T_L \equiv T(z{=}L)$ the surface-side temperature, $T_{\infty}$ the
+bulk-pool temperature, and
+$\Delta T_{\mathrm{sub}} \equiv T_{\mathrm{sat}} - T_{\infty}$ the
+subcooling. For an
+upward-facing heated surface, $h_{nc}$ follows
+McAdams~\citep{incropera,lienhard1981}:
+%
+\begin{equation}\label{eq:nu_nc}
+\mathrm{Nu}_L \;=\;
+\begin{cases}
+0.54\,\mathrm{Ra}_L^{1/4}, & 10^{4} \le \mathrm{Ra}_L \le 10^{7} \quad\text{(laminar)},\\[2pt]
+0.15\,\mathrm{Ra}_L^{1/3}, & 10^{7} \le \mathrm{Ra}_L \le 10^{11} \quad\text{(turbulent)},
+\end{cases}
+\end{equation}
+%
+with $\mathrm{Ra}_L = g\,\beta_l\,(T_L - T_{\infty})\,L^{3}/(\nu_l\,\alpha_l)$.
+All cases in the present dataset fall within the laminar branch; the
+turbulent branch is retained for completeness. When only the bulk-pool
+temperature is reported, the Dirichlet substitute $T(L) = T_{\infty}$ is
+applied in the data-loss term, whereas the PDE residual continues to
+enforce \cref{eq:nc_bc}.
+
+% -----------------------------------------------------------------------------
+\subsection{Hsu nucleation criterion}\label{subsec:hsu}
+% -----------------------------------------------------------------------------
+
+Incipience is modeled following Hsu's criterion~\citep{hsu1962}, which
+identifies the range of cavity radii that simultaneously satisfy the
+mechanical-equilibrium and thermal-boundary-layer conditions required for
+vapor-embryo growth. With a linear
+profile of thickness $\delta_t = k_l\,\Delta T_{\mathrm{wall}}/q''$, the
+active band is bounded by
+%
+\begin{equation}\label{eq:hsu_rc_range}
+r_{c,\,\min/\max} \;=\;
+\frac{\delta_t}{2\,C_1}\,
+\left[\,1 \mp \sqrt{\,1 - \frac{8\,C_2\,\sigma\,T_{\mathrm{sat}}}{\delta_t\,\Delta T_{\mathrm{wall}}\,\rho_v\,h_{fg}}}\,\right],
+\end{equation}
+%
+with $C_1 = (1+\cos\theta)/\sin\theta$ and
+$C_2 = (1+\cos\theta)/\sin^{2}\theta$; $\sigma$ is the surface tension,
+$\rho_v$ the saturated vapor density, and $h_{fg}$ the latent heat. For
+$\theta = 90^{\circ}$, the default in the correlation-comparison module,
+$C_1 = C_2 = 1$. Requiring the discriminant to be non-negative yields the
+necessary nucleation condition
+%
+\begin{equation}\label{eq:hsu_discriminant}
+\delta_t\,\Delta T_{\mathrm{wall}}
+\;\ge\; \frac{8\,C_2\,\sigma\,T_{\mathrm{sat}}}{\rho_v\,h_{fg}}.
+\end{equation}
+%
+Equality collapses the band to a single radius. The corresponding minimum
+superheat is
+%
+\begin{equation}\label{eq:hsu_dt_onb}
+\Delta T_{\mathrm{ONB,\,Hsu}}
+\;=\; \sqrt{\,\frac{8\,C_2\,\sigma\,T_{\mathrm{sat}}\,q''}{k_l\,\rho_v\,h_{fg}}\,}.
+\end{equation}
+%
+Equation~\eqref{eq:hsu_dt_onb} provides the analytical baseline used in
+Section~\ref{sec:results} and is embedded as a soft penalty within the
+composite loss. The $\theta$-dependent prefactor allows the network to
+inherit a wettability sensitivity that scalar correlations cannot
+capture.
+
+% -----------------------------------------------------------------------------
+\subsection{Non-dimensionalization}\label{subsec:nondim}\label{subsec:dimless}
+% -----------------------------------------------------------------------------
+
+The system is recast in three reference quantities to remove
+fluid-specific scales and improve loss conditioning. The capillary
+length is $L_c$. The latent-heat temperature scale is
+$\Delta T_{\mathrm{ref}}$. A Zuber-type heat-flux scale is
+$q_{\mathrm{ref}}$, with
+%
+\begin{equation}\label{eq:Lc}
+L_c \;=\; \sqrt{\,\frac{\sigma}{g\,(\rho_l - \rho_v)}\,},
+\end{equation}
+%
+\begin{equation}\label{eq:dT_ref}
+\Delta T_{\mathrm{ref}} \;=\; \frac{h_{fg}}{c_{p,l}},
+\end{equation}
+%
+\begin{equation}\label{eq:q_ref}
+q_{\mathrm{ref}} \;=\; h_{fg}\,\rho_v^{1/2}\,\bigl[\sigma\,g\,(\rho_l - \rho_v)\bigr]^{1/4},
+\end{equation}
+%
+with $h_{\mathrm{ref}} = q_{\mathrm{ref}}/\Delta T_{\mathrm{ref}}$.
+\cref{eq:q_ref} is the Zuber CHF scale with $K=1$~\citep{lienhard1981}.
+The engineering CHF is recovered upon multiplication by $K \approx 0.131$.
+Dimensionless variables are defined as
+%
+\begin{equation*}
+z^{\ast} = z/L_c, \qquad
+T^{\ast} = (T-T_{\mathrm{sat}})/\Delta T_{\mathrm{ref}}, \qquad
+q''^{\ast} = q''/q_{\mathrm{ref}}, \qquad
+r_c^{\ast} = r_c/L_c.
+\end{equation*}
+%
+For water at atmospheric pressure, $L_c \approx \SI{2.5}{mm}$,
+$\Delta T_{\mathrm{ref}} \approx \SI{2245}{K}$, and
+$q_{\mathrm{ref}} \approx \SI{8.46}{MW/m^2}$. These yield a CHF of
+$\approx \SI{1.1}{MW/m^2}$, consistent
+with~\citet{zuber1959,lienhard1981}. These reference quantities are
+recomputed for each fluid using the routine of Section~\ref{sec:data}, so
+that cross-fluid generalization is performed in a common non-dimensional
+frame.
+
+Four groups summarize the physics and serve as auxiliary PINN inputs. The
+wall-superheat Jacob number
+%
+\begin{equation}\label{eq:ja_sup}
+\mathrm{Ja} \;=\;
+\frac{\rho_l\,c_{p,l}\,\Delta T_{\mathrm{wall}}}{\rho_v\,h_{fg}}
+\end{equation}
+%
+controls bubble growth. A value of $\mathrm{Ja}=\mathcal{O}(1)$ marks
+inertia-controlled growth. The subcooled counterpart
+$\mathrm{Ja}_{\mathrm{sub}} = \rho_l c_{p,l}\,\Delta T_{\mathrm{sub}}/(\rho_v\,h_{fg})$
+weights cap condensation. The Bond number
+%
+\begin{equation}\label{eq:bond}
+\mathrm{Bo} \;=\;
+\frac{(\rho_l - \rho_v)\,g\,L^{2}}{\sigma}
+\end{equation}
+%
+equals unity at $L=L_c$, motivating \cref{eq:Lc}. The liquid Prandtl
+number $\mathrm{Pr}_l = \mu_l\,c_{p,l}/k_l$ sets the relative thickness
+of viscous and thermal layers, entering $h_{nc}$ through
+$\mathrm{Ra}_L = \mathrm{Gr}_L\,\mathrm{Pr}_l$. Combined with the surface
+descriptors of Section~\ref{sec:data}, these four numbers form the
+complete dimensionless input to the PINN of
+Section~\ref{sec:architecture}.

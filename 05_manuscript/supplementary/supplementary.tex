@@ -1,0 +1,207 @@
+%==============================================================================
+% PINN-ONB01 — Supplementary Material
+% Companion to the main manuscript on
+% "Surface-Conditioned Physics-Informed Neural Network for Pool-Boiling
+%  Onset of Nucleate Boiling"
+%
+% Build with:
+%   latexmk -pdf supplementary.tex
+%==============================================================================
+\documentclass[11pt, a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage[separate-uncertainty=true]{siunitx}
+% Match the main manuscript: comma thousands separator for 4-digit+ numerals.
+\sisetup{group-separator={,}, group-minimum-digits=4, group-digits=integer, output-decimal-marker={.}}
+\usepackage{graphicx}
+\graphicspath{{../figures/}{../../04_analysis/figures/}}
+\usepackage{booktabs}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue}
+\usepackage[capitalise, noabbrev]{cleveref}
+
+\title{Supplementary Material\\
+\large Surface-Conditioned Physics-Informed Neural Network for
+Pool-Boiling Onset of Nucleate Boiling}
+\author{}
+\date{}
+
+\renewcommand{\thefigure}{S\arabic{figure}}
+\renewcommand{\thetable}{S\arabic{table}}
+\renewcommand{\theequation}{S\arabic{equation}}
+
+\begin{document}
+\maketitle
+
+\section*{Overview}
+
+This supplement collects per-test figures that complement the composite
+panels in the main manuscript. \cref{sec:supp_level1} unpacks the
+Level~1 verification composite into its four constituent tests, and
+\cref{sec:supp_physics} unpacks the physics-consistency composite into
+its five trend sweeps. \cref{sec:supp_inverse} shows the PINN-augmented
+inverse parity plot, which the main text references but does not
+display. \cref{sec:supp_dataset} reports extended dataset statistics
+omitted from the main text.
+
+% =============================================================================
+\section{Level 1 verification (single-test figures)}\label{sec:supp_level1}
+% =============================================================================
+
+The main manuscript condenses the four canonical numerical-verification
+tests of the PINN backbone into a single composite figure. For
+completeness, the original single-test figures are reproduced below.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.65\linewidth]{level1_1d_conduction_parity}
+  \caption{\textbf{Level~1, Test~1.} Parity between the PINN
+    prediction and the analytical 1D steady heat-conduction profile;
+    relative $L^{2}$ error \SI{0.018}{\percent}.}
+  \label{fig:supp_level1_conduction}
+\end{figure}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.65\linewidth]{level1_pde_residual_convergence}
+  \caption{\textbf{Level~1, Test~2.} Monotonic convergence of the PDE
+    residual loss as the number of collocation points increases
+    ($N_{\mathrm{coll}}\in\{200,\ldots,5\,000\}$; log--log slope
+    $+0.009$).}
+  \label{fig:supp_level1_pde}
+\end{figure}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.65\linewidth]{level1_nc_nu_comparison}
+  \caption{\textbf{Level~1, Test~3.} PINN natural-convection prediction
+    against the McAdams correlation
+    $\mathrm{Nu} = 0.54\,\mathrm{Ra}^{1/4}$; relative error
+    \SI{0.000}{\percent}.}
+  \label{fig:supp_level1_nc}
+\end{figure}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.65\linewidth]{level1_autograd_accuracy}
+  \caption{\textbf{Level~1, Test~4.} Autograd-based first and second
+    derivatives of a manufactured $\sin(2\pi z)$ field, with
+    \SI{0.026}{\percent} and \SI{0.011}{\percent} relative error,
+    respectively.}
+  \label{fig:supp_level1_autograd}
+\end{figure}
+
+% =============================================================================
+\section{Physics-consistency trends (single-variable sweeps)}\label{sec:supp_physics}
+% =============================================================================
+
+The five physical-trend sweeps that make up the audit figure in the
+main manuscript are reproduced here as individual panels. Each panel
+plots the \texttt{baseline\_phaseDbal} ensemble mean of
+$\Delta T_{\mathrm{ONB}}$ against a single varied descriptor, with the
+remaining descriptors held at the dataset median.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.62\linewidth]{physics_trend_qflux}
+  \caption{\textbf{Physics trend, heat flux.} Synthetic heat-flux sweep:
+    $q''\uparrow \Rightarrow \Delta T_{\mathrm{ONB}}\uparrow$
+    (Hsu $\sqrt{q''}$ trend); Spearman $\rho = +0.970$.}
+  \label{fig:supp_physics_qflux}
+\end{figure}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.62\linewidth]{physics_trend_roughness}
+  \caption{\textbf{Physics trend, surface roughness.} Synthetic roughness sweep:
+    $R_{a}\uparrow \Rightarrow \Delta T_{\mathrm{ONB}}\downarrow$;
+    Spearman $\rho = -0.815$.}
+  \label{fig:supp_physics_roughness}
+\end{figure}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.62\linewidth]{physics_trend_contact_angle}
+  \caption{\textbf{Physics trend, contact angle.} Synthetic contact-angle sweep:
+    $\theta\uparrow \Rightarrow \Delta T_{\mathrm{ONB}}\downarrow$;
+    Spearman $\rho = -0.720$.}
+  \label{fig:supp_physics_theta}
+\end{figure}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.62\linewidth]{physics_trend_pressure}
+  \caption{\textbf{Physics trend, pressure.} Synthetic pressure sweep:
+    $P\uparrow \Rightarrow \Delta T_{\mathrm{ONB}}\downarrow$;
+    Spearman $\rho = -1.000$.}
+  \label{fig:supp_physics_pressure}
+\end{figure}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.62\linewidth]{physics_trend_subcool}
+  \caption{\textbf{Physics trend, subcooling.} Synthetic subcooling sweep:
+    $\Delta T_{\mathrm{sub}}\uparrow \Rightarrow
+    \Delta T_{\mathrm{ONB}}\uparrow$;
+    Spearman $\rho = +1.000$.}
+  \label{fig:supp_physics_subcool}
+\end{figure}
+
+% =============================================================================
+\section{PINN-augmented inverse parity}\label{sec:supp_inverse}
+% =============================================================================
+
+The main text summarizes the PINN-augmented inverse cavity-radius
+result. The corresponding parity plot is provided below.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.65\linewidth]{inverse_pinn_vs_hsu}
+  \caption{\textbf{PINN-augmented inverse parity.} Estimated $r_{c}$
+    against the Hsu-analytical inverse on the converged subset ($n=18$);
+    Spearman $\rho = +0.34$, $p = 0.17$. The remaining 30 surfaces
+    collapsed onto the initial guess and are omitted.}
+  \label{fig:supp_inverse_pinn_hsu}
+\end{figure}
+
+% =============================================================================
+\section{Extended dataset statistics}\label{sec:supp_dataset}
+% =============================================================================
+
+\Cref{tab:supp_surface_inventory} lists the surface-card categories
+used in the dataset, together with the number of distinct surfaces and
+ONB observations per category. The script
+\verb|02_data/scripts/update_surface_id.py| maintains the mapping from
+raw figure series to surface-card identifier, and the full mapping is
+released as part of the open dataset.
+
+\begin{table}[ht]
+\centering
+\caption{Surface-card categories used in the dataset.}
+\label{tab:supp_surface_inventory}
+\small
+\begin{tabular}{lcc}
+\toprule
+Category & Surfaces & ONB labels \\
+\midrule
+\texttt{betz}        &  7 & 10 \\
+\texttt{bourdon12}   &  5 &  6 \\
+\texttt{bourdon15}   &  4 &  5 \\
+\texttt{jabardo}     &  8 & 10 \\
+\texttt{jabardo\_br} &  5 & 10 \\
+\texttt{jabardo\_ss} &  7 & 14 \\
+\texttt{jones}       &  5 & 10 \\
+\texttt{jones\_w}    &  1 &  0 \\
+\texttt{jo}          &  2 &  2 \\
+\texttt{phan}        &  5 &  5 \\
+\midrule
+Total                & 49 & 82 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\end{document}

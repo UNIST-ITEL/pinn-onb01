@@ -1,0 +1,268 @@
+% =============================================================================
+% Section 4 — PINN Architecture and Training
+% PINN-ONB01 Phase 1 manuscript (IJHMT submission)
+% Target length: ~1,080 words (equations, tables and code excluded)
+% =============================================================================
+
+\section{PINN Architecture and Training}\label{sec:architecture}
+
+The conditioned PINN couples a surface-descriptor encoder, a
+one-dimensional conduction backbone, three task-specific heads, and a
+five-term composite loss. The loss imposes the priors of
+\cref{sec:formulation} as soft constraints. The total parameter count
+is \num{24005}. The count was deliberately constrained because only \num{1361}
+boiling-curve points were available, decreasing to \num{1167} after
+the FC-77 holdout. Hyperparameters for
+the final \texttt{baseline\_phaseDbal} model are summarized in
+\cref{tab:hyperparameters}.
+
+% -----------------------------------------------------------------------------
+\subsection{Surface encoder and PINN backbone}\label{subsec:encoder_backbone}\label{subsec:encoder}\label{subsec:backbone}
+% -----------------------------------------------------------------------------
+
+The encoder maps the partially observed surface descriptor of each
+heater to a fixed latent $z_s \in \mathbb{R}^{8}$. Its input
+concatenates nine numeric channels with a four-dimensional embedding
+of the paper category. The numeric channels are
+(0) $\log_{10}(R_a/\SI{1}{\micro\meter})$,
+(1) $\log_{10}(R_a/L_c)$,
+(2) $\cos\theta$,
+(3) $\theta/\pi$,
+(4) a binary $\theta$-availability mask,
+(5) $\log_{10}(r_c/L_c)$,
+(6) an availability mask for $r_c$,
+(7) $\log_{10}(N_s)/6$ with $N_s$ in \si{\per\centi\meter\squared}, and
+(8) an availability mask for $N_s$.
+The two complementary roughness channels span four decades while
+preserving the capillary scaling of \cref{subsec:nondim}. Channels
+(2)--(4) carry the contact-angle dependence of Young's equation and
+the Hsu criterion. The masks distinguish ``not measured'' from ``measured zero''. A categorical embedding with a vocabulary of ten
+entries, indexed by source paper and heater material, absorbs
+paper-level biases without coupling to fluid identity. The full
+category list is provided in the supplementary material. Scalar layer
+normalization renormalizes only over observed entries (using the
+masks) and then feeds a three-layer MLP of width \num{64} with GELU
+activations and dropout \num{0.1}. The output is projected to
+$\mathbb{R}^{8}$ and bounded by $\tanh$. The encoder contains
+\num{6154} trainable parameters.
+
+The backbone is a fully connected network with five hidden layers of
+width \num{64} and $\tanh$ activations; the smooth activation keeps
+the second-order derivatives required by \cref{eq:laplace} well-defined
+under automatic differentiation. The backbone receives
+$z^{*} \in [0,L^{*}]$, the surface latent $z_s$, and the operating
+descriptor $(q^{*}_{\mathrm{appl}}, \Delta T^{*}_{\mathrm{sub}})$. We
+implemented two conditioning strategies. The \texttt{concat} variant
+stacks all inputs into an \num{11}-dimensional vector; the
+\texttt{film} variant --- adopted in the final model --- injects $z_s$
+at every hidden layer through a Feature-wise Linear
+Modulation~\citep{perez2018film} affine transform
+$h \leftarrow \gamma(z_s)\odot h + \beta(z_s)$. FiLM couples the
+surface latent multiplicatively while using fewer parameters than the
+concatenation variant. Three two-layer task heads, each with hidden
+width \num{32}, branch from the final hidden representation: one head
+predicts $T^{*}$ for the PDE and boundary residuals, while the other
+two predict $\Delta T^{*}_{\mathrm{ONB}}$ and $q^{*}_{\mathrm{ONB}}$
+through softplus activations. The backbone, FiLM generators, and heads
+contribute \num{17851} parameters. These components yield a total of \num{24005} parameters. The architecture follows the
+\citet{raissi2019} template generalized through surface conditioning.
+
+% -----------------------------------------------------------------------------
+\subsection{Composite loss and training pipeline}\label{subsec:loss_training}\label{subsec:loss}\label{subsec:phases}\label{subsec:impl}
+% -----------------------------------------------------------------------------
+
+The composite objective comprises PDE, boundary, data, nucleation-prior,
+and monotonicity-prior terms, each expressed in the nondimensional
+variables of \cref{subsec:nondim}.
+
+The PDE residual enforces \cref{eq:laplace} through automatic
+differentiation on $N_{\mathrm{c}}=\num{2000}$ LHS collocation
+points~\citep{mckay1979lhs} that are refreshed every \num{100} epochs:
+%
+\begin{equation}\label{eq:L_cond}
+\mathcal{L}_{\mathrm{cond}}
+\;=\;
+\frac{1}{N_{\mathrm{c}}}
+\sum_{i=1}^{N_{\mathrm{c}}}
+\left|
+\frac{\partial^{2} T^{*}}{\partial {z^{*}}^{2}}\bigg|_{z^{*}_{i}}
+\right|^{2},
+\end{equation}
+%
+The boundary loss combines the Neumann condition at $z^{*}=0$ with the
+Dirichlet-type closure at $z^{*}=L^{*}$,
+%
+\begin{equation}\label{eq:L_BC}
+\mathcal{L}_{\mathrm{BC}}
+\;=\;
+\frac{1}{M}\sum_{i=1}^{M}
+\bigl(-k^{*}\,\partial_{z^{*}} T^{*}\big|_{0}
+       - q^{*}_{\mathrm{appl},i}\bigr)^{2}
+\;+\;
+\frac{1}{M}\sum_{i=1}^{M}
+\bigl(T^{*}(L^{*}) - T^{*}_{\mathrm{bulk},i}\bigr)^{2}.
+\end{equation}
+%
+The supervised data term penalizes prediction errors in both ONB
+superheat and heat flux across the \num{1361} curated points:
+%
+\begin{equation}\label{eq:L_data}
+\mathcal{L}_{\mathrm{data}}
+\;=\;
+\frac{w_{\Delta T}}{N}
+\sum_{n=1}^{N}
+\bigl(
+\Delta T^{*,\mathrm{pred}}_{\mathrm{ONB},n} - \Delta T^{*,\mathrm{obs}}_{\mathrm{wall},n}
+\bigr)^{2}
++
+\frac{w_{q}}{N}
+\sum_{n=1}^{N}
+\bigl(
+q^{*,\mathrm{pred}}_{\mathrm{ONB},n} - q^{*,\mathrm{obs}}_{n}
+\bigr)^{2},
+\end{equation}
+%
+with $w_{\Delta T}$ and $w_{q}$ chosen so that the contributions are
+comparable at initialization. The Hsu
+term~\citep{hsu1962,basu2002} converts \cref{eq:hsu_discriminant} into
+a one-sided hinge. It penalizes predictions for which the discriminant
+$D_{\mathrm{Hsu}}(\Delta T^{\mathrm{pred}}_{\mathrm{wall}}, q^{\mathrm{pred}})$
+falls below a margin $\varepsilon$:
+%
+\begin{equation}\label{eq:L_Hsu}
+\mathcal{L}_{\mathrm{Hsu}}
+\;=\;
+\frac{1}{N}
+\sum_{n=1}^{N}
+\bigl[
+\max\bigl(0,\;\varepsilon - D_{\mathrm{Hsu}}(\Delta T^{\mathrm{pred}}_{\mathrm{wall},n},
+                                              q^{\mathrm{pred}}_{n})\bigr)
+\bigr]^{2}.
+\end{equation}
+%
+We set $\varepsilon=\num{0.05}$. The weight $w_{\mathrm{ONB}}$ was held
+at $\num{0.10}$ throughout fine-tuning. The implementation supports a
+linear ramp over the first \num{2000} Adam epochs; Bayesian
+optimization, however, converged on start and end values that differ
+by less than \SI{2}{\percent} ($\num{0.1000}$ and $\num{0.1014}$),
+rendering the schedule effectively constant.
+
+The monotonicity term penalizes violations of two established trends.
+$\Delta T_{\mathrm{ONB}}$ should decrease with $R_a$ and with $\theta$.
+We query the encoder on a counterfactual sweep of $B=\num{20}$ points.
+The sweep is log-uniform on
+$R_a \in [\SI{0.01}{\micro\meter},\SI{50}{\micro\meter}]$ and linear on
+$\theta \in [\SI{10}{\degree},\SI{170}{\degree}]$. Other descriptors
+are held at batch medians:
+%
+\begin{equation}\label{eq:L_mono}
+\mathcal{L}_{\mathrm{mono},x}
+\;=\;
+\frac{1}{B-1}
+\sum_{b=1}^{B-1}
+\bigl[
+\max\bigl(0,\;
+\Delta T_{\mathrm{ONB}}(x_{b+1}) - \Delta T_{\mathrm{ONB}}(x_{b})
+\bigr)
+\bigr]^{2},
+\qquad x \in \{R_a, \theta\}.
+\end{equation}
+%
+The counterfactual sweeps regularize unobserved directions without
+contradicting supervised data.
+
+The full objective combines the five terms with fixed scalar weights,
+%
+\begin{equation}\label{eq:L_total}
+\begin{aligned}
+\mathcal{L} = {}
+& w_{\mathrm{cond}}\,\mathcal{L}_{\mathrm{cond}}
++ w_{\mathrm{BC}}\bigl(\mathcal{L}_{\mathrm{BC},0} + \mathcal{L}_{\mathrm{BC},L}\bigr)
++ w_{\mathrm{data}}\bigl(\mathcal{L}_{\Delta T} + \mathcal{L}_{q}\bigr) \\
+& {} + w_{\mathrm{ONB}}\,\mathcal{L}_{\mathrm{Hsu}}
++ w_{\mathrm{mono},R_a}\,\mathcal{L}_{\mathrm{mono},R_a}
++ w_{\mathrm{mono},\theta}\,\mathcal{L}_{\mathrm{mono},\theta}.
+\end{aligned}
+\end{equation}
+%
+The optimized weights are $w_{\mathrm{cond}}=\num{2.00}$,
+$w_{\mathrm{BC}}=\num{3.89}$, $w_{\mathrm{data}}=\num{35.57}$,
+$w_{\mathrm{ONB}}=\num{0.10}$, $w_{\mathrm{mono},R_a}=\num{2.50}$, and
+$w_{\mathrm{mono},\theta}=\num{1.00}$ (\cref{tab:hyperparameters}). The
+balance is data-dominant, reflecting ONB sparsity. The Hsu hinge acts
+as soft consistency rather than a fitting target.
+
+We trained the model in three sequential stages, each activating a
+richer subset of the loss than the preceding one. The schedule proved
+more stable than optimizing \cref{eq:L_total} jointly. The \emph{analytical warm-up}
+ran for \num{500} Adam epochs at $\eta=\num{1e-3}$~\citep{kingma2014adam}
+using only PDE and boundary terms with $z_s=0$. The conduction
+residual converged below \num{e-5} in $\sim$\SI{7}{\second} on a single
+Apple~M1 CPU. The \emph{experimental fine-tuning} stage then activated
+the full loss. It ran \num{2000} Adam epochs at $\eta=\num{2.6e-3}$
+with constant Hsu weight $w_{\mathrm{ONB}}=\num{0.10}$, gradient
+clipping, and non-finite-step rollback. Up to \num{1000} L-BFGS iterations with
+strong Wolfe line search~\citep{liu1989lbfgs} followed, applied to the
+backbone only with the heads frozen. This stage completed in
+$\sim$\SIrange{17}{20}{\minute}. The \emph{inverse stage} freezes the
+trained network. It introduces a per-surface $r_c$ as a learnable
+parameter, which we optimized over \num{500} Adam iterations at
+$\eta=\num{1e-3}$ to maximize the Hsu-likelihood of observed ONB
+points. We selected hyperparameters via an Optuna TPE search over
+\num{20} trials. The best configuration was rebalanced to give the
+final model used throughout \cref{sec:results}.
+
+We implemented the network in PyTorch~2 in single
+precision~\citep{paszke2019pytorch}, with a custom training loop to
+support per-phase parameter freezing and rollback. Mini-batches
+of size \num{32} yield \num{36} batches per epoch on the
+\num{1167}-point training pool. We split the dataset at the surface
+level (\SI{80}{\percent} train, \SI{10}{\percent} validation,
+\SI{10}{\percent} test); because no surface appears in more than one
+split, the protocol prevents data leakage. Collocation points are redrawn every \num{100}
+epochs (LHS seed $31337\cdot\text{epoch}$). Parameter initialization
+and split seeds are fixed at \num{42}. Early stopping (patience
+\num{200}) rarely triggers. All experiments ran on an Apple~M1 host
+with eight CPU cores and \SI{16}{\giga\byte} RAM. Runs, trials, and
+checkpoints are logged via MLflow. We release the code, dataset, and
+the final \texttt{baseline\_phaseDbal} checkpoint so the pipeline can
+be re-executed from \cref{tab:hyperparameters}.
+
+% -----------------------------------------------------------------------------
+\begin{table}[!htbp]
+\caption{Hyperparameters and weight settings for the final
+  \texttt{baseline\_phaseDbal} model.}
+\label{tab:hyperparameters}
+\small
+\centering
+\begin{tabular}{lll}
+\hline
+Category & Parameter & Value \\
+\hline
+\multirow{4}{*}{Architecture}
+  & Conditioning      & FiLM \\
+  & Latent dim        & 8 \\
+  & Hidden dim        & 64 \\
+  & Layers (backbone) & 5 \\
+\hline
+\multirow{2}{*}{Total params}
+  & Encoder           & \num{6154} \\
+  & Backbone + heads  & \num{17851} \\
+\hline
+\multirow{6}{*}{Loss weights}
+  & $w_{\mathrm{cond}}$        & \num{2.00} \\
+  & $w_{\mathrm{BC}}$          & \num{3.89} \\
+  & $w_{\mathrm{data}}$        & \num{35.57} \\
+  & $w_{\mathrm{ONB}}$ (Hsu)   & \num{0.10} \\
+  & $w_{\mathrm{mono},R_a}$    & \num{2.50} \\
+  & $w_{\mathrm{mono},\theta}$ & \num{1.00} \\
+\hline
+\multirow{4}{*}{Training}
+  & Warm-up Adam epochs    & \num{500} \\
+  & Fine-tune Adam epochs  & \num{2000} \\
+  & Fine-tune L-BFGS iter. & \num{1000} \\
+  & $\eta_{\mathrm{Adam}}$ & \num{2.6e-3} \\
+\hline
+\end{tabular}
+\end{table}
+% -----------------------------------------------------------------------------

@@ -1,0 +1,98 @@
+%==============================================================================
+% Cover letter — IJHMT submission
+% PINN-ONB01 manuscript
+%==============================================================================
+\documentclass[11pt,a4paper]{letter}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{microtype}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=blue, urlcolor=blue}
+
+\signature{Jaeseon Lee\\
+Corresponding author\\
+Innovative Thermal Engineering Laboratory\\
+Department of Mechanical Engineering\\
+Ulsan National Institute of Science and Technology\\
+50 UNIST Rd., Ulsan 44919, Republic of Korea\\
+\href{mailto:JaeseonLee@unist.ac.kr}{JaeseonLee@unist.ac.kr}\\
+Tel.\ +82-52-217-2342}
+
+\address{Jaeseon Lee\\
+Innovative Thermal Engineering Laboratory\\
+Department of Mechanical Engineering\\
+Ulsan National Institute of Science and Technology\\
+50 UNIST Rd., Ulsan 44919, Republic of Korea}
+
+\longindentation=0pt
+
+\begin{document}
+
+\begin{letter}{The Editor-in-Chief\\
+\emph{International Journal of Heat and Mass Transfer}\\
+Elsevier}
+
+\opening{Dear Editor,}
+
+We are pleased to submit our manuscript entitled \emph{``Surface-Conditioned
+Physics-Informed Neural Network for Pool-Boiling Onset of Nucleate
+Boiling''} for consideration for publication in the \emph{International
+Journal of Heat and Mass Transfer}.
+
+The accurate prediction of the onset of nucleate boiling (ONB) on
+engineered surfaces remains an open problem. Existing analytical
+correlations rely on idealised cavity-distribution assumptions and treat
+surface character through a single scalar descriptor. Their residual
+scatter is 20--30\%, and they cannot accommodate roughness control,
+wettability tailoring, biphilic patterning, or nanostructured coatings
+in a unified framework.
+
+This work makes the following contributions:
+\begin{enumerate}
+  \item A curated and standardized pool-boiling dataset of 1{,}361
+        boiling-curve points and 82 ONB labels across four fluids (water,
+        R-134a, R-123, FC-77), drawn from seven primary literature sources
+        and accompanied by 49 surface descriptor cards.
+  \item A surface-conditioned PINN architecture (24{,}005 parameters) in
+        which a compact encoder modulates the temperature-field network
+        through feature-wise linear modulation (FiLM). A single backbone
+        represents qualitatively distinct surface families.
+  \item A five-term composite loss that combines the conduction PDE
+        residual, the natural-convection boundary condition, experimental
+        ONB data, a Hsu-type soft nucleation constraint, and
+        monotonicity regularizers.
+  \item A Hsu-based inverse-problem study that recovers active cavity
+        radii and uncovers a Simpson-type reversal in the
+        roughness--cavity correlation across fluids.
+  \item Code verification (four-of-four Level-1 tests, maximum relative
+        error 0.026\%) and a Level-3 physical-consistency battery (eight
+        of nine tests passing). The model attains an ONB RMSE of
+        3.42~K with $R^{2}=+0.44$ on $n=77$ held-out points, a 53\%
+        reduction over the best classical correlation and 65--67\% on
+        the refrigerant subset.
+\end{enumerate}
+
+To our knowledge this is the first study to combine pool-boiling ONB,
+explicit surface-modification conditioning, multi-source cross-fluid
+generalization, and inverse cavity-radius recovery within a single
+physics-informed framework. We believe these advances are directly
+relevant to the readership of the journal and to the design of
+engineered boiling surfaces for nuclear safety systems, electronics
+thermal management, and refrigeration evaporators.
+
+This manuscript has not been published previously, is not under
+consideration for publication elsewhere, and its submission has been
+approved by all authors. We declare no conflicts of interest. The
+curated dataset, model code, and analysis scripts will be released as
+open-source supplementary material upon acceptance.
+
+We thank you for your time in considering our submission and look
+forward to your reviewers' comments.
+
+\closing{Yours sincerely,}
+
+\end{letter}
+\end{document}

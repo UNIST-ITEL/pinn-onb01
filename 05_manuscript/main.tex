@@ -1,0 +1,150 @@
+%==============================================================================
+% PINN-ONB01 manuscript main file
+% Target journal: International Journal of Heat and Mass Transfer (IJHMT)
+% Class:          elsarticle
+%==============================================================================
+\documentclass[review,1p,12pt,a4paper]{elsarticle}
+
+%-- Encoding ------------------------------------------------------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+%-- Math, units, symbols ------------------------------------------------------
+\usepackage{amsmath, amssymb, amsfonts, mathtools}
+\usepackage[separate-uncertainty=true, range-units=single, list-units=single]{siunitx}
+% IJHMT/Elsevier convention: comma thousands separator for plain numerals.
+\sisetup{group-separator={,}, group-minimum-digits=4, group-digits=integer, output-decimal-marker={.}}
+
+%-- Graphics, tables ----------------------------------------------------------
+\usepackage{graphicx}
+\graphicspath{{figures/}{../04_analysis/figures/}}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{array}
+
+%-- Layout, cross-refs --------------------------------------------------------
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue}
+\usepackage[capitalise, noabbrev]{cleveref}
+
+%-- Misc utilities ------------------------------------------------------------
+\usepackage{xcolor}
+\usepackage{textcomp}
+\usepackage{microtype}
+% Allow modest emergency stretch on tight paragraphs (kills minor overfull
+% \hbox warnings from long hyphenated compounds, in-line citations, and \cref
+% expansions, without resorting to \sloppy).
+\setlength{\emergencystretch}{5em}
+
+%-- Bibliography (natbib via elsarticle) --------------------------------------
+% elsarticle-num-names: numerical [1] in bracket + supports \citet{} for "Author [N]" style
+\bibliographystyle{elsarticle-num-names}
+
+%-- Custom macros (optional) --------------------------------------------------
+\newcommand{\dTonb}{\Delta T_{\mathrm{ONB}}}
+\newcommand{\dTsub}{\Delta T_{\mathrm{sub}}}
+\newcommand{\qpp}{q^{\prime\prime}}
+\newcommand{\rhol}{\rho_{\ell}}
+\newcommand{\rhov}{\rho_{v}}
+\newcommand{\kl}{k_{\ell}}
+\newcommand{\cpl}{c_{p,\ell}}
+\newcommand{\hfg}{h_{fg}}
+\newcommand{\sigmas}{\sigma}
+\newcommand{\Tsat}{T_{\mathrm{sat}}}
+\newcommand{\Lc}{L_{c}}
+
+%==============================================================================
+\begin{document}
+
+\begin{frontmatter}
+
+\title{Surface-Conditioned Physics-Informed Neural Network
+       for Pool-Boiling Onset of Nucleate Boiling}
+
+\author[unist]{Jaeseon Lee\corref{cor1}}
+\ead{JaeseonLee@unist.ac.kr}
+\author[unist]{Gyuchang Kim}
+\author[unist]{Eunjeong Ko}
+\author[unist]{Yujin Kim}
+
+\address[unist]{Innovative Thermal Engineering Laboratory,
+Department of Mechanical Engineering,
+Ulsan National Institute of Science and Technology,
+50 UNIST Rd., Ulsan 44919, Republic of Korea}
+
+\cortext[cor1]{Corresponding author. Tel.: +82-52-217-2342;
+Fax: +82-52-217-2419.}
+
+\input{sections/0_highlights}
+\input{sections/0_abstract}
+
+\end{frontmatter}
+
+%==============================================================================
+% Sections
+%==============================================================================
+\input{sections/0_nomenclature}
+\input{sections/1_introduction}
+\input{sections/2_formulation}
+\input{sections/3_data}
+\input{sections/4_architecture}
+\input{sections/5_results_discussion}
+\input{sections/6_conclusions}
+
+%==============================================================================
+% Acknowledgements
+%==============================================================================
+\section*{Acknowledgements}
+\addcontentsline{toc}{section}{Acknowledgements}
+This study was supported by the research funding through the National
+Research Foundation of Korea (NRF), funded by the Ministry of Science and
+ICT (Grant No.\ NRF-2023R1A2C2006930 and NRF-2020R1A5A8018822), and through
+a Korea Institute of Energy Technology Evaluation and Planning (KETEP)
+grant funded by the Ministry of Trade, Industry \& Energy (Grant No.\
+RS-2024-00436521) of the Republic of Korea.
+
+%==============================================================================
+% CRediT Author Contributions
+%==============================================================================
+\section*{CRediT author contribution statement}
+\addcontentsline{toc}{section}{CRediT author contribution statement}
+\textbf{Jaeseon Lee:} Conceptualization, Supervision, Project
+administration, Funding acquisition, Writing -- Review \& Editing.
+\textbf{Gyuchang Kim:} Methodology, Software, Investigation,
+Visualization, Writing -- Original Draft.
+\textbf{Eunjeong Ko:} Data curation, Validation, Formal analysis,
+Writing -- Original Draft.
+\textbf{Yujin Kim:} Software, Visualization, Writing -- Review \&
+Editing.
+
+%==============================================================================
+% Data availability
+%==============================================================================
+\section*{Data availability}
+\addcontentsline{toc}{section}{Data availability}
+The curated pool-boiling dataset (\num{1361} boiling-curve points,
+\num{82} ONB labels, and \num{49} surface descriptor cards), the
+trained PINN models, and the analysis scripts used to produce all
+figures and tables will be released as open-source supplementary
+material upon acceptance. The repository includes reproducible
+notebooks and the per-paper figure-digitization metadata required to
+audit the dataset at the figure level.
+
+%==============================================================================
+% Declaration of competing interests
+%==============================================================================
+\section*{Declaration of competing interests}
+\addcontentsline{toc}{section}{Declaration of competing interests}
+The authors declare that they have no known competing financial
+interests or personal relationships that could have appeared to
+influence the work reported in this paper.
+
+%==============================================================================
+% Bibliography
+%==============================================================================
+\bibliography{references}
+
+\end{document}

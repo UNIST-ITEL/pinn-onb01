@@ -1,0 +1,83 @@
+source_paper,figure_ref,surface_id,surface_label,fluid,delta_T_wall,delta_T_sub,q_flux,Ra_um,theta_deg,category,notes
+BETZ_2013,Fig4_Hydrophilic,SFC-001,BETZ_Hydrophilic,water,10.4049,0.0,171745.15,0.001,20.0,betz,ONB_manual (preserved)
+BETZ_2013,Fig4_Hydrophobic,SFC-002,BETZ_Hydrophobic,water,3.1478,0.0,301939.06,0.001,115.0,betz,ONB_manual (preserved)
+BETZ_2013,Fig4_SHPi,SFC-003,BETZ_SHPi,water,3.4818,0.0,253462.6,0.001,0.0,betz,ONB_manual (preserved)
+BETZ_2013,Fig4_SHPo,SFC-004,BETZ_SHPo,water,3.5729,0.0,198060.94,0.001,158.0,betz,FLAG: non-monotonic at idx 4; ONB_manual (preserved)
+BETZ_2013,Fig6b_Biphilic,SFC-005,BETZ_Biphilic,water,3.5431,0.0,29221.92,0.001,70.0,betz,ONB_manual (preserved)
+BETZ_2013,Fig6b_Superbiphiliccircle,SFC-006,BETZ_SBPi_circle,water,0.6825,0.0,161431.59,0.001,75.0,betz,"WARN: delta_T=0.68 out of [2,30] K range; ONB_manual (preserved)"
+BETZ_2013,Fig6b_Superbiphilichexagon,SFC-007,BETZ_SBPi_hex,water,1.4231,0.0,181560.42,0.001,75.0,betz,"WARN: delta_T=1.42 out of [2,30] K range; ONB_manual (preserved)"
+BETZ_2013,Fig6b_Superhydrophilic,SFC-003,BETZ_SHPi,water,3.0565,0.0,57210.01,0.001,0.0,betz,ONB_manual (preserved)
+BETZ_2013,Fig6b_hydrophilic,SFC-001,BETZ_Hydrophilic,water,15.4381,0.0,68671.06,0.001,20.0,betz,ONB_manual (preserved)
+BETZ_2013,Fig7b_Biphilic,SFC-005,BETZ_Biphilic,water,4.4942,0.0,224795.05,0.001,70.0,betz,ONB_manual (preserved)
+BOURDON_2012,Fig4_S1,SFC-021,BOURDON12_S1,water,8.9389,0.0,2972.62,0.0097,0.0,bourdon12,ONB_manual (was idx=16)
+BOURDON_2012,Fig4_S2,SFC-022,BOURDON12_S2,water,10.9894,0.0,3220.07,0.0086,0.0,bourdon12,ONB_manual (was idx=7)
+BOURDON_2012,Fig4_S3,SFC-023,BOURDON12_S3,water,12.6333,0.0,2981.08,0.0076,0.0,bourdon12,ONB_manual (was idx=7)
+BOURDON_2012,Fig6_grafted_center,SFC-025,BOURDON12_S1_grafted_C,water,5.2071,0.0,1563.15,0.0097,108.0,bourdon12,ONB_manual (was idx=7)
+BOURDON_2012,Fig6_grafted_whole,SFC-024,BOURDON12_S1_grafted,water,5.1673,0.0,1984.04,0.0097,108.0,bourdon12,ONB_manual (was idx=10)
+BOURDON_2012,Fig6_ungrafted,SFC-021,BOURDON12_S1,water,8.9402,0.0,2643.57,0.0097,0.0,bourdon12,ONB_manual (was idx=8)
+BOURDON_2015,Fig3_ONB_vs_theta,SFC-029,BOURDON15_OTS,water,2.6,0.0,15000.0,0.00043,101.6,bourdon15,theta_contact=101.6deg; ONB_diagram_point
+BOURDON_2015,Fig3_ONB_vs_theta,SFC-028,BOURDON15_AcOUTES,water,4.5043,0.0,15000.0,0.00043,70.8,bourdon15,theta_contact=70.8deg; ONB_diagram_point
+BOURDON_2015,Fig3_ONB_vs_theta,SFC-027,BOURDON15_MPEGPTMS,water,9.3826,0.0,15000.0,0.00043,33.5,bourdon15,theta_contact=33.5deg; ONB_diagram_point
+BOURDON_2015,Fig3_ONB_vs_theta,SFC-026,BOURDON15_NotGrafted,water,18.4348,0.0,15000.0,0.00043,11.1,bourdon15,theta_contact=11.1deg; ONB_diagram_point
+BOURDON_2015,Fig7_OTS,SFC-029,BOURDON15_OTS,water,5.0306,0.0,8941.61,0.00043,101.6,bourdon15,ONB_manual (was idx=2)
+JABARDO_2009,Fig10a_Br_Ra0p08P,SFC-039,JABARDO_Br_Ra0p08P,R-134a,6.1788,0.0,4535.87,0.08,,jabardo_br,"ONB_auto (hint=[5.0,18.0]K)"
+JABARDO_2009,Fig10a_Br_Ra0p90SP,SFC-040,JABARDO_Br_Ra0p90SP,R-134a,3.4611,0.0,5485.45,0.9,,jabardo_br,"ONB_auto (hint=[3.0,12.0]K)"
+JABARDO_2009,Fig10a_Br_Ra1p2SPI,SFC-041,JABARDO_Br_Ra1p2SPI,R-134a,2.4645,0.0,1878.98,1.2,,jabardo_br,"ONB_auto (hint=[2.0,10.0]K)"
+JABARDO_2009,Fig10a_Br_Ra1p8SPI,SFC-042,JABARDO_Br_Ra1p8SPI,R-134a,2.0743,0.0,5727.61,1.8,,jabardo_br,"ONB_auto (hint=[2.0,10.0]K)"
+JABARDO_2009,Fig10a_Br_Ra3p5SPI,SFC-043,JABARDO_Br_Ra3p5SPI,R-134a,2.0715,0.0,8092.22,3.5,,jabardo_br,"ONB_auto (hint=[2.0,8.0]K)"
+JABARDO_2009,Fig10b_Br_Ra0p08P,SFC-039,JABARDO_Br_Ra0p08P,R-134a,3.3283,0.0,7368.64,0.08,,jabardo_br,ONB_manual (was idx=None)
+JABARDO_2009,Fig10b_Br_Ra0p90SP,SFC-040,JABARDO_Br_Ra0p90SP,R-134a,2.052,0.0,7625.25,0.9,,jabardo_br,ONB_manual (was idx=None)
+JABARDO_2009,Fig10b_Br_Ra1p2SPI,SFC-041,JABARDO_Br_Ra1p2SPI,R-134a,1.7307,0.0,5387.03,1.2,,jabardo_br,"WARN: delta_T=1.73 out of [2,30] K range; ONB_manual (was idx=None)"
+JABARDO_2009,Fig10b_Br_Ra1p8SPI,SFC-042,JABARDO_Br_Ra1p8SPI,R-134a,1.2353,0.0,5431.09,1.8,,jabardo_br,"WARN: delta_T=1.24 out of [2,30] K range; ONB_manual (was idx=None)"
+JABARDO_2009,Fig10b_Br_Ra3p5SPI,SFC-043,JABARDO_Br_Ra3p5SPI,R-134a,1.1842,0.0,7924.54,3.5,,jabardo_br,"WARN: delta_T=1.18 out of [2,30] K range; ONB_manual (was idx=None)"
+JABARDO_2009,Fig10c_SS_Ra0p03P,SFC-044,JABARDO_SS_Ra0p03P,R-134a,6.55,0.0,4033.78,0.03,,jabardo_ss,"ONB_auto (hint=[6.0,20.0]K)"
+JABARDO_2009,Fig10c_SS_Ra0p07SP,SFC-045,JABARDO_SS_Ra0p07SP,R-134a,5.4483,0.0,3270.79,0.07,,jabardo_ss,"ONB_auto (hint=[5.0,18.0]K)"
+JABARDO_2009,Fig10c_SS_Ra0p45SP,SFC-046,JABARDO_SS_Ra0p45SP,R-134a,4.7613,0.0,4495.71,0.45,,jabardo_ss,"ONB_auto (hint=[4.0,14.0]K)"
+JABARDO_2009,Fig10c_SS_Ra0p90SPI,SFC-047,JABARDO_SS_Ra0p90SPI,R-134a,4.1697,0.0,2217.54,0.9,,jabardo_ss,"ONB_auto (hint=[3.0,12.0]K)"
+JABARDO_2009,Fig10c_SS_Ra1p45SPI,SFC-048,JABARDO_SS_Ra1p45SPI,R-134a,3.598,0.0,4301.59,1.45,,jabardo_ss,"ONB_auto (hint=[3.0,12.0]K)"
+JABARDO_2009,Fig10c_SS_Ra2p50SPI,SFC-049,JABARDO_SS_Ra2p50SPI,R-134a,2.572,0.0,4451.48,2.5,,jabardo_ss,"ONB_auto (hint=[2.0,10.0]K)"
+JABARDO_2009,Fig10c_SS_Ra3p20SPI,SFC-050,JABARDO_SS_Ra3p20SPI,R-134a,2.5929,0.0,4374.57,3.2,,jabardo_ss,"ONB_auto (hint=[2.0,10.0]K)"
+JABARDO_2009,Fig10d_SS_Ra0p03P,SFC-044,JABARDO_SS_Ra0p03P,R-134a,4.123,0.0,8625.46,0.03,,jabardo_ss,ONB_manual (was idx=None)
+JABARDO_2009,Fig10d_SS_Ra0p07SP,SFC-045,JABARDO_SS_Ra0p07SP,R-134a,3.7277,0.0,6729.86,0.07,,jabardo_ss,ONB_manual (was idx=None)
+JABARDO_2009,Fig10d_SS_Ra0p45SP,SFC-046,JABARDO_SS_Ra0p45SP,R-134a,3.5798,0.0,8973.71,0.45,,jabardo_ss,ONB_manual (was idx=None)
+JABARDO_2009,Fig10d_SS_Ra0p90SPI,SFC-047,JABARDO_SS_Ra0p90SPI,R-134a,3.0664,0.0,8582.46,0.9,,jabardo_ss,"ONB_auto (hint=[3.0,12.0]K)"
+JABARDO_2009,Fig10d_SS_Ra1p45SPI,SFC-048,JABARDO_SS_Ra1p45SPI,R-134a,3.0074,0.0,8582.14,1.45,,jabardo_ss,"ONB_auto (hint=[3.0,12.0]K)"
+JABARDO_2009,Fig10d_SS_Ra2p50SPI,SFC-049,JABARDO_SS_Ra2p50SPI,R-134a,2.2676,0.0,6235.89,2.5,,jabardo_ss,"ONB_auto (hint=[2.0,10.0]K)"
+JABARDO_2009,Fig10d_SS_Ra3p20SPI,SFC-050,JABARDO_SS_Ra3p20SPI,R-134a,2.2729,0.0,5861.07,3.2,,jabardo_ss,"ONB_auto (hint=[2.0,10.0]K)"
+JABARDO_2009,Fig9a_Cu_Ra0p16SP,SFC-032,JABARDO_Cu_Ra0p16SP,R-123,8.084,0.0,1657.99,0.16,,jabardo,ONB_manual (preserved)
+JABARDO_2009,Fig9a_Cu_Ra0p47SP,SFC-033,JABARDO_Cu_Ra0p47SP,R-123,7.0583,0.0,1665.28,0.47,,jabardo,ONB_manual (preserved)
+JABARDO_2009,Fig9a_Cu_Ra10p5SPI,SFC-038,JABARDO_Cu_Ra10p5SPI,R-123,4.2176,0.0,2016.61,10.5,,jabardo,ONB_manual (preserved)
+JABARDO_2009,Fig9a_Cu_Ra3p3SPI,SFC-036,JABARDO_Cu_Ra3p3SPI,R-123,7.3272,0.0,1700.0,3.3,,jabardo,ONB_manual (preserved)
+JABARDO_2009,Fig9a_Cu_Ra4p6SPI,SFC-037,JABARDO_Cu_Ra4p6SPI,R-123,10.0348,0.0,4225.59,4.6,,jabardo,ONB_manual (preserved)
+JABARDO_2009,Fig9b_Cu_Ra0p16SP,SFC-032,JABARDO_Cu_Ra0p16SP,R-123,6.8606,0.0,4307.37,0.16,,jabardo,"ONB_auto (hint=[5.0,15.0]K)"
+JABARDO_2009,Fig9b_Cu_Ra0p47SP,SFC-033,JABARDO_Cu_Ra0p47SP,R-123,5.4046,0.0,5129.82,0.47,,jabardo,"ONB_auto (hint=[3.0,12.0]K)"
+JABARDO_2009,Fig9b_Cu_Ra10p5SPI,SFC-038,JABARDO_Cu_Ra10p5SPI,R-123,2.4078,0.0,2081.2,10.5,,jabardo,"ONB_auto (hint=[2.0,8.0]K)"
+JABARDO_2009,Fig9b_Cu_Ra3p3SPI,SFC-036,JABARDO_Cu_Ra3p3SPI,R-123,4.1764,0.0,8377.33,3.3,,jabardo,"ONB_auto (hint=[2.0,9.0]K)"
+JABARDO_2009,Fig9b_Cu_Ra4p6SPI,SFC-037,JABARDO_Cu_Ra4p6SPI,R-123,2.6847,0.0,2070.66,4.6,,jabardo,"ONB_auto (hint=[2.0,9.0]K)"
+JABARDO_2009,Fig9c_Cu_Ra0p07P,SFC-031,JABARDO_Cu_Ra0p07P,R-134a,8.3105,0.0,9795.79,0.07,,jabardo,ONB_manual (preserved)
+JABARDO_2009,Fig9c_Cu_Ra0p5SP,SFC-034,JABARDO_Cu_Ra0p5SP,R-134a,3.909,0.0,3406.11,0.5,,jabardo,ONB_manual (preserved)
+JABARDO_2009,Fig9c_Cu_Ra10p5SPI,SFC-038,JABARDO_Cu_Ra10p5SPI,R-134a,2.6766,0.0,4169.38,10.5,,jabardo,ONB_manual (preserved)
+JABARDO_2009,Fig9c_Cu_Ra2p5SPI,SFC-035,JABARDO_Cu_Ra2p5SPI,R-134a,2.3951,0.0,4528.08,2.5,,jabardo,ONB_manual (preserved)
+JABARDO_2009,Fig9c_Cu_Ra4p6SPI,SFC-037,JABARDO_Cu_Ra4p6SPI,R-134a,3.2362,0.0,2127.93,4.6,,jabardo,ONB_manual (preserved)
+JABARDO_2009,Fig9d_Cu_Ra0p07P,SFC-031,JABARDO_Cu_Ra0p07P,R-134a,3.49,0.0,6292.74,0.07,,jabardo,ONB_manual (was idx=None)
+JABARDO_2009,Fig9d_Cu_Ra0p5SP,SFC-034,JABARDO_Cu_Ra0p5SP,R-134a,3.2278,0.0,8323.12,0.5,,jabardo,"ONB_auto (hint=[3.0,12.0]K)"
+JABARDO_2009,Fig9d_Cu_Ra10p5SPI,SFC-038,JABARDO_Cu_Ra10p5SPI,R-134a,2.4296,0.0,4336.83,10.5,,jabardo,"ONB_auto (hint=[2.0,8.0]K)"
+JABARDO_2009,Fig9d_Cu_Ra2p5SPI,SFC-035,JABARDO_Cu_Ra2p5SPI,R-134a,2.0344,0.0,6581.02,2.5,,jabardo,"ONB_auto (hint=[2.0,10.0]K)"
+JABARDO_2009,Fig9d_Cu_Ra4p6SPI,SFC-037,JABARDO_Cu_Ra4p6SPI,R-134a,2.3324,0.0,8471.75,4.6,,jabardo,"ONB_auto (hint=[2.0,9.0]K)"
+JONES_2009,Fig3a_EDM10p0,SFC-020,JONES_EDM10p0,water,3.9881,0.0,6617.85,10.0,,jones,"ONB_auto (hint=[2.0,7.0]K)"
+JONES_2009,Fig3a_EDM1p08,SFC-017,JONES_EDM1p08,water,4.4643,0.0,6691.54,1.08,,jones,"ONB_auto (hint=[4.0,10.0]K)"
+JONES_2009,Fig3a_EDM2p22,SFC-018,JONES_EDM2p22,water,4.9107,0.0,7147.46,2.22,,jones,"ONB_auto (hint=[3.0,9.0]K)"
+JONES_2009,Fig3a_EDM5p89,SFC-019,JONES_EDM5p89,water,5.0298,0.0,7165.88,5.89,,jones,"ONB_auto (hint=[2.0,8.0]K)"
+JONES_2009,Fig3a_Polished,SFC-015,JONES_Polished_w,water,11.1905,0.0,18564.06,0.038,,jones_w,"ONB_auto (hint=[8.0,14.0]K)"
+JONES_2009,Fig4a_EDM10p0,SFC-020,JONES_EDM10p0,FC-77,3.4413,0.0,3835.39,10.0,,jones,ONB_manual (was idx=2)
+JONES_2009,Fig4a_EDM1p08,SFC-017,JONES_EDM1p08,FC-77,8.0567,0.0,9407.78,1.08,,jones,ONB_manual (was idx=1)
+JONES_2009,Fig4a_EDM2p22,SFC-018,JONES_EDM2p22,FC-77,6.9231,0.0,9638.1,2.22,,jones,ONB_manual (was idx=0)
+JONES_2009,Fig4a_EDM5p89,SFC-019,JONES_EDM5p89,FC-77,5.4656,0.0,5744.13,5.89,,jones,ONB_manual (was idx=1)
+JONES_2009,Fig4a_Polished,SFC-016,JONES_Polished_F,FC-77,8.502,0.0,3882.81,0.027,,jones_F,"ONB_auto (hint=[8.0,14.0]K)"
+JO_2011,Fig3_Hydrophilic,SFC-008,JO_Hydrophilic,water,10.6522,0.0,36833.94,0.00175,54.0,jo,ONB_manual (preserved)
+JO_2011,Fig3_Hydrophobic,SFC-009,JO_Hydrophobic,water,1.6957,0.0,7386.07,0.00175,123.0,jo,"WARN: delta_T=1.70 out of [2,30] K range; ONB_manual (preserved)"
+PHAN_2009,Fig12a_theta22,SFC-010,PHAN_SiOx,water,18.9556,15.0,127923.38,0.03,22.0,phan,ONB_manual (preserved)
+PHAN_2009,Fig12a_theta31,SFC-011,PHAN_TiO2,water,14.7124,15.0,59479.7,0.03,31.0,phan,ONB_manual (preserved)
+PHAN_2009,Fig12a_theta67,SFC-012,PHAN_Pt,water,24.8896,15.0,172459.04,0.03,67.0,phan,ONB_manual (preserved)
+PHAN_2009,Fig12a_theta80,SFC-013,PHAN_Fe2O3,water,13.5093,15.0,66763.15,0.03,80.0,phan,ONB_manual (preserved)
+PHAN_2009,Fig12a_theta85,SFC-014,PHAN_ref,water,12.2663,15.0,82151.0,0.03,85.0,phan,ONB_manual (preserved)
