@@ -133,26 +133,21 @@ inherit a wettability sensitivity that scalar correlations cannot
 capture.
 
 % -----------------------------------------------------------------------------
-\subsection{Non-dimensionalization}\label{subsec:nondim}\label{subsec:dimless}
+\subsection{Non-dimensional scales}\label{subsec:nondim}%
+\label{subsec:dimless}
 % -----------------------------------------------------------------------------
 
 The system is recast in three reference quantities to remove
 fluid-specific scales and improve loss conditioning. The capillary
-length is $L_c$. The latent-heat temperature scale is
-$\Delta T_{\mathrm{ref}}$. A Zuber-type heat-flux scale is
-$q_{\mathrm{ref}}$, with
+length $L_c$, the latent-heat temperature scale
+$\Delta T_{\mathrm{ref}}$, and a Zuber-type heat-flux scale
+$q_{\mathrm{ref}}$ are defined by
 %
-\begin{equation}\label{eq:Lc}
-L_c \;=\; \sqrt{\,\frac{\sigma}{g\,(\rho_l - \rho_v)}\,},
-\end{equation}
-%
-\begin{equation}\label{eq:dT_ref}
-\Delta T_{\mathrm{ref}} \;=\; \frac{h_{fg}}{c_{p,l}},
-\end{equation}
-%
-\begin{equation}\label{eq:q_ref}
-q_{\mathrm{ref}} \;=\; h_{fg}\,\rho_v^{1/2}\,\bigl[\sigma\,g\,(\rho_l - \rho_v)\bigr]^{1/4},
-\end{equation}
+\begin{align}
+L_c &\;=\; \sqrt{\,\frac{\sigma}{g\,(\rho_l - \rho_v)}\,}, \label{eq:Lc} \\
+\Delta T_{\mathrm{ref}} &\;=\; \frac{h_{fg}}{c_{p,l}}, \label{eq:dT_ref} \\
+q_{\mathrm{ref}} &\;=\; h_{fg}\,\rho_v^{1/2}\,\bigl[\sigma\,g\,(\rho_l - \rho_v)\bigr]^{1/4}, \label{eq:q_ref}
+\end{align}
 %
 with $h_{\mathrm{ref}} = q_{\mathrm{ref}}/\Delta T_{\mathrm{ref}}$.
 \cref{eq:q_ref} is the Zuber CHF scale with $K=1$~\citep{lienhard1981}.

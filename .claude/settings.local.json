@@ -202,7 +202,11 @@
       "Bash(awk NR>=93 && NR<=190 *)",
       "Bash(awk 'NR>=93 && NR<=190' \"/Users/myhomemini/Library/CloudStorage/OneDrive-개인/Projects/PINN-ONB01/05_manuscript/논문 투고 전략 컨설팅.md\")",
       "WebFetch(domain:api.crossref.org)",
-      "Bash(open \"/Users/myhomemini/Library/CloudStorage/OneDrive-개인/Projects/PINN-ONB01/05_manuscript/SUBMISSION/\")"
+      "Bash(open \"/Users/myhomemini/Library/CloudStorage/OneDrive-개인/Projects/PINN-ONB01/05_manuscript/SUBMISSION/\")",
+      "Bash(git commit -m ' *)",
+      "Bash(awk 'NR>=125 && NR<=160' sections/2_formulation.tex)",
+      "Bash(awk NR>=130 && NR<=160 *)",
+      "Bash(awk '/sections.*tex/{file=$0} /Underfull.*lines 282/{print \"Underfull in:\", file; exit}' main.log)"
     ]
   }
 }
