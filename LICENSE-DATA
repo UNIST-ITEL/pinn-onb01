@@ -1,0 +1,84 @@
+Creative Commons Attribution 4.0 International Public License (CC-BY-4.0)
+
+Copyright (c) 2026 Innovative Thermal Engineering Laboratory (ITEL),
+Department of Mechanical Engineering,
+Ulsan National Institute of Science and Technology (UNIST)
+
+Authors: Jaeseon Lee, Gyuchang Kim, Eunjeong Ko, Yujin Kim
+
+================================================================================
+Scope
+================================================================================
+
+This license covers the curated pool-boiling dataset associated with the paper
+"Surface-Conditioned Physics-Informed Neural Network for Pool-Boiling Onset of
+Nucleate Boiling" (Lee et al., 2026, International Journal of Heat and Mass
+Transfer), specifically:
+
+  - 02_data/processed/boiling_curves.csv  (1361 rows x 14 columns)
+  - 02_data/processed/onb_dataset.csv     (82 rows x 12 columns)
+  - 02_data/surface_cards/*.yaml          (49 surface descriptor cards)
+  - 02_data/raw/digitization/*            (per-paper WebPlotDigitizer metadata)
+  - 02_data/processed/README.md           (column schema, units, provenance)
+
+The underlying raw figures from the seven primary references
+(BETZ_2013, BOURDON_2012, BOURDON_2015, JABARDO_2009, JONES_2009, JO_2011,
+PHAN_2009) are NOT redistributed.  Only the numerical values extracted via
+WebPlotDigitizer, together with metadata pointing to the original
+publications, are released here. Users wishing to access the underlying
+figures must obtain them from the original publishers.
+
+================================================================================
+License terms (summary)
+================================================================================
+
+You are free to:
+
+  Share   - copy and redistribute the material in any medium or format
+  Adapt   - remix, transform, and build upon the material for any purpose,
+            including commercial use
+
+Under the following terms:
+
+  Attribution - You must give appropriate credit, provide a link to the
+                license, and indicate if changes were made. You may do so
+                in any reasonable manner, but not in any way that suggests
+                the licensor endorses you or your use.
+
+No additional restrictions - You may not apply legal terms or technological
+measures that legally restrict others from doing anything the license permits.
+
+Full license text: https://creativecommons.org/licenses/by/4.0/legalcode
+
+================================================================================
+Citation (required for attribution)
+================================================================================
+
+If you use this dataset in your research, please cite both the dataset and
+the associated paper:
+
+  Dataset:
+    Lee, J., Kim, G., Ko, E., Kim, Y. (2026).
+    PINN-ONB01 pool-boiling ONB dataset (v1.0) [Data set].
+    Zenodo. https://doi.org/10.5281/zenodo.XXXXXXX
+
+  Paper:
+    Lee, J., Kim, G., Ko, E., Kim, Y. (2026).
+    Surface-Conditioned Physics-Informed Neural Network for Pool-Boiling
+    Onset of Nucleate Boiling.
+    International Journal of Heat and Mass Transfer.
+    DOI: [to be assigned upon publication]
+
+  Primary sources of the underlying experimental data must be cited
+  separately according to each user's customary practice.  The mapping
+  between dataset rows and primary sources is provided in the dataset
+  README and in the per-paper digitization metadata.
+
+================================================================================
+Disclaimer
+================================================================================
+
+The dataset is provided "AS IS" without warranty of any kind, express or
+implied.  The authors make no representation as to the accuracy of the
+extracted values beyond the per-figure tolerances reported in the paper's
+supplementary material and in the per-paper digitization metadata files.
