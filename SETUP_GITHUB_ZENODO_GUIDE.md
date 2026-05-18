@@ -75,7 +75,7 @@ People → Invite member:
 2. 입력값:
    - Repository name: `pinn-onb01`
    - Description: `Surface-Conditioned Physics-Informed Neural Network for Pool-Boiling ONB (IJHMT 2026)`
-   - Visibility: **🔒 Private** (게재 확정 전까지)
+   - Visibility: **🔒 Private** *또는* **🌐 Public** (사용자 결정 — 본 프로젝트는 2026-05-18 부터 **Public** 으로 운영. Zenodo가 private repo를 보려면 OAuth 권한을 `repo` 전체 스코프로 재인증해야 하며, IJHMT는 single-blind이므로 public 유지가 운영상 단순함)
    - Initialize: **체크하지 않음** (로컬 repo를 push 할 예정)
 3. "Create repository" 클릭
 
@@ -226,7 +226,8 @@ grep -rl "XXXXXXX" 02_data/processed/README.md LICENSE-DATA LICENSE-CODE \
 git add -A
 git commit -m "Insert published-paper DOI and Zenodo dataset DOI"
 
-# 3. Repo private → public 전환
+# 3. Repo visibility 확인 — 본 프로젝트는 2026-05-18부터 이미 public이므로
+#    이 단계는 스킵. private으로 운영한 사용자만 여기서 public 전환.
 #    GitHub UI: Settings → Danger Zone → Change visibility → Make public
 
 # 4. Tag and release
@@ -272,7 +273,7 @@ git push
 
 - [ ] `https://github.com/UNIST-ITEL` 페이지 접속 가능
 - [ ] 4명 멤버 모두 초대 수락 완료
-- [ ] `https://github.com/UNIST-ITEL/pinn-onb01` 페이지 접속 (private 상태)
+- [ ] `https://github.com/UNIST-ITEL/pinn-onb01` 페이지 접속 (본 프로젝트는 public 운영)
 - [ ] 로컬 git log와 원격 commit 일치 (`git log origin/main`)
 
 ### Zenodo 통합 후
@@ -289,7 +290,7 @@ git push
 - [ ] Code DOI 발급 (`10.5281/zenodo.XXXXXXX`)
 - [ ] Dataset DOI 활성화 (`10.5281/zenodo.YYYYYYY`)
 - [ ] 두 DOI가 README, CITATION.cff, LICENSE 파일에 반영됨
-- [ ] Repo가 public 으로 전환됨
+- [ ] Repo public 상태 유지 (또는 private 운영 시 여기서 전환)
 
 ---
 

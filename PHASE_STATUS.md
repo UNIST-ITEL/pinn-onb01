@@ -1,7 +1,7 @@
 # PINN-ONB01 — Phase 진척 상태
 
-**최종 갱신:** 2026-05-18 (오후 세션: 공개 release artifacts 준비 + 의존성 감사 + Table 2 정정)
-**전체 진척:** Phase 1-4 완료 / Phase 5 (논문) **100% — 투고 가능 상태** / 공개 release 준비 ~85%
+**최종 갱신:** 2026-05-18 야간 (IJHMT 제출 + GitHub/Zenodo 인프라 활성화)
+**전체 진척:** Phase 1-4 완료 / Phase 5 **IJHMT 제출 완료** ✅ / 공개 release 준비 ~95% (DOI 발급만 수락 대기)
 
 ---
 
@@ -208,27 +208,42 @@
 
 ---
 
+## 2026-05-18 야간 — IJHMT 제출 + 외부 인프라 활성화
+
+| 작업 | 결과 |
+|---|---|
+| **IJHMT submission portal 업로드** | ✅ **제출 완료** |
+| UNIST-ITEL GitHub organization 생성 | ✅ |
+| `pinn-onb01` repo + 로컬 코드 push | ✅ |
+| Repo visibility | **public** (Zenodo OAuth `public_repo` 스코프 활용; private 운영 시 `repo` 전체 스코프 재인증 필요) |
+| Zenodo + ORCID + GitHub OAuth 3-way 연동 | ✅ webhook 200 OK |
+| Repo archiving 토글 | ✅ ON |
+
+→ 이제 **게재 수락 통보 대기**. 수락 통보 후 진행 절차는 `SETUP_GITHUB_ZENODO_GUIDE.md` § 6 참조.
+
+---
+
 ## 남은 작업
 
-### 제출 직전 / 제출 단계
+### 제출 직전 / 제출 단계 (모두 ✅)
 | 항목 | 담당 | 상태 |
 |---|---|---|
-| Reviewer Appendix B 5건 본문 사전 보강 (Q1/Q4/Q6/Q9/Q11) | 저자 | ☐ 선택 |
+| Reviewer Appendix B 5건 본문 사전 보강 (Q1/Q4/Q6/Q9/Q11) | 저자 | ☐ 선택 (revision 시) |
 | Native-speaker / professional editing service | 외주 | ☐ 선택 |
-| Co-author / 지도교수 검토 | 외부 | ☐ 권장 |
+| Co-author / 지도교수 검토 | 외부 | (제출 전 완료) |
 | §2 잔여 overfull 31pt fine-tune | 저자 | ☐ cosmetic only |
 | 백업 파일 정리 (3 세대 .bak_*) | 저자 | ☐ 선택 |
 | Git tag `v1.0-submitted` | 저자 | ☐ |
 | 공저자 ORCID 수집 | 저자 | ☐ submission portal 입력 시 |
-| IJHMT submission portal 업로드 | 저자 | ☐ 사용자 작업 |
+| IJHMT submission portal 업로드 | 저자 | ✅ **2026-05-18** |
 
 ### 공개 Release 준비 (수락 대기 중 가능)
 | 항목 | 담당 | 상태 |
 |---|---|---|
-| UNIST-ITEL GitHub org 생성 + 멤버 초대 | Jaeseon Lee | ☐ 가이드: `SETUP_GITHUB_ZENODO_GUIDE.md` § 1 |
-| `pinn-onb01` private repo + 로컬 push | Jaeseon Lee | ☐ 가이드 § 2 |
-| Zenodo 계정 (ORCID 로그인) + GitHub 통합 | Jaeseon Lee | ☐ 가이드 § 3-4 |
-| Dataset DOI 사전 예약 (draft record) | Jaeseon Lee | ☐ 가이드 § 5 |
+| UNIST-ITEL GitHub org 생성 + 멤버 초대 | Jaeseon Lee | ✅ |
+| `pinn-onb01` repo + 로컬 push | Jaeseon Lee | ✅ |
+| Zenodo 계정 (ORCID 로그인) + GitHub 통합 | Jaeseon Lee | ✅ webhook 200 OK |
+| Dataset DOI 사전 예약 (draft record) | Jaeseon Lee | ☐ 가이드 § 5 — 권장 |
 | Per-paper digitization metadata `.tar.gz` 패키징 | Eunjeong Ko | ☐ |
 | `requirements-lock.txt` 생성 (release 직전) | Gyuchang Kim | ☐ |
 | 02_data/processed/README.md placeholder DOI 치환 (수락 후) | Jaeseon Lee | ☐ |
@@ -237,7 +252,7 @@
 | 항목 | 가이드 | 상태 |
 |---|---|---|
 | proof DOI를 placeholder에 치환 | `SETUP_GITHUB_ZENODO_GUIDE.md` § 6 | ☐ |
-| Repo private → public 전환 | 동일 § 6 | ☐ |
+| ~~Repo private → public 전환~~ — **2026-05-18 이미 public** | (해당 없음) | ✅ |
 | `v1.0-published` Git tag + GitHub Release | 동일 § 6 | ☐ |
 | Zenodo code DOI 자동 발급 확인 | 동일 § 6 | ☐ |
 | Zenodo dataset record publish + DOI 활성화 | 동일 § 6 | ☐ |
