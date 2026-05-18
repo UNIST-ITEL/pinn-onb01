@@ -47,6 +47,15 @@ __pycache__/
 02_data/processed/*.npz
 02_data/processed/*.h5
 
+# Phase 1.5: xlsx inventory는 commit, export된 CSV는 ignore (재생성 가능)
+phase1p5_inhouse_augmentation/data/processed/boiling_curves_v1p5_partial.csv
+phase1p5_inhouse_augmentation/data/processed/onb_dataset_v1p5_partial.csv
+phase1p5_inhouse_augmentation/data/processed/surface_metadata.csv
+phase1p5_inhouse_augmentation/data/processed/overview.csv
+# 최종 v1p5 통합 CSV 도 (preprocess-pipeline 생성물, 재생성 가능)
+phase1p5_inhouse_augmentation/data/processed/boiling_curves_v1p5.csv
+phase1p5_inhouse_augmentation/data/processed/onb_dataset_v1p5.csv
+
 # ---------------------------------------------------------------------------
 # Model — checkpoints, training/inference logs, MLflow runs
 # Keep: 03_model/configs/, 03_model/src/
