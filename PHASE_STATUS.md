@@ -1,7 +1,12 @@
-# PINN-ONB01 — Phase 진척 상태
+# PINN-BOILING — Multi-Phase 연구 진척 상태
 
-**최종 갱신:** 2026-05-18 야간 (IJHMT 제출 + GitHub/Zenodo 인프라 활성화)
-**전체 진척:** Phase 1-4 완료 / Phase 5 **IJHMT 제출 완료** ✅ / 공개 release 준비 ~95% (DOI 발급만 수락 대기)
+(Workspace 명칭 2026-05-19 부터 PINN-BOILING 으로 일반화. OneDrive 폴더 / GitHub repo 명은 인용 일관성 유지를 위해 pinn-onb01 그대로.)
+
+**최종 갱신:** 2026-05-19 (Stage 1 워크스페이스 재구조 + Phase 1.5 트랙 신설)
+**전체 진척:**
+- Phase 1 (pool boiling, 외부 corpus): **IJHMT 제출 완료** ✅ — review 대기
+- Phase 1.5 (in-house augmentation): **계획 단계** — Phase 1 review 기간 병행 진행 예정
+- Phase 2 (flow boiling): Future, Phase 1.5 완료 후
 
 ---
 
@@ -220,6 +225,58 @@
 | Repo archiving 토글 | ✅ ON |
 
 → 이제 **게재 수락 통보 대기**. 수락 통보 후 진행 절차는 `SETUP_GITHUB_ZENODO_GUIDE.md` § 6 참조.
+
+---
+
+## 2026-05-19 — Workspace 재구조 Stage 1 + Phase 1.5 트랙 신설
+
+### 워크스페이스 일반화
+- 명칭: `PINN-ONB01` → **`PINN-BOILING`** (다중 phase 일반화)
+- OneDrive 폴더 / GitHub repo (`UNIST-ITEL/pinn-onb01`) 는 Phase 1 인용 일관성 유지
+
+### 신규 폴더 구조 (Stage 1)
+| 폴더 | 상태 |
+|---|---|
+| `shared/` | ✅ 신설 (src/pinn_onb skeleton + docs + templates 디렉토리) |
+| `shared/src/pyproject.toml` | ✅ Python package `pinn_onb` 정의 |
+| `shared/src/pinn_onb/__init__.py` | ✅ Stage 1 shim (03_model/src 재export) |
+| `phase1p5_inhouse_augmentation/` | ✅ 전체 skeleton (data, experiments, analysis, manuscript) |
+| `phase1p5_inhouse_augmentation/data/raw/lab/` 4 출처 | ✅ 빈 폴더 (lee_2023_ichmt, lee_2024_ichmt, inhouse_corrosion, inhouse_biphilic) |
+| Phase 1 폴더 (01_survey~05_manuscript) | 무변경 (Stage 2 시 phase1_pool_boiling/ 로 이동) |
+
+### Phase 1.5 신규 에이전트 (2개)
+| Agent | 용도 |
+|---|---|
+| **lab-onb-labeler** | Lab boiling curve → ONB 라벨 자동 식별 (slope-change × 1.5 + Hsu envelope) |
+| **ood-evaluator** | Level 4 cross-lab generalization (LOO + Lab-as-OOD + Lab-only) |
+
+### Phase 1.5 신규 슬래시 명령 (5개)
+```
+/add-lab-source <name>       lab 출처 등록 + 폴더 생성
+/label-onb-lab <source>      lab-onb-labeler 호출
+/ablate-phase1p5             V0-V5 ablation sweep
+/ood-eval                    Level 4 검증
+/draft-phase1p5-section <n>  ICHMT short paper 섹션 작성
+```
+
+### 참조 문서 추가
+- `WORKSPACE_RESTRUCTURE_PROPOSAL.md` (옵션 C 선택, Stage 1-3 마이그레이션 전략)
+- `ONB_PINN_Phase1p5_InHouse_Augmentation_Plan.md` § 10 (에이전트 활용 보강)
+
+### 발표 자료 폴더 (presentations/)
+| 위치 | 용도 |
+|---|---|
+| `presentations/` (workspace) | Cross-phase: workspace overview, grant reports, lab meetings, thesis defense |
+| `phase1_pool_boiling/presentations/` | Phase 1 학회·세미나·포스터·진척보고 |
+| `phase1p5_inhouse_augmentation/presentations/` | Phase 1.5 동일 구성 |
+
+각 `presentations/` 내부: `slides/`, `posters/`, `reports/`, `outreach/`,
+`conference_abstracts/`. `.gitignore` 정책: Final PDF + Markdown 만 commit,
+editable source (`.pptx`, `.docx`, `.key`) 는 외부 보관.
+
+### 향후 마이그레이션
+- Stage 2 (Phase 1 수락 후): Phase 1 코드 → `phase1_pool_boiling/` + `shared/src/pinn_onb/` 분리
+- Stage 3 (Phase 2 시작): `phase2_flow_boiling/` 추가 (presentations/ 포함)
 
 ---
 

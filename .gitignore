@@ -112,6 +112,33 @@ __pycache__/
 Thumbs.db
 
 # ---------------------------------------------------------------------------
+# Presentations — keep final PDFs + .md only; exclude editable sources
+# (per workspace policy in presentations/README.md).
+# Final PDFs go in: phase*/presentations/{slides,posters,reports,outreach}/
+# Source files (.pptx, .key, .docx) are kept in external storage (OneDrive).
+# ---------------------------------------------------------------------------
+**/presentations/**/*.pptx
+**/presentations/**/*.ppt
+**/presentations/**/*.key
+**/presentations/**/*.docx
+**/presentations/**/*.doc
+**/presentations/**/*.ai
+**/presentations/**/*.psd
+**/presentations/**/*.sketch
+**/presentations/**/*.fig
+# PowerPoint / Word lock + temp files
+**/presentations/**/~$*
+**/presentations/**/*.tmp
+**/presentations/**/.~lock.*
+# Slides archive (working drafts kept local only) — keep .gitkeep for structure
+**/presentations/**/slides/archive/*
+!**/presentations/**/slides/archive/.gitkeep
+# README.md 항상 포함 (folder 사용법)
+!**/presentations/**/README.md
+# .gitkeep 항상 포함 (빈 folder 구조 유지)
+!**/presentations/**/.gitkeep
+
+# ---------------------------------------------------------------------------
 # Local Claude / agent transient files
 # ---------------------------------------------------------------------------
 .claude/local/
