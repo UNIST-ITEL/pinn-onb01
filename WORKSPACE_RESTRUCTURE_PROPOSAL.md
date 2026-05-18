@@ -17,7 +17,7 @@ PINN-ONB01/                          # 단일 평면 구조 (Phase 1만 가정)
 ├── 05_manuscript/
 ├── .claude/                         # 24 agents + 1 command
 ├── ONB_PINN_Phase1_Pool_Boiling_Plan.md
-├── ONB_PINN_Phase1p5_InHouse_Augmentation_Plan.md
+├── phase1p5_inhouse_augmentation/plan.md         (Phase 1.5 plan, 2026-05-19 이동)
 ├── ONB_PINN_Phase2_Flow_Boiling_Plan.md
 ├── PHASE_STATUS.md
 ├── RELEASE_CHECKLIST.md
@@ -188,7 +188,7 @@ PINN-ONB01/  (workspace root, github.com/UNIST-ITEL/pinn-onb01)
 │
 ├── phase1p5_inhouse_augmentation/           # Phase 1.5 (계획 단계)
 │   ├── README.md
-│   ├── plan.md → ONB_PINN_Phase1p5_InHouse_Augmentation_Plan.md
+│   ├── plan.md                              (Phase 1.5 상세 계획서)
 │   ├── data/
 │   │   ├── raw/lab/
 │   │   │   ├── lee_2023_ichmt/              # 출처 1

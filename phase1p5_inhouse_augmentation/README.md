@@ -22,7 +22,7 @@ Workspace 상위 `WORKSPACE_RESTRUCTURE_PROPOSAL.md` 의 옵션 C
 | OOD RMSE | (Phase 1 미측정) → **≤ 5.0 K + 명시 평가** |
 | Coverage | 98.7% → 유지 |
 
-자세한 사양: `../ONB_PINN_Phase1p5_InHouse_Augmentation_Plan.md` (workspace root)
+자세한 사양: `plan.md` (본 폴더 내)
 
 ## 데이터 소스 (4종)
 

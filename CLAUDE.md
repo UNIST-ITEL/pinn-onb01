@@ -47,7 +47,7 @@ PINN-BOILING/  (OS 상 OneDrive 폴더는 PINN-ONB01 유지)
 ├── RELEASE_CHECKLIST.md         release 절차
 ├── future_research_roadmap.md   30 후속 주제
 ├── ONB_PINN_Phase1_Pool_Boiling_Plan.md         Phase 1 plan
-├── ONB_PINN_Phase1p5_InHouse_Augmentation_Plan.md  Phase 1.5 plan
+├── phase1p5_inhouse_augmentation/plan.md         Phase 1.5 plan (이동: 2026-05-19)
 ├── ONB_PINN_Phase2_Flow_Boiling_Plan.md         Phase 2 plan
 ├── WORKSPACE_RESTRUCTURE_PROPOSAL.md            구조 변경 의사결정
 ├── SETUP_GITHUB_ZENODO_GUIDE.md
@@ -143,7 +143,7 @@ PINN-BOILING/  (OS 상 OneDrive 폴더는 PINN-ONB01 유지)
 | M4 학습/검증 | 1개월 | V0-V5 ablation + OOD matrix + calibration plot |
 | M5 작성 | 1개월 | ICHMT submission package |
 
-자세한 계획: `ONB_PINN_Phase1p5_InHouse_Augmentation_Plan.md`.
+자세한 계획: `phase1p5_inhouse_augmentation/plan.md`.
 
 ## 서브에이전트 / 슬래시 명령
 
@@ -177,7 +177,7 @@ PINN-BOILING/  (OS 상 OneDrive 폴더는 PINN-ONB01 유지)
 ## 참조 문서
 
 - Phase 1 계획서: `ONB_PINN_Phase1_Pool_Boiling_Plan.md`
-- Phase 1.5 계획서: `ONB_PINN_Phase1p5_InHouse_Augmentation_Plan.md`
+- Phase 1.5 계획서: `phase1p5_inhouse_augmentation/plan.md`
 - Phase 2 계획서: `ONB_PINN_Phase2_Flow_Boiling_Plan.md`
 - 워크스페이스 구조 변경 결정: `WORKSPACE_RESTRUCTURE_PROPOSAL.md`
 - 후속 연구 로드맵: `future_research_roadmap.md`

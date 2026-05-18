@@ -261,7 +261,7 @@
 
 ### 참조 문서 추가
 - `WORKSPACE_RESTRUCTURE_PROPOSAL.md` (옵션 C 선택, Stage 1-3 마이그레이션 전략)
-- `ONB_PINN_Phase1p5_InHouse_Augmentation_Plan.md` § 10 (에이전트 활용 보강)
+- `phase1p5_inhouse_augmentation/plan.md` § 10 (에이전트 활용 보강)
 
 ### 발표 자료 폴더 (presentations/)
 | 위치 | 용도 |

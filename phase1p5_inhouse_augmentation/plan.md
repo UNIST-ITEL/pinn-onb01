@@ -826,6 +826,7 @@ Phase 2 (IJHMT full paper) — "Extension to forced-convection flow boiling"
 
 ## 15. 본 계획서의 위치
 
-- **본 문서**: `ONB_PINN_Phase1p5_InHouse_Augmentation_Plan.md` (repo root)
+- **본 문서**: `phase1p5_inhouse_augmentation/plan.md` (Phase 1.5 폴더 내, 2026-05-19 이동)
+- **이전 위치**: `ONB_PINN_Phase1p5_InHouse_Augmentation_Plan.md` (workspace root, deprecated)
 - **로드맵 갱신 필요**: `future_research_roadmap.md` 에 A3-internal 트랙으로 정식 반영 (Phase 1.5 = A3-internal 매핑)
-- **PHASE_STATUS.md 갱신**: 현재 "Phase 1-4 완료, Phase 5 제출 완료" → Phase 1.5 트랙 추가
+- **PHASE_STATUS.md 갱신**: Phase 1.5 트랙 추가됨 (2026-05-19)
