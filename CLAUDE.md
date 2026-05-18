@@ -147,17 +147,17 @@ PINN-BOILING/  (OS 상 OneDrive 폴더는 PINN-ONB01 유지)
 
 ## 서브에이전트 / 슬래시 명령
 
-`.claude/agents/` (현재 26 agents):
+`.claude/agents/` (현재 27 agents):
 
-| Phase 1 (24개) | Phase 1.5 신규 (2개) |
-|---|---|
-| paper-card-extractor, bibtex-curator, coolprop-integrator, correlation-comparator, debug-diagnoser, ensemble-uq, figure-composer, figure-digitizer, gap-matrix-mapper, hpo-tuner, inverse-solver, latex-formatter, level1-verifier, loss-function-builder, physics-consistency-check, pinn-architect, preprocess-pipeline, reviewer-anticipator, section-drafter, surface-card-builder, surface-encoder-dev, survey-search, synthetic-data-gen, training-orchestrator | **lab-onb-labeler** (lab boiling curve → ONB labels), **ood-evaluator** (Level 4 cross-lab generalization) |
+| Phase 1 (24개) | Phase 1.5 신규 (2개) | Cross-phase (1개) |
+|---|---|---|
+| paper-card-extractor, bibtex-curator, coolprop-integrator, correlation-comparator, debug-diagnoser, ensemble-uq, figure-composer, figure-digitizer, gap-matrix-mapper, hpo-tuner, inverse-solver, latex-formatter, level1-verifier, loss-function-builder, physics-consistency-check, pinn-architect, preprocess-pipeline, reviewer-anticipator, section-drafter, surface-card-builder, surface-encoder-dev, survey-search, synthetic-data-gen, training-orchestrator | **lab-onb-labeler** (lab boiling curve → ONB labels), **ood-evaluator** (Level 4 cross-lab generalization) | **seminar-prompt-builder** (Phase manuscript → Claude Design prompt.md, 슬라이드 발표 자료) |
 
-`.claude/commands/` (현재 6 commands):
+`.claude/commands/` (현재 7 commands):
 
-| Phase 1 (1개) | Phase 1.5 신규 (5개) |
-|---|---|
-| /add-paper | /add-lab-source, /label-onb-lab, /ablate-phase1p5, /ood-eval, /draft-phase1p5-section |
+| Phase 1 (1개) | Phase 1.5 신규 (5개) | Cross-phase (1개) |
+|---|---|---|
+| /add-paper | /add-lab-source, /label-onb-lab, /ablate-phase1p5, /ood-eval, /draft-phase1p5-section | **/build-seminar-prompt** (Claude Design 용 발표 prompt) |
 
 호출 예: "paper-card-extractor 에이전트로 이 PDF 카드 만들어줘", "/ood-eval --mode lab-as-ood".
 
