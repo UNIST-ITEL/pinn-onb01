@@ -6,7 +6,7 @@
 **관련 문서**:
 - `future_research_roadmap.md` (A3-internal 신규 트랙)
 - `ONB_PINN_Phase1_Pool_Boiling_Plan.md` (원 1단계 계획)
-- `ONB_PINN_Phase2_Flow_Boiling_Plan.md` (2단계 계획, 본 1.5 이후)
+- `phase2_flow_boiling/plan.md` (2단계 계획, 본 1.5 이후)
 - `02_data/raw/experiment/MEASUREMENT_GUIDE.md` (데이터 입력 양식)
 - `04_analysis/reviewer_rebuttal.md` (예상 reviewer 질문 — 본 Phase가 직접 응답)
 

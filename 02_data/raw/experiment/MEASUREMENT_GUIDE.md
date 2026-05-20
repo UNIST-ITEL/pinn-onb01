@@ -213,7 +213,7 @@ ls 04_analysis/experiments/my_water_test_2026/
 > 모델 내부 ($\rho_v, \sigma, h_{fg}$ 등) 는 5 bar로 hard-coded. 다른 압력이면 정확도 저하 가능. `notes`에 명시 후 신중히 해석.
 
 **Q2.** 본 모델이 학습되지 않은 fluid (FC-72, ethanol 등)에 사용 가능한가?
-> 비추천. CoolProp이 fluid 물성을 모르면 inference 시 row drop. 그래도 시도하려면 fluid명을 변경 (예: water로 위장)할 수 있지만 결과는 의미 없음. 본격 적용은 Phase 2 multi-fluid 모델 (`ONB_PINN_Phase2_Flow_Boiling_Plan.md`) 완성 후.
+> 비추천. CoolProp이 fluid 물성을 모르면 inference 시 row drop. 그래도 시도하려면 fluid명을 변경 (예: water로 위장)할 수 있지만 결과는 의미 없음. 본격 적용은 Phase 2 multi-fluid 모델 (`phase2_flow_boiling/plan.md`) 완성 후.
 
 **Q3.** 시각화 없이 boiling curve slope 만으로 ONB 식별해도 되나?
 > 가능. 본 모델 학습 데이터의 58/82 라벨이 그렇게 식별됨. 단, slope threshold (대략 자연대류의 1.5배) 일관 적용. `notes`에 "slope-change heuristic" 명시.
@@ -254,5 +254,5 @@ ls 04_analysis/experiments/my_water_test_2026/
   - `02_data/processed/README.md` — dataset schema (12 columns)
   - `02_data/surface_cards/_index.md` — 기존 surface card 목록
   - `RELEASE_CHECKLIST.md` — 공개 release 절차
-  - `ONB_PINN_Phase2_Flow_Boiling_Plan.md` — flow boiling 확장 계획
+  - `phase2_flow_boiling/plan.md` — flow boiling 확장 계획
 - **이슈**: GitHub Issues (수락 후 `UNIST-ITEL/pinn-onb01`)

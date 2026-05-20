@@ -18,7 +18,7 @@ PINN-ONB01/                          # 단일 평면 구조 (Phase 1만 가정)
 ├── .claude/                         # 24 agents + 1 command
 ├── ONB_PINN_Phase1_Pool_Boiling_Plan.md
 ├── phase1p5_inhouse_augmentation/plan.md         (Phase 1.5 plan, 2026-05-19 이동)
-├── ONB_PINN_Phase2_Flow_Boiling_Plan.md
+├── phase2_flow_boiling/plan.md                    (Phase 2 plan, 2026-05-20 이동)
 ├── PHASE_STATUS.md
 ├── RELEASE_CHECKLIST.md
 └── (기타 release artifacts)

@@ -188,7 +188,7 @@ Aggregate 의 + 상관은 lab 간 표면 처리 차이 때문."
 ### Q6. "Flow boiling 확장 가능성?"
 
 **A**: "Phase 2 plan 보유 — transfer learning 기반.
-`ONB_PINN_Phase2_Flow_Boiling_Plan.md` 에 12개월 plan 작성. Phase 1.5 완료 후
+`phase2_flow_boiling/plan.md` 에 12개월 plan 작성. Phase 1.5 완료 후
 바로 진입."
 
 ---
