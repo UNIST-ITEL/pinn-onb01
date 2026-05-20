@@ -135,12 +135,14 @@ claude   # Phase 2 격리 컨텍스트 (root 안 들어감)
 
 ### Rule 5 — Phase 2 시작 시 추가 단계
 
+Phase 2 host 의 첫 설치 절차는 **`phase2_flow_boiling/SETUP_PHASE2_HOST.md`** 의 12 단계 가이드 참조. 요약:
+
 1. 사용자가 Phase 2 컴퓨터 hostname / username 확정 (사용자가 macmini 에 통보)
 2. **macmini (root maintainer)** 가 본 파일 갱신 (TBD → 실제 값) + `phase2_flow_boiling/CLAUDE.md` 헤더 갱신 + commit/push
 3. Phase 2 host 에서 OneDrive 동기화 + git pull
-4. Phase 2 host 에 Git auth (SSH 키 또는 PAT) 설치
-5. Phase 2 host: `cd phase2_flow_boiling && claude`
-6. 이후 모든 Phase 2 작업은 해당 폴더 안에서만 (root 진입 금지)
+4. Phase 2 host: Claude Code 설치 + Anthropic auth + Git auth (SSH 키 또는 PAT)
+5. Phase 2 host: `cd phase2_flow_boiling && claude` (first time — `--resume` 금지)
+6. 이후 모든 Phase 2 작업은 해당 폴더 안에서만 (root 진입 금지) + 매일 `git commit && git push` 로 macmini 와 동기화
 
 ### Rule 6 — 새 Phase (3+) 신설 시 절차
 
@@ -153,6 +155,7 @@ claude   # Phase 2 격리 컨텍스트 (root 안 들어감)
 |---|---|
 | 2026-05-20 | 본 파일 작성. Phase 2 host TBD 상태. Phase 2 폴더 skeleton 신설 |
 | 2026-05-20 | Setup vs Execution 역할 분리 섹션 추가. macmini 의 root maintainer 역할 명시. Phase 3+ 신설 절차 (Rule 6) 추가. |
+| 2026-05-20 | `phase2_flow_boiling/SETUP_PHASE2_HOST.md` (12 단계 host 설치 가이드) 작성 + Rule 5 에서 참조 |
 
 ## 관련 문서
 

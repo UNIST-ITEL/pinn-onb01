@@ -5,10 +5,15 @@
 
 ## 빠른 시작
 
+처음 설치하는 컴퓨터라면 먼저 **`SETUP_PHASE2_HOST.md` 의 12 단계 가이드** 를 따라 환경을 구성하세요 (약 30-60 분).
+
+설치 완료된 컴퓨터의 일상 작업:
+
 1. **본인의 컴퓨터가 Phase 2 host 인지 확인** — root `HOSTS.md`
 2. **CLAUDE.md 읽기** — 본 폴더 `CLAUDE.md`
 3. **Plan 검토** — `plan.md` (12개월 plan, M1-M5)
-4. **환경 확인** — `cd phase2_flow_boiling && claude` 로 진입 (root 진입 금지)
+4. **진입** — `cd phase2_flow_boiling && claude` (root 진입 금지)
+5. **종료 시** — `git commit && git push` 로 macmini 와 동기화
 
 ## 폴더 구조
 
@@ -16,6 +21,7 @@
 phase2_flow_boiling/
 ├── CLAUDE.md            컴퓨터 경고 + Phase 2 컨텍스트
 ├── README.md            본 파일
+├── SETUP_PHASE2_HOST.md Phase 2 host 컴퓨터 첫 설치 가이드 (12 단계)
 ├── plan.md              Phase 2 plan (이전: root ONB_PINN_Phase2_Flow_Boiling_Plan.md)
 ├── data/                raw/, processed/, surface_cards/
 ├── experiments/         checkpoints/, configs/, logs/

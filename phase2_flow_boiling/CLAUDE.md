@@ -43,11 +43,11 @@ phase2_flow_boiling/
 
 ## Phase 2 시작 단계 (체크리스트)
 
-`plan.md` § M1 참조. 시작 시:
+Phase 2 host 컴퓨터의 첫 설치는 **`SETUP_PHASE2_HOST.md`** (본 폴더, 12 단계) 참조. 본 phase 작업 시작 시:
 
-- [ ] **Step 1** — 담당자/hostname 확정 후 본 파일 § 컴퓨터 경고 헤더 + root `HOSTS.md` 갱신
-- [ ] **Step 2** — 해당 컴퓨터에 OneDrive sync 확인 + Git 설치 + PINN-ONB01 repo 접근 인증
-- [ ] **Step 3** — `cd phase2_flow_boiling && claude` 진입 (root 진입 금지)
+- [ ] **Step 1** — 담당자/hostname 확정 후 본 파일 § 컴퓨터 경고 헤더 + root `HOSTS.md` 갱신 (`SETUP_PHASE2_HOST.md` § 4)
+- [ ] **Step 2** — 해당 컴퓨터에 OneDrive sync 확인 + Claude Code 설치 + Git 인증 (`SETUP_PHASE2_HOST.md` § 1-3)
+- [ ] **Step 3** — `cd phase2_flow_boiling && claude` 진입 (root 진입 금지) (`SETUP_PHASE2_HOST.md` § 6)
 - [ ] **Step 4** — `plan.md` 의 M1 (서베이) 실행
 - [ ] **Step 5** — `shared/src/pinn_onb/` 의 Phase 1 모델 import 확인 (Stage 2 후) — 의존성 import path 검증
 
