@@ -1,5 +1,27 @@
 # PINN-BOILING — Multi-Phase Boiling ONB Research Workspace
 
+> ⚠️ **담당 컴퓨터 확인 — Workspace Root**
+>
+> 본 root 디렉토리는 **`macmini` (호스트: `MyHomeMiniui-Macmini.local`, 사용자: `myhomemini`)** 전용 작업 영역입니다.
+> Phase 1 (`01_survey/~05_manuscript/`, `phase1_pool_boiling/`) 과 Phase 1.5 (`phase1p5_inhouse_augmentation/`) 가 본 root 에서 진행됩니다.
+>
+> **🚫 Phase 2 담당 컴퓨터 (또는 macmini 가 아닌 모든 host) 는 본 root 에서 작업하지 마세요.**
+> - root 에서 파일 편집 시 OneDrive 충돌 (`xxx (Computer B의 충돌 복사본).md`) 발생 가능 → 코드 손상 위험
+> - root commit 은 Phase 1 history 를 fork 시킬 수 있음
+> - 세션 이력이 macmini 의 진행과 분리되어 중복/모순 작업 유발
+>
+> **Phase 2 host 는 반드시:**
+> ```bash
+> cd <OneDrive-path>/PINN-ONB01/phase2_flow_boiling
+> claude   # 이 폴더 안에서만 작업
+> ```
+>
+> 자신의 컴퓨터가 어느 phase 담당인지 확인: root `HOSTS.md` 참조.
+> 잘못된 컴퓨터에서 열었다면 즉시 Claude Code 종료 → 담당자(Jaeseon Lee, `leejs92@gmail.com`)에게 통보.
+> 운영 원리 전체: `claude-code-multi-project-guide.md`.
+
+---
+
 PINN(Physics-Informed Neural Network)을 이용한 풀비등 / 강제대류 비등 핵비등
 개시점(ONB, Onset of Nucleate Boiling) 예측 연구 워크스페이스.
 
