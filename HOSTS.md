@@ -11,7 +11,7 @@
 |---|---|---|---|---|---|
 | **Phase 1** (풀비등 ONB) | `macmini` | `MyHomeMiniui-Macmini.local` | Jaeseon Lee (`myhomemini`) | workspace root + `phase1_pool_boiling/` | ✅ IJHMT 제출 (review 대기) |
 | **Phase 1.5** (in-house augmentation) | `macmini` | `MyHomeMiniui-Macmini.local` | Jaeseon Lee (`myhomemini`) | `phase1p5_inhouse_augmentation/` | 진행 중 |
-| **Phase 2** (forced-convection flow boiling) | **TBD — 별도 컴퓨터** | TBD (사용자 채움) | TBD | `phase2_flow_boiling/` ONLY | 계획 단계 |
+| **Phase 2** (forced-convection flow boiling) | `macbook-air-6` | `MacBook-Air-6.local` | Jaeseon Lee (`mymachome`) | `phase2_flow_boiling/` ONLY | host setup 완료 (2026-05-21), M1 진입 대기 |
 | Phase 3+ | TBD | TBD | TBD | TBD | Roadmap |
 
 ### Workspace root maintainer
@@ -93,7 +93,7 @@ macmini 가 은퇴 / 사용자 변경 / 역할 재배정될 때:
 | 컴퓨터 | 허용되는 작업 디렉토리 |
 |---|---|
 | **macmini** | workspace root, `01_survey/~05_manuscript/`, `phase1_pool_boiling/`, `phase1p5_inhouse_augmentation/`, `shared/`, `presentations/` |
-| **Phase 2 컴퓨터** | `phase2_flow_boiling/` **만** (root, 다른 phase 폴더 진입 금지) |
+| **macbook-air-6** (`MacBook-Air-6.local`, `mymachome`) — Phase 2 host | `phase2_flow_boiling/` **만** (root, 다른 phase 폴더 진입 금지) |
 
 각 컴퓨터는 본 표의 **허용 디렉토리 안에서만 쓰기**해야 OneDrive 충돌을 회피합니다.
 다른 phase 폴더는 OneDrive 동기화로 보이지만 **참조 전용 (read-only)** 으로 취급합니다.
@@ -113,8 +113,8 @@ claude   # Phase 1.5 격리 컨텍스트
 ```
 
 ```bash
-# Phase 2 컴퓨터 — 반드시 phase2 폴더에서 진입
-cd <OneDrive-경로>/PINN-ONB01/phase2_flow_boiling
+# macbook-air-6 (Phase 2 host) — 반드시 phase2 폴더에서 진입
+cd ~/PINN-ONB01/phase2_flow_boiling   # symlink → /Users/mymachome/Library/CloudStorage/OneDrive-개인/Projects/PINN-ONB01
 claude   # Phase 2 격리 컨텍스트 (root 안 들어감)
 ```
 
@@ -156,6 +156,7 @@ Phase 2 host 의 첫 설치 절차는 **`phase2_flow_boiling/SETUP_PHASE2_HOST.m
 | 2026-05-20 | 본 파일 작성. Phase 2 host TBD 상태. Phase 2 폴더 skeleton 신설 |
 | 2026-05-20 | Setup vs Execution 역할 분리 섹션 추가. macmini 의 root maintainer 역할 명시. Phase 3+ 신설 절차 (Rule 6) 추가. |
 | 2026-05-20 | `phase2_flow_boiling/SETUP_PHASE2_HOST.md` (12 단계 host 설치 가이드) 작성 + Rule 5 에서 참조 |
+| 2026-05-21 | Phase 2 host 확정: `macbook-air-6` (`MacBook-Air-6.local`, `mymachome`, Jaeseon Lee). SETUP_PHASE2_HOST.md § 4 따라 본 파일 + `phase2_flow_boiling/CLAUDE.md` + root `CLAUDE.md` 일괄 갱신. B 측은 OneDrive 한글경로 우회 위해 `ln -s "/Users/mymachome/Library/CloudStorage/OneDrive-개인/Projects/PINN-ONB01" ~/PINN-ONB01` symlink 설치 완료 |
 
 ## 관련 문서
 

@@ -119,6 +119,15 @@ phase1p5_inhouse_augmentation/data/processed/onb_dataset_v1p5.csv
 *.swo
 *~
 Thumbs.db
+desktop.ini
+
+# OneDrive 충돌 복사본 — 2개 이상 host 가 동일 파일 동시 수정 시 자동 생성됨
+# (가이드 § 8.1 참조). commit 에 끼지 않도록 차단.
+*의 충돌 복사본*
+* (*의 충돌 복사본)*
+*Conflicted copy*
+* (Conflicted Copy*)*
+*-conflict-*
 
 # ---------------------------------------------------------------------------
 # Presentations — keep final PDFs + .md only; exclude editable sources

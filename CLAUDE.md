@@ -35,7 +35,7 @@ OneDrive 폴더명 / GitHub repo 명 (`UNIST-ITEL/pinn-onb01`)은 Phase 1 paper 
 |---|---|---|---|---|
 | **Phase 1** | 풀비등 ONB (외부 corpus, 표면 개질 중심) | ✅ IJHMT 제출, review 대기 | `01_survey/`, `02_data/`, `03_model/`, `04_analysis/`, `05_manuscript/` (Stage 2 시 `phase1_pool_boiling/`로 이동) | **macmini** |
 | **Phase 1.5** | In-house lab data augmentation (laser/corrosion/biphilic) | 진행 중 (계획 단계) ⭐ | `phase1p5_inhouse_augmentation/` | **macmini** |
-| **Phase 2** | Forced-convection subcooled flow boiling ONB | Future (Phase 1.5 후) | `phase2_flow_boiling/` (skeleton 신설 2026-05-20) | **별도 컴퓨터 (TBD)** |
+| **Phase 2** | Forced-convection subcooled flow boiling ONB | Future (Phase 1.5 후) | `phase2_flow_boiling/` (skeleton 신설 2026-05-20) | **`macbook-air-6`** (`MacBook-Air-6.local`, `mymachome`) — host setup 완료 2026-05-21 |
 | **Phase 3+** | Transient / multi-fluid / industrial 응용 | Roadmap | TBD | TBD |
 
 세부 컴퓨터 매핑 + 운영 규칙: `HOSTS.md` 참조. Multi-computer 운영 원리: `claude-code-multi-project-guide.md`.
@@ -65,7 +65,7 @@ PINN-BOILING/  (OS 상 OneDrive 폴더는 PINN-ONB01 유지)
 │   └── presentations/           Phase 1.5 발표·보고 자료
 │
 ├── phase2_flow_boiling/         Phase 2 (skeleton, 2026-05-20 신설)
-│   ├── CLAUDE.md                담당 컴퓨터 = 별도 컴퓨터 (TBD) 경고
+│   ├── CLAUDE.md                담당 컴퓨터 = macbook-air-6 (MacBook-Air-6.local, mymachome) 경고
 │   ├── plan.md                  Phase 2 plan (이전: root ONB_PINN_Phase2_Flow_Boiling_Plan.md)
 │   ├── data/, experiments/, analysis/, manuscript/, presentations/
 │
@@ -95,7 +95,7 @@ PINN-BOILING/  (OS 상 OneDrive 폴더는 PINN-ONB01 유지)
 | 컴퓨터 | 호스트명 | 담당 phase | 허용 작업 디렉토리 |
 |---|---|---|---|
 | **macmini** | `MyHomeMiniui-Macmini.local` (`myhomemini`) | Phase 1, Phase 1.5 | workspace root, `01_~05_`, `phase1_pool_boiling/`, `phase1p5_inhouse_augmentation/`, `shared/`, `presentations/` |
-| **Phase 2 host** | TBD (사용자 지정 시 `HOSTS.md` 갱신) | Phase 2 | `phase2_flow_boiling/` **만** (root, 다른 phase 폴더 진입 금지) |
+| **macbook-air-6** | `MacBook-Air-6.local` (`mymachome`) — Phase 2 host | Phase 2 | `phase2_flow_boiling/` **만** (root, 다른 phase 폴더 진입 금지) |
 
 각 phase 폴더의 `CLAUDE.md` 첫 줄에 **담당 컴퓨터 경고** 가 있어, 잘못된 컴퓨터에서 열었을 때 Claude 가 즉시 인지합니다.
 운영 규칙·실수 시나리오·예방 체크리스트: `claude-code-multi-project-guide.md`, 매핑 표: `HOSTS.md`.

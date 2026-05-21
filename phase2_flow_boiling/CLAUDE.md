@@ -2,13 +2,19 @@
 
 > ⚠️ **담당 컴퓨터 확인 — Phase 2**
 >
-> 본 phase 는 **별도 컴퓨터 (TBD — Phase 2 host)** 전용입니다.
+> 본 phase 는 **`macbook-air-6` (호스트: `MacBook-Air-6.local`, 사용자: `mymachome`, 담당: Jaeseon Lee `leejs92@gmail.com`)** 전용입니다.
 > **`macmini` (Phase 1 / 1.5 host)** 에서는 본 폴더의 파일을 **쓰지 마세요** (read-only 참조만 허용).
 >
-> 다른 컴퓨터에서 (예: macmini, Phase 2 가 아닌 host) 본 폴더를 열었다면 즉시 Claude Code 를 종료하세요.
-> Phase 2 작업 시작 시 root `HOSTS.md` 에서 본인의 hostname / username 을 확인 후 채워주세요.
+> 다른 컴퓨터에서 (예: macmini, `macbook-air-6` 가 아닌 host) 본 폴더를 열었다면 즉시 Claude Code 를 종료하세요.
+> 자신의 컴퓨터가 어느 phase 담당인지 확인: root `HOSTS.md` 참조.
 >
 > 운영 원리: root `claude-code-multi-project-guide.md` 참조.
+>
+> **B 측 권장 진입 경로** (한글 OneDrive 경로 우회용 symlink 사전 설치 완료):
+> ```bash
+> cd ~/PINN-ONB01/phase2_flow_boiling   # symlink → /Users/mymachome/Library/CloudStorage/OneDrive-개인/Projects/PINN-ONB01
+> claude
+> ```
 
 ## Phase 2 상태 (2026-05-20)
 
@@ -45,9 +51,9 @@ phase2_flow_boiling/
 
 Phase 2 host 컴퓨터의 첫 설치는 **`SETUP_PHASE2_HOST.md`** (본 폴더, 12 단계) 참조. 본 phase 작업 시작 시:
 
-- [ ] **Step 1** — 담당자/hostname 확정 후 본 파일 § 컴퓨터 경고 헤더 + root `HOSTS.md` 갱신 (`SETUP_PHASE2_HOST.md` § 4)
-- [ ] **Step 2** — 해당 컴퓨터에 OneDrive sync 확인 + Claude Code 설치 + Git 인증 (`SETUP_PHASE2_HOST.md` § 1-3)
-- [ ] **Step 3** — `cd phase2_flow_boiling && claude` 진입 (root 진입 금지) (`SETUP_PHASE2_HOST.md` § 6)
+- [x] **Step 1** — 담당자/hostname 확정 후 본 파일 § 컴퓨터 경고 헤더 + root `HOSTS.md` 갱신 (`SETUP_PHASE2_HOST.md` § 4) — **완료 2026-05-21** (macmini commit)
+- [x] **Step 2** — 해당 컴퓨터에 OneDrive sync 확인 + Claude Code 설치 + Git 인증 (`SETUP_PHASE2_HOST.md` § 1-3) — **완료 2026-05-21** (B 측)
+- [ ] **Step 3** — `cd ~/PINN-ONB01/phase2_flow_boiling && claude` 진입 (root 진입 금지) (`SETUP_PHASE2_HOST.md` § 6) — B 가 macmini 의 갱신 `git pull` 후 진행
 - [ ] **Step 4** — `plan.md` 의 M1 (서베이) 실행
 - [ ] **Step 5** — `shared/src/pinn_onb/` 의 Phase 1 모델 import 확인 (Stage 2 후) — 의존성 import path 검증
 
