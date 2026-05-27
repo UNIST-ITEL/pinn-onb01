@@ -36,10 +36,10 @@ README.md              ← 발표 메타데이터 (날짜, 장소, 청중, 변�
 
 | 출처 | 추출 항목 |
 |---|---|
-| Phase 1: `05_manuscript/sections/` | abstract, intro, results, conclusions narrative |
-| Phase 1: `05_manuscript/references.bib` | 핵심 인용 (Hsu, Basu, Jalili 2025 등) |
-| Phase 1: `04_analysis/figures/`, `05_manuscript/figures/` | figure 파일 + 메타데이터 |
-| Phase 1: `04_analysis/reviewer_rebuttal.md` | 예상 Q&A 후보 |
+| Phase 1: `phase1_pool_boiling/05_manuscript/sections/` | abstract, intro, results, conclusions narrative |
+| Phase 1: `phase1_pool_boiling/05_manuscript/references.bib` | 핵심 인용 (Hsu, Basu, Jalili 2025 등) |
+| Phase 1: `phase1_pool_boiling/04_analysis/figures/`, `phase1_pool_boiling/05_manuscript/figures/` | figure 파일 + 메타데이터 |
+| Phase 1: `phase1_pool_boiling/04_analysis/reviewer_rebuttal.md` | 예상 Q&A 후보 |
 | Phase 1.5: `phase1p5_inhouse_augmentation/plan.md`, `phase1p5_*/analysis/` | Phase 1.5 활용 시 |
 | 모든 phase: `PHASE_STATUS.md` | 진행 단계, 결과 요약 |
 
@@ -108,9 +108,9 @@ README.md              ← 발표 메타데이터 (날짜, 장소, 청중, 변�
 
 | Slide | File path (relative to workspace root) | Note |
 |---|---|---|
-| 4 | 05_manuscript/figures/fig01_methodology.png | architecture diagram |
-| 7 | 04_analysis/figures/parity_combined.png | PINN headline result |
-| 8 | 05_manuscript/figures/fig05_ablation.png | sensitivity |
+| 4 | phase1_pool_boiling/05_manuscript/figures/fig01_methodology.png | architecture diagram |
+| 7 | phase1_pool_boiling/04_analysis/figures/parity_combined.png | PINN headline result |
+| 8 | phase1_pool_boiling/05_manuscript/figures/fig05_ablation.png | sensitivity |
 | ... |
 
 ## Total: N files to upload

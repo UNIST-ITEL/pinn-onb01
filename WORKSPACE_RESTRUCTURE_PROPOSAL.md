@@ -352,14 +352,22 @@ To reproduce the results in this paper exactly:
 
 ### Stage 2 — Phase 1 게재 수락 후 정식 마이그레이션 (1-2주, 위험 ★★)
 
+> **부분 선행 실행 (2026-05-27):** 다른 phase 진행 중 root 구조 혼동이 커져, 아래 *이동* 부분만
+> **폴더명을 유지한 채** 먼저 실행했다. `git mv 01_survey 02_data 03_model 04_analysis 05_manuscript
+> phase1_pool_boiling/` — 즉 `phase1_pool_boiling/01_survey/` … `phase1_pool_boiling/05_manuscript/`
+> 형태. 폴더명을 유지했으므로 코드의 동적 root 탐색·config 상대경로가 그대로 동작해 코드 무수정
+> (단, `shared/src/pinn_onb/__init__.py` 의 legacy-src 경로 1줄만 갱신). `.gitignore` 규칙도
+> `phase1_pool_boiling/` 로 재anchor. **아래의 폴더명 변경(`→ survey/` 등) + `shared/src` 정식
+> 코드 분리 + `git tag` 은 수락 후 잔여 작업으로 남는다.**
+
 ```
-[Phase 1 수락 시점에 한 번에]
-01_survey/        →  phase1_pool_boiling/survey/
-02_data/          →  phase1_pool_boiling/data/
-03_model/         →  phase1_pool_boiling/experiments/
-                  +  shared/src/pinn_onb/ (정식 분리)
-04_analysis/      →  phase1_pool_boiling/analysis/
-05_manuscript/    →  phase1_pool_boiling/manuscript/
+[Phase 1 수락 시점에 한 번에 — 폴더명 변경 + 코드 분리 (잔여)]
+phase1_pool_boiling/01_survey/      →  phase1_pool_boiling/survey/
+phase1_pool_boiling/02_data/        →  phase1_pool_boiling/data/
+phase1_pool_boiling/03_model/       →  phase1_pool_boiling/experiments/
+                                    +  shared/src/pinn_onb/ (정식 분리)
+phase1_pool_boiling/04_analysis/    →  phase1_pool_boiling/analysis/
+phase1_pool_boiling/05_manuscript/  →  phase1_pool_boiling/manuscript/
 ```
 
 - `git tag phase1-v1.0-published` 발급 시점에 freeze

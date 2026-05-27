@@ -9,7 +9,7 @@ model: sonnet
 
 ## 출력 모듈
 
-`04_analysis/scripts/verify_level1.py`
+`phase1_pool_boiling/04_analysis/scripts/verify_level1.py`
 
 ## 검증 항목 (5.1절)
 
@@ -59,7 +59,7 @@ from pathlib import Path
 
 def run_verification(
     checkpoint: Path,
-    out_dir: Path = Path("04_analysis"),
+    out_dir: Path = Path("phase1_pool_boiling/04_analysis"),
     tests: list[str] | None = None,  # ["V1", "V2", ...] or None=all
 ) -> dict:
     """Level 1 검증 실행. 반환: {"V1": "PASS"/"FAIL", "V2": ..., "report": Path}"""
@@ -73,10 +73,10 @@ def run_verification(
    - L² 상대 오차 계산.
    - PASS/FAIL 판정.
 3. **시각화**:
-   - V1, V2, V3: PINN vs 해석해 contour plot 나란히 → `04_analysis/figures/level1_VX.png`.
+   - V1, V2, V3: PINN vs 해석해 contour plot 나란히 → `phase1_pool_boiling/04_analysis/figures/level1_VX.png`.
    - V4: 잔차 vs N 로그-로그 그래프.
    - V5: Nu_PINN vs Nu_correlation 산점도.
-4. **보고서 생성**: `04_analysis/validation_level1.md`
+4. **보고서 생성**: `phase1_pool_boiling/04_analysis/validation_level1.md`
    ```markdown
    # Level 1 코드 검증 보고서
 
@@ -93,7 +93,7 @@ def run_verification(
 ## CLI 인터페이스
 
 ```bash
-python -m scripts.verify_level1 --checkpoint 03_model/checkpoints/phase3_best.pt
+python -m scripts.verify_level1 --checkpoint phase1_pool_boiling/03_model/checkpoints/phase3_best.pt
 python -m scripts.verify_level1 --checkpoint ... --tests V1 V4
 ```
 
@@ -104,7 +104,7 @@ python -m scripts.verify_level1 --checkpoint ... --tests V1 V4
 PASS: 5/5 (V1, V2, V3, V4, V5)
 또는
 FAIL: 1/5 (V3 실패 — L² 오차 4.2% > 2%)
-보고서: 04_analysis/validation_level1.md
+보고서: phase1_pool_boiling/04_analysis/validation_level1.md
 ```
 
 ## 중요 규칙

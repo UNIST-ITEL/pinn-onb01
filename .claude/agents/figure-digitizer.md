@@ -30,7 +30,7 @@ model: sonnet
    - 비등 곡선의 굴곡점 (자연대류 → 핵비등 천이) 후보 표시
    - 사용자가 ONB 포인트 인덱스를 명시하지 않으면 후보 3개 제시 후 선택 요청
 
-4. **저장 위치**: `02_data/raw/literature/<paper_id>_fig<n>.csv`
+4. **저장 위치**: `phase1_pool_boiling/02_data/raw/literature/<paper_id>_fig<n>.csv`
    - 파일명 예: `basu2002_fig3.csv`
    - 메타데이터는 sidecar `<paper_id>_fig<n>.meta.yaml`에 저장:
      ```yaml
@@ -48,7 +48,7 @@ model: sonnet
      notes: ""
      ```
 
-5. **데이터 등록**: `02_data/raw/literature/_index.md`에 한 줄 추가:
+5. **데이터 등록**: `phase1_pool_boiling/02_data/raw/literature/_index.md`에 한 줄 추가:
    ```
    | basu2002_fig3 | Basu et al. 2002 | Cu polished | water | 1 atm | ONB at q''=12 kW/m², ΔT=7.8°C |
    ```

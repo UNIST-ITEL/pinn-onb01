@@ -9,8 +9,8 @@ model: sonnet
 
 ## 출력 모듈
 
-`04_analysis/scripts/make_figures.py` — 마스터 스크립트
-`04_analysis/scripts/figures/fig{N}_*.py` — Figure별 모듈
+`phase1_pool_boiling/04_analysis/scripts/make_figures.py` — 마스터 스크립트
+`phase1_pool_boiling/04_analysis/scripts/figures/fig{N}_*.py` — Figure별 모듈
 
 ## 표준 Figure 목록 (5.2절)
 
@@ -58,8 +58,8 @@ from pathlib import Path
 def make_figure(
     fig_id: int,                                # 1..8
     inputs: dict,                                # Figure별 필요 입력
-    out_dir: Path = Path("04_analysis/figures"),
-    publication_dir: Path = Path("05_manuscript/figures"),
+    out_dir: Path = Path("phase1_pool_boiling/04_analysis/figures"),
+    publication_dir: Path = Path("phase1_pool_boiling/05_manuscript/figures"),
     formats: list[str] = ["png", "pdf"],
 ) -> dict[str, Path]:
     """단일 Figure 생성. 반환: {format: path}"""
@@ -72,9 +72,9 @@ def make_all(model_outputs: dict, out_dir: Path) -> dict[int, list[Path]]:
 
 1. **입력 검증**: 각 Figure가 요구하는 데이터 존재 확인.
 2. **렌더링**:
-   - PNG (300 dpi) → `04_analysis/figures/`
-   - PDF, EPS → `05_manuscript/figures/` (저널 투고용)
-3. **caption 초안**: `04_analysis/figures/fig{N}_caption.md`에 1~3 문장 자동 작성.
+   - PNG (300 dpi) → `phase1_pool_boiling/04_analysis/figures/`
+   - PDF, EPS → `phase1_pool_boiling/05_manuscript/figures/` (저널 투고용)
+3. **caption 초안**: `phase1_pool_boiling/04_analysis/figures/fig{N}_caption.md`에 1~3 문장 자동 작성.
 4. **재현성**: 각 Figure를 단일 스크립트로 재현 가능하도록 (난수 시드 고정, 입력 경로 명시).
 
 ## Figure별 가이드

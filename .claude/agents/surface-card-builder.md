@@ -1,6 +1,6 @@
 ---
 name: surface-card-builder
-description: 표면 특성 raw 데이터(SEM/AFM 측정, 접촉각 측정, 거칠기 측정)를 표준 표면 카드(SFC-XXX) 형식으로 변환하여 02_data/surface_cards/에 저장한다. 사용자가 "표면 카드 만들어줘", "이 SEM 결과 등록" 등을 요청할 때 사용.
+description: 표면 특성 raw 데이터(SEM/AFM 측정, 접촉각 측정, 거칠기 측정)를 표준 표면 카드(SFC-XXX) 형식으로 변환하여 phase1_pool_boiling/02_data/surface_cards/에 저장한다. 사용자가 "표면 카드 만들어줘", "이 SEM 결과 등록" 등을 요청할 때 사용.
 tools: Read, Write, Edit, Bash
 model: sonnet
 ---
@@ -49,7 +49,7 @@ model: sonnet
 
 ## 작업 절차
 
-1. **시편 ID 부여**: `02_data/surface_cards/_index.md`에서 마지막 SFC 번호 확인 → 다음 번호 SFC-{NNN} 부여.
+1. **시편 ID 부여**: `phase1_pool_boiling/02_data/surface_cards/_index.md`에서 마지막 SFC 번호 확인 → 다음 번호 SFC-{NNN} 부여.
 2. **입력 파싱**:
    - 사용자 제공 raw 측정값을 표 형식으로 정리.
    - 누락 항목은 "측정 안 됨" 또는 "문헌 추정값" 명시.
@@ -64,8 +64,8 @@ model: sonnet
    - 공동 중앙값 r_c,med ∈ [공동 크기 범위]
    - 위반 시 경고 + 사용자 확인 요청 (수정하지 말 것).
 5. **저장**:
-   - 파일: `02_data/surface_cards/SFC-{NNN}.md`
-   - 인덱스 갱신: `02_data/surface_cards/_index.md`에 한 줄 추가
+   - 파일: `phase1_pool_boiling/02_data/surface_cards/SFC-{NNN}.md`
+   - 인덱스 갱신: `phase1_pool_boiling/02_data/surface_cards/_index.md`에 한 줄 추가
 6. **연결**: 출처 논문 카드가 있으면 paper_database.md의 해당 카드에 "→ SFC-{NNN}" 백링크 추가.
 
 ## 인덱스 형식
@@ -81,4 +81,4 @@ model: sonnet
 - 시편 ID 충돌 절대 금지. 인덱스를 항상 먼저 확인.
 - 측정 안 된 값을 추정으로 채우지 말 것 (PINN 학습 시 데이터 누설 방지).
 - 같은 시편의 시점이 다른 측정(예: 표면 처리 직후 vs 1주일 후)은 SFC-001a, SFC-001b로 분리.
-- ONB 결과는 표면 카드의 부수 정보일 뿐 — 학습 데이터는 별도 CSV(02_data/raw/)로 관리.
+- ONB 결과는 표면 카드의 부수 정보일 뿐 — 학습 데이터는 별도 CSV(phase1_pool_boiling/02_data/raw/)로 관리.

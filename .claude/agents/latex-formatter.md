@@ -19,7 +19,7 @@ model: sonnet
 ### 2. 약어 일관성
 - 첫 등장 시 풀이: "Physics-Informed Neural Network (PINN)".
 - 이후 약어만.
-- 약어 목록을 `05_manuscript/abbreviations.tex`에 별도 관리.
+- 약어 목록을 `phase1_pool_boiling/05_manuscript/abbreviations.tex`에 별도 관리.
 
 ### 3. Figure / Table 캡션
 - Figure: 동사구가 아닌 명사구로 시작. "Parity plot of...".
@@ -46,7 +46,7 @@ model: sonnet
 
 ```python
 def format_manuscript(
-    main_tex: Path = Path("05_manuscript/main.tex"),
+    main_tex: Path = Path("phase1_pool_boiling/05_manuscript/main.tex"),
     journal: str = "ijhmt",
     fix_in_place: bool = False,  # True면 자동 수정, False면 보고서만
 ) -> dict:
@@ -87,7 +87,7 @@ def format_manuscript(
   - ...
 
 컴파일 결과: 성공 (경고 2개)
-보고서: 05_manuscript/format_report.md
+보고서: phase1_pool_boiling/05_manuscript/format_report.md
 ```
 
 ## 중요 규칙

@@ -9,8 +9,8 @@ model: sonnet
 
 ## 출력 모듈
 
-`04_analysis/scripts/correlations.py` — 상관식 라이브러리
-`04_analysis/scripts/compare.py` — 비교 분석 실행
+`phase1_pool_boiling/04_analysis/scripts/correlations.py` — 상관식 라이브러리
+`phase1_pool_boiling/04_analysis/scripts/compare.py` — 비교 분석 실행
 
 ## 구현 상관식 (부록 A)
 
@@ -41,7 +41,7 @@ def basu_2002(q_flux, theta_contact, props, **kwargs) -> float:
 
 ## 비교 분석 흐름
 
-1. **테스트 셋 로드**: `02_data/processed/test.csv`.
+1. **테스트 셋 로드**: `phase1_pool_boiling/02_data/processed/test.csv`.
 2. **각 행에 대해** 다음 예측값 계산:
    - PINN (체크포인트 추론)
    - 5종 상관식
@@ -56,17 +56,17 @@ def basu_2002(q_flux, theta_contact, props, **kwargs) -> float:
    - 잔차 히스토그램
    - 표면 유형별 RMSE 바 차트
 5. **표 생성**:
-   - `04_analysis/tables/comparison_summary.csv`
-   - `04_analysis/tables/comparison_by_surface.csv`
-   - 동시에 Markdown 표로 `04_analysis/comparison_report.md`에 임베드.
+   - `phase1_pool_boiling/04_analysis/tables/comparison_summary.csv`
+   - `phase1_pool_boiling/04_analysis/tables/comparison_by_surface.csv`
+   - 동시에 Markdown 표로 `phase1_pool_boiling/04_analysis/comparison_report.md`에 임베드.
 
 ## 표준 인터페이스
 
 ```python
 def run_comparison(
     pinn_checkpoint: Path,
-    test_csv: Path = Path("02_data/processed/test.csv"),
-    out_dir: Path = Path("04_analysis"),
+    test_csv: Path = Path("phase1_pool_boiling/02_data/processed/test.csv"),
+    out_dir: Path = Path("phase1_pool_boiling/04_analysis"),
     baselines: list[str] = ["hsu", "davis-anderson", "bergles-rohsenow", "basu", "xgboost"],
 ) -> dict:
     """반환: {"summary": dict, "tables": list[Path], "figures": list[Path]}"""
@@ -85,8 +85,8 @@ def run_comparison(
 │ XGBoost             │ 2.05  │ 1.61 │ 0.91 │ 0.21  │
 └─────────────────────┴───────┴──────┴──────┴───────┘
 PINN vs 최강 baseline RMSE 개선: 9.8%
-표면별 breakdown: 04_analysis/tables/comparison_by_surface.csv
-Figure: 04_analysis/figures/parity_plot.png
+표면별 breakdown: phase1_pool_boiling/04_analysis/tables/comparison_by_surface.csv
+Figure: phase1_pool_boiling/04_analysis/figures/parity_plot.png
 ```
 
 ## 중요 규칙

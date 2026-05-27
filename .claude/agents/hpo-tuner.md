@@ -9,7 +9,7 @@ model: sonnet
 
 ## 출력 모듈
 
-`03_model/src/hpo.py`
+`phase1_pool_boiling/03_model/src/hpo.py`
 
 ## 탐색 공간 (기본)
 
@@ -41,7 +41,7 @@ def run_hpo(
     n_trials: int = 50,
     timeout_hours: float | None = None,
     study_name: str = "pinn-onb-hpo",
-    storage: str = "sqlite:///03_model/experiments/optuna.db",
+    storage: str = "sqlite:///phase1_pool_boiling/03_model/experiments/optuna.db",
     pruner: str = "median",
 ) -> optuna.Study:
     """전체 HPO 실행."""
@@ -49,7 +49,7 @@ def run_hpo(
 
 ## 작업 절차
 
-1. **base config 로드**: `03_model/configs/baseline.yaml`이 starting point.
+1. **base config 로드**: `phase1_pool_boiling/03_model/configs/baseline.yaml`이 starting point.
 2. **trial별 단축 학습**:
    - Phase 1: 1000 epochs (5000 → 1000)
    - Phase 2: 2000 epochs (8000 → 2000)
@@ -62,8 +62,8 @@ def run_hpo(
    - Top 5 trial 출력
    - param importances (Optuna built-in)
    - 시각화: `optuna.visualization.plot_optimization_history`, `plot_param_importances`
-   - PNG 저장: `04_analysis/figures/hpo_<study_name>.png`
-7. **best config 저장**: `03_model/configs/best_<study_name>.yaml`
+   - PNG 저장: `phase1_pool_boiling/04_analysis/figures/hpo_<study_name>.png`
+7. **best config 저장**: `phase1_pool_boiling/03_model/configs/best_<study_name>.yaml`
 
 ## CLI 인터페이스
 
@@ -87,7 +87,7 @@ Best 파라미터:
   1. lambda_data (0.42)
   2. hidden_size (0.31)
   3. ...
-저장: 03_model/configs/best_pinn-onb-hpo.yaml
+저장: phase1_pool_boiling/03_model/configs/best_pinn-onb-hpo.yaml
 ```
 
 ## 중요 규칙

@@ -9,7 +9,7 @@ model: sonnet
 
 ## 출력 모듈
 
-`04_analysis/scripts/verify_level3.py`
+`phase1_pool_boiling/04_analysis/scripts/verify_level3.py`
 
 ## 검증 항목 (5.1절 Level 3)
 
@@ -51,7 +51,7 @@ q''_input = h_nc · (T_wall - T_bulk) + q''_loss
 def run_consistency_check(
     checkpoint: Path,
     baseline: dict | None = None,  # 기본 변수값. None이면 표준 케이스 사용.
-    out_dir: Path = Path("04_analysis"),
+    out_dir: Path = Path("phase1_pool_boiling/04_analysis"),
 ) -> dict:
     """반환: {"C1": "PASS", "C2": ..., "C4_summary": {...}, "score": float}"""
 ```
@@ -78,10 +78,10 @@ BASELINE = {
 4. **C4 sweep**: 각 변수 20포인트 grid → Spearman ρ 계산.
 5. **C5 극한**: Ra=0.01, θ=0, ΔT_sub=0 케이스 추론.
 6. **시각화**:
-   - C4 sweep 5장 → `04_analysis/figures/trend_C4_X.png`
+   - C4 sweep 5장 → `phase1_pool_boiling/04_analysis/figures/trend_C4_X.png`
    - C2 분포 히스토그램
 7. **종합 점수**: PASS/FAIL × 항목 수 → 0~100 점.
-8. **보고서**: `04_analysis/validation_level3.md`.
+8. **보고서**: `phase1_pool_boiling/04_analysis/validation_level3.md`.
 
 ## 보고 형식
 

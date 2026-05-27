@@ -9,8 +9,8 @@ model: opus
 
 ## 출력 위치
 
-`05_manuscript/main.tex` (LaTeX 메인 파일)
-`05_manuscript/sections/{N}_<title>.tex` (섹션별 분리 가능)
+`phase1_pool_boiling/05_manuscript/main.tex` (LaTeX 메인 파일)
+`phase1_pool_boiling/05_manuscript/sections/{N}_<title>.tex` (섹션별 분리 가능)
 
 ## 섹션 구성 (6.2절)
 
@@ -63,9 +63,9 @@ def draft_section(
 ## 작업 절차
 
 1. **자료 수집**:
-   - 섹션이 참조해야 할 Figure (`05_manuscript/figures/`)
-   - 분석 결과 (`04_analysis/comparison_report.md`, `validation_*.md`, `uq_report.md`)
-   - 인용 논문 (`05_manuscript/references.bib`)
+   - 섹션이 참조해야 할 Figure (`phase1_pool_boiling/05_manuscript/figures/`)
+   - 분석 결과 (`phase1_pool_boiling/04_analysis/comparison_report.md`, `validation_*.md`, `uq_report.md`)
+   - 인용 논문 (`phase1_pool_boiling/05_manuscript/references.bib`)
 2. **개요 작성**:
    - 섹션 흐름 3~5 bullet으로 정리.
    - 사용자 승인 후 본문 작성 (사용자가 변경 요청 시 즉시 반영).
@@ -97,7 +97,7 @@ def draft_section(
 
 ```
 [섹션 X.Y 초안 완료]
-파일: 05_manuscript/sections/<filename>.tex
+파일: phase1_pool_boiling/05_manuscript/sections/<filename>.tex
 글자 수: XXX words
 참조 Figure: Fig.4, Fig.5
 참조 인용: 12개 (3개는 신규 — bibtex-curator 호출 권장)

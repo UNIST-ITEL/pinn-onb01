@@ -9,7 +9,7 @@ model: opus
 
 ## 출력 모듈
 
-`03_model/src/inverse.py`
+`phase1_pool_boiling/03_model/src/inverse.py`
 
 ## 문제 정의
 
@@ -81,7 +81,7 @@ class InverseModule(nn.Module):
    - SFC별 r_c_est vs r_c_SEM 산점도.
    - 신뢰구간 error bar.
    - 1:1 라인 + ±50% 구역.
-6. **보고서**: `04_analysis/inverse_problem_report.md`.
+6. **보고서**: `phase1_pool_boiling/04_analysis/inverse_problem_report.md`.
 
 ## 보고 형식
 
@@ -101,8 +101,8 @@ SEM 미측정 시편 (예측만):
   SFC-013: r_c_est = 6.2 μm
   ...
 
-Figure: 04_analysis/figures/inverse_rc_vs_sem.png
-보고서: 04_analysis/inverse_problem_report.md
+Figure: phase1_pool_boiling/04_analysis/figures/inverse_rc_vs_sem.png
+보고서: phase1_pool_boiling/04_analysis/inverse_problem_report.md
 ```
 
 ## 중요 규칙

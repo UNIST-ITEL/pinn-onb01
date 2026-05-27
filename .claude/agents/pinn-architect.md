@@ -9,7 +9,7 @@ model: opus
 
 ## 출력 모듈
 
-`03_model/src/pinn_model.py`
+`phase1_pool_boiling/03_model/src/pinn_model.py`
 
 ## 아키텍처 사양 (4.2절)
 
@@ -94,8 +94,8 @@ class FourierFeatures(nn.Module):
 
 ## 작업 절차
 
-1. `03_model/src/pinn_model.py` 작성.
-2. `03_model/src/test_pinn_model.py`로 형상 테스트 (forward shape 검증):
+1. `phase1_pool_boiling/03_model/src/pinn_model.py` 작성.
+2. `phase1_pool_boiling/03_model/src/test_pinn_model.py`로 형상 테스트 (forward shape 검증):
    ```python
    model = PoolBoilingPINN()
    x = torch.randn(64, 7)
@@ -110,7 +110,7 @@ class FourierFeatures(nn.Module):
 
 ```
 [PINN 메인 네트워크 생성 완료]
-파일: 03_model/src/pinn_model.py
+파일: phase1_pool_boiling/03_model/src/pinn_model.py
 파라미터 수: ~XX,XXX
 입력 차원: 7 (Fourier 후 X)
 출력: T*, ΔT*_ONB (+ r_c if inverse)

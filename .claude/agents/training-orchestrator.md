@@ -9,7 +9,7 @@ model: sonnet
 
 ## 출력 모듈
 
-`03_model/src/training.py`
+`phase1_pool_boiling/03_model/src/training.py`
 
 ## 학습 단계 (4.5절)
 
@@ -20,12 +20,12 @@ Phase 1: 해석해 기반 사전학습 (Warm-up)
   - Optimizer: Adam (lr=1e-3, 5000 epochs)
 
 Phase 2: 합성 데이터 학습
-  - 02_data/raw/synthetic/ 데이터 사용
+  - phase1_pool_boiling/02_data/raw/synthetic/ 데이터 사용
   - 다양한 q'', 표면 조건 조합
   - Optimizer: Adam (lr=1e-3 → 1e-4)
 
 Phase 3: 실험 데이터 미세 조정
-  - 02_data/processed/train.csv 사용
+  - phase1_pool_boiling/02_data/processed/train.csv 사용
   - L_ONB 활성화 (가중치 점진 증가)
   - Optimizer: Adam (lr=1e-4) → L-BFGS (max_iter=2000)
 
@@ -44,8 +44,8 @@ from pathlib import Path
 def run_training(
     config_path: Path,                     # configs/*.yaml
     phase: int | str = "all",              # 1, 2, 3, 4 또는 "all"
-    checkpoint_dir: Path = Path("03_model/checkpoints"),
-    mlflow_uri: str = "03_model/experiments",
+    checkpoint_dir: Path = Path("phase1_pool_boiling/03_model/checkpoints"),
+    mlflow_uri: str = "phase1_pool_boiling/03_model/experiments",
 ) -> dict:
     """지정 Phase부터 순차 실행. all이면 1→4 모두."""
 
@@ -61,7 +61,7 @@ def run_phase(
 
 ## Config YAML 형식
 
-`03_model/configs/baseline.yaml` 예시:
+`phase1_pool_boiling/03_model/configs/baseline.yaml` 예시:
 ```yaml
 seed: 42
 device: cuda
@@ -156,7 +156,7 @@ python -m src.training --config configs/baseline.yaml --phase 3 --resume checkpo
 시간: HH:MM:SS
 최종 손실: total=X.XX (conduction=..., bc=..., data=..., onb=...)
 검증 RMSE: ΔT_ONB X.X K
-체크포인트: 03_model/checkpoints/phaseX_best.pt
+체크포인트: phase1_pool_boiling/03_model/checkpoints/phaseX_best.pt
 MLflow run_id: ...
 다음 단계: Phase X+1
 ```

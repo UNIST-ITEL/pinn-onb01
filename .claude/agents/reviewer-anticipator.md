@@ -9,8 +9,8 @@ model: opus
 
 ## 출력 위치
 
-`05_manuscript/supplementary/reviewer_qa.md` — 예상 Q&A
-`05_manuscript/supplementary/additional_evidence/` — 보충 분석 자료
+`phase1_pool_boiling/05_manuscript/supplementary/reviewer_qa.md` — 예상 Q&A
+`phase1_pool_boiling/05_manuscript/supplementary/additional_evidence/` — 보충 분석 자료
 
 ## 표준 예상 질문 카테고리
 
@@ -50,9 +50,9 @@ model: opus
 
 ```python
 def anticipate_reviews(
-    manuscript_dir: Path = Path("05_manuscript"),
-    analysis_dir: Path = Path("04_analysis"),
-    out_dir: Path = Path("05_manuscript/supplementary"),
+    manuscript_dir: Path = Path("phase1_pool_boiling/05_manuscript"),
+    analysis_dir: Path = Path("phase1_pool_boiling/04_analysis"),
+    out_dir: Path = Path("phase1_pool_boiling/05_manuscript/supplementary"),
 ) -> Path:
     """예상 Q&A 보고서 생성. 반환: 보고서 경로."""
 ```
@@ -71,7 +71,7 @@ def anticipate_reviews(
 
    ## A (대응):
    - 핵심 근거: ...
-   - 보충 자료: 04_analysis/.../X.png
+   - 보충 자료: phase1_pool_boiling/04_analysis/.../X.png
    - 한계 인정 + 후속 연구 (Phase 2): ...
    ```
 4. **보충 분석 자료 권장**:
@@ -93,7 +93,7 @@ def anticipate_reviews(
   2. 비정상 케이스 1개 추가 시뮬 (3일) — Q D2 대응
   ...
 
-보고서: 05_manuscript/supplementary/reviewer_qa.md
+보고서: phase1_pool_boiling/05_manuscript/supplementary/reviewer_qa.md
 ```
 
 ## 중요 규칙

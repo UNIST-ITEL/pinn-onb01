@@ -1,6 +1,6 @@
 ---
 name: preprocess-pipeline
-description: 02_data/raw/의 원시 데이터(literature, experiment, synthetic)를 6단계 파이프라인(단위→물성→이상값→무차원→split→결측처리)으로 처리하여 02_data/processed/에 학습 가능한 형식으로 저장한다. 사용자가 "전처리", "파이프라인 실행", "데이터 정리" 등을 요청할 때 사용.
+description: phase1_pool_boiling/02_data/raw/의 원시 데이터(literature, experiment, synthetic)를 6단계 파이프라인(단위→물성→이상값→무차원→split→결측처리)으로 처리하여 phase1_pool_boiling/02_data/processed/에 학습 가능한 형식으로 저장한다. 사용자가 "전처리", "파이프라인 실행", "데이터 정리" 등을 요청할 때 사용.
 tools: Read, Write, Edit, Bash
 model: sonnet
 ---
@@ -31,7 +31,7 @@ model: sonnet
 
 ## 출력 모듈
 
-`03_model/src/data/preprocess.py` (없으면 생성)
+`phase1_pool_boiling/03_model/src/data/preprocess.py` (없으면 생성)
 
 ## 표준 인터페이스
 
@@ -41,8 +41,8 @@ import pandas as pd
 from pathlib import Path
 
 def run_pipeline(
-    raw_dir: Path = Path("02_data/raw"),
-    out_dir: Path = Path("02_data/processed"),
+    raw_dir: Path = Path("phase1_pool_boiling/02_data/raw"),
+    out_dir: Path = Path("phase1_pool_boiling/02_data/processed"),
     seed: int = 42,
 ) -> dict:
     """6단계 파이프라인 실행. 반환: {"train": df, "val": df, "test": df, "report": dict}"""
@@ -51,7 +51,7 @@ def run_pipeline(
 ## 작업 절차
 
 1. **현재 데이터 인벤토리**:
-   - `02_data/raw/literature/`, `02_data/raw/experiment/`, `02_data/raw/synthetic/`의 모든 CSV + meta.yaml 스캔.
+   - `phase1_pool_boiling/02_data/raw/literature/`, `phase1_pool_boiling/02_data/raw/experiment/`, `phase1_pool_boiling/02_data/raw/synthetic/`의 모든 CSV + meta.yaml 스캔.
    - 사용자에게 인벤토리 요약 보고: "총 N개 파일, ONB 포인트 M개, 표면 유형 K종"
 2. **모듈 작성/갱신**: 위 6단계를 각각 별도 함수로 분리.
    ```python
@@ -67,7 +67,7 @@ def run_pipeline(
 5. **무차원화 검증**: 알려진 상관식(Davis-Anderson 등)을 무차원 공간에서 재현 시도. 큰 편차면 사용자에게 보고.
 6. **출력 파일**:
    ```
-   02_data/processed/
+   phase1_pool_boiling/02_data/processed/
      ├─ train.csv
      ├─ val.csv
      ├─ test.csv

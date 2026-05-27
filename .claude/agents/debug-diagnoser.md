@@ -38,8 +38,8 @@ model: opus
 
 1. **로그 확인**:
    - MLflow run 또는 학습 로그 파일 읽기.
-   - 손실 곡선 (각 항 + total) 시각화 → `04_analysis/figures/debug_<run_id>.png`.
-2. **Forward 진단 스크립트 생성**: `04_analysis/scripts/diagnose_<run_id>.py`
+   - 손실 곡선 (각 항 + total) 시각화 → `phase1_pool_boiling/04_analysis/figures/debug_<run_id>.png`.
+2. **Forward 진단 스크립트 생성**: `phase1_pool_boiling/04_analysis/scripts/diagnose_<run_id>.py`
    - 체크포인트 로드
    - 무작위 입력에 대한 forward pass
    - 각 layer 활성화 평균/표준편차/0값 비율 출력
@@ -78,8 +78,8 @@ model: opus
   - 즉시: ...
   - 다음 학습 전: ...
 관련 파일:
-  - 04_analysis/figures/debug_XXX.png
-  - 04_analysis/scripts/diagnose_XXX.py
+  - phase1_pool_boiling/04_analysis/figures/debug_XXX.png
+  - phase1_pool_boiling/04_analysis/scripts/diagnose_XXX.py
 ```
 
 ## 중요 규칙

@@ -5,12 +5,12 @@ argument-hint: <PDF 경로 | DOI | URL | arXiv ID>
 
 # /add-paper — 논문 카드 추가
 
-본 명령은 **paper-card-extractor** 서브에이전트를 호출하여 입력 논문을 표준화된 카드 형식으로 추출하고 `01_survey/paper_database.md`에 append합니다.
+본 명령은 **paper-card-extractor** 서브에이전트를 호출하여 입력 논문을 표준화된 카드 형식으로 추출하고 `phase1_pool_boiling/01_survey/paper_database.md`에 append합니다.
 
 ## 입력 (`$ARGUMENTS`)
 
 다음 중 하나:
-- **로컬 PDF 경로**: 예) `01_survey/pdfs/HSU_JHT_1962_NucleationCavity.pdf`
+- **로컬 PDF 경로**: 예) `phase1_pool_boiling/01_survey/pdfs/HSU_JHT_1962_NucleationCavity.pdf`
 - **DOI**: 예) `10.1016/j.ijheatmasstransfer.2011.06.001`
 - **arXiv ID**: 예) `1907.04502` 또는 `arXiv:1907.04502`
 - **URL**: 예) `https://doi.org/10.1115/1.4050542`
@@ -20,9 +20,9 @@ argument-hint: <PDF 경로 | DOI | URL | arXiv ID>
 ## 처리 흐름
 
 1. **입력 분기**:
-   - PDF 경로 → `Read` 또는 `02_data/scripts/pdf_text.py`로 본문 추출
+   - PDF 경로 → `Read` 또는 `phase1_pool_boiling/02_data/scripts/pdf_text.py`로 본문 추출
    - DOI/URL → `WebFetch`로 메타데이터 + abstract 가져오기
-   - arXiv ID → `https://arxiv.org/pdf/{ID}.pdf`에서 `curl`로 다운로드 후 `01_survey/pdfs/`에 저장 → 본문 추출
+   - arXiv ID → `https://arxiv.org/pdf/{ID}.pdf`에서 `curl`로 다운로드 후 `phase1_pool_boiling/01_survey/pdfs/`에 저장 → 본문 추출
 
 2. **PDF 명명 규칙** (다운로드 시 적용):
    `{1저자성 대문자}_{저널약어}_{연도}_{핵심키워드}.pdf`
@@ -30,14 +30,14 @@ argument-hint: <PDF 경로 | DOI | URL | arXiv ID>
 
 3. **paper-card-extractor 호출**: `.claude/agents/paper-card-extractor.md`의 카드 형식·작업 절차 그대로 따름.
 
-4. **카드 추가 위치**: `01_survey/paper_database.md` 파일 끝의 "## 누적 카드" 섹션. 카드 사이 빈 줄 1개.
+4. **카드 추가 위치**: `phase1_pool_boiling/01_survey/paper_database.md` 파일 끝의 "## 누적 카드" 섹션. 카드 사이 빈 줄 1개.
 
 5. **(선택) 갭 매트릭스 갱신 트리거**: 새 카드가 5편 이상 누적되면 `gap-matrix-mapper` 에이전트 호출 권장 (자동 호출하지 않음 — 사용자 확인 필요).
 
 ## 사용 예
 
 ```
-/add-paper 01_survey/pdfs/HSU_JHT_1962_NucleationCavity.pdf
+/add-paper phase1_pool_boiling/01_survey/pdfs/HSU_JHT_1962_NucleationCavity.pdf
 /add-paper 10.1016/j.ijheatmasstransfer.2011.06.001
 /add-paper arXiv:1907.04502
 /add-paper 10.1063/1.4791682, arXiv:1211.1602

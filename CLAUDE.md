@@ -3,7 +3,7 @@
 > ⚠️ **담당 컴퓨터 확인 — Workspace Root**
 >
 > 본 root 디렉토리는 **`macmini` (호스트: `MyHomeMiniui-Macmini.local`, 사용자: `myhomemini`)** 전용 작업 영역입니다.
-> Phase 1 (`01_survey/~05_manuscript/`, `phase1_pool_boiling/`) 과 Phase 1.5 (`phase1p5_inhouse_augmentation/`) 가 본 root 에서 진행됩니다.
+> Phase 1 (`phase1_pool_boiling/`, 그 안에 `01_~05_` 산출물) 과 Phase 1.5 (`phase1p5_inhouse_augmentation/`) 가 본 root 에서 진행됩니다.
 >
 > **🚫 Phase 2 담당 컴퓨터 (또는 macmini 가 아닌 모든 host) 는 본 root 에서 작업하지 마세요.**
 > - root 에서 파일 편집 시 OneDrive 충돌 (`xxx (Computer B의 충돌 복사본).md`) 발생 가능 → 코드 손상 위험
@@ -33,14 +33,14 @@ OneDrive 폴더명 / GitHub repo 명 (`UNIST-ITEL/pinn-onb01`)은 Phase 1 paper 
 
 | Phase | 주제 | 상태 (2026-05-20) | 폴더 | 담당 컴퓨터 |
 |---|---|---|---|---|
-| **Phase 1** | 풀비등 ONB (외부 corpus, 표면 개질 중심) | ✅ IJHMT 제출, review 대기 | `01_survey/`, `02_data/`, `03_model/`, `04_analysis/`, `05_manuscript/` (Stage 2 시 `phase1_pool_boiling/`로 이동) | **macmini** |
+| **Phase 1** | 풀비등 ONB (외부 corpus, 표면 개질 중심) | ✅ IJHMT 제출, review 대기 | `phase1_pool_boiling/{01_survey,02_data,03_model,04_analysis,05_manuscript}/` (2026-05-27 root에서 이동, 폴더명 유지) | **macmini** |
 | **Phase 1.5** | In-house lab data augmentation (laser/corrosion/biphilic) | 진행 중 (계획 단계) ⭐ | `phase1p5_inhouse_augmentation/` | **macmini** |
 | **Phase 2** | Forced-convection subcooled flow boiling ONB | Future (Phase 1.5 후) | `phase2_flow_boiling/` (skeleton 신설 2026-05-20) | **`macbook-air-6`** (`MacBook-Air-6.local`, `mymachome`) — host setup 완료 2026-05-21 |
 | **Phase 3+** | Transient / multi-fluid / industrial 응용 | Roadmap | TBD | TBD |
 
 세부 컴퓨터 매핑 + 운영 규칙: `HOSTS.md` 참조. Multi-computer 운영 원리: `claude-code-multi-project-guide.md`.
 
-## 워크스페이스 구조 (현재, Stage 1)
+## 워크스페이스 구조 (현재, Stage 1 + Phase 1 폴더 이동 완료)
 
 ```
 PINN-BOILING/  (OS 상 OneDrive 폴더는 PINN-ONB01 유지)
@@ -50,9 +50,8 @@ PINN-BOILING/  (OS 상 OneDrive 폴더는 PINN-ONB01 유지)
 │   ├── docs/                    공통 기술 문서 (Stage 2 시 채워짐)
 │   └── templates/               빈 양식 (Stage 2 시 이동)
 │
-├── 01_survey/ ~ 05_manuscript/  Phase 1 (현 평면 구조, Stage 2 후 phase1_pool_boiling/ 로 이동)
-│
-├── phase1_pool_boiling/         Phase 1 (Stage 2 대비 placeholder)
+├── phase1_pool_boiling/         Phase 1 (풀비등 ONB; 2026-05-27 root → 본 폴더로 이동, 폴더명 유지)
+│   ├── 01_survey/ ~ 05_manuscript/   Phase 1 산출물 (이전 root 평면 구조)
 │   └── presentations/           Phase 1 발표·보고 자료 (slides, posters, reports, outreach, abstracts)
 │
 ├── phase1p5_inhouse_augmentation/  Phase 1.5 (신규)
@@ -94,18 +93,19 @@ PINN-BOILING/  (OS 상 OneDrive 폴더는 PINN-ONB01 유지)
 
 | 컴퓨터 | 호스트명 | 담당 phase | 허용 작업 디렉토리 |
 |---|---|---|---|
-| **macmini** | `MyHomeMiniui-Macmini.local` (`myhomemini`) | Phase 1, Phase 1.5 | workspace root, `01_~05_`, `phase1_pool_boiling/`, `phase1p5_inhouse_augmentation/`, `shared/`, `presentations/` |
+| **macmini** | `MyHomeMiniui-Macmini.local` (`myhomemini`) | Phase 1, Phase 1.5 | workspace root, `phase1_pool_boiling/` (`01_~05_` 포함), `phase1p5_inhouse_augmentation/`, `shared/`, `presentations/` |
 | **macbook-air-6** | `MacBook-Air-6.local` (`mymachome`) — Phase 2 host | Phase 2 | `phase2_flow_boiling/` **만** (root, 다른 phase 폴더 진입 금지) |
 
 각 phase 폴더의 `CLAUDE.md` 첫 줄에 **담당 컴퓨터 경고** 가 있어, 잘못된 컴퓨터에서 열었을 때 Claude 가 즉시 인지합니다.
 운영 규칙·실수 시나리오·예방 체크리스트: `claude-code-multi-project-guide.md`, 매핑 표: `HOSTS.md`.
 
-## 마이그레이션 단계 (2026-05-20 현재 Stage 1)
+## 마이그레이션 단계 (2026-05-27 현재 Stage 1 + Phase 1 폴더 이동)
 
 | Stage | 시점 | 작업 |
 |---|---|---|
-| **Stage 1 (현재)** | 2026-05-19 | `shared/` skeleton + `phase1p5_inhouse_augmentation/` 신설. Phase 1 평면 구조 유지 |
-| Stage 2 | Phase 1 수락 후 | Phase 1 코드를 `phase1_pool_boiling/` + `shared/src/pinn_onb/` 로 분리 |
+| **Stage 1** | 2026-05-19 | `shared/` skeleton + `phase1p5_inhouse_augmentation/` 신설. Phase 1 평면 구조 유지 |
+| **Phase 1 폴더 이동 (부분 Stage 2)** | 2026-05-27 ✅ | 구조 혼동 해소를 위해 `01_~05_`를 **폴더명 유지한 채** `phase1_pool_boiling/` 아래로 `git mv` (코드 무수정, history 보존). |
+| Stage 2 (정식, 잔여) | Phase 1 **수락 후** | 폴더명 변경 (`01_survey→survey/`, `03_model→experiments/` 등) + `shared/src/pinn_onb/` 코드 분리 + `git tag phase1-v1.0-published`. |
 | Stage 3 | Phase 2 시작 | `phase2_flow_boiling/` 추가 |
 
 세부 사항: `WORKSPACE_RESTRUCTURE_PROPOSAL.md`.
@@ -151,11 +151,11 @@ PINN-BOILING/  (OS 상 OneDrive 폴더는 PINN-ONB01 유지)
 - PyTorch dtype은 `torch.float32` 기본, 정밀 검증 시 `float64`.
 - 콜로케이션 포인트 샘플링은 LHS(Latin Hypercube Sampling) 사용.
 - 모든 손실 항목은 `loss_functions.py`에 1:1 함수로 분리 (디버깅 용이).
-- 학습 로그는 MLflow (Phase 1: `03_model/experiments/`, Phase 1.5: `phase1p5_inhouse_augmentation/experiments/logs/`).
+- 학습 로그는 MLflow (Phase 1: `phase1_pool_boiling/03_model/experiments/`, Phase 1.5: `phase1p5_inhouse_augmentation/experiments/logs/`).
 
 ## 도메인 지식 — 기억해 둘 사실
 
-- **ΔT_ONB 물리적 범위** (물, 대기압): 2~30 °C. 이 범위를 벗어나면 데이터/예측 오류 의심.
+- **ΔT_ONB 물리적 범위** (물, 대기압): 2~30 °C. 이 범위를 벗어나면 데이터/예측 오류 의심. **단 (Ver1.1, 2026-05-22): 강화 처리 표면 (pillar biphilic, skiving channel-confined nucleation 등) 은 ΔT < 2 K 가 정당할 수 있음. dataset schema 1.5.3 부터 위반 행을 제거하지 않고 `dT_below_admissible`, `dT_above_warn` boolean flag 컬럼으로 표기. 학습 시 가중치 조정으로 활용. 진단: `phase1p5_inhouse_augmentation/data/admissible_band_violations_v1p1.md`.**
 - **r_c 활성 공동 크기**: 1 < r_c < 100 μm. SEM/AFM 측정과 비교.
 - **물리적 경향성** (검증 시 필수 확인 5개):
   1. **q'' ↑ → ΔT_ONB ↑** — Hsu/Sato-Matsumura 공식 `ΔT_ONB ∝ √q''`. 단일 표면 boiling curve의 ΔT_wall 도 q와 함께 단조 증가.
@@ -165,7 +165,7 @@ PINN-BOILING/  (OS 상 OneDrive 폴더는 PINN-ONB01 유지)
   5. ΔT_sub ↑ → ΔT_ONB ↑
 - **기존 상관식 비교 대상** (필수): Hsu(1962), Davis-Anderson(1966), Bergles-Rohsenow(1964), Sato-Matsumura(1964), Basu et al.(2002).
 - **PINN 모델 특성**: 현 모델은 surface features (Ra, θ, category) → ΔT_ONB 직접 매핑. q_flux는 학습 시 PDE residual로만 사용되며 추론 시 직접 입력 아님. 동일 surface 의 여러 q'' 입력은 동일 예측 (정상 동작).
-- **Phase 1.5 신규 surface category**: `unist_laser`, `unist_corrosion`, `unist_biphilic` (Phase 1 외부 10 카테고리에 추가).
+- **Phase 1.5 신규 surface category (Ver1.1, 2026-05-22)**: `unist_laser`, `unist_corrosion`, `unist_biphilic`, `unist_skiving`, `unist_coating` — Phase 1 외부 10 카테고리에 추가하여 총 **15개**. Ver1.0 (3 신규) → Ver1.1 (5 신규) 확장: 학생 inventory 검토 결과 skiving (마이크로핀 채널) + coating (PDMS dipcoat) 별도 카테고리화. Ra='over_limit'/미측정 12 표면은 `Ra_unmeasurable_flag=True` + imputed Ra=18.32 μm 처리. 매핑 명세: `phase1p5_inhouse_augmentation/data/surface_category_mapping.md`.
 
 ## 단계별 산출물 책임
 
@@ -173,11 +173,11 @@ PINN-BOILING/  (OS 상 OneDrive 폴더는 PINN-ONB01 유지)
 
 | 단계 | 기간 | 폴더 | Go/No-Go |
 |-----|------|------|---------------|
-| ① 서베이 | M1-2 | `01_survey/` | 갭 존재 확인 ✅ |
-| ② 데이터 | M3-4 | `02_data/` | ONB 100+ ✅ (82 + 합성) |
-| ③ 모델링 | M5-7 | `03_model/` | 상관식 동등 이상 ✅ (RMSE 3.42K vs 7.21K) |
-| ④ 검증 | M8-9 | `04_analysis/` | 통계 개선 ✅ |
-| ⑤ 문서화 | M10-12 | `05_manuscript/` | IJHMT 제출 ✅ (2026-05-18) |
+| ① 서베이 | M1-2 | `phase1_pool_boiling/01_survey/` | 갭 존재 확인 ✅ |
+| ② 데이터 | M3-4 | `phase1_pool_boiling/02_data/` | ONB 100+ ✅ (82 + 합성) |
+| ③ 모델링 | M5-7 | `phase1_pool_boiling/03_model/` | 상관식 동등 이상 ✅ (RMSE 3.42K vs 7.21K) |
+| ④ 검증 | M8-9 | `phase1_pool_boiling/04_analysis/` | 통계 개선 ✅ |
+| ⑤ 문서화 | M10-12 | `phase1_pool_boiling/05_manuscript/` | IJHMT 제출 ✅ (2026-05-18) |
 
 ### Phase 1.5 (진행 중)
 
@@ -192,11 +192,11 @@ PINN-BOILING/  (OS 상 OneDrive 폴더는 PINN-ONB01 유지)
 
 ## 서브에이전트 / 슬래시 명령
 
-`.claude/agents/` (현재 27 agents):
+`.claude/agents/` (현재 28 agents):
 
-| Phase 1 (24개) | Phase 1.5 신규 (2개) | Cross-phase (1개) |
+| Phase 1 (24개) | Phase 1.5 신규 (2개) | Cross-phase (2개) |
 |---|---|---|
-| paper-card-extractor, bibtex-curator, coolprop-integrator, correlation-comparator, debug-diagnoser, ensemble-uq, figure-composer, figure-digitizer, gap-matrix-mapper, hpo-tuner, inverse-solver, latex-formatter, level1-verifier, loss-function-builder, physics-consistency-check, pinn-architect, preprocess-pipeline, reviewer-anticipator, section-drafter, surface-card-builder, surface-encoder-dev, survey-search, synthetic-data-gen, training-orchestrator | **lab-onb-labeler** (lab boiling curve → ONB labels), **ood-evaluator** (Level 4 cross-lab generalization) | **seminar-prompt-builder** (Phase manuscript → Claude Design prompt.md, 슬라이드 발표 자료) |
+| paper-card-extractor, bibtex-curator, coolprop-integrator, correlation-comparator, debug-diagnoser, ensemble-uq, figure-composer, figure-digitizer, gap-matrix-mapper, hpo-tuner, inverse-solver, latex-formatter, level1-verifier, loss-function-builder, physics-consistency-check, pinn-architect, preprocess-pipeline, reviewer-anticipator, section-drafter, surface-card-builder, surface-encoder-dev, survey-search, synthetic-data-gen, training-orchestrator | **lab-onb-labeler** (lab boiling curve → ONB labels), **ood-evaluator** (Level 4 cross-lab generalization) | **seminar-prompt-builder** (Phase manuscript → Claude Design prompt.md), **academic-writing-reviewer** (native-English style review, tone/voice/sentence-variety, 모든 phase manuscript 공통 적용) ⭐ |
 
 `.claude/commands/` (현재 7 commands):
 
@@ -208,10 +208,10 @@ PINN-BOILING/  (OS 상 OneDrive 폴더는 PINN-ONB01 유지)
 
 ## 작업 시 참고
 
-- 새 논문이 들어오면 먼저 `01_survey/paper_database.md`에 카드 추가 (Phase 1) 또는 `phase1p5_inhouse_augmentation/manuscript/references.bib` (Phase 1.5).
-- 새 외부 데이터셋은 `02_data/raw/`에 출처별 분리.
+- 새 논문이 들어오면 먼저 `phase1_pool_boiling/01_survey/paper_database.md`에 카드 추가 (Phase 1) 또는 `phase1p5_inhouse_augmentation/manuscript/references.bib` (Phase 1.5).
+- 새 외부 데이터셋은 `phase1_pool_boiling/02_data/raw/`에 출처별 분리.
 - 새 lab 데이터는 `phase1p5_inhouse_augmentation/data/raw/lab/<source>/` (Phase 1.5).
-- 모델 변경 시 반드시 새 YAML config 추가 (재현성). Phase 1: `03_model/configs/`, Phase 1.5: `phase1p5_inhouse_augmentation/experiments/configs/`.
+- 모델 변경 시 반드시 새 YAML config 추가 (재현성). Phase 1: `phase1_pool_boiling/03_model/configs/`, Phase 1.5: `phase1p5_inhouse_augmentation/experiments/configs/`.
 - Figure는 phase 별 `analysis/figures/`. 논문 EPS/PDF는 phase 별 `manuscript/figures/`.
 - **발표 자료**:
   - Phase 별 자료 (학회·세미나·포스터·보고서·outreach·abstract) → `phase*/presentations/`

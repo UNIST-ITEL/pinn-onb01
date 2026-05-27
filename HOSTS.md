@@ -92,7 +92,7 @@ macmini 가 은퇴 / 사용자 변경 / 역할 재배정될 때:
 
 | 컴퓨터 | 허용되는 작업 디렉토리 |
 |---|---|
-| **macmini** | workspace root, `01_survey/~05_manuscript/`, `phase1_pool_boiling/`, `phase1p5_inhouse_augmentation/`, `shared/`, `presentations/` |
+| **macmini** | workspace root, `phase1_pool_boiling/` (`01_~05_` 산출물 포함), `phase1p5_inhouse_augmentation/`, `shared/`, `presentations/` |
 | **macbook-air-6** (`MacBook-Air-6.local`, `mymachome`) — Phase 2 host | `phase2_flow_boiling/` **만** (root, 다른 phase 폴더 진입 금지) |
 
 각 컴퓨터는 본 표의 **허용 디렉토리 안에서만 쓰기**해야 OneDrive 충돌을 회피합니다.

@@ -9,7 +9,7 @@ model: opus
 
 ## 출력 모듈
 
-`03_model/src/surface_encoder.py`
+`phase1_pool_boiling/03_model/src/surface_encoder.py`
 
 ## 아키텍처 사양 (4.4절)
 
@@ -85,7 +85,7 @@ self.cat_embeddings = nn.ModuleList([
 | 4 | micro_nano_structured |
 | 5 | porous_sintered |
 
-매핑은 `03_model/src/data/coating_categories.yaml`에 외부화.
+매핑은 `phase1_pool_boiling/03_model/src/data/coating_categories.yaml`에 외부화.
 
 ### Physics-Mediated 출력 (선택, 방법 C)
 
@@ -98,9 +98,9 @@ self.cat_embeddings = nn.ModuleList([
 
 ## 작업 절차
 
-1. `03_model/src/surface_encoder.py` 작성.
-2. 코팅 카테고리 YAML 생성: `03_model/src/data/coating_categories.yaml`.
-3. 단위 테스트: `03_model/src/test_surface_encoder.py`
+1. `phase1_pool_boiling/03_model/src/surface_encoder.py` 작성.
+2. 코팅 카테고리 YAML 생성: `phase1_pool_boiling/03_model/src/data/coating_categories.yaml`.
+3. 단위 테스트: `phase1_pool_boiling/03_model/src/test_surface_encoder.py`
    ```python
    enc = SurfaceEncoder()
    enc.fit_normalizer(torch.randn(100, 8))
@@ -116,7 +116,7 @@ self.cat_embeddings = nn.ModuleList([
 
 ```
 [Surface Encoder 생성 완료]
-파일: 03_model/src/surface_encoder.py
+파일: phase1_pool_boiling/03_model/src/surface_encoder.py
 잠재 벡터 차원: 8
 지원 표면 카테고리: 6개
 정규화 방식: log + standard

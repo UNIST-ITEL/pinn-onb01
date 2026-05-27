@@ -15,11 +15,11 @@ This license covers the curated pool-boiling dataset associated with the paper
 Nucleate Boiling" (Lee et al., 2026, International Journal of Heat and Mass
 Transfer), specifically:
 
-  - 02_data/processed/boiling_curves.csv  (1361 rows x 14 columns)
-  - 02_data/processed/onb_dataset.csv     (82 rows x 12 columns)
-  - 02_data/surface_cards/*.yaml          (49 surface descriptor cards)
-  - 02_data/raw/digitization/*            (per-paper WebPlotDigitizer metadata)
-  - 02_data/processed/README.md           (column schema, units, provenance)
+  - phase1_pool_boiling/02_data/processed/boiling_curves.csv  (1361 rows x 14 columns)
+  - phase1_pool_boiling/02_data/processed/onb_dataset.csv     (82 rows x 12 columns)
+  - phase1_pool_boiling/02_data/surface_cards/*.yaml          (49 surface descriptor cards)
+  - phase1_pool_boiling/02_data/raw/digitization/*            (per-paper WebPlotDigitizer metadata)
+  - phase1_pool_boiling/02_data/processed/README.md           (column schema, units, provenance)
 
 The underlying raw figures from the seven primary references
 (BETZ_2013, BOURDON_2012, BOURDON_2015, JABARDO_2009, JONES_2009, JO_2011,

@@ -239,10 +239,10 @@
 |---|---|
 | `shared/` | ✅ 신설 (src/pinn_onb skeleton + docs + templates 디렉토리) |
 | `shared/src/pyproject.toml` | ✅ Python package `pinn_onb` 정의 |
-| `shared/src/pinn_onb/__init__.py` | ✅ Stage 1 shim (03_model/src 재export) |
+| `shared/src/pinn_onb/__init__.py` | ✅ Stage 1 shim (`phase1_pool_boiling/03_model/src` 재export) |
 | `phase1p5_inhouse_augmentation/` | ✅ 전체 skeleton (data, experiments, analysis, manuscript) |
 | `phase1p5_inhouse_augmentation/data/raw/lab/` 4 출처 | ✅ 빈 폴더 (lee_2023_ichmt, lee_2024_ichmt, inhouse_corrosion, inhouse_biphilic) |
-| Phase 1 폴더 (01_survey~05_manuscript) | 무변경 (Stage 2 시 phase1_pool_boiling/ 로 이동) |
+| Phase 1 폴더 (01_survey~05_manuscript) | ✅ 2026-05-27 `phase1_pool_boiling/` 아래로 이동 (폴더명 유지, 코드 무수정). 잔여 폴더명 변경+코드분리는 수락 후. |
 
 ### Phase 1.5 신규 에이전트 (2개)
 | Agent | 용도 |
@@ -303,7 +303,7 @@ editable source (`.pptx`, `.docx`, `.key`) 는 외부 보관.
 | Dataset DOI 사전 예약 (draft record) | Jaeseon Lee | ☐ 가이드 § 5 — 권장 |
 | Per-paper digitization metadata `.tar.gz` 패키징 | Eunjeong Ko | ☐ |
 | `requirements-lock.txt` 생성 (release 직전) | Gyuchang Kim | ☐ |
-| 02_data/processed/README.md placeholder DOI 치환 (수락 후) | Jaeseon Lee | ☐ |
+| phase1_pool_boiling/02_data/processed/README.md placeholder DOI 치환 (수락 후) | Jaeseon Lee | ☐ |
 
 ### 게재 수락 후 (Activation)
 | 항목 | 가이드 | 상태 |
@@ -321,7 +321,7 @@ editable source (`.pptx`, `.docx`, `.key`) 는 외부 보관.
 ## 빠른 빌드 명령
 
 ```bash
-cd /Users/myhomemini/Library/CloudStorage/OneDrive-개인/Projects/PINN-ONB01/05_manuscript
+cd /Users/myhomemini/Library/CloudStorage/OneDrive-개인/Projects/PINN-ONB01/phase1_pool_boiling/05_manuscript
 export PATH="/Library/TeX/texbin:$PATH"
 
 # 본문
@@ -341,25 +341,26 @@ python ../04_analysis/scripts/compose_composites.py
 ## 핵심 자료 위치
 
 ```
-01_survey/paper_database.md           # 25 paper cards
-01_survey/gap_matrix.md
-02_data/processed/onb_dataset.csv     # 82 ONB
-02_data/processed/boiling_curves.csv  # 1,361 pts + r_c_um 컬럼
-02_data/surface_cards/_index.md       # 49 surfaces
-03_model/checkpoints/baseline_phaseDbal/  # 최종 모델 (RMSE 3.42 K)
-03_model/checkpoints/ensemble_phaseDbal/  # K=10 (coverage 98.7%)
-03_model/configs/baseline_phaseDbal.yaml
-04_analysis/native_tone_review_sec{1..6}.md  # 128 발견 + 적용 기록
-04_analysis/scripts/compose_composites.py
-05_manuscript/main.tex                 # elsarticle, 33 pages
-05_manuscript/cover_letter.tex         # 2 pages
-05_manuscript/sections/                # 6 body sections + abstract/highlights/nomenclature
-05_manuscript/references.bib           # 28 entries
-05_manuscript/figures/                 # 22 단일 + 2 composite, 300 dpi
-05_manuscript/supplementary/
+# Phase 1 산출물은 2026-05-27 phase1_pool_boiling/ 아래로 이동 (폴더명 유지)
+phase1_pool_boiling/01_survey/paper_database.md           # 25 paper cards
+phase1_pool_boiling/01_survey/gap_matrix.md
+phase1_pool_boiling/02_data/processed/onb_dataset.csv     # 82 ONB
+phase1_pool_boiling/02_data/processed/boiling_curves.csv  # 1,361 pts + r_c_um 컬럼
+phase1_pool_boiling/02_data/surface_cards/_index.md       # 49 surfaces
+phase1_pool_boiling/03_model/checkpoints/baseline_phaseDbal/  # 최종 모델 (RMSE 3.42 K)
+phase1_pool_boiling/03_model/checkpoints/ensemble_phaseDbal/  # K=10 (coverage 98.7%)
+phase1_pool_boiling/03_model/configs/baseline_phaseDbal.yaml
+phase1_pool_boiling/04_analysis/native_tone_review_sec{1..6}.md  # 128 발견 + 적용 기록
+phase1_pool_boiling/04_analysis/scripts/compose_composites.py
+phase1_pool_boiling/05_manuscript/main.tex                 # elsarticle, 33 pages
+phase1_pool_boiling/05_manuscript/cover_letter.tex         # 2 pages
+phase1_pool_boiling/05_manuscript/sections/                # 6 body sections + abstract/highlights/nomenclature
+phase1_pool_boiling/05_manuscript/references.bib           # 28 entries
+phase1_pool_boiling/05_manuscript/figures/                 # 22 단일 + 2 composite, 300 dpi
+phase1_pool_boiling/05_manuscript/supplementary/
   supplementary.tex                    # 10 supp figs + 1 supp table
 
-# 공개 release 준비물 (2026-05-18 오후 추가)
+# 공개 release 준비물 (2026-05-18 오후 추가; root 유지)
 LICENSE-CODE                           # MIT
 LICENSE-DATA                           # CC-BY-4.0
 CITATION.cff                           # 기계 가독 인용 메타데이터
@@ -368,5 +369,5 @@ RELEASE_CHECKLIST.md                   # Phase 0/1/2 timeline
 SETUP_GITHUB_ZENODO_GUIDE.md           # 7단계 setup 가이드
 requirements.txt                       # 14 패키지, 상한 포함
 environment.yml                        # conda variant
-02_data/processed/README.md            # CSV schema + citation 의무
+phase1_pool_boiling/02_data/processed/README.md            # CSV schema + citation 의무
 ```

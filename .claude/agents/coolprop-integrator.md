@@ -9,7 +9,7 @@ model: sonnet
 
 ## 출력 모듈 위치
 
-`03_model/src/utils/properties.py` (없으면 생성)
+`phase1_pool_boiling/03_model/src/utils/properties.py` (없으면 생성)
 
 ## 표준 인터페이스
 
@@ -48,7 +48,7 @@ def saturation_properties(P: float, fluid: str = "Water") -> SaturationPropertie
    - 위 인터페이스 + 모든 물성을 한 번의 CoolProp 호출 batch로 계산 (성능).
    - 입력 검증: P가 [10 kPa, 10 MPa] 범위 밖이면 raise.
    - 캐싱: `functools.lru_cache(maxsize=256)` 적용 (동일 (P, fluid)면 재계산 회피).
-3. **검증 스크립트 생성**: `03_model/src/utils/test_properties.py`
+3. **검증 스크립트 생성**: `phase1_pool_boiling/03_model/src/utils/test_properties.py`
    - 1 atm 물 기준 알려진 값과 비교:
      - T_sat ≈ 373.15 K
      - ρ_l ≈ 958.3 kg/m³
@@ -68,7 +68,7 @@ def saturation_properties(P: float, fluid: str = "Water") -> SaturationPropertie
 
 ```
 [CoolProp 모듈 생성 완료]
-파일: 03_model/src/utils/properties.py
+파일: phase1_pool_boiling/03_model/src/utils/properties.py
 지원 유체: Water, FC-72, HFE-7100
 검증 결과: 1 atm 물 기준 모든 물성 0.5% 이내 일치
 ```

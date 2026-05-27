@@ -9,7 +9,7 @@ model: opus
 
 ## 출력 모듈
 
-`03_model/src/loss_functions.py`
+`phase1_pool_boiling/03_model/src/loss_functions.py`
 
 ## 손실 함수 구조 (4.3절)
 
@@ -126,12 +126,12 @@ def total_loss(
 
 ## 작업 절차
 
-1. `03_model/src/loss_functions.py` 작성.
+1. `phase1_pool_boiling/03_model/src/loss_functions.py` 작성.
 2. 단위 테스트:
    - 1D 해석해 ∇²T = 0 만족하는 T(x)에서 L_conduction ≈ 0
    - 합성 데이터로 L_data 형상 확인
    - Hsu 기준에서 ΔT_pred = ΔT_Hsu일 때 L_ONB ≈ 0
-3. 가중치 튜닝 가이드 문서: `03_model/src/loss_functions_README.md`
+3. 가중치 튜닝 가이드 문서: `phase1_pool_boiling/03_model/src/loss_functions_README.md`
    - GradNorm 적용 시 가중치 자동 조정 방법
    - 학습 초기 vs 후기 권장 λ 스케줄
 

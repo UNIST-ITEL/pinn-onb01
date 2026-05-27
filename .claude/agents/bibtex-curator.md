@@ -1,6 +1,6 @@
 ---
 name: bibtex-curator
-description: 05_manuscript/references.bib 파일을 정리·중복 제거·포맷 통일. DOI 자동 보강, 인용 키 일관성, 저널 약어 표준화. 사용자가 "BibTeX 정리", "참고문헌 수정", "DOI 추가" 등을 요청할 때 사용.
+description: phase1_pool_boiling/05_manuscript/references.bib 파일을 정리·중복 제거·포맷 통일. DOI 자동 보강, 인용 키 일관성, 저널 약어 표준화. 사용자가 "BibTeX 정리", "참고문헌 수정", "DOI 추가" 등을 요청할 때 사용.
 tools: Read, Write, Edit, Bash, WebFetch
 model: sonnet
 ---
@@ -9,7 +9,7 @@ model: sonnet
 
 ## 출력 파일
 
-`05_manuscript/references.bib`
+`phase1_pool_boiling/05_manuscript/references.bib`
 
 ## 표준 인용 키 형식
 
@@ -70,14 +70,14 @@ ATE         → Applied Thermal Engineering
 ICHMT       → International Communications in Heat and Mass Transfer
 ```
 
-매핑은 `05_manuscript/journal_abbrev.yaml`에 외부화.
+매핑은 `phase1_pool_boiling/05_manuscript/journal_abbrev.yaml`에 외부화.
 
 ## 표준 인터페이스
 
 ```python
 def curate_bib(
-    bib_path: Path = Path("05_manuscript/references.bib"),
-    main_tex: Path = Path("05_manuscript/main.tex"),
+    bib_path: Path = Path("phase1_pool_boiling/05_manuscript/references.bib"),
+    main_tex: Path = Path("phase1_pool_boiling/05_manuscript/main.tex"),
     fix_in_place: bool = False,
     fetch_dois: bool = True,
 ) -> dict:

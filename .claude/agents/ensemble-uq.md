@@ -9,8 +9,8 @@ model: sonnet
 
 ## 출력 모듈
 
-`03_model/src/ensemble.py` (학습)
-`04_analysis/scripts/uq_analysis.py` (분석)
+`phase1_pool_boiling/03_model/src/ensemble.py` (학습)
+`phase1_pool_boiling/04_analysis/scripts/uq_analysis.py` (분석)
 
 ## 방법 (5.3절)
 
@@ -49,7 +49,7 @@ def predict_ensemble(
 def uq_report(
     checkpoint_dir: Path,
     test_csv: Path,
-    out_dir: Path = Path("04_analysis"),
+    out_dir: Path = Path("phase1_pool_boiling/04_analysis"),
 ) -> Path:
     """전체 UQ 분석 보고서 생성."""
 ```
@@ -74,7 +74,7 @@ def uq_report(
    - σ_epi vs 데이터 밀도 (sanity check)
 5. **추가 실험 우선순위**:
    - σ_epi 큰 표면 유형 → 추가 데이터 권장.
-   - 이를 `04_analysis/active_learning_priorities.md`로 저장.
+   - 이를 `phase1_pool_boiling/04_analysis/active_learning_priorities.md`로 저장.
 
 ## 보고 형식
 
@@ -91,8 +91,8 @@ Calibration: slightly under-confident
   ...
 권장: porous_sintered 표면 추가 측정 우선.
 
-Figure: 04_analysis/figures/uq_calibration.png, uq_per_surface.png
-보고서: 04_analysis/uq_report.md
+Figure: phase1_pool_boiling/04_analysis/figures/uq_calibration.png, uq_per_surface.png
+보고서: phase1_pool_boiling/04_analysis/uq_report.md
 ```
 
 ## 중요 규칙

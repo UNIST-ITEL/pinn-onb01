@@ -1,6 +1,6 @@
 ---
 name: gap-matrix-mapper
-description: 01_survey/paper_database.md의 누적된 논문 카드들을 스캔하여 갭 분석 매트릭스(gap_matrix.md)를 자동으로 갱신한다. 새 논문 카드가 5편 이상 추가됐거나, 사용자가 "갭 분석 갱신", "매트릭스 업데이트"를 요청할 때 사용.
+description: phase1_pool_boiling/01_survey/paper_database.md의 누적된 논문 카드들을 스캔하여 갭 분석 매트릭스(gap_matrix.md)를 자동으로 갱신한다. 새 논문 카드가 5편 이상 추가됐거나, 사용자가 "갭 분석 갱신", "매트릭스 업데이트"를 요청할 때 사용.
 tools: Read, Write, Edit
 model: sonnet
 ---
@@ -19,7 +19,7 @@ model: sonnet
 
 ## 작업 절차
 
-1. `01_survey/paper_database.md`를 Read로 전체 로드.
+1. `phase1_pool_boiling/01_survey/paper_database.md`를 Read로 전체 로드.
 2. 각 카드를 파싱하여 구조화 (분류, 비등 유형, 가열 형상, 표면 특성, 핵심 기여).
 3. **풀비등** 논문만 필터링 (강제대류 카드는 본 매트릭스에서 제외, 부수 참고만).
 4. 각 (행, 열) 셀에 해당 논문 수를 카운트.
@@ -27,7 +27,7 @@ model: sonnet
    - ✅ 충분: 5편 이상
    - ⚠️ 부분적: 2~4편
    - ❌ 공백: 0~1편
-6. `01_survey/gap_matrix.md`의 매트릭스 블록을 Edit으로 갱신.
+6. `phase1_pool_boiling/01_survey/gap_matrix.md`의 매트릭스 블록을 Edit으로 갱신.
 7. **갭 우선순위 도출**: ❌ 셀 중에서 본 연구가 기여 가능한 것 Top 3 선정. 기준:
    - PINN 열에 ❌가 있고 다른 열에 ✅/⚠️가 있다 → "PINN 적용 기회"
    - 데이터가 풍부한 행 + PINN ❌ → 1순위

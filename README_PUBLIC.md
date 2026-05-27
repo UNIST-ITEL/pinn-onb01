@@ -53,7 +53,7 @@ conda activate pinn-onb01
 make figures
 
 # 4. Train a single PINN from scratch
-python -m pinn_onb.train --config 03_model/configs/baseline.yaml
+python -m pinn_onb.train --config phase1_pool_boiling/03_model/configs/baseline.yaml
 
 # 5. Reproduce the deep ensemble (K=10)
 make ensemble
@@ -68,21 +68,22 @@ CPU runs work but are noticeably slower.
 
 ```
 .
-├── 02_data/
-│   ├── processed/
-│   │   ├── boiling_curves.csv     # 1361 × 14
-│   │   ├── onb_dataset.csv        # 82 × 12
-│   │   └── surface_cards/         # 49 surface descriptor cards (YAML)
-│   └── raw/
-│       └── digitization/          # WebPlotDigitizer metadata per paper
-├── 03_model/
-│   ├── src/pinn_onb/              # PyTorch source
-│   ├── configs/                   # YAML hyperparameter configs
-│   └── checkpoints/ensemble_k10/  # 10 trained PINN ensemble members
-├── 04_analysis/
-│   ├── scripts/                   # figure / table reproduction
-│   ├── notebooks/                 # interactive Jupyter notebooks
-│   └── figures/                   # PNG outputs
+├── phase1_pool_boiling/           # Phase 1 deliverables (relocated 2026-05-27)
+│   ├── 02_data/
+│   │   ├── processed/
+│   │   │   ├── boiling_curves.csv # 1361 × 14
+│   │   │   ├── onb_dataset.csv    # 82 × 12
+│   │   │   └── surface_cards/     # 49 surface descriptor cards (YAML)
+│   │   └── raw/
+│   │       └── digitization/      # WebPlotDigitizer metadata per paper
+│   ├── 03_model/
+│   │   ├── src/pinn_onb/          # PyTorch source
+│   │   ├── configs/               # YAML hyperparameter configs
+│   │   └── checkpoints/ensemble_k10/  # 10 trained PINN ensemble members
+│   └── 04_analysis/
+│       ├── scripts/               # figure / table reproduction
+│       ├── notebooks/             # interactive Jupyter notebooks
+│       └── figures/               # PNG outputs
 ├── LICENSE-CODE                   # MIT (covers all source code)
 ├── LICENSE-DATA                   # CC-BY-4.0 (covers all CSV/YAML data)
 ├── CITATION.cff                   # machine-readable citation metadata
@@ -119,7 +120,7 @@ training because CoolProp does not provide a validated equation of state for
 FC-77).
 
 Column schemas, units, and the source-paper mapping are documented in
-`02_data/processed/README.md`.
+`phase1_pool_boiling/02_data/processed/README.md`.
 
 ---
 
@@ -164,7 +165,7 @@ Please cite **both** the paper and the dataset:
 
 Users of the underlying experimental data should additionally cite the
 relevant primary sources (mapping provided in
-`02_data/processed/README.md`).
+`phase1_pool_boiling/02_data/processed/README.md`).
 
 ---
 
@@ -172,8 +173,8 @@ relevant primary sources (mapping provided in
 
 | Component | License |
 |---|---|
-| Source code (`03_model/`, `04_analysis/scripts/`, notebooks) | **MIT** — see [LICENSE-CODE](LICENSE-CODE) |
-| Curated dataset (`02_data/`)                                   | **CC-BY-4.0** — see [LICENSE-DATA](LICENSE-DATA) |
+| Source code (`phase1_pool_boiling/03_model/`, `…/04_analysis/scripts/`, notebooks) | **MIT** — see [LICENSE-CODE](LICENSE-CODE) |
+| Curated dataset (`phase1_pool_boiling/02_data/`)               | **CC-BY-4.0** — see [LICENSE-DATA](LICENSE-DATA) |
 | Raw figures from primary sources                               | _Not redistributed_ (publisher copyright) |
 
 We redistribute only the numerical values extracted from the public figures of

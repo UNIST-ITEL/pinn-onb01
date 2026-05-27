@@ -5,20 +5,22 @@ PINN 기반 풀비등 ONB 예측 연구 — 1단계 (표면 개질 효과 중심
 ## 빠른 시작
 
 ```bash
-# 환경 설정 (예시 — 실제 환경은 03_model/ 정착 후 갱신)
+# 환경 설정 (예시 — 실제 환경은 phase1_pool_boiling/03_model/ 정착 후 갱신)
 python -m venv .venv && source .venv/bin/activate
 pip install torch deepxde coolprop mlflow optuna numpy pandas matplotlib scikit-learn
 ```
 
 ## 폴더
 
+Phase 1 산출물은 2026-05-27 `phase1_pool_boiling/` 아래로 이동 (폴더명 유지):
+
 | 경로 | 내용 |
 |------|------|
-| `01_survey/` | 문헌 서베이 — 논문 카드, 갭 매트릭스 |
-| `02_data/` | 데이터 — raw, processed, surface_cards |
-| `03_model/` | PINN 소스 — src, configs, checkpoints |
-| `04_analysis/` | 분석 — figures, tables, scripts |
-| `05_manuscript/` | 논문 원고 |
+| `phase1_pool_boiling/01_survey/` | 문헌 서베이 — 논문 카드, 갭 매트릭스 |
+| `phase1_pool_boiling/02_data/` | 데이터 — raw, processed, surface_cards |
+| `phase1_pool_boiling/03_model/` | PINN 소스 — src, configs, checkpoints |
+| `phase1_pool_boiling/04_analysis/` | 분석 — figures, tables, scripts |
+| `phase1_pool_boiling/05_manuscript/` | 논문 원고 |
 | `.claude/` | Claude Code 서브에이전트 + 슬래시 명령 |
 
 ## 연구 계획

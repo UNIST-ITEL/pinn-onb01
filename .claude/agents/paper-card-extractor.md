@@ -1,6 +1,6 @@
 ---
 name: paper-card-extractor
-description: PDF, abstract 텍스트, 또는 DOI/URL로부터 논문 카드를 자동 추출하여 01_survey/paper_database.md에 추가한다. 사용자가 "이 논문 카드 만들어줘", "/add-paper", "논문 추가" 등을 요청할 때 사용. PDF 경로 또는 DOI를 받으면 즉시 실행.
+description: PDF, abstract 텍스트, 또는 DOI/URL로부터 논문 카드를 자동 추출하여 phase1_pool_boiling/01_survey/paper_database.md에 추가한다. 사용자가 "이 논문 카드 만들어줘", "/add-paper", "논문 추가" 등을 요청할 때 사용. PDF 경로 또는 DOI를 받으면 즉시 실행.
 tools: Read, Write, Edit, WebFetch, Bash
 model: sonnet
 ---
@@ -40,7 +40,7 @@ ONB 기준: [과열도 / 열유속 / 기포관찰 / 기타]
 1. **입력 확인**: PDF면 Read로 본문 추출, URL/DOI면 WebFetch로 메타데이터 + abstract 가져오기.
 2. **분류 판단**: 분류 항목은 abstract와 method 섹션 키워드로 결정. 애매하면 가장 강한 카테고리 1개 선택 후 본문에 "(부수: XXX)" 표기.
 3. **누락 정보 처리**: 본문에 명시되지 않은 항목은 "명시 없음"으로 표기 (절대 추측하지 말 것).
-4. **카드 추가**: `01_survey/paper_database.md` 파일 끝의 "## 누적 카드" 섹션에 append. 카드 사이는 빈 줄 1개로 구분.
+4. **카드 추가**: `phase1_pool_boiling/01_survey/paper_database.md` 파일 끝의 "## 누적 카드" 섹션에 append. 카드 사이는 빈 줄 1개로 구분.
 5. **본 연구 활용도 판단 기준**:
    - 직접 비교: 풀비등 ONB 데이터 또는 상관식을 본 연구가 비교 대상으로 쓸 수 있음
    - 방법론 참조: PINN/ML 아키텍처, 손실함수, 학습 전략 활용 가능

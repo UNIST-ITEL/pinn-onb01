@@ -25,7 +25,7 @@ model: sonnet
 
 ## 출력 모듈
 
-`03_model/src/data/synthetic.py`
+`phase1_pool_boiling/03_model/src/data/synthetic.py`
 
 ## 표준 인터페이스
 
@@ -80,10 +80,10 @@ def generate_dataset(out_dir: Path, n_cases: int = 500, seed: int = 42) -> None:
 2. **검증**: 1D 균질 케이스에서 해석해와 비교 (오차 1% 이내).
 3. **데이터 생성**:
    - LHS로 n_cases 추출
-   - 각 케이스 해석 → CSV 저장: `02_data/raw/synthetic/case_NNNNN.csv`
+   - 각 케이스 해석 → CSV 저장: `phase1_pool_boiling/02_data/raw/synthetic/case_NNNNN.csv`
    - 컬럼: `x, y, T_solid, q_flux, Ra_surface, theta, coating_thickness, T_bulk, geometry`
    - 표면 카드 자동 생성: `SFC-SYN-NNNNN` (synthetic 접두)
-4. **인덱스**: `02_data/raw/synthetic/_index.md`에 케이스 요약 추가.
+4. **인덱스**: `phase1_pool_boiling/02_data/raw/synthetic/_index.md`에 케이스 요약 추가.
 5. **품질 체크**: 생성된 케이스 중 ΔT_wall이 [1, 50] °C 범위 밖이면 폐기 + 보고.
 
 ## 검증 후 보고
@@ -91,7 +91,7 @@ def generate_dataset(out_dir: Path, n_cases: int = 500, seed: int = 42) -> None:
 ```
 [합성 데이터 생성 완료]
 케이스: N개 (요청: M개, 폐기: M-N개)
-저장: 02_data/raw/synthetic/
+저장: phase1_pool_boiling/02_data/raw/synthetic/
 파라미터 커버리지:
   - q_flux: [실제 min, 실제 max] kW/m²
   - Ra_surface: ...

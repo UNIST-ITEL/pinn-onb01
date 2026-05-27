@@ -26,7 +26,7 @@ Phase 1 paper에서 다룬 검증 수준:
    (Phase 1 82 rows + lab 추가 = 100-130 rows)
 2. `phase1p5_inhouse_augmentation/experiments/checkpoints/V0_phase1_baseline/`
    (Phase 1 baseline 참조)
-3. `shared/src/pinn_onb/` (또는 03_model/src/) — PINN training utilities
+3. `shared/src/pinn_onb/` (또는 phase1_pool_boiling/03_model/src/) — PINN training utilities
 
 ## 출력
 
