@@ -1,0 +1,95 @@
+# Phase 2 v4 — Balanced Loss (w_data_q 1.0→2.0)
+#
+# Root cause of v3 q regression on test:
+#   val RMSE_q=372 kW/m² (BETTER than v2's 480) → Phase 1 transfer is NOT the problem
+#   test RMSE_q=1989 kW/m² (WORSE than v2's 1547) → checkpoint selection bias
+#
+# best_model criterion = val_loss = 3.0×L_dT + 1.0×L_q
+# The 3× ΔT dominance means checkpoints are saved at points where ΔT is minimized
+# but q may have already drifted on the test distribution.
+#
+# Fix: raise w_data_q from 1.0 → 2.0 to rebalance the checkpoint selection criterion.
+# All other hyperparameters identical to v3 for clean ablation.
+#
+# Run:
+#   python experiments/src/train.py --config experiments/configs/phase2_v4_balanced_loss.yaml
+
+experiment:
+  name: "phase2_v4_balanced_loss"
+  phase: 2
+  scope: "M4_balanced_loss"
+  seed: 42
+
+data:
+  csv_path: "data/raw/onb_dataset_phase2_raw.csv"
+  train_frac: 0.70
+  val_frac: 0.15
+  test_frac: 0.15
+  batch_size: 32
+  exclude_onb_not_found: true
+
+model:
+  surface_latent_dim: 16
+  flow_latent_dim: 8
+  hidden_dim: 96
+  n_layers: 6
+  head_hidden: 48
+  flow_encoder_hidden: 32
+  flow_encoder_dropout: 0.1
+  freeze_surface_encoder: true
+
+transfer:
+  # Same Phase 1 checkpoint as v3 — encoder.* → surface_encoder.*
+  # (mlp.6 skipped: latent_dim Phase1=32 vs Phase2=16)
+  phase1_checkpoint: "~/PINN-ONB01/phase1_pool_boiling/03_model/checkpoints/baseline_phaseE/phase3_best.pt"
+
+loss:
+  w_data_q:       2.0   # ← raised from 1.0 (v3) to rebalance checkpoint criterion
+  w_data_dT:      3.0   # unchanged — checkpoint criterion = 3×L_dT + 2×L_q (ratio 1.5 vs 3.0)
+  w_hsu_coupling: 0.05
+  w_hsu:          0.5
+  w_mono_Re:      0.1
+  w_mono_G:       0.1
+  w_mono_sub:     0.1
+  w_continuity:   0.0
+  w_momentum:     0.0
+  w_energy:       0.0
+
+training:
+  stage1:
+    epochs: 2000
+    optimizer: "adam"
+    lr: 1.0e-3
+    lr_scheduler: "cosine"
+    lr_min: 1.0e-5
+    grad_clip: 1.0
+
+  stage2:
+    epochs: 3000
+    optimizer: "adam"
+    lr: 3.0e-4
+    lr_scheduler: "cosine"
+    lr_min: 1.0e-6
+    grad_clip: 1.0
+
+  stage3:
+    optimizer: "lbfgs"
+    max_iter: 500
+    tolerance_grad: 1.0e-7
+    tolerance_change: 1.0e-9
+    history_size: 50
+
+logging:
+  mlflow_tracking_uri: "experiments/logs/mlruns"
+  log_every_n_epochs: 50
+  save_best: true
+  checkpoint_dir: "experiments/checkpoints"
+
+hsu_constraint:
+  C_hsu: 0.5
+  r_c_min_um: 1.0
+  r_c_max_um: 100.0
+
+collocation:
+  n_hsu_points: 500
+  n_mono_points: 200
