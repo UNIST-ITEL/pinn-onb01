@@ -1,0 +1,91 @@
+# Phase 2 Baseline PINN — M4 Configuration
+# Surface encoder transfer (Phase 1 frozen) + Flow encoder from scratch
+# No NS/energy PDE residuals (M4 scope); added in M7-M9.
+#
+# Run:
+#   python experiments/src/train.py --config experiments/configs/phase2_baseline_v1.yaml
+
+experiment:
+  name: "phase2_baseline_v1"
+  phase: 2
+  scope: "M4_transfer_learning"
+  seed: 42
+
+data:
+  csv_path: "data/raw/onb_dataset_phase2_raw.csv"
+  train_frac: 0.70
+  val_frac: 0.15
+  test_frac: 0.15
+  batch_size: 32
+  exclude_onb_not_found: true
+
+model:
+  surface_latent_dim: 16          # must match Phase 1 SurfaceEncoder
+  flow_latent_dim: 8
+  hidden_dim: 96                  # Phase 1 used 64; +50% for flow conditioning
+  n_layers: 6                     # Phase 1 used 5
+  head_hidden: 48
+  flow_encoder_hidden: 32
+  flow_encoder_dropout: 0.1
+  freeze_surface_encoder: true    # Stage 1: surface encoder frozen
+
+transfer:
+  phase1_checkpoint: null         # set to path when checkpoint is available
+  # e.g. "../phase1_pool_boiling/03_model/experiments/checkpoints/best_model.pt"
+
+loss:
+  # M4: data loss + Hsu soft constraint + monotonicity
+  w_data_q:   1.0     # data loss — q_onb (rows where q available)
+  w_data_dT:  1.0     # data loss — delta_T_onb (rows where dT available)
+  w_hsu:      0.5     # Hsu nucleation criterion soft constraint
+  w_mono_Re:  0.1     # monotonicity: Re↑ → ΔT_onb↓
+  w_mono_G:   0.1     # monotonicity: G↑  → ΔT_onb↓
+  w_mono_sub: 0.1     # monotonicity: ΔT_sub↑ → ΔT_onb↑
+  # M7-M9 PDE weights (disabled in M4):
+  w_continuity: 0.0
+  w_momentum:   0.0
+  w_energy:     0.0
+
+training:
+  # Stage 1: Flow encoder only (surface frozen), Adam
+  stage1:
+    epochs: 2000
+    optimizer: "adam"
+    lr: 1.0e-3
+    lr_scheduler: "cosine"
+    lr_min: 1.0e-5
+    grad_clip: 1.0
+
+  # Stage 2: Unfreeze all, reduced lr
+  stage2:
+    epochs: 3000
+    optimizer: "adam"
+    lr: 3.0e-4
+    lr_scheduler: "cosine"
+    lr_min: 1.0e-6
+    grad_clip: 1.0
+
+  # Stage 3: L-BFGS fine-tune
+  stage3:
+    optimizer: "lbfgs"
+    max_iter: 500
+    tolerance_grad: 1.0e-7
+    tolerance_change: 1.0e-9
+    history_size: 50
+
+logging:
+  mlflow_tracking_uri: "experiments/logs/mlruns"
+  log_every_n_epochs: 50
+  save_best: true
+  checkpoint_dir: "experiments/checkpoints"
+
+hsu_constraint:
+  # Flow-aware Hsu criterion (modified boundary layer thickness)
+  # δ_t = C_hsu * D_h / Nu  where Nu = f(Re, Pr)
+  C_hsu: 0.5      # tunable coefficient
+  r_c_min_um: 1.0
+  r_c_max_um: 100.0
+
+collocation:
+  n_hsu_points: 500     # points for Hsu soft constraint evaluation
+  n_mono_points: 200    # points for monotonicity checks per variable

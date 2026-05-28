@@ -1,0 +1,11 @@
+# MLflow 설정 — Phase 2 Flow Boiling ONB
+# tracking_uri: SQLite (file-store deprecated 2026-02 이후)
+tracking_uri: "sqlite:///experiments/logs/mlflow.db"
+experiment_name: "phase2_flow_boiling_onb"
+artifact_location: "experiments/logs/artifacts"
+
+# 기본 태그
+default_tags:
+  project: "PINN-ONB01"
+  phase: "phase2"
+  host: "macbook-air-6"

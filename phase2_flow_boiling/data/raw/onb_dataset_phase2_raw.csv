@@ -1,0 +1,381 @@
+paper_id,fluid,channel_type,D_h_mm,G_kg_m2s,P_kPa,delta_T_sub_K,Ra_um,theta_deg,surface_cat,q_onb_W_m2,delta_T_onb_K,source_fig,digitize_date,notes
+basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1,4.0,haynes_rod,-1.0,33.43653967582729,fig10,2026-05-28,parity ΔT_ONB; x=predicted(22.96°C); series=Past_theta04_R11-Haynes
+basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1,4.0,haynes_rod,-1.0,30.09780787765436,fig10,2026-05-28,parity ΔT_ONB; x=predicted(20.04°C); series=Past_theta04_R11-Haynes
+basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1,4.0,haynes_rod,-1.0,36.31516985460328,fig10,2026-05-28,parity ΔT_ONB; x=predicted(18.05°C); series=Past_theta04_R11-Haynes
+basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1,4.0,haynes_rod,-1.0,33.45662860633335,fig10,2026-05-28,parity ΔT_ONB; x=predicted(17.50°C); series=Past_theta04_R11-Haynes
+basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1,4.0,haynes_rod,-1.0,32.49671096652153,fig10,2026-05-28,parity ΔT_ONB; x=predicted(16.03°C); series=Past_theta04_R11-Haynes
+basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1,4.0,haynes_rod,-1.0,32.11987793406273,fig10,2026-05-28,parity ΔT_ONB; x=predicted(15.62°C); series=Past_theta04_R11-Haynes
+basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1,4.0,haynes_rod,-1.0,32.500488943150735,fig10,2026-05-28,parity ΔT_ONB; x=predicted(15.21°C); series=Past_theta04_R11-Haynes
+basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1,4.0,haynes_rod,-1.0,19.506185624064,fig10,2026-05-28,parity ΔT_ONB; x=predicted(20.12°C); series=Past_theta04_R11-Haynes
+basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1,4.0,haynes_rod,-1.0,19.05531209234135,fig10,2026-05-28,parity ΔT_ONB; x=predicted(19.60°C); series=Past_theta04_R11-Haynes
+basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1,4.0,haynes_rod,-1.0,19.973724892968615,fig10,2026-05-28,parity ΔT_ONB; x=predicted(18.04°C); series=Past_theta04_R11-Haynes
+basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1,4.0,haynes_rod,-1.0,17.976157843840305,fig10,2026-05-28,parity ΔT_ONB; x=predicted(17.04°C); series=Past_theta04_R11-Haynes
+basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1,4.0,haynes_rod,-1.0,21.17443910846129,fig10,2026-05-28,parity ΔT_ONB; x=predicted(20.04°C); series=Past_theta04_R11-Haynes
+basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1,4.0,haynes_rod,-1.0,22.982919599585053,fig10,2026-05-28,parity ΔT_ONB; x=predicted(20.94°C); series=Past_theta04_R11-Haynes
+basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1,4.0,ss_rod,-1.0,17.5514659194224,fig10,2026-05-28,parity ΔT_ONB; x=predicted(21.02°C); series=Past_theta04_R11-SS
+basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1,4.0,ss_rod,-1.0,16.553950127548166,fig10,2026-05-28,parity ΔT_ONB; x=predicted(20.12°C); series=Past_theta04_R11-SS
+basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1,4.0,ss_rod,-1.0,16.555874643440475,fig10,2026-05-28,parity ΔT_ONB; x=predicted(19.09°C); series=Past_theta04_R11-SS
+basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1,4.0,ss_rod,-1.0,15.435365849807775,fig10,2026-05-28,parity ΔT_ONB; x=predicted(17.04°C); series=Past_theta04_R11-SS
+basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1,4.0,ss_rod,-1.0,15.528203414350015,fig10,2026-05-28,parity ΔT_ONB; x=predicted(16.02°C); series=Past_theta04_R11-SS
+basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1,4.0,ss_rod,-1.0,13.893697701146232,fig10,2026-05-28,parity ΔT_ONB; x=predicted(15.07°C); series=Past_theta04_R11-SS
+basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1,4.0,ss_rod,-1.0,22.586940217118375,fig10,2026-05-28,parity ΔT_ONB; x=predicted(19.10°C); series=Past_theta04_R11-SS
+basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1,4.0,ss_rod,-1.0,23.53014443514214,fig10,2026-05-28,parity ΔT_ONB; x=predicted(20.13°C); series=Past_theta04_R11-SS
+basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1,4.0,ss_rod,-1.0,23.38561448208428,fig10,2026-05-28,parity ΔT_ONB; x=predicted(23.05°C); series=Past_theta04_R11-SS
+basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1,4.0,ss_rod,-1.0,20.563328669851973,fig10,2026-05-28,parity ΔT_ONB; x=predicted(19.86°C); series=Past_theta04_R11-SS
+basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1,4.0,ss_rod,-1.0,21.423689513305124,fig10,2026-05-28,parity ΔT_ONB; x=predicted(20.21°C); series=Past_theta04_R11-SS
+basu2002,R-113,tube_circular,9.5,-1.0,101.325,-1.0,-1,5.0,crpt_rod,-1.0,30.5940303522231,fig10,2026-05-28,parity ΔT_ONB; x=predicted(34.95°C); series=Past_theta05_R113-CrPt
+basu2002,R-113,tube_circular,9.5,-1.0,101.325,-1.0,-1,5.0,crpt_rod,-1.0,26.434970781732066,fig10,2026-05-28,parity ΔT_ONB; x=predicted(29.08°C); series=Past_theta05_R113-CrPt
+basu2002,R-113,tube_circular,9.5,-1.0,101.325,-1.0,-1,5.0,crpt_rod,-1.0,26.443935442859676,fig10,2026-05-28,parity ΔT_ONB; x=predicted(24.95°C); series=Past_theta05_R113-CrPt
+basu2002,R-113,tube_circular,9.5,-1.0,101.325,-1.0,-1,5.0,crpt_rod,-1.0,19.98243412003532,fig10,2026-05-28,parity ΔT_ONB; x=predicted(14.81°C); series=Past_theta05_R113-CrPt
+basu2002,R-113,tube_circular,9.5,-1.0,101.325,-1.0,-1,5.0,crpt_rod,-1.0,22.8481689133274,fig10,2026-05-28,parity ΔT_ONB; x=predicted(21.12°C); series=Past_theta05_R113-CrPt
+basu2002,R-113,tube_circular,9.5,-1.0,101.325,-1.0,-1,5.0,ss_rod,-1.0,18.592152237651224,fig10,2026-05-28,parity ΔT_ONB; x=predicted(33.15°C); series=Past_theta05_R113-SS
+basu2002,R-113,tube_circular,9.5,-1.0,101.325,-1.0,-1,5.0,ss_rod,-1.0,21.526252829100493,fig10,2026-05-28,parity ΔT_ONB; x=predicted(33.01°C); series=Past_theta05_R113-SS
+basu2002,R-113,tube_circular,9.5,-1.0,101.325,-1.0,-1,5.0,ss_rod,-1.0,27.539931413293523,fig10,2026-05-28,parity ΔT_ONB; x=predicted(30.12°C); series=Past_theta05_R113-SS
+basu2002,R-113,tube_circular,9.5,-1.0,101.325,-1.0,-1,5.0,ss_rod,-1.0,30.25215315431412,fig10,2026-05-28,parity ΔT_ONB; x=predicted(28.08°C); series=Past_theta05_R113-SS
+basu2002,R-113,tube_circular,9.5,-1.0,101.325,-1.0,-1,5.0,ss_rod,-1.0,29.556328902441667,fig10,2026-05-28,parity ΔT_ONB; x=predicted(25.95°C); series=Past_theta05_R113-SS
+basu2002,R-113,tube_circular,9.5,-1.0,101.325,-1.0,-1,5.0,ss_rod,-1.0,21.53939463022665,fig10,2026-05-28,parity ΔT_ONB; x=predicted(25.05°C); series=Past_theta05_R113-SS
+basu2002,R-113,tube_circular,9.5,-1.0,101.325,-1.0,-1,5.0,ss_rod,-1.0,21.187981896043556,fig10,2026-05-28,parity ΔT_ONB; x=predicted(15.01°C); series=Past_theta05_R113-SS
+basu2002,R-113,tube_circular,9.5,-1.0,101.325,-1.0,-1,5.0,ss_rod,-1.0,22.05887262659061,fig10,2026-05-28,parity ΔT_ONB; x=predicted(21.03°C); series=Past_theta05_R113-SS
+basu2002,R-12,tube_circular,9.5,-1.0,101.325,-1.0,-1,6.0,copper_rod,-1.0,12.010988840239824,fig10,2026-05-28,parity ΔT_ONB; x=predicted(9.98°C); series=Past_theta06_R12-Cu
+basu2002,R-12,tube_circular,9.5,-1.0,101.325,-1.0,-1,6.0,copper_rod,-1.0,9.449926763579754,fig10,2026-05-28,parity ΔT_ONB; x=predicted(8.02°C); series=Past_theta06_R12-Cu
+basu2002,R-12,tube_circular,9.5,-1.0,101.325,-1.0,-1,6.0,copper_rod,-1.0,8.603537958784166,fig10,2026-05-28,parity ΔT_ONB; x=predicted(8.23°C); series=Past_theta06_R12-Cu
+basu2002,R-12,tube_circular,9.5,-1.0,101.325,-1.0,-1,6.0,copper_rod,-1.0,7.172617343442976,fig10,2026-05-28,parity ΔT_ONB; x=predicted(9.06°C); series=Past_theta06_R12-Cu
+basu2002,R-12,tube_circular,9.5,-1.0,101.325,-1.0,-1,6.0,copper_rod,-1.0,7.174146176247434,fig10,2026-05-28,parity ΔT_ONB; x=predicted(8.23°C); series=Past_theta06_R12-Cu
+basu2002,R-12,tube_circular,9.5,-1.0,101.325,-1.0,-1,6.0,copper_rod,-1.0,4.441358801226733,fig10,2026-05-28,parity ΔT_ONB; x=predicted(5.06°C); series=Past_theta06_R12-Cu
+basu2002,R-12,tube_circular,9.5,-1.0,101.325,-1.0,-1,6.0,copper_rod,-1.0,3.6621219830431313,fig10,2026-05-28,parity ΔT_ONB; x=predicted(4.05°C); series=Past_theta06_R12-Cu
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,38.0,nickel_rod,-1.0,1.63308408779328,fig10,2026-05-28,parity ΔT_ONB; x=predicted(2.31°C); series=Past_theta38_water-Ni
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,38.0,nickel_rod,-1.0,2.0276751282870884,fig10,2026-05-28,parity ΔT_ONB; x=predicted(2.81°C); series=Past_theta38_water-Ni
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,38.0,nickel_rod,-1.0,2.2935166311282966,fig10,2026-05-28,parity ΔT_ONB; x=predicted(2.67°C); series=Past_theta38_water-Ni
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,38.0,ss_rod,-1.0,23.382669530488183,fig10,2026-05-28,parity ΔT_ONB; x=predicted(24.40°C); series=Past_theta38_water-SS
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,38.0,ss_rod,-1.0,29.56663850904448,fig10,2026-05-28,parity ΔT_ONB; x=predicted(22.17°C); series=Past_theta38_water-SS
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,38.0,ss_rod,-1.0,13.901237105742092,fig10,2026-05-28,parity ΔT_ONB; x=predicted(11.79°C); series=Past_theta38_water-SS
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,38.0,ss_rod,-1.0,31.50354297710996,fig10,2026-05-28,parity ΔT_ONB; x=predicted(35.11°C); series=Past_theta38_water-SS
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,30.0,copper_flat,-1.0,5.355549249815214,fig10,2026-05-28,parity ΔT_ONB; x=predicted(6.00°C); series=Pres_theta30_water-Cu_flat
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,30.0,copper_flat,-1.0,5.3231177805294765,fig10,2026-05-28,parity ΔT_ONB; x=predicted(6.61°C); series=Pres_theta30_water-Cu_flat
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,30.0,copper_flat,-1.0,6.197426559611081,fig10,2026-05-28,parity ΔT_ONB; x=predicted(7.61°C); series=Pres_theta30_water-Cu_flat
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,30.0,copper_flat,-1.0,7.609839677346446,fig10,2026-05-28,parity ΔT_ONB; x=predicted(7.03°C); series=Pres_theta30_water-Cu_flat
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,30.0,copper_flat,-1.0,7.130563717266172,fig10,2026-05-28,parity ΔT_ONB; x=predicted(9.14°C); series=Pres_theta30_water-Cu_flat
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,30.0,copper_flat,-1.0,9.335188854287631,fig10,2026-05-28,parity ΔT_ONB; x=predicted(10.02°C); series=Pres_theta30_water-Cu_flat
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,30.0,copper_flat,-1.0,9.3866065768218,fig10,2026-05-28,parity ΔT_ONB; x=predicted(11.84°C); series=Pres_theta30_water-Cu_flat
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,30.0,copper_flat,-1.0,11.056652434997453,fig10,2026-05-28,parity ΔT_ONB; x=predicted(13.92°C); series=Pres_theta30_water-Cu_flat
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,30.0,copper_flat,-1.0,11.86618989802654,fig10,2026-05-28,parity ΔT_ONB; x=predicted(12.00°C); series=Pres_theta30_water-Cu_flat
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,30.0,copper_flat,-1.0,11.064045614931038,fig10,2026-05-28,parity ΔT_ONB; x=predicted(10.29°C); series=Pres_theta30_water-Cu_flat
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,30.0,copper_flat,-1.0,11.00130754015174,fig10,2026-05-28,parity ΔT_ONB; x=predicted(9.51°C); series=Pres_theta30_water-Cu_flat
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,30.0,copper_flat,-1.0,10.313427629952075,fig10,2026-05-28,parity ΔT_ONB; x=predicted(9.94°C); series=Pres_theta30_water-Cu_flat
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,30.0,copper_flat,-1.0,9.670432330931952,fig10,2026-05-28,parity ΔT_ONB; x=predicted(9.51°C); series=Pres_theta30_water-Cu_flat
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,30.0,copper_flat,-1.0,8.652182970973067,fig10,2026-05-28,parity ΔT_ONB; x=predicted(9.10°C); series=Pres_theta30_water-Cu_flat
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,30.0,copper_flat,-1.0,7.925160495971582,fig10,2026-05-28,parity ΔT_ONB; x=predicted(8.52°C); series=Pres_theta30_water-Cu_flat
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,30.0,copper_flat,-1.0,8.067068352416403,fig10,2026-05-28,parity ΔT_ONB; x=predicted(7.91°C); series=Pres_theta30_water-Cu_flat
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,30.0,copper_flat,-1.0,8.403939695942539,fig10,2026-05-28,parity ΔT_ONB; x=predicted(8.34°C); series=Pres_theta30_water-Cu_flat
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,30.0,copper_flat,-1.0,15.447332940567646,fig10,2026-05-28,parity ΔT_ONB; x=predicted(12.00°C); series=Pres_theta30_water-Cu_flat
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,30.0,copper_flat,-1.0,13.571764504955851,fig10,2026-05-28,parity ΔT_ONB; x=predicted(15.07°C); series=Pres_theta30_water-Cu_flat
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,30.0,copper_flat,-1.0,17.665243441172567,fig10,2026-05-28,parity ΔT_ONB; x=predicted(16.02°C); series=Pres_theta30_water-Cu_flat
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,57.0,zr_rod,-1.0,1.6244373915922588,fig10,2026-05-28,parity ΔT_ONB; x=predicted(1.80°C); series=Pres_theta57_water-Zr_rod
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,57.0,zr_rod,-1.0,1.478370623776874,fig10,2026-05-28,parity ΔT_ONB; x=predicted(2.20°C); series=Pres_theta57_water-Zr_rod
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,57.0,zr_rod,-1.0,1.8367710954362089,fig10,2026-05-28,parity ΔT_ONB; x=predicted(2.00°C); series=Pres_theta57_water-Zr_rod
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,57.0,zr_rod,-1.0,1.935846509126071,fig10,2026-05-28,parity ΔT_ONB; x=predicted(2.20°C); series=Pres_theta57_water-Zr_rod
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,57.0,zr_rod,-1.0,1.8252945189818657,fig10,2026-05-28,parity ΔT_ONB; x=predicted(2.40°C); series=Pres_theta57_water-Zr_rod
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,57.0,zr_rod,-1.0,1.7825167389140792,fig10,2026-05-28,parity ΔT_ONB; x=predicted(2.72°C); series=Pres_theta57_water-Zr_rod
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,57.0,zr_rod,-1.0,2.0521199133051344,fig10,2026-05-28,parity ΔT_ONB; x=predicted(2.50°C); series=Pres_theta57_water-Zr_rod
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,57.0,zr_rod,-1.0,2.280467183946202,fig10,2026-05-28,parity ΔT_ONB; x=predicted(2.49°C); series=Pres_theta57_water-Zr_rod
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,57.0,zr_rod,-1.0,2.163670455465314,fig10,2026-05-28,parity ΔT_ONB; x=predicted(2.30°C); series=Pres_theta57_water-Zr_rod
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,57.0,zr_rod,-1.0,2.2533023337389424,fig10,2026-05-28,parity ΔT_ONB; x=predicted(2.80°C); series=Pres_theta57_water-Zr_rod
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,57.0,zr_rod,-1.0,2.4746634041976217,fig10,2026-05-28,parity ΔT_ONB; x=predicted(2.89°C); series=Pres_theta57_water-Zr_rod
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,57.0,zr_rod,-1.0,2.701809977426418,fig10,2026-05-28,parity ΔT_ONB; x=predicted(3.02°C); series=Pres_theta57_water-Zr_rod
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,57.0,zr_rod,-1.0,2.9157694965118055,fig10,2026-05-28,parity ΔT_ONB; x=predicted(2.99°C); series=Pres_theta57_water-Zr_rod
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,57.0,zr_rod,-1.0,2.931857801796873,fig10,2026-05-28,parity ΔT_ONB; x=predicted(3.52°C); series=Pres_theta57_water-Zr_rod
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,57.0,zr_rod,-1.0,2.76496143114529,fig10,2026-05-28,parity ΔT_ONB; x=predicted(3.52°C); series=Pres_theta57_water-Zr_rod
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,57.0,zr_rod,-1.0,2.846332067092649,fig10,2026-05-28,parity ΔT_ONB; x=predicted(4.03°C); series=Pres_theta57_water-Zr_rod
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,57.0,zr_rod,-1.0,3.2571185847630395,fig10,2026-05-28,parity ΔT_ONB; x=predicted(4.01°C); series=Pres_theta57_water-Zr_rod
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,57.0,zr_rod,-1.0,3.7913575147831327,fig10,2026-05-28,parity ΔT_ONB; x=predicted(5.04°C); series=Pres_theta57_water-Zr_rod
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,57.0,zr_rod,-1.0,2.17463961974766,fig10,2026-05-28,parity ΔT_ONB; x=predicted(3.31°C); series=Pres_theta57_water-Zr_rod
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,82.5,copper_flat,-1.0,1.548903546769516,fig10,2026-05-28,parity ΔT_ONB; x=predicted(2.50°C); series=Pres_theta80to85_water-Cu_flat
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,82.5,copper_flat,-1.0,1.6421108435968264,fig10,2026-05-28,parity ΔT_ONB; x=predicted(2.70°C); series=Pres_theta80to85_water-Cu_flat
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,82.5,copper_flat,-1.0,2.474831223638936,fig10,2026-05-28,parity ΔT_ONB; x=predicted(2.80°C); series=Pres_theta80to85_water-Cu_flat
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,82.5,copper_flat,-1.0,2.5621426876499407,fig10,2026-05-28,parity ΔT_ONB; x=predicted(3.50°C); series=Pres_theta80to85_water-Cu_flat
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,82.5,copper_flat,-1.0,3.1825721487314342,fig10,2026-05-28,parity ΔT_ONB; x=predicted(3.52°C); series=Pres_theta80to85_water-Cu_flat
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,82.5,copper_flat,-1.0,3.1626866917590695,fig10,2026-05-28,parity ΔT_ONB; x=predicted(4.23°C); series=Pres_theta80to85_water-Cu_flat
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,82.5,copper_flat,-1.0,3.5760882687203908,fig10,2026-05-28,parity ΔT_ONB; x=predicted(4.70°C); series=Pres_theta80to85_water-Cu_flat
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,82.5,copper_flat,-1.0,3.393559400206445,fig10,2026-05-28,parity ΔT_ONB; x=predicted(3.99°C); series=Pres_theta80to85_water-Cu_flat
+basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1,4.0,haynes_rod,9043.506883594777,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=0.904 W/cm²→×10000; series=Past_theta04_R11-Haynes
+basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1,4.0,haynes_rod,9755.427135003953,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=0.976 W/cm²→×10000; series=Past_theta04_R11-Haynes
+basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1,4.0,haynes_rod,12659.334755864593,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=1.266 W/cm²→×10000; series=Past_theta04_R11-Haynes
+basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1,4.0,haynes_rod,13075.947613058881,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=1.308 W/cm²→×10000; series=Past_theta04_R11-Haynes
+basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1,4.0,haynes_rod,71100.64533413162,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=7.110 W/cm²→×10000; series=Past_theta04_R11-Haynes
+basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1,4.0,haynes_rod,84549.31510038568,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=8.455 W/cm²→×10000; series=Past_theta04_R11-Haynes
+basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1,4.0,haynes_rod,105108.5315692381,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=10.511 W/cm²→×10000; series=Past_theta04_R11-Haynes
+basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1,4.0,haynes_rod,103996.03444145819,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=10.400 W/cm²→×10000; series=Past_theta04_R11-Haynes
+basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1,4.0,haynes_rod,99568.71299232438,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=9.957 W/cm²→×10000; series=Past_theta04_R11-Haynes
+basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1,4.0,haynes_rod,145564.58343017357,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=14.556 W/cm²→×10000; series=Past_theta04_R11-Haynes
+basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1,4.0,haynes_rod,55912.27089955129,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=5.591 W/cm²→×10000; series=Past_theta04_R11-Haynes
+basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1,4.0,ss_rod,236764.9110435156,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=23.676 W/cm²→×10000; series=Past_theta04_R11-SS
+basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1,4.0,ss_rod,210153.8819948096,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=21.015 W/cm²→×10000; series=Past_theta04_R11-SS
+basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1,4.0,ss_rod,224376.6216201569,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=22.438 W/cm²→×10000; series=Past_theta04_R11-SS
+basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1,4.0,ss_rod,236873.2717095032,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=23.687 W/cm²→×10000; series=Past_theta04_R11-SS
+basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1,4.0,ss_rod,174629.892652315,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=17.463 W/cm²→×10000; series=Past_theta04_R11-SS
+basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1,4.0,ss_rod,167218.04750761058,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=16.722 W/cm²→×10000; series=Past_theta04_R11-SS
+basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1,4.0,ss_rod,163648.55923515788,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=16.365 W/cm²→×10000; series=Past_theta04_R11-SS
+basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1,4.0,ss_rod,156770.29546071813,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=15.677 W/cm²→×10000; series=Past_theta04_R11-SS
+basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1,4.0,ss_rod,163710.2369239178,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=16.371 W/cm²→×10000; series=Past_theta04_R11-SS
+basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1,4.0,ss_rod,139105.26943265475,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=13.911 W/cm²→×10000; series=Past_theta04_R11-SS
+basu2002,R-113,tube_circular,9.5,-1.0,101.325,-1.0,-1,5.0,ss_rod,10862.399201177519,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=1.086 W/cm²→×10000; series=Past_theta05_R113-SS
+basu2002,R-113,tube_circular,9.5,-1.0,101.325,-1.0,-1,5.0,ss_rod,16588.64526053483,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=1.659 W/cm²→×10000; series=Past_theta05_R113-SS
+basu2002,R-113,tube_circular,9.5,-1.0,101.325,-1.0,-1,5.0,ss_rod,19955.123024262113,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=1.996 W/cm²→×10000; series=Past_theta05_R113-SS
+basu2002,R-113,tube_circular,9.5,-1.0,101.325,-1.0,-1,5.0,ss_rod,25626.620028793317,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=2.563 W/cm²→×10000; series=Past_theta05_R113-SS
+basu2002,R-113,tube_circular,9.5,-1.0,101.325,-1.0,-1,5.0,ss_rod,26467.130571239213,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=2.647 W/cm²→×10000; series=Past_theta05_R113-SS
+basu2002,R-113,tube_circular,9.5,-1.0,101.325,-1.0,-1,5.0,ss_rod,45513.28226374917,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=4.551 W/cm²→×10000; series=Past_theta05_R113-SS
+basu2002,R-113,tube_circular,9.5,-1.0,101.325,-1.0,-1,5.0,ss_rod,57174.89760451673,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=5.717 W/cm²→×10000; series=Past_theta05_R113-SS
+basu2002,R-113,tube_circular,9.5,-1.0,101.325,-1.0,-1,5.0,ss_rod,64428.62057893895,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=6.443 W/cm²→×10000; series=Past_theta05_R113-SS
+basu2002,R-12,tube_circular,9.5,-1.0,101.325,-1.0,-1,6.0,copper_rod,2158.769640702877,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=0.216 W/cm²→×10000; series=Past_theta06_R12-Cu
+basu2002,R-12,tube_circular,9.5,-1.0,101.325,-1.0,-1,6.0,copper_rod,2956.1217781927066,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=0.296 W/cm²→×10000; series=Past_theta06_R12-Cu
+basu2002,R-12,tube_circular,9.5,-1.0,101.325,-1.0,-1,6.0,copper_rod,7847.266729561074,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=0.785 W/cm²→×10000; series=Past_theta06_R12-Cu
+basu2002,R-12,tube_circular,9.5,-1.0,101.325,-1.0,-1,6.0,copper_rod,8941.769081486244,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=0.894 W/cm²→×10000; series=Past_theta06_R12-Cu
+basu2002,R-12,tube_circular,9.5,-1.0,101.325,-1.0,-1,6.0,copper_rod,10983.624267025765,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=1.098 W/cm²→×10000; series=Past_theta06_R12-Cu
+basu2002,R-12,tube_circular,9.5,-1.0,101.325,-1.0,-1,6.0,copper_rod,15885.853357777925,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=1.589 W/cm²→×10000; series=Past_theta06_R12-Cu
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,38.0,nickel_rod,2837020.4621607503,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=283.702 W/cm²→×10000; series=Past_theta38_water-Ni
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,38.0,nickel_rod,4284310.74355481,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=428.431 W/cm²→×10000; series=Past_theta38_water-Ni
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,38.0,nickel_rod,6130245.924373765,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=613.025 W/cm²→×10000; series=Past_theta38_water-Ni
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,38.0,ss_rod,10543650.931251992,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=1054.365 W/cm²→×10000; series=Past_theta38_water-SS
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,38.0,ss_rod,5381911.012182863,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=538.191 W/cm²→×10000; series=Past_theta38_water-SS
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,38.0,ss_rod,5681197.646506456,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=568.120 W/cm²→×10000; series=Past_theta38_water-SS
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,38.0,ss_rod,2235429.9701395137,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=223.543 W/cm²→×10000; series=Past_theta38_water-SS
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,38.0,ss_rod,9989015.832374644,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=998.902 W/cm²→×10000; series=Past_theta38_water-SS
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,30.0,copper_flat,582143.3732899667,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=58.214 W/cm²→×10000; series=Pres_theta30_water-Cu_flat
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,30.0,copper_flat,419977.9182198872,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=41.998 W/cm²→×10000; series=Pres_theta30_water-Cu_flat
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,30.0,copper_flat,393705.985231159,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=39.371 W/cm²→×10000; series=Pres_theta30_water-Cu_flat
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,30.0,copper_flat,500331.5431319474,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=50.033 W/cm²→×10000; series=Pres_theta30_water-Cu_flat
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,30.0,copper_flat,345859.32335543126,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=34.586 W/cm²→×10000; series=Pres_theta30_water-Cu_flat
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,30.0,copper_flat,317294.39234305604,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=31.729 W/cm²→×10000; series=Pres_theta30_water-Cu_flat
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,30.0,copper_flat,287844.9669077114,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=28.784 W/cm²→×10000; series=Pres_theta30_water-Cu_flat
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,30.0,copper_flat,244477.75856223548,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=24.448 W/cm²→×10000; series=Pres_theta30_water-Cu_flat
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,30.0,copper_flat,184226.9312230777,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=18.423 W/cm²→×10000; series=Pres_theta30_water-Cu_flat
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,30.0,copper_flat,51812.44236684961,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=5.181 W/cm²→×10000; series=Pres_theta30_water-Cu_flat
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,30.0,copper_flat,67210.17229191352,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=6.721 W/cm²→×10000; series=Pres_theta30_water-Cu_flat
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,30.0,copper_flat,103780.7247476348,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=10.378 W/cm²→×10000; series=Pres_theta30_water-Cu_flat
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,30.0,copper_flat,133204.78694633933,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=13.320 W/cm²→×10000; series=Pres_theta30_water-Cu_flat
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,30.0,copper_flat,199066.8585022321,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=19.907 W/cm²→×10000; series=Pres_theta30_water-Cu_flat
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,30.0,copper_flat,165372.48011315928,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=16.537 W/cm²→×10000; series=Pres_theta30_water-Cu_flat
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,30.0,copper_flat,108339.91417778844,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=10.834 W/cm²→×10000; series=Pres_theta30_water-Cu_flat
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,30.0,copper_flat,155065.0788785076,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=15.507 W/cm²→×10000; series=Pres_theta30_water-Cu_flat
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,30.0,copper_flat,128783.84509794945,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=12.878 W/cm²→×10000; series=Pres_theta30_water-Cu_flat
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,57.0,zr_rod,17697.50798094247,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=1.770 W/cm²→×10000; series=Pres_theta57_water-Zr_rod
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,57.0,zr_rod,22959.3621336717,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=2.296 W/cm²→×10000; series=Pres_theta57_water-Zr_rod
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,57.0,zr_rod,27038.606606671714,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=2.704 W/cm²→×10000; series=Pres_theta57_water-Zr_rod
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,57.0,zr_rod,34697.15972613336,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=3.470 W/cm²→×10000; series=Pres_theta57_water-Zr_rod
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,57.0,zr_rod,41738.55550306347,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=4.174 W/cm²→×10000; series=Pres_theta57_water-Zr_rod
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,57.0,zr_rod,41265.67214977484,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=4.127 W/cm²→×10000; series=Pres_theta57_water-Zr_rod
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,57.0,zr_rod,40361.98206271189,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=4.036 W/cm²→×10000; series=Pres_theta57_water-Zr_rod
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,57.0,zr_rod,54746.740490213546,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=5.475 W/cm²→×10000; series=Pres_theta57_water-Zr_rod
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,57.0,zr_rod,52968.22688531539,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=5.297 W/cm²→×10000; series=Pres_theta57_water-Zr_rod
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,57.0,zr_rod,63005.805666881664,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=6.301 W/cm²→×10000; series=Pres_theta57_water-Zr_rod
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,57.0,zr_rod,60958.98641220568,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=6.096 W/cm²→×10000; series=Pres_theta57_water-Zr_rod
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,57.0,zr_rod,65768.40192453399,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=6.577 W/cm²→×10000; series=Pres_theta57_water-Zr_rod
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,57.0,zr_rod,84435.60633646276,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=8.444 W/cm²→×10000; series=Pres_theta57_water-Zr_rod
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,57.0,zr_rod,103853.37682870546,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=10.385 W/cm²→×10000; series=Pres_theta57_water-Zr_rod
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,57.0,zr_rod,100482.2796916881,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=10.048 W/cm²→×10000; series=Pres_theta57_water-Zr_rod
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,57.0,zr_rod,100463.34960299538,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=10.046 W/cm²→×10000; series=Pres_theta57_water-Zr_rod
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,57.0,zr_rod,96145.00777559634,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=9.615 W/cm²→×10000; series=Pres_theta57_water-Zr_rod
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,57.0,zr_rod,148551.58312573133,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=14.855 W/cm²→×10000; series=Pres_theta57_water-Zr_rod
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,57.0,zr_rod,151775.43599448324,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=15.178 W/cm²→×10000; series=Pres_theta57_water-Zr_rod
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,82.5,copper_flat,30111.60558371667,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=3.011 W/cm²→×10000; series=Pres_theta80to85_water-Cu_flat
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,82.5,copper_flat,43080.83280232591,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=4.308 W/cm²→×10000; series=Pres_theta80to85_water-Cu_flat
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,82.5,copper_flat,109548.99450957848,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=10.955 W/cm²→×10000; series=Pres_theta80to85_water-Cu_flat
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,82.5,copper_flat,142047.63238760282,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=14.205 W/cm²→×10000; series=Pres_theta80to85_water-Cu_flat
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,82.5,copper_flat,258225.96361728897,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=25.823 W/cm²→×10000; series=Pres_theta80to85_water-Cu_flat
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,82.5,copper_flat,207789.68917293922,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=20.779 W/cm²→×10000; series=Pres_theta80to85_water-Cu_flat
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,82.5,copper_flat,199066.8585022321,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=19.907 W/cm²→×10000; series=Pres_theta80to85_water-Cu_flat
+basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1,82.5,copper_flat,131766.53566527553,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=13.177 W/cm²→×10000; series=Pres_theta80to85_water-Cu_flat
+kandlikar1991,water,tube_circular,12.1,0.0,220.0,2.2,-1,-1.0,ss_rod,491268.69030250097,12.585867057796978,fig5,2026-05-28,ONB extracted from boiling curve (threshold=1.20); series=pbSS_Tsub2p2; n_pts=11; pool boiling
+kandlikar1991,water,tube_circular,12.1,1315.0,220.0,71.5,-1,-1.0,ss_rod,1839216.019422373,19.46600017068721,fig5,2026-05-28,ONB extracted from boiling curve (threshold=1.20); series=u1p37_Tsub103-40; n_pts=8; u=1.37m/s; ΔT_sub=103→40°C 축방향 변화 (평균 71.5K)
+kandlikar1991,water,tube_circular,12.1,2541.0,220.0,84.5,-1,-1.0,ss_rod,3879661.762820727,23.450530525257378,fig5,2026-05-28,ONB extracted from boiling curve (threshold=1.20); series=u2p65_Tsub101-68; n_pts=14; u=2.65m/s; ΔT_sub=101→68°C 평균
+kandlikar1991,water,tube_circular,12.1,4409.0,220.0,90.5,-1,-1.0,ss_rod,-1.0,-1.0,fig5,2026-05-28,ONB_NOT_FOUND: ONB below x_min=14.5K; curve fully in nucleate regime; n_pts=12; u=4.60m/s; ΔT_sub=109→72°C 평균
+bergles1964,water,tube_circular,12.1,2920.0,-1.0,-1.0,-1,-1.0,ss_tube,3422010.2842945596,2.5962483970453523,fig7_v10ftsec,2026-05-28,v=10ft/s=3.05m/s; high-pressure; P unknown; direct ONB measurement
+bergles1964,water,tube_circular,12.1,2920.0,-1.0,-1.0,-1,-1.0,ss_tube,4027701.593062682,2.9775810268351015,fig7_v10ftsec,2026-05-28,v=10ft/s=3.05m/s; high-pressure; P unknown; direct ONB measurement
+bergles1964,water,tube_circular,12.1,2920.0,-1.0,-1.0,-1,-1.0,ss_tube,4755602.333018796,3.9371067327822336,fig7_v10ftsec,2026-05-28,v=10ft/s=3.05m/s; high-pressure; P unknown; direct ONB measurement
+bergles1964,water,tube_circular,12.1,2920.0,-1.0,-1.0,-1,-1.0,ss_tube,5076026.234508106,4.175311822788358,fig7_v10ftsec,2026-05-28,v=10ft/s=3.05m/s; high-pressure; P unknown; direct ONB measurement
+bergles1964,water,tube_circular,12.1,2920.0,-1.0,-1.0,-1,-1.0,ss_tube,5737638.038353462,4.3095017919659675,fig7_v10ftsec,2026-05-28,v=10ft/s=3.05m/s; high-pressure; P unknown; direct ONB measurement
+bergles1964,water,tube_circular,12.1,5840.0,-1.0,-1.0,-1,-1.0,ss_tube,4322811.8782122545,2.0605003327176252,fig7_v20ftsec,2026-05-28,v=20ft/s=6.10m/s; high-pressure; P unknown; direct ONB measurement
+bergles1964,water,tube_circular,12.1,5840.0,-1.0,-1.0,-1,-1.0,ss_tube,4969202.257256512,3.1645120553055763,fig7_v20ftsec,2026-05-28,v=20ft/s=6.10m/s; high-pressure; P unknown; direct ONB measurement
+bergles1964,water,tube_circular,12.1,5840.0,-1.0,-1.0,-1,-1.0,ss_tube,5444982.401397416,4.395411519588073,fig7_v20ftsec,2026-05-28,v=20ft/s=6.10m/s; high-pressure; P unknown; direct ONB measurement
+bergles1964,water,tube_circular,12.1,5840.0,-1.0,-1.0,-1,-1.0,ss_tube,5582738.939607852,4.405973917698968,fig7_v20ftsec,2026-05-28,v=20ft/s=6.10m/s; high-pressure; P unknown; direct ONB measurement
+bergles1964,water,tube_circular,12.1,5840.0,-1.0,-1.0,-1,-1.0,ss_tube,6033285.348053194,4.592864627566859,fig7_v20ftsec,2026-05-28,v=20ft/s=6.10m/s; high-pressure; P unknown; direct ONB measurement
+bergles1964,water,tube_circular,12.1,5840.0,-1.0,-1.0,-1,-1.0,ss_tube,6356254.132288894,4.308561573672552,fig7_v20ftsec,2026-05-28,v=20ft/s=6.10m/s; high-pressure; P unknown; direct ONB measurement
+bergles1964,water,tube_circular,12.1,5840.0,-1.0,-1.0,-1,-1.0,ss_tube,6406322.189569947,4.648958154480317,fig7_v20ftsec,2026-05-28,v=20ft/s=6.10m/s; high-pressure; P unknown; direct ONB measurement
+bergles1964,water,tube_circular,12.1,5840.0,-1.0,-1.0,-1,-1.0,ss_tube,6636086.646202381,4.930546954896604,fig7_v20ftsec,2026-05-28,v=20ft/s=6.10m/s; high-pressure; P unknown; direct ONB measurement
+bergles1964,water,tube_circular,12.1,5840.0,-1.0,-1.0,-1,-1.0,ss_tube,6978586.835818382,5.345768232004252,fig7_v20ftsec,2026-05-28,v=20ft/s=6.10m/s; high-pressure; P unknown; direct ONB measurement
+bergles1964,water,tube_circular,12.1,5840.0,-1.0,-1.0,-1,-1.0,ss_tube,7392095.5093787825,5.491327986885384,fig7_v20ftsec,2026-05-28,v=20ft/s=6.10m/s; high-pressure; P unknown; direct ONB measurement
+bergles1964,water,tube_circular,12.1,5840.0,-1.0,-1.0,-1,-1.0,ss_tube,7963369.867332758,4.952874935416797,fig7_v20ftsec,2026-05-28,v=20ft/s=6.10m/s; high-pressure; P unknown; direct ONB measurement
+bergles1964,water,tube_circular,12.1,8760.0,-1.0,-1.0,-1,-1.0,ss_tube,5822042.095287473,2.32223828367442,fig7_v30ftsec,2026-05-28,v=30ft/s=9.14m/s; high-pressure; P unknown; direct ONB measurement
+bergles1964,water,tube_circular,12.1,8760.0,-1.0,-1.0,-1,-1.0,ss_tube,5868974.537007072,2.6060214944769573,fig7_v30ftsec,2026-05-28,v=30ft/s=9.14m/s; high-pressure; P unknown; direct ONB measurement
+bergles1964,water,tube_circular,12.1,8760.0,-1.0,-1.0,-1,-1.0,ss_tube,6441685.230147676,3.033562945216198,fig7_v30ftsec,2026-05-28,v=30ft/s=9.14m/s; high-pressure; P unknown; direct ONB measurement
+bergles1964,water,tube_circular,12.1,8760.0,-1.0,-1.0,-1,-1.0,ss_tube,7564239.793541428,3.609566575431969,fig7_v30ftsec,2026-05-28,v=30ft/s=9.14m/s; high-pressure; P unknown; direct ONB measurement
+bergles1964,water,tube_circular,12.1,8760.0,-1.0,-1.0,-1,-1.0,ss_tube,8092521.880842154,3.6715639728932605,fig7_v30ftsec,2026-05-28,v=30ft/s=9.14m/s; high-pressure; P unknown; direct ONB measurement
+bergles1964,water,tube_circular,12.1,8760.0,-1.0,-1.0,-1,-1.0,ss_tube,8659379.97225298,3.8936823207472826,fig7_v30ftsec,2026-05-28,v=30ft/s=9.14m/s; high-pressure; P unknown; direct ONB measurement
+bergles1964,water,tube_circular,12.1,8760.0,-1.0,-1.0,-1,-1.0,ss_tube,7916457.984064526,4.0702640628587075,fig7_v30ftsec,2026-05-28,v=30ft/s=9.14m/s; high-pressure; P unknown; direct ONB measurement
+bergles1964,water,tube_circular,12.1,8760.0,-1.0,-1.0,-1,-1.0,ss_tube,7627742.300477059,4.349361957699125,fig7_v30ftsec,2026-05-28,v=30ft/s=9.14m/s; high-pressure; P unknown; direct ONB measurement
+bergles1964,water,tube_circular,12.1,8760.0,-1.0,-1.0,-1,-1.0,ss_tube,9409593.004284345,4.499334691662121,fig7_v30ftsec,2026-05-28,v=30ft/s=9.14m/s; high-pressure; P unknown; direct ONB measurement
+bergles1964,water,tube_circular,12.1,8760.0,-1.0,-1.0,-1,-1.0,ss_tube,9094076.61018749,5.408696274480672,fig7_v30ftsec,2026-05-28,v=30ft/s=9.14m/s; high-pressure; P unknown; direct ONB measurement
+bergles1964,water,tube_circular,12.1,4409.0,220.0,-1.0,-1,-1.0,ss_tube,-1.0,-1.0,fig9_v15p1ftsec,2026-05-28,ONB_NOT_FOUND: ONB below x_min=14.0K; curve fully in nucleate regime; n_pts=12; v=15.1ft/s=4.60m/s; P=32psia=220kPa
+bergles1964,water,tube_circular,12.1,1315.0,220.0,-1.0,-1,-1.0,ss_tube,5461312.30802475,24.11761856327548,fig9_v4p5ftsec,2026-05-28,ONB from boiling curve (threshold=1.20); n_pts=7; v=4.5ft/s=1.37m/s; P=32psia=220kPa
+bergles1964,water,tube_circular,12.1,2541.0,220.0,-1.0,-1,-1.0,ss_tube,8552614.702363443,30.579154587047853,fig9_v8p7ftsec,2026-05-28,ONB from boiling curve (threshold=1.20); n_pts=15; v=8.7ft/s=2.65m/s; P=32psia=220kPa
+forrest2016,water,narrow_channel,3.92,750.0,-1.0,-1.0,-1,-1.0,ss_clean,287878.7878787879,18.878328213005624,fig4,2026-05-28,ONB from boiling curve; G=750 kg/m²s; T_in=80°C; TC=TC10; n_pts=12
+forrest2016,water,narrow_channel,3.92,750.0,-1.0,-1.0,-1,-1.0,ss_clean,244242.42424242425,14.438236047107004,fig4,2026-05-28,ONB from boiling curve; G=750 kg/m²s; T_in=80°C; TC=TC13; n_pts=12
+forrest2016,water,narrow_channel,3.92,750.0,-1.0,-1.0,-1,-1.0,ss_clean,263636.36363636365,13.046274961597533,fig4,2026-05-28,ONB from boiling curve; G=750 kg/m²s; T_in=80°C; TC=TC9; n_pts=11
+forrest2016,water,narrow_channel,3.92,736.9873817034702,-1.0,25.0,-1,-1.0,unknown,256379.8219584569,-1.0,fig7,2026-05-28,direct ONB; G from x-axis; Forrest2016_fig07_Tsub25_wpd
+forrest2016,water,narrow_channel,3.92,1485.0157728706629,-1.0,25.0,-1,-1.0,unknown,377448.07121661736,-1.0,fig7,2026-05-28,direct ONB; G from x-axis; Forrest2016_fig07_Tsub25_wpd
+forrest2016,water,narrow_channel,3.92,2222.003154574133,-1.0,25.0,-1,-1.0,unknown,580415.4302670624,-1.0,fig7,2026-05-28,direct ONB; G from x-axis; Forrest2016_fig07_Tsub25_wpd
+forrest2016,water,narrow_channel,3.92,2967.271293375394,-1.0,25.0,-1,-1.0,unknown,710385.7566765579,-1.0,fig7,2026-05-28,direct ONB; G from x-axis; Forrest2016_fig07_Tsub25_wpd
+forrest2016,water,narrow_channel,3.92,750.7886435331231,-1.0,40.0,-1,-1.0,unknown,318694.36201780423,-1.0,fig7,2026-05-28,direct ONB; G from x-axis; Forrest2016_fig07_Tsub40_wpd
+forrest2016,water,narrow_channel,3.92,1509.858044164038,-1.0,40.0,-1,-1.0,unknown,601780.4154302671,-1.0,fig7,2026-05-28,direct ONB; G from x-axis; Forrest2016_fig07_Tsub40_wpd
+forrest2016,water,narrow_channel,3.92,2246.8454258675083,-1.0,40.0,-1,-1.0,unknown,845697.3293768547,-1.0,fig7,2026-05-28,direct ONB; G from x-axis; Forrest2016_fig07_Tsub40_wpd
+forrest2016,water,narrow_channel,3.92,3000.394321766562,-1.0,40.0,-1,-1.0,unknown,1037982.1958456971,-1.0,fig7,2026-05-28,direct ONB; G from x-axis; Forrest2016_fig07_Tsub40_wpd
+forrest2016,water,narrow_channel,3.92,735.3184449958642,-1.0,-1.0,-1,-1.0,ss_clean,243986.2542955326,-1.0,fig8,2026-05-28,direct ONB; G from x-axis; Forrest2016_fig08_Norm_wpd
+forrest2016,water,narrow_channel,3.92,1490.9015715467326,-1.0,-1.0,-1,-1.0,ss_clean,365979.38144329895,-1.0,fig8,2026-05-28,direct ONB; G from x-axis; Forrest2016_fig08_Norm_wpd
+forrest2016,water,narrow_channel,3.92,2223.32506203474,-1.0,-1.0,-1,-1.0,ss_clean,556701.030927835,-1.0,fig8,2026-05-28,direct ONB; G from x-axis; Forrest2016_fig08_Norm_wpd
+forrest2016,water,narrow_channel,3.92,2973.1182795698924,-1.0,-1.0,-1,-1.0,ss_clean,671821.3058419244,-1.0,fig8,2026-05-28,direct ONB; G from x-axis; Forrest2016_fig08_Norm_wpd
+forrest2016,water,narrow_channel,3.92,746.8982630272953,-1.0,-1.0,-1,-1.0,ss_oxidized,357388.3161512027,-1.0,fig8,2026-05-28,direct ONB; G from x-axis; Forrest2016_fig08_Oxi_wpd
+forrest2016,water,narrow_channel,3.92,1490.9015715467326,-1.0,-1.0,-1,-1.0,ss_oxidized,455326.4604810998,-1.0,fig8,2026-05-28,direct ONB; G from x-axis; Forrest2016_fig08_Oxi_wpd
+forrest2016,water,narrow_channel,3.92,2967.328370554177,-1.0,-1.0,-1,-1.0,ss_oxidized,833333.3333333334,-1.0,fig8,2026-05-28,direct ONB; G from x-axis; Forrest2016_fig08_Oxi_wpd
+forrest2016,water,narrow_channel,3.92,745.1274362818591,-1.0,13.0,-1,-1.0,unknown,121126.76056338025,-1.0,fig10,2026-05-28,direct ONB; G from x-axis; Forrest2016_fig10_Tsub13_wpd
+forrest2016,water,narrow_channel,3.92,1479.76011994003,-1.0,13.0,-1,-1.0,unknown,180281.69014084502,-1.0,fig10,2026-05-28,direct ONB; G from x-axis; Forrest2016_fig10_Tsub13_wpd
+forrest2016,water,narrow_channel,3.92,2949.025487256372,-1.0,13.0,-1,-1.0,unknown,370422.5352112675,-1.0,fig10,2026-05-28,direct ONB; G from x-axis; Forrest2016_fig10_Tsub13_wpd
+forrest2016,water,narrow_channel,3.92,742.5037481259372,-1.0,19.0,-1,-1.0,unknown,198591.5492957746,-1.0,fig10,2026-05-28,direct ONB; G from x-axis; Forrest2016_fig10_Tsub19_wpd
+forrest2016,water,narrow_channel,3.92,1479.76011994003,-1.0,19.0,-1,-1.0,unknown,298591.5492957745,-1.0,fig10,2026-05-28,direct ONB; G from x-axis; Forrest2016_fig10_Tsub19_wpd
+forrest2016,water,narrow_channel,3.92,2232.7586206896553,-1.0,19.0,-1,-1.0,unknown,485915.4929577463,-1.0,fig10,2026-05-28,direct ONB; G from x-axis; Forrest2016_fig10_Tsub19_wpd
+forrest2016,water,narrow_channel,3.92,2970.0149925037485,-1.0,19.0,-1,-1.0,unknown,564788.7323943661,-1.0,fig10,2026-05-28,direct ONB; G from x-axis; Forrest2016_fig10_Tsub19_wpd
+forrest2016,water,narrow_channel,3.92,755.6221889055474,-1.0,35.0,-1,-1.0,unknown,295774.6478873239,-1.0,fig10,2026-05-28,direct ONB; G from x-axis; Forrest2016_fig10_Tsub35_wpd
+forrest2016,water,narrow_channel,3.92,1503.3733133433284,-1.0,35.0,-1,-1.0,unknown,440845.07042253506,-1.0,fig10,2026-05-28,direct ONB; G from x-axis; Forrest2016_fig10_Tsub35_wpd
+forrest2016,water,narrow_channel,3.92,2256.3718140929536,-1.0,35.0,-1,-1.0,unknown,564788.7323943661,-1.0,fig10,2026-05-28,direct ONB; G from x-axis; Forrest2016_fig10_Tsub35_wpd
+forrest2016,water,narrow_channel,3.92,3004.1229385307347,-1.0,35.0,-1,-1.0,unknown,846478.8732394364,-1.0,fig10,2026-05-28,direct ONB; G from x-axis; Forrest2016_fig10_Tsub35_wpd
+forrest2016,water,narrow_channel,3.92,-1.0,-1.0,-1.0,-1,-1.0,ss_clean,245033.11258278144,14.419604471195184,fig17,2026-05-28,Forrest2016_fig17_Norm_wpd
+forrest2016,water,narrow_channel,3.92,-1.0,-1.0,-1.0,-1,-1.0,ss_clean,268211.92052980146,15.374032674118656,fig17,2026-05-28,Forrest2016_fig17_Norm_wpd
+forrest2016,water,narrow_channel,3.92,-1.0,-1.0,-1.0,-1,-1.0,ss_clean,367549.6688741723,9.2347377472055,fig17,2026-05-28,Forrest2016_fig17_Norm_wpd
+forrest2016,water,narrow_channel,3.92,-1.0,-1.0,-1.0,-1,-1.0,ss_clean,389072.84768211935,9.492691315563196,fig17,2026-05-28,Forrest2016_fig17_Norm_wpd
+forrest2016,water,narrow_channel,3.92,-1.0,-1.0,-1.0,-1,-1.0,ss_clean,557947.0198675497,11.478933791917452,fig17,2026-05-28,Forrest2016_fig17_Norm_wpd
+forrest2016,water,narrow_channel,3.92,-1.0,-1.0,-1.0,-1,-1.0,ss_clean,602649.0066225164,13.619948409286325,fig17,2026-05-28,Forrest2016_fig17_Norm_wpd
+forrest2016,water,narrow_channel,3.92,-1.0,-1.0,-1.0,-1,-1.0,ss_clean,673841.0596026491,9.466895958727427,fig17,2026-05-28,Forrest2016_fig17_Norm_wpd
+forrest2016,water,narrow_channel,3.92,-1.0,-1.0,-1.0,-1,-1.0,ss_clean,750000.0,11.556319862424765,fig17,2026-05-28,Forrest2016_fig17_Norm_wpd
+forrest2016,water,narrow_channel,3.92,-1.0,-1.0,-1.0,-1,-1.0,ss_oxidized,359271.52317880804,27.21410146173688,fig17,2026-05-28,Forrest2016_fig17_Oxi_wpd
+forrest2016,water,narrow_channel,3.92,-1.0,-1.0,-1.0,-1,-1.0,ss_oxidized,456953.6423841061,17.153912295786753,fig17,2026-05-28,Forrest2016_fig17_Oxi_wpd
+forrest2016,water,narrow_channel,3.92,-1.0,-1.0,-1.0,-1,-1.0,ss_oxidized,836092.715231788,19.44969905417025,fig17,2026-05-28,Forrest2016_fig17_Oxi_wpd
+forrest2016,water,narrow_channel,3.92,-1.0,-1.0,-1.0,-1,-1.0,ss_clean,242459.73645680796,-1.0,fig18,2026-05-28,parity q''_ONB; x=predicted(178.4 kW/m²); Forrest2016_fig18_Norm_wpd
+forrest2016,water,narrow_channel,3.92,-1.0,-1.0,-1.0,-1,-1.0,ss_clean,267057.10102489,-1.0,fig18,2026-05-28,parity q''_ONB; x=predicted(180.8 kW/m²); Forrest2016_fig18_Norm_wpd
+forrest2016,water,narrow_channel,3.92,-1.0,-1.0,-1.0,-1,-1.0,ss_clean,316251.83016105404,-1.0,fig18,2026-05-28,parity q''_ONB; x=predicted(312.6 kW/m²); Forrest2016_fig18_Norm_wpd
+forrest2016,water,narrow_channel,3.92,-1.0,-1.0,-1.0,-1,-1.0,ss_clean,363689.6046852122,-1.0,fig18,2026-05-28,parity q''_ONB; x=predicted(365.3 kW/m²); Forrest2016_fig18_Norm_wpd
+forrest2016,water,narrow_channel,3.92,-1.0,-1.0,-1.0,-1,-1.0,ss_clean,386530.0146412883,-1.0,fig18,2026-05-28,parity q''_ONB; x=predicted(366.5 kW/m²); Forrest2016_fig18_Norm_wpd
+forrest2016,water,narrow_channel,3.92,-1.0,-1.0,-1.0,-1,-1.0,ss_clean,556954.6120058564,-1.0,fig18,2026-05-28,parity q''_ONB; x=predicted(536.5 kW/m²); Forrest2016_fig18_Norm_wpd
+forrest2016,water,narrow_channel,3.92,-1.0,-1.0,-1.0,-1,-1.0,ss_clean,600878.4773060028,-1.0,fig18,2026-05-28,parity q''_ONB; x=predicted(516.2 kW/m²); Forrest2016_fig18_Norm_wpd
+forrest2016,water,narrow_channel,3.92,-1.0,-1.0,-1.0,-1,-1.0,ss_clean,600878.4773060028,-1.0,fig18,2026-05-28,parity q''_ONB; x=predicted(594.0 kW/m²); Forrest2016_fig18_Norm_wpd
+forrest2016,water,narrow_channel,3.92,-1.0,-1.0,-1.0,-1,-1.0,ss_clean,671156.661786237,-1.0,fig18,2026-05-28,parity q''_ONB; x=predicted(716.2 kW/m²); Forrest2016_fig18_Norm_wpd
+forrest2016,water,narrow_channel,3.92,-1.0,-1.0,-1.0,-1,-1.0,ss_clean,748462.6647144947,-1.0,fig18,2026-05-28,parity q''_ONB; x=predicted(721.0 kW/m²); Forrest2016_fig18_Norm_wpd
+forrest2016,water,narrow_channel,3.92,-1.0,-1.0,-1.0,-1,-1.0,ss_clean,843338.2137628109,-1.0,fig18,2026-05-28,parity q''_ONB; x=predicted(870.7 kW/m²); Forrest2016_fig18_Norm_wpd
+forrest2016,water,narrow_channel,3.92,-1.0,-1.0,-1.0,-1,-1.0,ss_clean,1036603.2210834551,-1.0,fig18,2026-05-28,parity q''_ONB; x=predicted(1124.6 kW/m²); Forrest2016_fig18_Norm_wpd
+forrest2016,water,narrow_channel,3.92,-1.0,-1.0,-1.0,-1,-1.0,ss_oxidized,358418.7408491946,-1.0,fig18,2026-05-28,parity q''_ONB; x=predicted(166.5 kW/m²); Forrest2016_fig18_Oxi_wpd
+forrest2016,water,narrow_channel,3.92,-1.0,-1.0,-1.0,-1,-1.0,ss_oxidized,455051.24450951675,-1.0,fig18,2026-05-28,parity q''_ONB; x=predicted(353.3 kW/m²); Forrest2016_fig18_Oxi_wpd
+forrest2016,water,narrow_channel,3.92,-1.0,-1.0,-1.0,-1,-1.0,ss_oxidized,834553.4407027817,-1.0,fig18,2026-05-28,parity q''_ONB; x=predicted(710.2 kW/m²); Forrest2016_fig18_Oxi_wpd
+forrest2016,water,narrow_channel,3.92,-1.0,-1.0,-1.0,-1,-1.0,unknown,110155.42362705967,-1.0,fig19,2026-05-28,parity q''_ONB; x=predicted(120.1 kW/m²); Forrest2016_fig19_Exp_data_wpd
+forrest2016,water,narrow_channel,3.92,-1.0,-1.0,-1.0,-1,-1.0,unknown,133924.33427310834,-1.0,fig19,2026-05-28,parity q''_ONB; x=predicted(115.5 kW/m²); Forrest2016_fig19_Exp_data_wpd
+forrest2016,water,narrow_channel,3.92,-1.0,-1.0,-1.0,-1,-1.0,unknown,200052.54753441794,-1.0,fig19,2026-05-28,parity q''_ONB; x=predicted(162.8 kW/m²); Forrest2016_fig19_Exp_data_wpd
+forrest2016,water,narrow_channel,3.92,-1.0,-1.0,-1.0,-1,-1.0,unknown,196662.82316393312,-1.0,fig19,2026-05-28,parity q''_ONB; x=predicted(159.4 kW/m²); Forrest2016_fig19_Exp_data_wpd
+forrest2016,water,narrow_channel,3.92,-1.0,-1.0,-1.0,-1,-1.0,unknown,181284.0929356237,-1.0,fig19,2026-05-28,parity q''_ONB; x=predicted(232.1 kW/m²); Forrest2016_fig19_Exp_data_wpd
+forrest2016,water,narrow_channel,3.92,-1.0,-1.0,-1.0,-1,-1.0,unknown,181288.99374194248,-1.0,fig19,2026-05-28,parity q''_ONB; x=predicted(228.7 kW/m²); Forrest2016_fig19_Exp_data_wpd
+forrest2016,water,narrow_channel,3.92,-1.0,-1.0,-1.0,-1,-1.0,unknown,294932.15786586225,-1.0,fig19,2026-05-28,parity q''_ONB; x=predicted(283.0 kW/m²); Forrest2016_fig19_Exp_data_wpd
+forrest2016,water,narrow_channel,3.92,-1.0,-1.0,-1.0,-1,-1.0,unknown,296569.02717633237,-1.0,fig19,2026-05-28,parity q''_ONB; x=predicted(325.7 kW/m²); Forrest2016_fig19_Exp_data_wpd
+forrest2016,water,narrow_channel,3.92,-1.0,-1.0,-1.0,-1,-1.0,unknown,294866.81378161185,-1.0,fig19,2026-05-28,parity q''_ONB; x=predicted(329.2 kW/m²); Forrest2016_fig19_Exp_data_wpd
+forrest2016,water,narrow_channel,3.92,-1.0,-1.0,-1.0,-1,-1.0,unknown,369409.7114922547,-1.0,fig19,2026-05-28,parity q''_ONB; x=predicted(427.3 kW/m²); Forrest2016_fig19_Exp_data_wpd
+forrest2016,water,narrow_channel,3.92,-1.0,-1.0,-1.0,-1,-1.0,unknown,506870.79432541085,-1.0,fig19,2026-05-28,parity q''_ONB; x=predicted(442.3 kW/m²); Forrest2016_fig19_Exp_data_wpd
+forrest2016,water,narrow_channel,3.92,-1.0,-1.0,-1.0,-1,-1.0,unknown,462706.36138273525,-1.0,fig19,2026-05-28,parity q''_ONB; x=predicted(466.6 kW/m²); Forrest2016_fig19_Exp_data_wpd
+forrest2016,water,narrow_channel,3.92,-1.0,-1.0,-1.0,-1,-1.0,unknown,440526.94558607525,-1.0,fig19,2026-05-28,parity q''_ONB; x=predicted(547.4 kW/m²); Forrest2016_fig19_Exp_data_wpd
+forrest2016,water,narrow_channel,3.92,-1.0,-1.0,-1.0,-1,-1.0,unknown,560951.1920530704,-1.0,fig19,2026-05-28,parity q''_ONB; x=predicted(607.5 kW/m²); Forrest2016_fig19_Exp_data_wpd
+forrest2016,water,narrow_channel,3.92,-1.0,-1.0,-1.0,-1,-1.0,unknown,564326.2140045986,-1.0,fig19,2026-05-28,parity q''_ONB; x=predicted(621.4 kW/m²); Forrest2016_fig19_Exp_data_wpd
+forrest2016,water,narrow_channel,3.92,-1.0,-1.0,-1.0,-1,-1.0,unknown,565763.7838581053,-1.0,fig19,2026-05-28,parity q''_ONB; x=predicted(805.0 kW/m²); Forrest2016_fig19_Exp_data_wpd
+forrest2016,water,narrow_channel,3.92,-1.0,-1.0,-1.0,-1,-1.0,unknown,845544.2821884279,-1.0,fig19,2026-05-28,parity q''_ONB; x=predicted(1000.2 kW/m²); Forrest2016_fig19_Exp_data_wpd
+liu2005,water_DIW,microchannel,0.318,-1.0,-1.0,-1.0,-1,-1.0,silicon_DIW,118865.24150809959,-1.0,fig4a,2026-05-28,parity q''_ONB all cases; x_pred=10.55 W/cm²
+liu2005,water_DIW,microchannel,0.318,-1.0,-1.0,-1.0,-1,-1.0,silicon_DIW,126066.46623751197,-1.0,fig4a,2026-05-28,parity q''_ONB all cases; x_pred=10.67 W/cm²
+liu2005,water_DIW,microchannel,0.318,-1.0,-1.0,-1.0,-1,-1.0,silicon_DIW,157818.70598858007,-1.0,fig4a,2026-05-28,parity q''_ONB all cases; x_pred=13.24 W/cm²
+liu2005,water_DIW,microchannel,0.318,-1.0,-1.0,-1.0,-1,-1.0,silicon_DIW,153555.77328251684,-1.0,fig4a,2026-05-28,parity q''_ONB all cases; x_pred=14.30 W/cm²
+liu2005,water_DIW,microchannel,0.318,-1.0,-1.0,-1.0,-1,-1.0,silicon_DIW,151318.77958006243,-1.0,fig4a,2026-05-28,parity q''_ONB all cases; x_pred=14.44 W/cm²
+liu2005,water_DIW,microchannel,0.318,-1.0,-1.0,-1.0,-1,-1.0,silicon_DIW,161995.66196194044,-1.0,fig4a,2026-05-28,parity q''_ONB all cases; x_pred=15.78 W/cm²
+liu2005,water_DIW,microchannel,0.318,-1.0,-1.0,-1.0,-1,-1.0,silicon_DIW,170535.57090056012,-1.0,fig4a,2026-05-28,parity q''_ONB all cases; x_pred=15.31 W/cm²
+liu2005,water_DIW,microchannel,0.318,-1.0,-1.0,-1.0,-1,-1.0,silicon_DIW,178587.3222478349,-1.0,fig4a,2026-05-28,parity q''_ONB all cases; x_pred=16.73 W/cm²
+liu2005,water_DIW,microchannel,0.318,-1.0,-1.0,-1.0,-1,-1.0,silicon_DIW,187645.33383671538,-1.0,fig4a,2026-05-28,parity q''_ONB all cases; x_pred=15.81 W/cm²
+liu2005,water_DIW,microchannel,0.318,-1.0,-1.0,-1.0,-1,-1.0,silicon_DIW,219091.68178515698,-1.0,fig4a,2026-05-28,parity q''_ONB all cases; x_pred=20.62 W/cm²
+liu2005,water_DIW,microchannel,0.318,-1.0,-1.0,-1.0,-1,-1.0,silicon_DIW,276733.3695357314,-1.0,fig4a,2026-05-28,parity q''_ONB all cases; x_pred=22.83 W/cm²
+liu2005,water_DIW,microchannel,0.318,-1.0,-1.0,-1.0,-1,-1.0,silicon_DIW,306299.0096060288,-1.0,fig4a,2026-05-28,parity q''_ONB all cases; x_pred=27.90 W/cm²
+liu2005,water_DIW,microchannel,0.318,-1.0,-1.0,-1.0,-1,-1.0,silicon_DIW,293108.8637856481,-1.0,fig4a,2026-05-28,parity q''_ONB all cases; x_pred=28.85 W/cm²
+liu2005,water_DIW,microchannel,0.318,-1.0,-1.0,-1.0,-1,-1.0,silicon_DIW,338348.09206778865,-1.0,fig4a,2026-05-28,parity q''_ONB all cases; x_pred=31.84 W/cm²
+liu2005,water_DIW,microchannel,0.318,-1.0,-1.0,-1.0,-1,-1.0,silicon_DIW,350367.6531784016,-1.0,fig4a,2026-05-28,parity q''_ONB all cases; x_pred=31.84 W/cm²
+liu2005,water_DIW,microchannel,0.318,-1.0,-1.0,-1.0,-1,-1.0,silicon_DIW,345292.5272644936,-1.0,fig4a,2026-05-28,parity q''_ONB all cases; x_pred=33.37 W/cm²
+liu2005,water_DIW,microchannel,0.318,-1.0,-1.0,-1.0,-1,-1.0,silicon_DIW,449209.65849406907,-1.0,fig4a,2026-05-28,parity q''_ONB all cases; x_pred=39.23 W/cm²
+liu2005,water_DIW,microchannel,0.318,-1.0,-1.0,-1.0,-1,-1.0,silicon_DIW,537061.1812653485,-1.0,fig4a,2026-05-28,parity q''_ONB all cases; x_pred=46.92 W/cm²
+liu2005,water_DIW,microchannel,0.318,-1.0,-1.0,-1.0,-1,-1.0,silicon_DIW,533244.8639799481,-1.0,fig4a,2026-05-28,parity q''_ONB all cases; x_pred=51.61 W/cm²
+liu2005,water_DIW,microchannel,0.318,-1.0,-1.0,-1.0,-1,-1.0,silicon_DIW,565541.8497622429,-1.0,fig4a,2026-05-28,parity q''_ONB all cases; x_pred=51.87 W/cm²
+liu2005,water_DIW,microchannel,0.318,-1.0,-1.0,70.0,-1,-1.0,silicon_DIW,708175.0150717451,-1.0,fig4b_Tin30,2026-05-28,parity q''_ONB; T_in=30°C; ΔT_sub≈70.0K; x_pred=61.29 W/cm²
+liu2005,water_DIW,microchannel,0.318,-1.0,-1.0,70.0,-1,-1.0,silicon_DIW,1004470.3379992777,-1.0,fig4b_Tin30,2026-05-28,parity q''_ONB; T_in=30°C; ΔT_sub≈70.0K; x_pred=87.92 W/cm²
+liu2005,water_DIW,microchannel,0.318,-1.0,-1.0,70.0,-1,-1.0,silicon_DIW,1292325.2034946075,-1.0,fig4b_Tin30,2026-05-28,parity q''_ONB; T_in=30°C; ΔT_sub≈70.0K; x_pred=106.73 W/cm²
+liu2005,water_DIW,microchannel,0.318,-1.0,-1.0,70.0,-1,-1.0,silicon_DIW,1479815.844930093,-1.0,fig4b_Tin30,2026-05-28,parity q''_ONB; T_in=30°C; ΔT_sub≈70.0K; x_pred=127.68 W/cm²
+liu2005,water_DIW,microchannel,0.318,-1.0,-1.0,70.0,-1,-1.0,silicon_DIW,1649211.5221515652,-1.0,fig4b_Tin30,2026-05-28,parity q''_ONB; T_in=30°C; ΔT_sub≈70.0K; x_pred=143.52 W/cm²
+liu2005,water_DIW,microchannel,0.318,-1.0,-1.0,70.0,-1,-1.0,silicon_DIW,1813265.7631983233,-1.0,fig4b_Tin30,2026-05-28,parity q''_ONB; T_in=30°C; ΔT_sub≈70.0K; x_pred=162.55 W/cm²
+liu2005,water_DIW,microchannel,0.318,-1.0,-1.0,70.0,-1,-1.0,silicon_DIW,1873191.022629967,-1.0,fig4b_Tin30,2026-05-28,parity q''_ONB; T_in=30°C; ΔT_sub≈70.0K; x_pred=172.56 W/cm²
+liu2005,water_DIW,microchannel,0.318,-1.0,-1.0,40.0,-1,-1.0,silicon_DIW,469115.2910839634,-1.0,fig4b_Tin60,2026-05-28,parity q''_ONB; T_in=60°C; ΔT_sub≈40.0K; x_pred=47.34 W/cm²
+liu2005,water_DIW,microchannel,0.318,-1.0,-1.0,40.0,-1,-1.0,silicon_DIW,683664.8901710542,-1.0,fig4b_Tin60,2026-05-28,parity q''_ONB; T_in=60°C; ΔT_sub≈40.0K; x_pred=65.57 W/cm²
+liu2005,water_DIW,microchannel,0.318,-1.0,-1.0,40.0,-1,-1.0,silicon_DIW,846845.0128748134,-1.0,fig4b_Tin60,2026-05-28,parity q''_ONB; T_in=60°C; ΔT_sub≈40.0K; x_pred=75.92 W/cm²
+liu2005,water_DIW,microchannel,0.318,-1.0,-1.0,40.0,-1,-1.0,silicon_DIW,988272.7338775884,-1.0,fig4b_Tin60,2026-05-28,parity q''_ONB; T_in=60°C; ΔT_sub≈40.0K; x_pred=94.29 W/cm²
+liu2005,water_DIW,microchannel,0.318,-1.0,-1.0,40.0,-1,-1.0,silicon_DIW,1104389.3700585917,-1.0,fig4b_Tin60,2026-05-28,parity q''_ONB; T_in=60°C; ΔT_sub≈40.0K; x_pred=104.93 W/cm²
+liu2005,water_DIW,microchannel,0.318,-1.0,-1.0,40.0,-1,-1.0,silicon_DIW,1194667.408695094,-1.0,fig4b_Tin60,2026-05-28,parity q''_ONB; T_in=60°C; ΔT_sub≈40.0K; x_pred=115.63 W/cm²
+liu2005,water_DIW,microchannel,0.318,-1.0,-1.0,40.0,-1,-1.0,silicon_DIW,1237497.5259394886,-1.0,fig4b_Tin60,2026-05-28,parity q''_ONB; T_in=60°C; ΔT_sub≈40.0K; x_pred=115.33 W/cm²
+liu2005,water_DIW,microchannel,0.318,-1.0,-1.0,10.0,-1,-1.0,silicon_DIW,191331.3795970114,-1.0,fig4b_Tin90,2026-05-28,parity q''_ONB; T_in=90°C; ΔT_sub≈10.0K; x_pred=23.72 W/cm²
+liu2005,water_DIW,microchannel,0.318,-1.0,-1.0,10.0,-1,-1.0,silicon_DIW,260574.5289868678,-1.0,fig4b_Tin90,2026-05-28,parity q''_ONB; T_in=90°C; ΔT_sub≈10.0K; x_pred=31.50 W/cm²
+liu2005,water_DIW,microchannel,0.318,-1.0,-1.0,10.0,-1,-1.0,silicon_DIW,308239.59580177505,-1.0,fig4b_Tin90,2026-05-28,parity q''_ONB; T_in=90°C; ΔT_sub≈10.0K; x_pred=39.41 W/cm²
+liu2005,water_DIW,microchannel,0.318,-1.0,-1.0,10.0,-1,-1.0,silicon_DIW,368596.96956244117,-1.0,fig4b_Tin90,2026-05-28,parity q''_ONB; T_in=90°C; ΔT_sub≈10.0K; x_pred=44.73 W/cm²
+liu2005,water_DIW,microchannel,0.318,-1.0,-1.0,10.0,-1,-1.0,silicon_DIW,415266.9003427566,-1.0,fig4b_Tin90,2026-05-28,parity q''_ONB; T_in=90°C; ΔT_sub≈10.0K; x_pred=52.59 W/cm²
+liu2005,water_DIW,microchannel,0.318,-1.0,-1.0,10.0,-1,-1.0,silicon_DIW,466580.03880583786,-1.0,fig4b_Tin90,2026-05-28,parity q''_ONB; T_in=90°C; ΔT_sub≈10.0K; x_pred=54.99 W/cm²
+liu2005,water_DIW,microchannel,0.318,-1.0,-1.0,10.0,-1,-1.0,silicon_DIW,484618.73028857977,-1.0,fig4b_Tin90,2026-05-28,parity q''_ONB; T_in=90°C; ΔT_sub≈10.0K; x_pred=63.07 W/cm²
+liu2005,water_DIW,microchannel,0.318,376.20035944046333,-1.0,-1.0,-1,-1.0,silicon_DIW,125155.91779421085,-1.0,fig9a,2026-05-28,flow velocity effect; u=0.377 m/s
+liu2005,water_DIW,microchannel,0.318,407.70579378343507,-1.0,-1.0,-1,-1.0,silicon_DIW,132915.31399528377,-1.0,fig9a,2026-05-28,flow velocity effect; u=0.409 m/s
+liu2005,water_DIW,microchannel,0.318,455.01872677182774,-1.0,-1.0,-1,-1.0,silicon_DIW,140673.0007555118,-1.0,fig9a,2026-05-28,flow velocity effect; u=0.456 m/s
+liu2005,water_DIW,microchannel,0.318,531.6062707479567,-1.0,-1.0,-1,-1.0,silicon_DIW,154249.62415195708,-1.0,fig9a,2026-05-28,flow velocity effect; u=0.533 m/s
+liu2005,water_DIW,microchannel,0.318,605.9569045384128,-1.0,-1.0,-1,-1.0,silicon_DIW,166317.0554881446,-1.0,fig9a,2026-05-28,flow velocity effect; u=0.608 m/s
+liu2005,water_DIW,microchannel,0.318,687.103484512008,-1.0,-1.0,-1,-1.0,silicon_DIW,176874.31794073433,-1.0,fig9a,2026-05-28,flow velocity effect; u=0.689 m/s
+liu2005,water_DIW,microchannel,0.318,756.9772545159002,-1.0,-1.0,-1,-1.0,silicon_DIW,186138.9989087052,-1.0,fig9a,2026-05-28,flow velocity effect; u=0.759 m/s
+liu2005,water_DIW,microchannel,0.318,835.8960545494783,-1.0,-1.0,-1,-1.0,silicon_DIW,194540.16804414024,-1.0,fig9a,2026-05-28,flow velocity effect; u=0.838 m/s
+liu2005,water_DIW,microchannel,0.318,905.7911284599008,-1.0,-1.0,-1,-1.0,silicon_DIW,202295.41274601832,-1.0,fig9a,2026-05-28,flow velocity effect; u=0.909 m/s
+liu2005,water_DIW,microchannel,0.318,984.7251455695719,-1.0,-1.0,-1,-1.0,silicon_DIW,209618.41311995848,-1.0,fig9a,2026-05-28,flow velocity effect; u=0.988 m/s
+liu2005,water_DIW,microchannel,0.318,1133.5968444027258,-1.0,-1.0,-1,-1.0,silicon_DIW,221677.7856635912,-1.0,fig9a,2026-05-28,flow velocity effect; u=1.137 m/s
+liu2005,water_DIW,microchannel,0.318,2282.3034845120083,-1.0,-1.0,-1,-1.0,silicon_DIW,272874.3179407343,-1.0,fig9a,2026-05-28,flow velocity effect; u=2.289 m/s
+liu2005,water_DIW,microchannel,0.318,-1.0,-1.0,69.96771834703668,-1,-1.0,silicon_DIW,629074.8898678414,-1.0,fig9b,2026-05-28,inlet temp effect; T_in=30.0°C; ΔT_sub≈70.0K
+liu2005,water_DIW,microchannel,0.318,-1.0,-1.0,59.85642690256648,-1,-1.0,silicon_DIW,541189.4273127753,-1.0,fig9b,2026-05-28,inlet temp effect; T_in=40.1°C; ΔT_sub≈59.9K
+liu2005,water_DIW,microchannel,0.318,-1.0,-1.0,49.82592876634148,-1,-1.0,silicon_DIW,454845.8149779735,-1.0,fig9b,2026-05-28,inlet temp effect; T_in=50.2°C; ΔT_sub≈49.8K
+liu2005,water_DIW,microchannel,0.318,-1.0,-1.0,39.87640229003549,-1,-1.0,silicon_DIW,368502.2026431718,-1.0,fig9b,2026-05-28,inlet temp effect; T_in=60.1°C; ΔT_sub≈39.9K
+liu2005,water_DIW,microchannel,0.318,-1.0,-1.0,29.8459933296474,-1,-1.0,silicon_DIW,281387.6651982378,-1.0,fig9b,2026-05-28,inlet temp effect; T_in=70.2°C; ΔT_sub≈29.8K
+liu2005,water_DIW,microchannel,0.318,-1.0,-1.0,19.896466853341423,-1,-1.0,silicon_DIW,195044.0528634361,-1.0,fig9b,2026-05-28,inlet temp effect; T_in=80.1°C; ΔT_sub≈19.9K
+liu2005,water_DIW,microchannel,0.318,-1.0,-1.0,9.86623624462716,-1,-1.0,silicon_DIW,106387.66519823784,-1.0,fig9b,2026-05-28,inlet temp effect; T_in=90.1°C; ΔT_sub≈9.9K
+liu2005,water_DIW,microchannel,0.318,-1.0,-1.0,4.932404715618233,-1,-1.0,silicon_DIW,59361.23348017617,-1.0,fig9b,2026-05-28,inlet temp effect; T_in=95.1°C; ΔT_sub≈4.9K
+liu2005,water_DIW,microchannel,0.318,-1.0,99.90030872683188,-1.0,-1,-1.0,silicon_DIW,151365.84674601431,-1.0,fig9c,2026-05-28,outlet pressure effect; P_out=0.999 bar
+liu2005,water_DIW,microchannel,0.318,-1.0,104.92515584709723,-1.0,-1,-1.0,silicon_DIW,164488.3237307863,-1.0,fig9c,2026-05-28,outlet pressure effect; P_out=1.049 bar
+liu2005,water_DIW,microchannel,0.318,-1.0,109.95025731273216,-1.0,-1,-1.0,silicon_DIW,176955.46170346,-1.0,fig9c,2026-05-28,outlet pressure effect; P_out=1.100 bar
+liu2005,water_DIW,microchannel,0.318,-1.0,114.97552834194676,-1.0,-1,-1.0,silicon_DIW,188985.70700140137,-1.0,fig9c,2026-05-28,outlet pressure effect; P_out=1.150 bar
+liu2005,water_DIW,microchannel,0.318,-1.0,119.93119352170231,-1.0,-1,-1.0,silicon_DIW,200360.39527692762,-1.0,fig9c,2026-05-28,outlet pressure effect; P_out=1.199 bar
+liu2005,water_DIW,microchannel,0.318,-1.0,125.0270030000642,-1.0,-1,-1.0,silicon_DIW,210643.28788625673,-1.0,fig9c,2026-05-28,outlet pressure effect; P_out=1.250 bar
+liu2005,water_DIW,microchannel,0.318,-1.0,129.98326165234863,-1.0,-1,-1.0,silicon_DIW,220488.8518002202,-1.0,fig9c,2026-05-28,outlet pressure effect; P_out=1.300 bar
+liu2005,water_DIW,microchannel,0.318,-1.0,134.93960508642292,-1.0,-1,-1.0,silicon_DIW,230115.96937681752,-1.0,fig9c,2026-05-28,outlet pressure effect; P_out=1.349 bar
+liu2005,water_DIW,microchannel,0.318,-1.0,140.03609281910352,-1.0,-1,-1.0,silicon_DIW,238651.2912872177,-1.0,fig9c,2026-05-28,outlet pressure effect; P_out=1.400 bar
+liu2005,water_DIW,microchannel,0.318,-1.0,144.99294494391685,-1.0,-1,-1.0,silicon_DIW,246967.7308396183,-1.0,fig9c,2026-05-28,outlet pressure effect; P_out=1.450 bar
+liu2005,water_DIW,microchannel,0.318,-1.0,150.0196572635587,-1.0,-1,-1.0,silicon_DIW,255284.38840233558,-1.0,fig9c,2026-05-28,outlet pressure effect; P_out=1.500 bar
+liu2005,water_DIW,microchannel,0.0498265479283365,-1.0,-1.0,-1.0,-1,-1.0,silicon_DIW,267329.68908778724,-1.0,fig9d,2026-05-28,channel width effect; w_c=50μm; D_h≈w_c(mm)
+liu2005,water_DIW,microchannel,0.101298512767374,-1.0,-1.0,-1.0,-1,-1.0,silicon_DIW,233229.9629067864,-1.0,fig9d,2026-05-28,channel width effect; w_c=101μm; D_h≈w_c(mm)
+liu2005,water_DIW,microchannel,0.15038970400516605,-1.0,-1.0,-1.0,-1,-1.0,silicon_DIW,205142.2407104276,-1.0,fig9d,2026-05-28,channel width effect; w_c=150μm; D_h≈w_c(mm)
+liu2005,water_DIW,microchannel,0.20069130537075697,-1.0,-1.0,-1.0,-1,-1.0,silicon_DIW,180726.29613499722,-1.0,fig9d,2026-05-28,channel width effect; w_c=201μm; D_h≈w_c(mm)
+liu2005,water_DIW,microchannel,0.2504052220837276,-1.0,-1.0,-1.0,-1,-1.0,silicon_DIW,160317.5199106959,-1.0,fig9d,2026-05-28,channel width effect; w_c=250μm; D_h≈w_c(mm)
+liu2005,water_DIW,microchannel,0.2995284506450015,-1.0,-1.0,-1.0,-1,-1.0,silicon_DIW,142914.24509553623,-1.0,fig9d,2026-05-28,channel width effect; w_c=300μm; D_h≈w_c(mm)
+liu2005,water_DIW,microchannel,0.3498590858349978,-1.0,-1.0,-1.0,-1,-1.0,silicon_DIW,128181.08095931761,-1.0,fig9d,2026-05-28,channel width effect; w_c=350μm; D_h≈w_c(mm)
+liu2005,water_DIW,microchannel,0.4007994313375083,-1.0,-1.0,-1.0,-1,-1.0,silicon_DIW,116786.30604654421,-1.0,fig9d,2026-05-28,channel width effect; w_c=401μm; D_h≈w_c(mm)
+liu2005,water_DIW,microchannel,0.5009050543883625,-1.0,-1.0,-1.0,-1,-1.0,silicon_DIW,102011.59350643492,-1.0,fig9d,2026-05-28,channel width effect; w_c=501μm; D_h≈w_c(mm)
+liu2005,water_DIW,microchannel,0.318,-1.0,-1.0,-1.0,-1,-1.0,silicon_DIW,115286.76327125986,-1.0,fig9e,2026-05-28,channel height effect; H_c=275μm
+liu2005,water_DIW,microchannel,0.318,-1.0,-1.0,-1.0,-1,-1.0,silicon_DIW,119329.07397715056,-1.0,fig9e,2026-05-28,channel height effect; H_c=299μm
+liu2005,water_DIW,microchannel,0.318,-1.0,-1.0,-1.0,-1,-1.0,silicon_DIW,128779.8431078641,-1.0,fig9e,2026-05-28,channel height effect; H_c=399μm
+liu2005,water_DIW,microchannel,0.318,-1.0,-1.0,-1.0,-1,-1.0,silicon_DIW,138566.24558295676,-1.0,fig9e,2026-05-28,channel height effect; H_c=499μm
+liu2005,water_DIW,microchannel,0.318,-1.0,-1.0,-1.0,-1,-1.0,silicon_DIW,148689.05564313073,-1.0,fig9e,2026-05-28,channel height effect; H_c=599μm
+liu2005,water_DIW,microchannel,0.318,-1.0,-1.0,-1.0,-1,-1.0,silicon_DIW,157131.76337965354,-1.0,fig9e,2026-05-28,channel height effect; H_c=699μm
+liu2005,water_DIW,microchannel,0.318,-1.0,-1.0,-1.0,-1,-1.0,silicon_DIW,164902.43018671585,-1.0,fig9e,2026-05-28,channel height effect; H_c=800μm
+liu2005,water_DIW,microchannel,0.318,-1.0,-1.0,-1.0,-1,-1.0,silicon_DIW,176411.1311037265,-1.0,fig9e,2026-05-28,channel height effect; H_c=1000μm

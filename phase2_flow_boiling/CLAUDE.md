@@ -53,7 +53,7 @@ Phase 2 host 컴퓨터의 첫 설치는 **`SETUP_PHASE2_HOST.md`** (본 폴더, 
 
 - [x] **Step 1** — 담당자/hostname 확정 후 본 파일 § 컴퓨터 경고 헤더 + root `HOSTS.md` 갱신 (`SETUP_PHASE2_HOST.md` § 4) — **완료 2026-05-21** (macmini commit)
 - [x] **Step 2** — 해당 컴퓨터에 OneDrive sync 확인 + Claude Code 설치 + Git 인증 (`SETUP_PHASE2_HOST.md` § 1-3) — **완료 2026-05-21** (B 측)
-- [ ] **Step 3** — `cd ~/PINN-ONB01/phase2_flow_boiling && claude` 진입 (root 진입 금지) (`SETUP_PHASE2_HOST.md` § 6) — B 가 macmini 의 갱신 `git pull` 후 진행
+- [x] **Step 3** — `cd ~/PINN-ONB01/phase2_flow_boiling && claude` 진입 (root 진입 금지) (`SETUP_PHASE2_HOST.md` § 6) — **완료 2026-05-21** (macbook-air-6)
 - [ ] **Step 4** — `plan.md` 의 M1 (서베이) 실행
 - [ ] **Step 5** — `shared/src/pinn_onb/` 의 Phase 1 모델 import 확인 (Stage 2 후) — 의존성 import path 검증
 
@@ -76,6 +76,15 @@ Phase 2 시작 시 추가 예정:
 - `/transfer-phase1-to-phase2` (TBD) — frozen encoder 이식
 
 기존 phase-agnostic commands 사용 가능: `/add-paper`, `/build-seminar-prompt --phase 2`
+
+## 관련 agents (manuscript 작업, Phase 2 후반부)
+
+- **academic-writing-reviewer** ⭐ — native-English style review (tone, voice, sentence-variety, idiomatic English). Phase 2 manuscript draft 완성 후 polish 단계에 호출. 모든 phase 공통 적용 (Phase 1, 1.5 와 동일 spec).
+- **section-drafter** — 한글 노트 → 학술 영문 section 초안 작성.
+- **latex-formatter** — LaTeX 수식·table·BibTeX 포맷 통일.
+- **reviewer-anticipator** — submission 후 reviewer 예상 질문 대비.
+
+Phase 2 별도 agent 추가 검토 (TBD): forced-convection 데이터 핸들링, two-phase Nusselt correlation 자동 비교.
 
 ## 참고
 

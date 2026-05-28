@@ -1,0 +1,34 @@
+# Phase 2 — Forced-Convection Subcooled Flow Boiling ONB
+# Python 3.13.13 / macOS arm64 (macbook-air-6, Apple M-series)
+# Verified 2026-05-21
+#
+# Setup (venv는 OneDrive 외부에 생성 — 46K 파일이 동기화 부하 유발):
+#   python3.13 -m venv ~/.venv_pinn_phase2
+#   source ~/.venv_pinn_phase2/bin/activate
+#   pip install -r requirements.txt
+#
+# ⚠️  절대 OneDrive 폴더 안에 venv 생성 금지 (sync 멈춤 원인)
+# Lock file: pip freeze > requirements-lock.txt
+
+# ── Core scientific Python ────────────────────────────────────
+numpy>=2.4,<3.0
+pandas>=2.3,<3.0
+scipy>=1.17,<2.0
+scikit-learn>=1.8,<2.0
+PyYAML>=6.0,<7.0
+
+# ── Thermophysical properties (CoolProp) ─────────────────────
+# Supports: Water, R134a, R1234yf, R1234ze(E), R32, R1233zd(E), R123, R22
+CoolProp>=6.6,<8.0
+
+# ── Deep learning (PyTorch, MPS-enabled on Apple Silicon) ────
+torch>=2.1,<3.0
+torchvision>=0.16,<1.0
+
+# ── Experiment tracking and hyperparameter optimization ──────
+mlflow>=2.10,<4.0
+optuna>=3.5,<5.0
+
+# ── Visualization ─────────────────────────────────────────────
+matplotlib>=3.8,<4.0
+plotly>=5.18,<7.0
