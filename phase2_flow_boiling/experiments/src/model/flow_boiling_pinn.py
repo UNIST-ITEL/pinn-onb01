@@ -285,32 +285,41 @@ class FlowBoilingPINN(nn.Module):
 
     # ── Transfer learning helpers ─────────────────────────────────────────────
     def load_phase1_weights(self, checkpoint_path: str | Path) -> None:
-        """Load Phase 1 pool-boiling PINN checkpoint into surface encoder + backbone.
+        """Load Phase 1 pool-boiling PINN checkpoint into surface encoder.
 
-        Phase 1 key prefix: 'encoder.*' → surface_encoder.*
-                            'backbone_linear.*' → backbone_linear.*
-                            'backbone_film.*' → surface_film.*  (first n_layers)
-                            'head_*' → ignored (head shapes differ)
+        Phase 1 key mapping:
+          'encoder.*'  → 'surface_encoder.*'   (numeric_norm, cat_embedding, mlp.0/3)
+          'backbone_linear.*' / 'backbone_film.*' → skipped (Phase 2 architecture differs)
+          'head_*' → skipped (different outputs)
+
+        The final encoder projection (mlp.6) is skipped if shapes differ due to
+        surface_latent_dim mismatch (Phase 1=32, Phase 2=16 by default); the
+        upstream feature-extraction layers (mlp.0, mlp.3) are always transferred.
         """
-        ckpt = torch.load(checkpoint_path, map_location="cpu", weights_only=True)
-        state = ckpt.get("model_state_dict", ckpt)
+        # Phase 1 checkpoint uses 'model_state' (not 'model_state_dict')
+        ckpt = torch.load(checkpoint_path, map_location="cpu", weights_only=False)
+        state = ckpt.get("model_state", ckpt.get("model_state_dict", ckpt))
 
-        mapping = {}
+        p2_state = self.state_dict()
+        mapping: dict[str, torch.Tensor] = {}
+        skipped_shape: list[str] = []
+
         for k, v in state.items():
             if k.startswith("encoder."):
-                mapping["surface_encoder." + k[len("encoder."):]] = v
-            elif k.startswith("backbone_linear."):
-                mapping[k] = v
-            elif k.startswith("backbone_film."):
-                # Phase 1 has single FiLM; map to surface_film in Phase 2
-                mapping["surface_" + k] = v
+                p2k = "surface_encoder." + k[len("encoder."):]
+                if p2k in p2_state and p2_state[p2k].shape == v.shape:
+                    mapping[p2k] = v
+                elif p2k in p2_state:
+                    skipped_shape.append(f"{k}: {tuple(v.shape)} → expected {tuple(p2_state[p2k].shape)}")
+            # backbone_linear / backbone_film / head_* → not transferred
+            # (Phase 2 has dual-FiLM architecture; backbone must be re-learned)
 
         missing, unexpected = self.load_state_dict(mapping, strict=False)
-        n_loaded = len(mapping) - len(missing)
+        n_loaded = len(mapping)
         print(
-            f"[transfer] loaded {n_loaded}/{len(mapping)} keys from Phase 1 checkpoint\n"
-            f"  missing   : {len(missing)}\n"
-            f"  unexpected: {len(unexpected)}"
+            f"[transfer] loaded {n_loaded} tensors from Phase 1 checkpoint\n"
+            f"  skipped (shape mismatch): {skipped_shape}\n"
+            f"  not in model (unexpected): {len(unexpected)}"
         )
 
     def freeze_surface_encoder(self) -> None:

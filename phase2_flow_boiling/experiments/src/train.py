@@ -72,7 +72,9 @@ def build_model(cfg: dict, device: torch.device) -> FlowBoilingPINN:
     # Phase 1 transfer weights
     p1_ckpt = cfg.get("transfer", {}).get("phase1_checkpoint")
     if p1_ckpt:
-        p1_path = _PROJ / p1_ckpt if not Path(p1_ckpt).is_absolute() else Path(p1_ckpt)
+        p1_path = Path(p1_ckpt).expanduser()
+        if not p1_path.is_absolute():
+            p1_path = _PROJ / p1_ckpt
         if p1_path.is_file():
             model.load_phase1_weights(str(p1_path))
         else:
