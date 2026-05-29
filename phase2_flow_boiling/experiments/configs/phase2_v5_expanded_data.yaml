@@ -1,0 +1,85 @@
+# Phase 2 v5 — Expanded Dataset (536 rows, +133 from kuang2025/hong2012/alyahia2017/cheng2022)
+# Ablation over v3: same architecture and hyperparameters, larger dataset only.
+# train=370 (vs v3: 263), val=77, test=87.
+# Also fixes dataset.py Ra_um: uses actual Ra when available (kuang2025: 3.2 μm).
+#
+# Run:
+#   python experiments/src/train.py --config experiments/configs/phase2_v5_expanded_data.yaml
+
+experiment:
+  name: "phase2_v5_expanded_data"
+  phase: 2
+  scope: "M4_expanded_dataset"
+  seed: 42
+
+data:
+  csv_path: "data/raw/onb_dataset_phase2_raw.csv"
+  train_frac: 0.70
+  val_frac: 0.15
+  test_frac: 0.15
+  batch_size: 32
+  exclude_onb_not_found: true
+
+model:
+  surface_latent_dim: 16
+  flow_latent_dim: 8
+  hidden_dim: 96
+  n_layers: 6
+  head_hidden: 48
+  flow_encoder_hidden: 32
+  flow_encoder_dropout: 0.1
+  freeze_surface_encoder: true
+
+transfer:
+  phase1_checkpoint: "~/PINN-ONB01/phase1_pool_boiling/03_model/checkpoints/baseline_phaseE/phase3_best.pt"
+
+loss:
+  w_data_q:       1.0
+  w_data_dT:      3.0
+  w_hsu_coupling: 0.05
+  w_hsu:          0.5
+  w_mono_Re:      0.1
+  w_mono_G:       0.1
+  w_mono_sub:     0.1
+  w_continuity:   0.0
+  w_momentum:     0.0
+  w_energy:       0.0
+
+training:
+  stage1:
+    epochs: 2000
+    optimizer: "adam"
+    lr: 1.0e-3
+    lr_scheduler: "cosine"
+    lr_min: 1.0e-5
+    grad_clip: 1.0
+
+  stage2:
+    epochs: 3000
+    optimizer: "adam"
+    lr: 3.0e-4
+    lr_scheduler: "cosine"
+    lr_min: 1.0e-6
+    grad_clip: 1.0
+
+  stage3:
+    optimizer: "lbfgs"
+    max_iter: 500
+    tolerance_grad: 1.0e-7
+    tolerance_change: 1.0e-9
+    history_size: 50
+
+logging:
+  mlflow_tracking_uri: "experiments/logs/mlruns"
+  log_every_n_epochs: 50
+  save_best: true
+  checkpoint_dir: "experiments/checkpoints"
+
+hsu_constraint:
+  C_hsu: 0.5
+  r_c_min_um: 1.0
+  r_c_max_um: 100.0
+
+collocation:
+  n_hsu_points: 500
+  n_mono_points: 200

@@ -66,8 +66,8 @@ def _get_surface_scales(fluid: str, P_kPa: float):
 
 
 def _surface_feat_from_row(row: pd.Series) -> SurfaceFeatures:
-    Ra_um = _DEFAULT_RA_UM  # Phase 2 data lacks Ra
-    theta_deg = float(row["theta_deg"]) if row["theta_deg"] > 0 else None
+    Ra_um = float(row["Ra_um"]) if float(row["Ra_um"]) > 0 else _DEFAULT_RA_UM
+    theta_deg = float(row["theta_deg"]) if float(row["theta_deg"]) > 0 else None
     fluid = str(row["fluid"])
     return SurfaceFeatures.from_dataset_row(
         Ra_um=Ra_um,
