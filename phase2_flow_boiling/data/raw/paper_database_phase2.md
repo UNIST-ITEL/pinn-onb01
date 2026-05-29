@@ -823,7 +823,8 @@
 - **실험 조건**: 탈이온수; 직사각형 마이크로채널 231×713 μm; u=0.13–1.44 m/s; ΔT_sub=10/40/70 K
 - **ONB 데이터 수**: 약 15–25포인트 (유속 × 과냉도)
 - **디지타이즈 대상**: q''_ONB vs u (과냉도별) + 기포 이탈 직경 vs q''
-- **Phase 2 활용 포인트**: 마이크로채널 ONB 기계론적 모델 — Phase 2 L_ONB_flow 손실항의 기포 이탈 기준 설계 참고. Qu-Mudawar vs Hsu-Graham 비교 → PINN 물리 제약 선택 근거.
+- **디지타이즈 완료 (2026-05-29)**: 20행 추출 (Fig10 q_i''=220–1780 kW/m², Fig11 출구 과냉도=2–30 K, Fig12 ΔT_ONB=4–21 K). T_in=30/60/90°C × u_in=0.18–1.34 m/s, P=120 kPa, D_h=0.349 mm (마이크로채널 최소). delta_T_sub_K=**출구(국소) 과냉도** 채택 (ONB 출구 발생). q는 planform-area 기준. ΔT_ONB는 Fig12 계열 식별 가능 11행만, 나머지 9행은 q+subcooling만.
+- **Phase 2 활용 포인트**: 마이크로채널 ONB 기계론적 모델 — Phase 2 L_ONB_flow 손실항의 기포 이탈 기준 설계 참고. Qu-Mudawar vs Hsu-Graham 비교 → PINN 물리 제약 선택 근거. 데이터셋 confinement 영역(D_h<0.5mm) coverage 보강.
 - **인용 가능 문장**: "Qu and Mudawar (2002) predicted incipient boiling heat flux in microchannels using a force-balance model for bubble departure diameter, validated against deionized water experiments across subcoolings of 10–70 K."
 
 ---
