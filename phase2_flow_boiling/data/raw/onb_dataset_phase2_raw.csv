@@ -97,124 +97,10 @@ basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,82.5,copper_flat,-1.0,3.
 basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,82.5,copper_flat,-1.0,3.1626866917590695,fig10,2026-05-28,parity ΔT_ONB; x=predicted(4.23°C); series=Pres_theta80to85_water-Cu_flat
 basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,82.5,copper_flat,-1.0,3.5760882687203908,fig10,2026-05-28,parity ΔT_ONB; x=predicted(4.70°C); series=Pres_theta80to85_water-Cu_flat
 basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,82.5,copper_flat,-1.0,3.393559400206445,fig10,2026-05-28,parity ΔT_ONB; x=predicted(3.99°C); series=Pres_theta80to85_water-Cu_flat
-basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,4.0,haynes_rod,9043.506883594777,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=0.904 W/cm²→×10000; series=Past_theta04_R11-Haynes
-basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,4.0,haynes_rod,9755.427135003953,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=0.976 W/cm²→×10000; series=Past_theta04_R11-Haynes
-basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,4.0,haynes_rod,12659.334755864593,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=1.266 W/cm²→×10000; series=Past_theta04_R11-Haynes
-basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,4.0,haynes_rod,13075.94761305888,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=1.308 W/cm²→×10000; series=Past_theta04_R11-Haynes
-basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,4.0,haynes_rod,71100.64533413162,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=7.110 W/cm²→×10000; series=Past_theta04_R11-Haynes
-basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,4.0,haynes_rod,84549.31510038568,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=8.455 W/cm²→×10000; series=Past_theta04_R11-Haynes
-basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,4.0,haynes_rod,105108.5315692381,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=10.511 W/cm²→×10000; series=Past_theta04_R11-Haynes
-basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,4.0,haynes_rod,103996.0344414582,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=10.400 W/cm²→×10000; series=Past_theta04_R11-Haynes
-basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,4.0,haynes_rod,99568.71299232438,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=9.957 W/cm²→×10000; series=Past_theta04_R11-Haynes
-basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,4.0,haynes_rod,145564.58343017357,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=14.556 W/cm²→×10000; series=Past_theta04_R11-Haynes
-basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,4.0,haynes_rod,55912.27089955129,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=5.591 W/cm²→×10000; series=Past_theta04_R11-Haynes
-basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,4.0,ss_rod,236764.9110435156,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=23.676 W/cm²→×10000; series=Past_theta04_R11-SS
-basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,4.0,ss_rod,210153.8819948096,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=21.015 W/cm²→×10000; series=Past_theta04_R11-SS
-basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,4.0,ss_rod,224376.6216201569,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=22.438 W/cm²→×10000; series=Past_theta04_R11-SS
-basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,4.0,ss_rod,236873.2717095032,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=23.687 W/cm²→×10000; series=Past_theta04_R11-SS
-basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,4.0,ss_rod,174629.892652315,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=17.463 W/cm²→×10000; series=Past_theta04_R11-SS
-basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,4.0,ss_rod,167218.04750761058,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=16.722 W/cm²→×10000; series=Past_theta04_R11-SS
-basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,4.0,ss_rod,163648.55923515788,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=16.365 W/cm²→×10000; series=Past_theta04_R11-SS
-basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,4.0,ss_rod,156770.29546071813,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=15.677 W/cm²→×10000; series=Past_theta04_R11-SS
-basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,4.0,ss_rod,163710.2369239178,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=16.371 W/cm²→×10000; series=Past_theta04_R11-SS
-basu2002,R-11,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,4.0,ss_rod,139105.26943265475,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=13.911 W/cm²→×10000; series=Past_theta04_R11-SS
-basu2002,R-113,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,5.0,ss_rod,10862.39920117752,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=1.086 W/cm²→×10000; series=Past_theta05_R113-SS
-basu2002,R-113,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,5.0,ss_rod,16588.64526053483,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=1.659 W/cm²→×10000; series=Past_theta05_R113-SS
-basu2002,R-113,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,5.0,ss_rod,19955.123024262113,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=1.996 W/cm²→×10000; series=Past_theta05_R113-SS
-basu2002,R-113,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,5.0,ss_rod,25626.620028793317,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=2.563 W/cm²→×10000; series=Past_theta05_R113-SS
-basu2002,R-113,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,5.0,ss_rod,26467.130571239213,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=2.647 W/cm²→×10000; series=Past_theta05_R113-SS
-basu2002,R-113,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,5.0,ss_rod,45513.28226374917,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=4.551 W/cm²→×10000; series=Past_theta05_R113-SS
-basu2002,R-113,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,5.0,ss_rod,57174.89760451673,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=5.717 W/cm²→×10000; series=Past_theta05_R113-SS
-basu2002,R-113,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,5.0,ss_rod,64428.62057893895,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=6.443 W/cm²→×10000; series=Past_theta05_R113-SS
-basu2002,R-12,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,6.0,copper_rod,2158.769640702877,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=0.216 W/cm²→×10000; series=Past_theta06_R12-Cu
-basu2002,R-12,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,6.0,copper_rod,2956.121778192706,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=0.296 W/cm²→×10000; series=Past_theta06_R12-Cu
-basu2002,R-12,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,6.0,copper_rod,7847.266729561074,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=0.785 W/cm²→×10000; series=Past_theta06_R12-Cu
-basu2002,R-12,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,6.0,copper_rod,8941.769081486244,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=0.894 W/cm²→×10000; series=Past_theta06_R12-Cu
-basu2002,R-12,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,6.0,copper_rod,10983.624267025763,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=1.098 W/cm²→×10000; series=Past_theta06_R12-Cu
-basu2002,R-12,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,6.0,copper_rod,15885.853357777924,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=1.589 W/cm²→×10000; series=Past_theta06_R12-Cu
-basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,38.0,nickel_rod,2837020.4621607503,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=283.702 W/cm²→×10000; series=Past_theta38_water-Ni
-basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,38.0,nickel_rod,4284310.74355481,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=428.431 W/cm²→×10000; series=Past_theta38_water-Ni
-basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,38.0,nickel_rod,6130245.924373765,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=613.025 W/cm²→×10000; series=Past_theta38_water-Ni
-basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,38.0,ss_rod,10543650.931251992,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=1054.365 W/cm²→×10000; series=Past_theta38_water-SS
-basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,38.0,ss_rod,5381911.012182863,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=538.191 W/cm²→×10000; series=Past_theta38_water-SS
-basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,38.0,ss_rod,5681197.646506456,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=568.120 W/cm²→×10000; series=Past_theta38_water-SS
-basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,38.0,ss_rod,2235429.9701395137,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=223.543 W/cm²→×10000; series=Past_theta38_water-SS
-basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,38.0,ss_rod,9989015.832374644,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=998.902 W/cm²→×10000; series=Past_theta38_water-SS
-basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,30.0,copper_flat,582143.3732899667,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=58.214 W/cm²→×10000; series=Pres_theta30_water-Cu_flat
-basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,30.0,copper_flat,419977.9182198872,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=41.998 W/cm²→×10000; series=Pres_theta30_water-Cu_flat
-basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,30.0,copper_flat,393705.985231159,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=39.371 W/cm²→×10000; series=Pres_theta30_water-Cu_flat
-basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,30.0,copper_flat,500331.5431319474,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=50.033 W/cm²→×10000; series=Pres_theta30_water-Cu_flat
-basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,30.0,copper_flat,345859.32335543126,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=34.586 W/cm²→×10000; series=Pres_theta30_water-Cu_flat
-basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,30.0,copper_flat,317294.39234305604,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=31.729 W/cm²→×10000; series=Pres_theta30_water-Cu_flat
-basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,30.0,copper_flat,287844.9669077114,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=28.784 W/cm²→×10000; series=Pres_theta30_water-Cu_flat
-basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,30.0,copper_flat,244477.75856223548,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=24.448 W/cm²→×10000; series=Pres_theta30_water-Cu_flat
-basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,30.0,copper_flat,184226.9312230777,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=18.423 W/cm²→×10000; series=Pres_theta30_water-Cu_flat
-basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,30.0,copper_flat,51812.44236684961,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=5.181 W/cm²→×10000; series=Pres_theta30_water-Cu_flat
-basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,30.0,copper_flat,67210.17229191352,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=6.721 W/cm²→×10000; series=Pres_theta30_water-Cu_flat
-basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,30.0,copper_flat,103780.7247476348,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=10.378 W/cm²→×10000; series=Pres_theta30_water-Cu_flat
-basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,30.0,copper_flat,133204.78694633933,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=13.320 W/cm²→×10000; series=Pres_theta30_water-Cu_flat
-basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,30.0,copper_flat,199066.8585022321,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=19.907 W/cm²→×10000; series=Pres_theta30_water-Cu_flat
-basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,30.0,copper_flat,165372.48011315928,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=16.537 W/cm²→×10000; series=Pres_theta30_water-Cu_flat
-basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,30.0,copper_flat,108339.91417778844,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=10.834 W/cm²→×10000; series=Pres_theta30_water-Cu_flat
-basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,30.0,copper_flat,155065.0788785076,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=15.507 W/cm²→×10000; series=Pres_theta30_water-Cu_flat
-basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,30.0,copper_flat,128783.84509794944,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=12.878 W/cm²→×10000; series=Pres_theta30_water-Cu_flat
-basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,57.0,zr_rod,17697.50798094247,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=1.770 W/cm²→×10000; series=Pres_theta57_water-Zr_rod
-basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,57.0,zr_rod,22959.3621336717,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=2.296 W/cm²→×10000; series=Pres_theta57_water-Zr_rod
-basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,57.0,zr_rod,27038.60660667171,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=2.704 W/cm²→×10000; series=Pres_theta57_water-Zr_rod
-basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,57.0,zr_rod,34697.15972613336,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=3.470 W/cm²→×10000; series=Pres_theta57_water-Zr_rod
-basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,57.0,zr_rod,41738.55550306347,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=4.174 W/cm²→×10000; series=Pres_theta57_water-Zr_rod
-basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,57.0,zr_rod,41265.67214977484,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=4.127 W/cm²→×10000; series=Pres_theta57_water-Zr_rod
-basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,57.0,zr_rod,40361.98206271189,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=4.036 W/cm²→×10000; series=Pres_theta57_water-Zr_rod
-basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,57.0,zr_rod,54746.740490213546,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=5.475 W/cm²→×10000; series=Pres_theta57_water-Zr_rod
-basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,57.0,zr_rod,52968.22688531539,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=5.297 W/cm²→×10000; series=Pres_theta57_water-Zr_rod
-basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,57.0,zr_rod,63005.805666881664,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=6.301 W/cm²→×10000; series=Pres_theta57_water-Zr_rod
-basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,57.0,zr_rod,60958.98641220568,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=6.096 W/cm²→×10000; series=Pres_theta57_water-Zr_rod
-basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,57.0,zr_rod,65768.40192453399,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=6.577 W/cm²→×10000; series=Pres_theta57_water-Zr_rod
-basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,57.0,zr_rod,84435.60633646276,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=8.444 W/cm²→×10000; series=Pres_theta57_water-Zr_rod
-basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,57.0,zr_rod,103853.37682870546,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=10.385 W/cm²→×10000; series=Pres_theta57_water-Zr_rod
-basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,57.0,zr_rod,100482.2796916881,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=10.048 W/cm²→×10000; series=Pres_theta57_water-Zr_rod
-basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,57.0,zr_rod,100463.34960299538,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=10.046 W/cm²→×10000; series=Pres_theta57_water-Zr_rod
-basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,57.0,zr_rod,96145.00777559634,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=9.615 W/cm²→×10000; series=Pres_theta57_water-Zr_rod
-basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,57.0,zr_rod,148551.58312573133,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=14.855 W/cm²→×10000; series=Pres_theta57_water-Zr_rod
-basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,57.0,zr_rod,151775.43599448324,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=15.178 W/cm²→×10000; series=Pres_theta57_water-Zr_rod
-basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,82.5,copper_flat,30111.60558371667,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=3.011 W/cm²→×10000; series=Pres_theta80to85_water-Cu_flat
-basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,82.5,copper_flat,43080.83280232591,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=4.308 W/cm²→×10000; series=Pres_theta80to85_water-Cu_flat
-basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,82.5,copper_flat,109548.99450957848,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=10.955 W/cm²→×10000; series=Pres_theta80to85_water-Cu_flat
-basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,82.5,copper_flat,142047.63238760282,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=14.205 W/cm²→×10000; series=Pres_theta80to85_water-Cu_flat
-basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,82.5,copper_flat,258225.96361728897,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=25.823 W/cm²→×10000; series=Pres_theta80to85_water-Cu_flat
-basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,82.5,copper_flat,207789.6891729392,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=20.779 W/cm²→×10000; series=Pres_theta80to85_water-Cu_flat
-basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,82.5,copper_flat,199066.8585022321,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=19.907 W/cm²→×10000; series=Pres_theta80to85_water-Cu_flat
-basu2002,water,tube_circular,9.5,-1.0,101.325,-1.0,-1.0,82.5,copper_flat,131766.53566527553,-1.0,fig11,2026-05-28,parity q''_ONB; y_raw=13.177 W/cm²→×10000; series=Pres_theta80to85_water-Cu_flat
 kandlikar1991,water,tube_circular,12.1,0.0,220.0,2.2,-1.0,-1.0,ss_rod,491268.69030250097,12.585867057796978,fig5,2026-05-28,ONB extracted from boiling curve (threshold=1.20); series=pbSS_Tsub2p2; n_pts=11; pool boiling
 kandlikar1991,water,tube_circular,12.1,1315.0,220.0,71.5,-1.0,-1.0,ss_rod,1839216.019422373,19.46600017068721,fig5,2026-05-28,ONB extracted from boiling curve (threshold=1.20); series=u1p37_Tsub103-40; n_pts=8; u=1.37m/s; ΔT_sub=103→40°C 축방향 변화 (평균 71.5K)
 kandlikar1991,water,tube_circular,12.1,2541.0,220.0,84.5,-1.0,-1.0,ss_rod,3879661.762820727,23.450530525257378,fig5,2026-05-28,ONB extracted from boiling curve (threshold=1.20); series=u2p65_Tsub101-68; n_pts=14; u=2.65m/s; ΔT_sub=101→68°C 평균
 kandlikar1991,water,tube_circular,12.1,4409.0,220.0,90.5,-1.0,-1.0,ss_rod,-1.0,-1.0,fig5,2026-05-28,ONB_NOT_FOUND: ONB below x_min=14.5K; curve fully in nucleate regime; n_pts=12; u=4.60m/s; ΔT_sub=109→72°C 평균
-bergles1964,water,tube_circular,12.1,2920.0,-1.0,-1.0,-1.0,-1.0,ss_tube,3422010.2842945596,2.5962483970453523,fig7_v10ftsec,2026-05-28,v=10ft/s=3.05m/s; high-pressure; P unknown; direct ONB measurement
-bergles1964,water,tube_circular,12.1,2920.0,-1.0,-1.0,-1.0,-1.0,ss_tube,4027701.593062682,2.9775810268351015,fig7_v10ftsec,2026-05-28,v=10ft/s=3.05m/s; high-pressure; P unknown; direct ONB measurement
-bergles1964,water,tube_circular,12.1,2920.0,-1.0,-1.0,-1.0,-1.0,ss_tube,4755602.333018796,3.9371067327822336,fig7_v10ftsec,2026-05-28,v=10ft/s=3.05m/s; high-pressure; P unknown; direct ONB measurement
-bergles1964,water,tube_circular,12.1,2920.0,-1.0,-1.0,-1.0,-1.0,ss_tube,5076026.234508106,4.175311822788358,fig7_v10ftsec,2026-05-28,v=10ft/s=3.05m/s; high-pressure; P unknown; direct ONB measurement
-bergles1964,water,tube_circular,12.1,2920.0,-1.0,-1.0,-1.0,-1.0,ss_tube,5737638.038353462,4.3095017919659675,fig7_v10ftsec,2026-05-28,v=10ft/s=3.05m/s; high-pressure; P unknown; direct ONB measurement
-bergles1964,water,tube_circular,12.1,5840.0,-1.0,-1.0,-1.0,-1.0,ss_tube,4322811.8782122545,2.0605003327176252,fig7_v20ftsec,2026-05-28,v=20ft/s=6.10m/s; high-pressure; P unknown; direct ONB measurement
-bergles1964,water,tube_circular,12.1,5840.0,-1.0,-1.0,-1.0,-1.0,ss_tube,4969202.257256512,3.1645120553055763,fig7_v20ftsec,2026-05-28,v=20ft/s=6.10m/s; high-pressure; P unknown; direct ONB measurement
-bergles1964,water,tube_circular,12.1,5840.0,-1.0,-1.0,-1.0,-1.0,ss_tube,5444982.401397416,4.395411519588073,fig7_v20ftsec,2026-05-28,v=20ft/s=6.10m/s; high-pressure; P unknown; direct ONB measurement
-bergles1964,water,tube_circular,12.1,5840.0,-1.0,-1.0,-1.0,-1.0,ss_tube,5582738.939607852,4.405973917698968,fig7_v20ftsec,2026-05-28,v=20ft/s=6.10m/s; high-pressure; P unknown; direct ONB measurement
-bergles1964,water,tube_circular,12.1,5840.0,-1.0,-1.0,-1.0,-1.0,ss_tube,6033285.348053194,4.592864627566859,fig7_v20ftsec,2026-05-28,v=20ft/s=6.10m/s; high-pressure; P unknown; direct ONB measurement
-bergles1964,water,tube_circular,12.1,5840.0,-1.0,-1.0,-1.0,-1.0,ss_tube,6356254.132288894,4.308561573672552,fig7_v20ftsec,2026-05-28,v=20ft/s=6.10m/s; high-pressure; P unknown; direct ONB measurement
-bergles1964,water,tube_circular,12.1,5840.0,-1.0,-1.0,-1.0,-1.0,ss_tube,6406322.189569947,4.648958154480317,fig7_v20ftsec,2026-05-28,v=20ft/s=6.10m/s; high-pressure; P unknown; direct ONB measurement
-bergles1964,water,tube_circular,12.1,5840.0,-1.0,-1.0,-1.0,-1.0,ss_tube,6636086.646202381,4.930546954896604,fig7_v20ftsec,2026-05-28,v=20ft/s=6.10m/s; high-pressure; P unknown; direct ONB measurement
-bergles1964,water,tube_circular,12.1,5840.0,-1.0,-1.0,-1.0,-1.0,ss_tube,6978586.835818382,5.345768232004252,fig7_v20ftsec,2026-05-28,v=20ft/s=6.10m/s; high-pressure; P unknown; direct ONB measurement
-bergles1964,water,tube_circular,12.1,5840.0,-1.0,-1.0,-1.0,-1.0,ss_tube,7392095.5093787825,5.491327986885384,fig7_v20ftsec,2026-05-28,v=20ft/s=6.10m/s; high-pressure; P unknown; direct ONB measurement
-bergles1964,water,tube_circular,12.1,5840.0,-1.0,-1.0,-1.0,-1.0,ss_tube,7963369.867332758,4.952874935416797,fig7_v20ftsec,2026-05-28,v=20ft/s=6.10m/s; high-pressure; P unknown; direct ONB measurement
-bergles1964,water,tube_circular,12.1,8760.0,-1.0,-1.0,-1.0,-1.0,ss_tube,5822042.095287473,2.32223828367442,fig7_v30ftsec,2026-05-28,v=30ft/s=9.14m/s; high-pressure; P unknown; direct ONB measurement
-bergles1964,water,tube_circular,12.1,8760.0,-1.0,-1.0,-1.0,-1.0,ss_tube,5868974.537007072,2.6060214944769573,fig7_v30ftsec,2026-05-28,v=30ft/s=9.14m/s; high-pressure; P unknown; direct ONB measurement
-bergles1964,water,tube_circular,12.1,8760.0,-1.0,-1.0,-1.0,-1.0,ss_tube,6441685.230147676,3.033562945216198,fig7_v30ftsec,2026-05-28,v=30ft/s=9.14m/s; high-pressure; P unknown; direct ONB measurement
-bergles1964,water,tube_circular,12.1,8760.0,-1.0,-1.0,-1.0,-1.0,ss_tube,7564239.793541428,3.609566575431969,fig7_v30ftsec,2026-05-28,v=30ft/s=9.14m/s; high-pressure; P unknown; direct ONB measurement
-bergles1964,water,tube_circular,12.1,8760.0,-1.0,-1.0,-1.0,-1.0,ss_tube,8092521.880842154,3.671563972893261,fig7_v30ftsec,2026-05-28,v=30ft/s=9.14m/s; high-pressure; P unknown; direct ONB measurement
-bergles1964,water,tube_circular,12.1,8760.0,-1.0,-1.0,-1.0,-1.0,ss_tube,8659379.97225298,3.8936823207472826,fig7_v30ftsec,2026-05-28,v=30ft/s=9.14m/s; high-pressure; P unknown; direct ONB measurement
-bergles1964,water,tube_circular,12.1,8760.0,-1.0,-1.0,-1.0,-1.0,ss_tube,7916457.984064526,4.0702640628587075,fig7_v30ftsec,2026-05-28,v=30ft/s=9.14m/s; high-pressure; P unknown; direct ONB measurement
-bergles1964,water,tube_circular,12.1,8760.0,-1.0,-1.0,-1.0,-1.0,ss_tube,7627742.300477059,4.349361957699125,fig7_v30ftsec,2026-05-28,v=30ft/s=9.14m/s; high-pressure; P unknown; direct ONB measurement
-bergles1964,water,tube_circular,12.1,8760.0,-1.0,-1.0,-1.0,-1.0,ss_tube,9409593.004284345,4.499334691662121,fig7_v30ftsec,2026-05-28,v=30ft/s=9.14m/s; high-pressure; P unknown; direct ONB measurement
-bergles1964,water,tube_circular,12.1,8760.0,-1.0,-1.0,-1.0,-1.0,ss_tube,9094076.61018749,5.408696274480672,fig7_v30ftsec,2026-05-28,v=30ft/s=9.14m/s; high-pressure; P unknown; direct ONB measurement
 bergles1964,water,tube_circular,12.1,4409.0,220.0,-1.0,-1.0,-1.0,ss_tube,-1.0,-1.0,fig9_v15p1ftsec,2026-05-28,ONB_NOT_FOUND: ONB below x_min=14.0K; curve fully in nucleate regime; n_pts=12; v=15.1ft/s=4.60m/s; P=32psia=220kPa
 bergles1964,water,tube_circular,12.1,1315.0,220.0,-1.0,-1.0,-1.0,ss_tube,5461312.30802475,24.11761856327548,fig9_v4p5ftsec,2026-05-28,ONB from boiling curve (threshold=1.20); n_pts=7; v=4.5ft/s=1.37m/s; P=32psia=220kPa
 bergles1964,water,tube_circular,12.1,2541.0,220.0,-1.0,-1.0,-1.0,ss_tube,8552614.702363443,30.579154587047853,fig9_v8p7ftsec,2026-05-28,ONB from boiling curve (threshold=1.20); n_pts=15; v=8.7ft/s=2.65m/s; P=32psia=220kPa
@@ -402,136 +288,136 @@ liu2005,water_DIW,microchannel,0.318,622.0,103.145,42.17,-1.0,-1.0,silicon_DIW,4
 liu2005,water_DIW,microchannel,0.318,502.0,102.242,42.13,-1.0,-1.0,silicon_DIW,389000.0,15.089,table2,2026-05-28,case21; u0=0.51m/s; Re=392; T_in=58.1C; q_viz=39.23Wcm2; q_exp=38.9Wcm2; dT_ONB=BR_estimate
 liu2005,water_DIW,microchannel,0.318,756.0,103.965,59.5,-1.0,-1.0,silicon_DIW,731600.0,20.061,table2,2026-05-28,case22; u0=0.76m/s; Re=454; T_in=41.2C; q_viz=68.81Wcm2; q_exp=73.16Wcm2; dT_ONB=BR_estimate
 liu2005,water_DIW,microchannel,0.318,514.0,102.421,58.98,-1.0,-1.0,silicon_DIW,619700.0,18.706,table2,2026-05-28,case23; u0=0.52m/s; Re=309; T_in=41.3C; q_viz=60.73Wcm2; q_exp=61.97Wcm2; dT_ONB=BR_estimate
-kuang2025,water,narrow_rectangular,5.66,1000,2500.0,50.0,3.2,-1.0,sus304,290000,3.2,fig6b,2026-05-28,Kuang2025; P=2.5MPa G=1000; 50x3mm
-kuang2025,water,narrow_rectangular,5.66,1000,2500.0,50.0,3.2,-1.0,sus304,390000,5.4,fig6b,2026-05-28,Kuang2025; P=2.5MPa G=1000; 50x3mm
-kuang2025,water,narrow_rectangular,5.66,1000,2500.0,50.0,3.2,-1.0,sus304,475000,6.6,fig6b,2026-05-28,Kuang2025; P=2.5MPa G=1000; 50x3mm
-kuang2025,water,narrow_rectangular,5.66,1000,2500.0,50.0,3.2,-1.0,sus304,590000,8.4,fig6b,2026-05-28,Kuang2025; P=2.5MPa G=1000; 50x3mm
-kuang2025,water,narrow_rectangular,5.66,1000,2500.0,50.0,3.2,-1.0,sus304,695000,9.4,fig6b,2026-05-28,Kuang2025; P=2.5MPa G=1000; 50x3mm
-kuang2025,water,narrow_rectangular,5.66,400,1000.0,50.0,3.2,-1.0,sus304,300000,6.0,fig7b,2026-05-28,Kuang2025; P=1.0MPa q=300kW; 50x3mm G=400
-kuang2025,water,narrow_rectangular,5.66,505,1000.0,50.0,3.2,-1.0,sus304,300000,5.8,fig7b,2026-05-28,Kuang2025; P=1.0MPa q=300kW; 50x3mm G=505
-kuang2025,water,narrow_rectangular,5.66,610,1000.0,50.0,3.2,-1.0,sus304,300000,4.85,fig7b,2026-05-28,Kuang2025; P=1.0MPa q=300kW; 50x3mm G=610
-kuang2025,water,narrow_rectangular,5.66,810,1000.0,50.0,3.2,-1.0,sus304,300000,4.85,fig7b,2026-05-28,Kuang2025; P=1.0MPa q=300kW; 50x3mm G=810
-kuang2025,water,narrow_rectangular,5.66,1000,1000.0,50.0,3.2,-1.0,sus304,300000,4.15,fig7b,2026-05-28,Kuang2025; P=1.0MPa q=300kW; 50x3mm G=1000
-kuang2025,water,narrow_rectangular,5.66,500,300.0,50.0,3.2,-1.0,sus304,300000,8.25,fig8b,2026-05-28,Kuang2025; G=500 q=300kW; 50x3mm P=0.3MPa
-kuang2025,water,narrow_rectangular,5.66,500,500.0,50.0,3.2,-1.0,sus304,300000,8.0,fig8b,2026-05-28,Kuang2025; G=500 q=300kW; 50x3mm P=0.5MPa
-kuang2025,water,narrow_rectangular,5.66,500,1000.0,50.0,3.2,-1.0,sus304,300000,7.5,fig8b,2026-05-28,Kuang2025; G=500 q=300kW; 50x3mm P=1.0MPa
-kuang2025,water,narrow_rectangular,5.66,500,2000.0,50.0,3.2,-1.0,sus304,300000,6.0,fig8b,2026-05-28,Kuang2025; G=500 q=300kW; 50x3mm P=2.0MPa
-kuang2025,water,narrow_rectangular,5.66,500,2500.0,50.0,3.2,-1.0,sus304,300000,4.9,fig8b,2026-05-28,Kuang2025; G=500 q=300kW; 50x3mm P=2.5MPa
-kuang2025,water,narrow_rectangular,5.66,500,3500.0,50.0,3.2,-1.0,sus304,300000,3.3,fig8b,2026-05-28,Kuang2025; G=500 q=300kW; 50x3mm P=3.5MPa
-kuang2025,water,narrow_rectangular,5.66,500,4500.0,50.0,3.2,-1.0,sus304,300000,3.0,fig8b,2026-05-28,Kuang2025; G=500 q=300kW; 50x3mm P=4.5MPa
-kuang2025,water,narrow_rectangular,5.66,500,5000.0,50.0,3.2,-1.0,sus304,300000,2.9,fig8b,2026-05-28,Kuang2025; G=500 q=300kW; 50x3mm P=5.0MPa
-kuang2025,water,narrow_rectangular,5.66,500,500.0,20.0,3.2,-1.0,sus304,60000,4.75,fig9b,2026-05-28,Kuang2025; P=0.5MPa G=500; dT_in=20K 50x3mm
-kuang2025,water,narrow_rectangular,5.66,500,500.0,20.0,3.2,-1.0,sus304,80000,5.55,fig9b,2026-05-28,Kuang2025; P=0.5MPa G=500; dT_in=20K 50x3mm
-kuang2025,water,narrow_rectangular,5.66,500,500.0,20.0,3.2,-1.0,sus304,95000,5.6,fig9b,2026-05-28,Kuang2025; P=0.5MPa G=500; dT_in=20K 50x3mm
-kuang2025,water,narrow_rectangular,5.66,500,500.0,20.0,3.2,-1.0,sus304,110000,7.1,fig9b,2026-05-28,Kuang2025; P=0.5MPa G=500; dT_in=20K 50x3mm
-kuang2025,water,narrow_rectangular,5.66,500,500.0,20.0,3.2,-1.0,sus304,120000,7.25,fig9b,2026-05-28,Kuang2025; P=0.5MPa G=500; dT_in=20K 50x3mm
-kuang2025,water,narrow_rectangular,5.66,500,500.0,20.0,3.2,-1.0,sus304,140000,8.3,fig9b,2026-05-28,Kuang2025; P=0.5MPa G=500; dT_in=20K 50x3mm
-kuang2025,water,narrow_rectangular,5.66,500,500.0,50.0,3.2,-1.0,sus304,175000,4.4,fig9b,2026-05-28,Kuang2025; P=0.5MPa G=500; dT_in=50K 50x3mm
-kuang2025,water,narrow_rectangular,5.66,500,500.0,50.0,3.2,-1.0,sus304,200000,4.65,fig9b,2026-05-28,Kuang2025; P=0.5MPa G=500; dT_in=50K 50x3mm
-kuang2025,water,narrow_rectangular,5.66,500,500.0,50.0,3.2,-1.0,sus304,230000,5.1,fig9b,2026-05-28,Kuang2025; P=0.5MPa G=500; dT_in=50K 50x3mm
-kuang2025,water,narrow_rectangular,5.66,500,500.0,50.0,3.2,-1.0,sus304,250000,6.2,fig9b,2026-05-28,Kuang2025; P=0.5MPa G=500; dT_in=50K 50x3mm
-kuang2025,water,narrow_rectangular,5.66,500,500.0,50.0,3.2,-1.0,sus304,270000,7.7,fig9b,2026-05-28,Kuang2025; P=0.5MPa G=500; dT_in=50K 50x3mm
-kuang2025,water,narrow_rectangular,5.66,500,500.0,50.0,3.2,-1.0,sus304,280000,8.15,fig9b,2026-05-28,Kuang2025; P=0.5MPa G=500; dT_in=50K 50x3mm
-kuang2025,water,narrow_rectangular,5.66,500,500.0,100.0,3.2,-1.0,sus304,290000,4.4,fig9b,2026-05-28,Kuang2025; P=0.5MPa G=500; dT_in=100K 50x3mm
-kuang2025,water,narrow_rectangular,5.66,500,500.0,100.0,3.2,-1.0,sus304,320000,5.25,fig9b,2026-05-28,Kuang2025; P=0.5MPa G=500; dT_in=100K 50x3mm
-kuang2025,water,narrow_rectangular,5.66,500,500.0,100.0,3.2,-1.0,sus304,345000,5.35,fig9b,2026-05-28,Kuang2025; P=0.5MPa G=500; dT_in=100K 50x3mm
-kuang2025,water,narrow_rectangular,5.66,500,500.0,100.0,3.2,-1.0,sus304,380000,5.95,fig9b,2026-05-28,Kuang2025; P=0.5MPa G=500; dT_in=100K 50x3mm
-kuang2025,water,narrow_rectangular,5.66,500,500.0,100.0,3.2,-1.0,sus304,400000,7.1,fig9b,2026-05-28,Kuang2025; P=0.5MPa G=500; dT_in=100K 50x3mm
-kuang2025,water,narrow_rectangular,5.66,500,500.0,100.0,3.2,-1.0,sus304,415000,7.95,fig9b,2026-05-28,Kuang2025; P=0.5MPa G=500; dT_in=100K 50x3mm
-kuang2025,water,narrow_rectangular,5.66,500,500.0,100.0,3.2,-1.0,sus304,435000,8.5,fig9b,2026-05-28,Kuang2025; P=0.5MPa G=500; dT_in=100K 50x3mm
-kuang2025,water,narrow_rectangular,5.581,1000,2500.0,50.0,3.2,-1.0,sus304,295000,3.2,fig10a,2026-05-28,Kuang2025; P=2.5MPa G=1000; 40x3mm width_study
-kuang2025,water,narrow_rectangular,5.581,1000,2500.0,50.0,3.2,-1.0,sus304,355000,4.8,fig10a,2026-05-28,Kuang2025; P=2.5MPa G=1000; 40x3mm width_study
-kuang2025,water,narrow_rectangular,5.581,1000,2500.0,50.0,3.2,-1.0,sus304,370000,5.75,fig10a,2026-05-28,Kuang2025; P=2.5MPa G=1000; 40x3mm width_study
-kuang2025,water,narrow_rectangular,5.581,1000,2500.0,50.0,3.2,-1.0,sus304,425000,5.85,fig10a,2026-05-28,Kuang2025; P=2.5MPa G=1000; 40x3mm width_study
-kuang2025,water,narrow_rectangular,5.581,1000,2500.0,50.0,3.2,-1.0,sus304,510000,7.5,fig10a,2026-05-28,Kuang2025; P=2.5MPa G=1000; 40x3mm width_study
-kuang2025,water,narrow_rectangular,5.581,1000,2500.0,50.0,3.2,-1.0,sus304,590000,8.1,fig10a,2026-05-28,Kuang2025; P=2.5MPa G=1000; 40x3mm width_study
-kuang2025,water,narrow_rectangular,5.581,1000,2500.0,50.0,3.2,-1.0,sus304,655000,8.5,fig10a,2026-05-28,Kuang2025; P=2.5MPa G=1000; 40x3mm width_study
-kuang2025,water,narrow_rectangular,5.581,1000,2500.0,50.0,3.2,-1.0,sus304,720000,9.5,fig10a,2026-05-28,Kuang2025; P=2.5MPa G=1000; 40x3mm width_study
-kuang2025,water,narrow_rectangular,5.714,1000,2500.0,50.0,3.2,-1.0,sus304,295000,3.2,fig10a,2026-05-28,Kuang2025; P=2.5MPa G=1000; 60x3mm width_study
-kuang2025,water,narrow_rectangular,5.714,1000,2500.0,50.0,3.2,-1.0,sus304,360000,5.0,fig10a,2026-05-28,Kuang2025; P=2.5MPa G=1000; 60x3mm width_study
-kuang2025,water,narrow_rectangular,5.714,1000,2500.0,50.0,3.2,-1.0,sus304,415000,5.75,fig10a,2026-05-28,Kuang2025; P=2.5MPa G=1000; 60x3mm width_study
-kuang2025,water,narrow_rectangular,5.714,1000,2500.0,50.0,3.2,-1.0,sus304,430000,5.8,fig10a,2026-05-28,Kuang2025; P=2.5MPa G=1000; 60x3mm width_study
-kuang2025,water,narrow_rectangular,5.714,1000,2500.0,50.0,3.2,-1.0,sus304,590000,8.0,fig10a,2026-05-28,Kuang2025; P=2.5MPa G=1000; 60x3mm width_study
-kuang2025,water,narrow_rectangular,5.714,1000,2500.0,50.0,3.2,-1.0,sus304,650000,8.6,fig10a,2026-05-28,Kuang2025; P=2.5MPa G=1000; 60x3mm width_study
-kuang2025,water,narrow_rectangular,3.846,1000,2500.0,50.0,3.2,-1.0,sus304,295000,4.95,fig10b,2026-05-28,Kuang2025; P=2.5MPa G=1000; 50x2mm gap_study
-kuang2025,water,narrow_rectangular,3.846,1000,2500.0,50.0,3.2,-1.0,sus304,355000,6.3,fig10b,2026-05-28,Kuang2025; P=2.5MPa G=1000; 50x2mm gap_study
-kuang2025,water,narrow_rectangular,3.846,1000,2500.0,50.0,3.2,-1.0,sus304,375000,6.65,fig10b,2026-05-28,Kuang2025; P=2.5MPa G=1000; 50x2mm gap_study
-kuang2025,water,narrow_rectangular,3.846,1000,2500.0,50.0,3.2,-1.0,sus304,450000,7.8,fig10b,2026-05-28,Kuang2025; P=2.5MPa G=1000; 50x2mm gap_study
-kuang2025,water,narrow_rectangular,3.846,1000,2500.0,50.0,3.2,-1.0,sus304,490000,8.85,fig10b,2026-05-28,Kuang2025; P=2.5MPa G=1000; 50x2mm gap_study
-kuang2025,water,narrow_rectangular,3.846,1000,2500.0,50.0,3.2,-1.0,sus304,590000,9.3,fig10b,2026-05-28,Kuang2025; P=2.5MPa G=1000; 50x2mm gap_study
-kuang2025,water,narrow_rectangular,3.846,1000,2500.0,50.0,3.2,-1.0,sus304,650000,9.4,fig10b,2026-05-28,Kuang2025; P=2.5MPa G=1000; 50x2mm gap_study
-kuang2025,water,narrow_rectangular,3.846,1000,2500.0,50.0,3.2,-1.0,sus304,720000,9.85,fig10b,2026-05-28,Kuang2025; P=2.5MPa G=1000; 50x2mm gap_study
-kuang2025,water,narrow_rectangular,7.407,1000,2500.0,50.0,3.2,-1.0,sus304,340000,4.2,fig10b,2026-05-28,Kuang2025; P=2.5MPa G=1000; 50x4mm gap_study
-kuang2025,water,narrow_rectangular,7.407,1000,2500.0,50.0,3.2,-1.0,sus304,410000,4.5,fig10b,2026-05-28,Kuang2025; P=2.5MPa G=1000; 50x4mm gap_study
-kuang2025,water,narrow_rectangular,7.407,1000,2500.0,50.0,3.2,-1.0,sus304,465000,5.7,fig10b,2026-05-28,Kuang2025; P=2.5MPa G=1000; 50x4mm gap_study
-kuang2025,water,narrow_rectangular,7.407,1000,2500.0,50.0,3.2,-1.0,sus304,510000,5.75,fig10b,2026-05-28,Kuang2025; P=2.5MPa G=1000; 50x4mm gap_study
-kuang2025,water,narrow_rectangular,7.407,1000,2500.0,50.0,3.2,-1.0,sus304,580000,5.95,fig10b,2026-05-28,Kuang2025; P=2.5MPa G=1000; 50x4mm gap_study
-kuang2025,water,narrow_rectangular,7.407,1000,2500.0,50.0,3.2,-1.0,sus304,640000,7.2,fig10b,2026-05-28,Kuang2025; P=2.5MPa G=1000; 50x4mm gap_study
-kuang2025,water,narrow_rectangular,7.407,1000,2500.0,50.0,3.2,-1.0,sus304,710000,8.0,fig10b,2026-05-28,Kuang2025; P=2.5MPa G=1000; 50x4mm gap_study
-hong2012,water,narrow_rectangular,4.779,507,180,38.0,-1.0,-1.0,stainless_steel,75000.0,7.5,fig6,2026-05-29,Hong2012; P=0.18MPa dT_sub_in=38K G=507
-hong2012,water,narrow_rectangular,4.779,701,180,38.0,-1.0,-1.0,stainless_steel,100000.0,9.5,fig6,2026-05-29,Hong2012; P=0.18MPa dT_sub_in=38K G=701
-hong2012,water,narrow_rectangular,4.779,789,180,38.0,-1.0,-1.0,stainless_steel,120000.0,9.0,fig6,2026-05-29,Hong2012; P=0.18MPa dT_sub_in=38K G=789
-hong2012,water,narrow_rectangular,4.779,840,195,26.2,-1.0,-1.0,stainless_steel,150000.0,8.0,fig7,2026-05-29,Hong2012; P=0.195MPa G=840 dT_sub_in=26.2K
-hong2012,water,narrow_rectangular,4.779,840,195,37.5,-1.0,-1.0,stainless_steel,140000.0,8.5,fig7,2026-05-29,Hong2012; P=0.195MPa G=840 dT_sub_in=37.5K
-hong2012,water,narrow_rectangular,4.779,840,195,50.3,-1.0,-1.0,stainless_steel,130000.0,9.5,fig7,2026-05-29,Hong2012; P=0.195MPa G=840 dT_sub_in=50.3K
-alyahia2017,water,narrow_rectangular,4.504,118,101.325,60.0,-1.0,-1.0,aluminum,89440,16.0,fig8,2026-05-29,AlYahia2017; G=118 T_in=40C q_from_legend dT_from_axial_Twall
-alyahia2017,water,narrow_rectangular,4.504,118,101.325,55.0,-1.0,-1.0,aluminum,81140,16.0,fig8,2026-05-29,AlYahia2017; G=118 T_in=45C q_from_legend dT_from_axial_Twall
-alyahia2017,water,narrow_rectangular,4.504,118,101.325,50.0,-1.0,-1.0,aluminum,76010,15.5,fig8,2026-05-29,AlYahia2017; G=118 T_in=50C q_from_legend dT_from_axial_Twall
-alyahia2017,water,narrow_rectangular,4.504,118,101.325,45.0,-1.0,-1.0,aluminum,69620,15.5,fig8,2026-05-29,AlYahia2017; G=118 T_in=55C q_from_legend dT_from_axial_Twall
-alyahia2017,water,narrow_rectangular,4.504,473,101.325,45.0,-1.0,-1.0,aluminum,190000.0,14.5,fig7b,2026-05-29,AlYahia2017; G=473 T_in=55C ONB from boiling curve
-alyahia2017,water,narrow_rectangular,4.504,473,101.325,40.0,-1.0,-1.0,aluminum,185000.0,14.0,fig7b,2026-05-29,AlYahia2017; G=473 T_in=60C ONB from boiling curve
-alyahia2017,water,narrow_rectangular,4.504,473,101.325,35.0,-1.0,-1.0,aluminum,175000.0,13.0,fig7b,2026-05-29,AlYahia2017; G=473 T_in=65C ONB from boiling curve
-cheng2022,water,narrow_rectangular,3.495,100,145.0,40.34,-1.0,-1.0,stainless_steel,15000.0,3.1,fig10,2026-05-29,Cheng2022; chan=a G=100 Tin=70C
-cheng2022,water,narrow_rectangular,3.495,100,145.0,40.34,-1.0,-1.0,stainless_steel,17000.0,3.2,fig10,2026-05-29,Cheng2022; chan=a G=100 Tin=70C
-cheng2022,water,narrow_rectangular,3.495,100,145.0,40.34,-1.0,-1.0,stainless_steel,30000.0,3.3,fig10,2026-05-29,Cheng2022; chan=a G=100 Tin=70C
-cheng2022,water,narrow_rectangular,3.495,100,145.0,40.34,-1.0,-1.0,stainless_steel,38000.0,3.3,fig10,2026-05-29,Cheng2022; chan=a G=100 Tin=70C
-cheng2022,water,narrow_rectangular,3.495,100,145.0,40.34,-1.0,-1.0,stainless_steel,40000.0,4.3,fig10,2026-05-29,Cheng2022; chan=a G=100 Tin=70C
-cheng2022,water,narrow_rectangular,3.495,100,145.0,40.34,-1.0,-1.0,stainless_steel,44000.0,4.95,fig10,2026-05-29,Cheng2022; chan=a G=100 Tin=70C
-cheng2022,water,narrow_rectangular,3.495,100,145.0,40.34,-1.0,-1.0,stainless_steel,46000.0,3.75,fig10,2026-05-29,Cheng2022; chan=a G=100 Tin=70C
-cheng2022,water,narrow_rectangular,3.495,100,145.0,40.34,-1.0,-1.0,stainless_steel,48000.0,3.9,fig10,2026-05-29,Cheng2022; chan=a G=100 Tin=70C
-cheng2022,water,narrow_rectangular,3.495,100,145.0,30.34,-1.0,-1.0,stainless_steel,29000.0,2.5,fig10,2026-05-29,Cheng2022; chan=a G=100 Tin=80C
-cheng2022,water,narrow_rectangular,3.495,100,145.0,30.34,-1.0,-1.0,stainless_steel,30000.0,3.85,fig10,2026-05-29,Cheng2022; chan=a G=100 Tin=80C
-cheng2022,water,narrow_rectangular,3.495,100,145.0,30.34,-1.0,-1.0,stainless_steel,31000.0,4.15,fig10,2026-05-29,Cheng2022; chan=a G=100 Tin=80C
-cheng2022,water,narrow_rectangular,3.495,100,145.0,30.34,-1.0,-1.0,stainless_steel,50000.0,4.1,fig10,2026-05-29,Cheng2022; chan=a G=100 Tin=80C
-cheng2022,water,narrow_rectangular,3.495,100,145.0,20.34,-1.0,-1.0,stainless_steel,14000.0,3.2,fig10,2026-05-29,Cheng2022; chan=a G=100 Tin=90C
-cheng2022,water,narrow_rectangular,3.495,100,145.0,20.34,-1.0,-1.0,stainless_steel,15000.0,3.1,fig10,2026-05-29,Cheng2022; chan=a G=100 Tin=90C
-cheng2022,water,narrow_rectangular,3.495,100,145.0,20.34,-1.0,-1.0,stainless_steel,17000.0,2.5,fig10,2026-05-29,Cheng2022; chan=a G=100 Tin=90C
-cheng2022,water,narrow_rectangular,3.495,100,145.0,20.34,-1.0,-1.0,stainless_steel,18000.0,2.1,fig10,2026-05-29,Cheng2022; chan=a G=100 Tin=90C
-cheng2022,water,narrow_rectangular,3.495,100,145.0,20.34,-1.0,-1.0,stainless_steel,20000.0,1.85,fig10,2026-05-29,Cheng2022; chan=a G=100 Tin=90C
-cheng2022,water,narrow_rectangular,3.495,200,145.0,20.34,-1.0,-1.0,stainless_steel,15000.0,2.6,fig12,2026-05-29,Cheng2022; chan=a G=200 Tin=90C
-cheng2022,water,narrow_rectangular,3.495,200,145.0,20.34,-1.0,-1.0,stainless_steel,16000.0,2.3,fig12,2026-05-29,Cheng2022; chan=a G=200 Tin=90C
-cheng2022,water,narrow_rectangular,3.495,200,145.0,20.34,-1.0,-1.0,stainless_steel,18000.0,2.6,fig12,2026-05-29,Cheng2022; chan=a G=200 Tin=90C
-cheng2022,water,narrow_rectangular,3.495,200,145.0,20.34,-1.0,-1.0,stainless_steel,22000.0,2.6,fig12,2026-05-29,Cheng2022; chan=a G=200 Tin=90C
-cheng2022,water,narrow_rectangular,3.495,200,145.0,20.34,-1.0,-1.0,stainless_steel,25000.0,3.3,fig12,2026-05-29,Cheng2022; chan=a G=200 Tin=90C
-cheng2022,water,narrow_rectangular,3.495,300,145.0,20.34,-1.0,-1.0,stainless_steel,17000.0,3.1,fig12,2026-05-29,Cheng2022; chan=a G=300 Tin=90C
-cheng2022,water,narrow_rectangular,3.495,300,145.0,20.34,-1.0,-1.0,stainless_steel,25000.0,3.2,fig12,2026-05-29,Cheng2022; chan=a G=300 Tin=90C
-cheng2022,water,narrow_rectangular,3.495,300,145.0,20.34,-1.0,-1.0,stainless_steel,28000.0,2.8,fig12,2026-05-29,Cheng2022; chan=a G=300 Tin=90C
-cheng2022,water,narrow_rectangular,3.495,300,145.0,20.34,-1.0,-1.0,stainless_steel,29000.0,3.0,fig12,2026-05-29,Cheng2022; chan=a G=300 Tin=90C
-cheng2022,water,narrow_rectangular,3.495,300,145.0,20.34,-1.0,-1.0,stainless_steel,30000.0,3.15,fig12,2026-05-29,Cheng2022; chan=a G=300 Tin=90C
-cheng2022,water,narrow_rectangular,3.495,300,145.0,20.34,-1.0,-1.0,stainless_steel,31000.0,4.05,fig12,2026-05-29,Cheng2022; chan=a G=300 Tin=90C
-cheng2022,water,narrow_rectangular,3.495,300,145.0,20.34,-1.0,-1.0,stainless_steel,32000.0,4.05,fig12,2026-05-29,Cheng2022; chan=a G=300 Tin=90C
-cheng2022,water,narrow_rectangular,5.35,100,145.0,40.34,-1.0,-1.0,stainless_steel,17000.0,4.25,fig11,2026-05-29,Cheng2022; chan=b G=100 Tin=70C
-cheng2022,water,narrow_rectangular,5.35,100,145.0,40.34,-1.0,-1.0,stainless_steel,28000.0,4.5,fig11,2026-05-29,Cheng2022; chan=b G=100 Tin=70C
-cheng2022,water,narrow_rectangular,5.35,100,145.0,40.34,-1.0,-1.0,stainless_steel,30000.0,4.5,fig11,2026-05-29,Cheng2022; chan=b G=100 Tin=70C
-cheng2022,water,narrow_rectangular,5.35,100,145.0,40.34,-1.0,-1.0,stainless_steel,44000.0,4.5,fig11,2026-05-29,Cheng2022; chan=b G=100 Tin=70C
-cheng2022,water,narrow_rectangular,5.35,100,145.0,40.34,-1.0,-1.0,stainless_steel,46000.0,4.7,fig11,2026-05-29,Cheng2022; chan=b G=100 Tin=70C
-cheng2022,water,narrow_rectangular,5.35,100,145.0,40.34,-1.0,-1.0,stainless_steel,47000.0,4.75,fig11,2026-05-29,Cheng2022; chan=b G=100 Tin=70C
-cheng2022,water,narrow_rectangular,5.35,100,145.0,30.34,-1.0,-1.0,stainless_steel,17000.0,3.5,fig11,2026-05-29,Cheng2022; chan=b G=100 Tin=80C
-cheng2022,water,narrow_rectangular,5.35,100,145.0,30.34,-1.0,-1.0,stainless_steel,28000.0,3.5,fig11,2026-05-29,Cheng2022; chan=b G=100 Tin=80C
-cheng2022,water,narrow_rectangular,5.35,100,145.0,30.34,-1.0,-1.0,stainless_steel,32000.0,3.55,fig11,2026-05-29,Cheng2022; chan=b G=100 Tin=80C
-cheng2022,water,narrow_rectangular,5.35,100,145.0,30.34,-1.0,-1.0,stainless_steel,35000.0,3.6,fig11,2026-05-29,Cheng2022; chan=b G=100 Tin=80C
-cheng2022,water,narrow_rectangular,5.35,100,145.0,30.34,-1.0,-1.0,stainless_steel,38000.0,3.65,fig11,2026-05-29,Cheng2022; chan=b G=100 Tin=80C
-cheng2022,water,narrow_rectangular,5.35,100,145.0,20.34,-1.0,-1.0,stainless_steel,16000.0,3.4,fig11,2026-05-29,Cheng2022; chan=b G=100 Tin=90C
-cheng2022,water,narrow_rectangular,5.35,100,145.0,20.34,-1.0,-1.0,stainless_steel,17000.0,3.45,fig11,2026-05-29,Cheng2022; chan=b G=100 Tin=90C
-cheng2022,water,narrow_rectangular,5.35,100,145.0,20.34,-1.0,-1.0,stainless_steel,20000.0,3.1,fig11,2026-05-29,Cheng2022; chan=b G=100 Tin=90C
-cheng2022,water,narrow_rectangular,5.35,100,145.0,20.34,-1.0,-1.0,stainless_steel,21000.0,3.35,fig11,2026-05-29,Cheng2022; chan=b G=100 Tin=90C
-cheng2022,water,narrow_rectangular,5.35,100,145.0,20.34,-1.0,-1.0,stainless_steel,28000.0,3.1,fig11,2026-05-29,Cheng2022; chan=b G=100 Tin=90C
-cheng2022,water,narrow_rectangular,5.35,200,145.0,20.34,-1.0,-1.0,stainless_steel,18000.0,3.1,fig13,2026-05-29,Cheng2022; chan=b G=200 Tin=90C
-cheng2022,water,narrow_rectangular,5.35,200,145.0,20.34,-1.0,-1.0,stainless_steel,22000.0,3.5,fig13,2026-05-29,Cheng2022; chan=b G=200 Tin=90C
-cheng2022,water,narrow_rectangular,5.35,200,145.0,20.34,-1.0,-1.0,stainless_steel,25000.0,3.2,fig13,2026-05-29,Cheng2022; chan=b G=200 Tin=90C
-cheng2022,water,narrow_rectangular,5.35,200,145.0,20.34,-1.0,-1.0,stainless_steel,28000.0,3.3,fig13,2026-05-29,Cheng2022; chan=b G=200 Tin=90C
-cheng2022,water,narrow_rectangular,5.35,300,145.0,20.34,-1.0,-1.0,stainless_steel,19000.0,4.7,fig13,2026-05-29,Cheng2022; chan=b G=300 Tin=90C
-cheng2022,water,narrow_rectangular,5.35,300,145.0,20.34,-1.0,-1.0,stainless_steel,25000.0,4.4,fig13,2026-05-29,Cheng2022; chan=b G=300 Tin=90C
-cheng2022,water,narrow_rectangular,5.35,300,145.0,20.34,-1.0,-1.0,stainless_steel,27000.0,4.6,fig13,2026-05-29,Cheng2022; chan=b G=300 Tin=90C
-cheng2022,water,narrow_rectangular,5.35,300,145.0,20.34,-1.0,-1.0,stainless_steel,29000.0,4.05,fig13,2026-05-29,Cheng2022; chan=b G=300 Tin=90C
-cheng2022,water,narrow_rectangular,5.35,300,145.0,20.34,-1.0,-1.0,stainless_steel,30000.0,4.1,fig13,2026-05-29,Cheng2022; chan=b G=300 Tin=90C
+kuang2025,water,narrow_rectangular,5.66,1000.0,2500.0,50.0,3.2,-1.0,sus304,290000.0,3.2,fig6b,2026-05-28,Kuang2025; P=2.5MPa G=1000; 50x3mm
+kuang2025,water,narrow_rectangular,5.66,1000.0,2500.0,50.0,3.2,-1.0,sus304,390000.0,5.4,fig6b,2026-05-28,Kuang2025; P=2.5MPa G=1000; 50x3mm
+kuang2025,water,narrow_rectangular,5.66,1000.0,2500.0,50.0,3.2,-1.0,sus304,475000.0,6.6,fig6b,2026-05-28,Kuang2025; P=2.5MPa G=1000; 50x3mm
+kuang2025,water,narrow_rectangular,5.66,1000.0,2500.0,50.0,3.2,-1.0,sus304,590000.0,8.4,fig6b,2026-05-28,Kuang2025; P=2.5MPa G=1000; 50x3mm
+kuang2025,water,narrow_rectangular,5.66,1000.0,2500.0,50.0,3.2,-1.0,sus304,695000.0,9.4,fig6b,2026-05-28,Kuang2025; P=2.5MPa G=1000; 50x3mm
+kuang2025,water,narrow_rectangular,5.66,400.0,1000.0,50.0,3.2,-1.0,sus304,300000.0,6.0,fig7b,2026-05-28,Kuang2025; P=1.0MPa q=300kW; 50x3mm G=400
+kuang2025,water,narrow_rectangular,5.66,505.0,1000.0,50.0,3.2,-1.0,sus304,300000.0,5.8,fig7b,2026-05-28,Kuang2025; P=1.0MPa q=300kW; 50x3mm G=505
+kuang2025,water,narrow_rectangular,5.66,610.0,1000.0,50.0,3.2,-1.0,sus304,300000.0,4.85,fig7b,2026-05-28,Kuang2025; P=1.0MPa q=300kW; 50x3mm G=610
+kuang2025,water,narrow_rectangular,5.66,810.0,1000.0,50.0,3.2,-1.0,sus304,300000.0,4.85,fig7b,2026-05-28,Kuang2025; P=1.0MPa q=300kW; 50x3mm G=810
+kuang2025,water,narrow_rectangular,5.66,1000.0,1000.0,50.0,3.2,-1.0,sus304,300000.0,4.15,fig7b,2026-05-28,Kuang2025; P=1.0MPa q=300kW; 50x3mm G=1000
+kuang2025,water,narrow_rectangular,5.66,500.0,300.0,50.0,3.2,-1.0,sus304,300000.0,8.25,fig8b,2026-05-28,Kuang2025; G=500 q=300kW; 50x3mm P=0.3MPa
+kuang2025,water,narrow_rectangular,5.66,500.0,500.0,50.0,3.2,-1.0,sus304,300000.0,8.0,fig8b,2026-05-28,Kuang2025; G=500 q=300kW; 50x3mm P=0.5MPa
+kuang2025,water,narrow_rectangular,5.66,500.0,1000.0,50.0,3.2,-1.0,sus304,300000.0,7.5,fig8b,2026-05-28,Kuang2025; G=500 q=300kW; 50x3mm P=1.0MPa
+kuang2025,water,narrow_rectangular,5.66,500.0,2000.0,50.0,3.2,-1.0,sus304,300000.0,6.0,fig8b,2026-05-28,Kuang2025; G=500 q=300kW; 50x3mm P=2.0MPa
+kuang2025,water,narrow_rectangular,5.66,500.0,2500.0,50.0,3.2,-1.0,sus304,300000.0,4.9,fig8b,2026-05-28,Kuang2025; G=500 q=300kW; 50x3mm P=2.5MPa
+kuang2025,water,narrow_rectangular,5.66,500.0,3500.0,50.0,3.2,-1.0,sus304,300000.0,3.3,fig8b,2026-05-28,Kuang2025; G=500 q=300kW; 50x3mm P=3.5MPa
+kuang2025,water,narrow_rectangular,5.66,500.0,4500.0,50.0,3.2,-1.0,sus304,300000.0,3.0,fig8b,2026-05-28,Kuang2025; G=500 q=300kW; 50x3mm P=4.5MPa
+kuang2025,water,narrow_rectangular,5.66,500.0,5000.0,50.0,3.2,-1.0,sus304,300000.0,2.9,fig8b,2026-05-28,Kuang2025; G=500 q=300kW; 50x3mm P=5.0MPa
+kuang2025,water,narrow_rectangular,5.66,500.0,500.0,20.0,3.2,-1.0,sus304,60000.0,4.75,fig9b,2026-05-28,Kuang2025; P=0.5MPa G=500; dT_in=20K 50x3mm
+kuang2025,water,narrow_rectangular,5.66,500.0,500.0,20.0,3.2,-1.0,sus304,80000.0,5.55,fig9b,2026-05-28,Kuang2025; P=0.5MPa G=500; dT_in=20K 50x3mm
+kuang2025,water,narrow_rectangular,5.66,500.0,500.0,20.0,3.2,-1.0,sus304,95000.0,5.6,fig9b,2026-05-28,Kuang2025; P=0.5MPa G=500; dT_in=20K 50x3mm
+kuang2025,water,narrow_rectangular,5.66,500.0,500.0,20.0,3.2,-1.0,sus304,110000.0,7.1,fig9b,2026-05-28,Kuang2025; P=0.5MPa G=500; dT_in=20K 50x3mm
+kuang2025,water,narrow_rectangular,5.66,500.0,500.0,20.0,3.2,-1.0,sus304,120000.0,7.25,fig9b,2026-05-28,Kuang2025; P=0.5MPa G=500; dT_in=20K 50x3mm
+kuang2025,water,narrow_rectangular,5.66,500.0,500.0,20.0,3.2,-1.0,sus304,140000.0,8.3,fig9b,2026-05-28,Kuang2025; P=0.5MPa G=500; dT_in=20K 50x3mm
+kuang2025,water,narrow_rectangular,5.66,500.0,500.0,50.0,3.2,-1.0,sus304,175000.0,4.4,fig9b,2026-05-28,Kuang2025; P=0.5MPa G=500; dT_in=50K 50x3mm
+kuang2025,water,narrow_rectangular,5.66,500.0,500.0,50.0,3.2,-1.0,sus304,200000.0,4.65,fig9b,2026-05-28,Kuang2025; P=0.5MPa G=500; dT_in=50K 50x3mm
+kuang2025,water,narrow_rectangular,5.66,500.0,500.0,50.0,3.2,-1.0,sus304,230000.0,5.1,fig9b,2026-05-28,Kuang2025; P=0.5MPa G=500; dT_in=50K 50x3mm
+kuang2025,water,narrow_rectangular,5.66,500.0,500.0,50.0,3.2,-1.0,sus304,250000.0,6.2,fig9b,2026-05-28,Kuang2025; P=0.5MPa G=500; dT_in=50K 50x3mm
+kuang2025,water,narrow_rectangular,5.66,500.0,500.0,50.0,3.2,-1.0,sus304,270000.0,7.7,fig9b,2026-05-28,Kuang2025; P=0.5MPa G=500; dT_in=50K 50x3mm
+kuang2025,water,narrow_rectangular,5.66,500.0,500.0,50.0,3.2,-1.0,sus304,280000.0,8.15,fig9b,2026-05-28,Kuang2025; P=0.5MPa G=500; dT_in=50K 50x3mm
+kuang2025,water,narrow_rectangular,5.66,500.0,500.0,100.0,3.2,-1.0,sus304,290000.0,4.4,fig9b,2026-05-28,Kuang2025; P=0.5MPa G=500; dT_in=100K 50x3mm
+kuang2025,water,narrow_rectangular,5.66,500.0,500.0,100.0,3.2,-1.0,sus304,320000.0,5.25,fig9b,2026-05-28,Kuang2025; P=0.5MPa G=500; dT_in=100K 50x3mm
+kuang2025,water,narrow_rectangular,5.66,500.0,500.0,100.0,3.2,-1.0,sus304,345000.0,5.35,fig9b,2026-05-28,Kuang2025; P=0.5MPa G=500; dT_in=100K 50x3mm
+kuang2025,water,narrow_rectangular,5.66,500.0,500.0,100.0,3.2,-1.0,sus304,380000.0,5.95,fig9b,2026-05-28,Kuang2025; P=0.5MPa G=500; dT_in=100K 50x3mm
+kuang2025,water,narrow_rectangular,5.66,500.0,500.0,100.0,3.2,-1.0,sus304,400000.0,7.1,fig9b,2026-05-28,Kuang2025; P=0.5MPa G=500; dT_in=100K 50x3mm
+kuang2025,water,narrow_rectangular,5.66,500.0,500.0,100.0,3.2,-1.0,sus304,415000.0,7.95,fig9b,2026-05-28,Kuang2025; P=0.5MPa G=500; dT_in=100K 50x3mm
+kuang2025,water,narrow_rectangular,5.66,500.0,500.0,100.0,3.2,-1.0,sus304,435000.0,8.5,fig9b,2026-05-28,Kuang2025; P=0.5MPa G=500; dT_in=100K 50x3mm
+kuang2025,water,narrow_rectangular,5.581,1000.0,2500.0,50.0,3.2,-1.0,sus304,295000.0,3.2,fig10a,2026-05-28,Kuang2025; P=2.5MPa G=1000; 40x3mm width_study
+kuang2025,water,narrow_rectangular,5.581,1000.0,2500.0,50.0,3.2,-1.0,sus304,355000.0,4.8,fig10a,2026-05-28,Kuang2025; P=2.5MPa G=1000; 40x3mm width_study
+kuang2025,water,narrow_rectangular,5.581,1000.0,2500.0,50.0,3.2,-1.0,sus304,370000.0,5.75,fig10a,2026-05-28,Kuang2025; P=2.5MPa G=1000; 40x3mm width_study
+kuang2025,water,narrow_rectangular,5.581,1000.0,2500.0,50.0,3.2,-1.0,sus304,425000.0,5.85,fig10a,2026-05-28,Kuang2025; P=2.5MPa G=1000; 40x3mm width_study
+kuang2025,water,narrow_rectangular,5.581,1000.0,2500.0,50.0,3.2,-1.0,sus304,510000.0,7.5,fig10a,2026-05-28,Kuang2025; P=2.5MPa G=1000; 40x3mm width_study
+kuang2025,water,narrow_rectangular,5.581,1000.0,2500.0,50.0,3.2,-1.0,sus304,590000.0,8.1,fig10a,2026-05-28,Kuang2025; P=2.5MPa G=1000; 40x3mm width_study
+kuang2025,water,narrow_rectangular,5.581,1000.0,2500.0,50.0,3.2,-1.0,sus304,655000.0,8.5,fig10a,2026-05-28,Kuang2025; P=2.5MPa G=1000; 40x3mm width_study
+kuang2025,water,narrow_rectangular,5.581,1000.0,2500.0,50.0,3.2,-1.0,sus304,720000.0,9.5,fig10a,2026-05-28,Kuang2025; P=2.5MPa G=1000; 40x3mm width_study
+kuang2025,water,narrow_rectangular,5.714,1000.0,2500.0,50.0,3.2,-1.0,sus304,295000.0,3.2,fig10a,2026-05-28,Kuang2025; P=2.5MPa G=1000; 60x3mm width_study
+kuang2025,water,narrow_rectangular,5.714,1000.0,2500.0,50.0,3.2,-1.0,sus304,360000.0,5.0,fig10a,2026-05-28,Kuang2025; P=2.5MPa G=1000; 60x3mm width_study
+kuang2025,water,narrow_rectangular,5.714,1000.0,2500.0,50.0,3.2,-1.0,sus304,415000.0,5.75,fig10a,2026-05-28,Kuang2025; P=2.5MPa G=1000; 60x3mm width_study
+kuang2025,water,narrow_rectangular,5.714,1000.0,2500.0,50.0,3.2,-1.0,sus304,430000.0,5.8,fig10a,2026-05-28,Kuang2025; P=2.5MPa G=1000; 60x3mm width_study
+kuang2025,water,narrow_rectangular,5.714,1000.0,2500.0,50.0,3.2,-1.0,sus304,590000.0,8.0,fig10a,2026-05-28,Kuang2025; P=2.5MPa G=1000; 60x3mm width_study
+kuang2025,water,narrow_rectangular,5.714,1000.0,2500.0,50.0,3.2,-1.0,sus304,650000.0,8.6,fig10a,2026-05-28,Kuang2025; P=2.5MPa G=1000; 60x3mm width_study
+kuang2025,water,narrow_rectangular,3.846,1000.0,2500.0,50.0,3.2,-1.0,sus304,295000.0,4.95,fig10b,2026-05-28,Kuang2025; P=2.5MPa G=1000; 50x2mm gap_study
+kuang2025,water,narrow_rectangular,3.846,1000.0,2500.0,50.0,3.2,-1.0,sus304,355000.0,6.3,fig10b,2026-05-28,Kuang2025; P=2.5MPa G=1000; 50x2mm gap_study
+kuang2025,water,narrow_rectangular,3.846,1000.0,2500.0,50.0,3.2,-1.0,sus304,375000.0,6.65,fig10b,2026-05-28,Kuang2025; P=2.5MPa G=1000; 50x2mm gap_study
+kuang2025,water,narrow_rectangular,3.846,1000.0,2500.0,50.0,3.2,-1.0,sus304,450000.0,7.8,fig10b,2026-05-28,Kuang2025; P=2.5MPa G=1000; 50x2mm gap_study
+kuang2025,water,narrow_rectangular,3.846,1000.0,2500.0,50.0,3.2,-1.0,sus304,490000.0,8.85,fig10b,2026-05-28,Kuang2025; P=2.5MPa G=1000; 50x2mm gap_study
+kuang2025,water,narrow_rectangular,3.846,1000.0,2500.0,50.0,3.2,-1.0,sus304,590000.0,9.3,fig10b,2026-05-28,Kuang2025; P=2.5MPa G=1000; 50x2mm gap_study
+kuang2025,water,narrow_rectangular,3.846,1000.0,2500.0,50.0,3.2,-1.0,sus304,650000.0,9.4,fig10b,2026-05-28,Kuang2025; P=2.5MPa G=1000; 50x2mm gap_study
+kuang2025,water,narrow_rectangular,3.846,1000.0,2500.0,50.0,3.2,-1.0,sus304,720000.0,9.85,fig10b,2026-05-28,Kuang2025; P=2.5MPa G=1000; 50x2mm gap_study
+kuang2025,water,narrow_rectangular,7.407,1000.0,2500.0,50.0,3.2,-1.0,sus304,340000.0,4.2,fig10b,2026-05-28,Kuang2025; P=2.5MPa G=1000; 50x4mm gap_study
+kuang2025,water,narrow_rectangular,7.407,1000.0,2500.0,50.0,3.2,-1.0,sus304,410000.0,4.5,fig10b,2026-05-28,Kuang2025; P=2.5MPa G=1000; 50x4mm gap_study
+kuang2025,water,narrow_rectangular,7.407,1000.0,2500.0,50.0,3.2,-1.0,sus304,465000.0,5.7,fig10b,2026-05-28,Kuang2025; P=2.5MPa G=1000; 50x4mm gap_study
+kuang2025,water,narrow_rectangular,7.407,1000.0,2500.0,50.0,3.2,-1.0,sus304,510000.0,5.75,fig10b,2026-05-28,Kuang2025; P=2.5MPa G=1000; 50x4mm gap_study
+kuang2025,water,narrow_rectangular,7.407,1000.0,2500.0,50.0,3.2,-1.0,sus304,580000.0,5.95,fig10b,2026-05-28,Kuang2025; P=2.5MPa G=1000; 50x4mm gap_study
+kuang2025,water,narrow_rectangular,7.407,1000.0,2500.0,50.0,3.2,-1.0,sus304,640000.0,7.2,fig10b,2026-05-28,Kuang2025; P=2.5MPa G=1000; 50x4mm gap_study
+kuang2025,water,narrow_rectangular,7.407,1000.0,2500.0,50.0,3.2,-1.0,sus304,710000.0,8.0,fig10b,2026-05-28,Kuang2025; P=2.5MPa G=1000; 50x4mm gap_study
+hong2012,water,narrow_rectangular,4.779,507.0,180.0,38.0,-1.0,-1.0,stainless_steel,75000.0,7.5,fig6,2026-05-29,Hong2012; P=0.18MPa dT_sub_in=38K G=507
+hong2012,water,narrow_rectangular,4.779,701.0,180.0,38.0,-1.0,-1.0,stainless_steel,100000.0,9.5,fig6,2026-05-29,Hong2012; P=0.18MPa dT_sub_in=38K G=701
+hong2012,water,narrow_rectangular,4.779,789.0,180.0,38.0,-1.0,-1.0,stainless_steel,120000.0,9.0,fig6,2026-05-29,Hong2012; P=0.18MPa dT_sub_in=38K G=789
+hong2012,water,narrow_rectangular,4.779,840.0,195.0,26.2,-1.0,-1.0,stainless_steel,150000.0,8.0,fig7,2026-05-29,Hong2012; P=0.195MPa G=840 dT_sub_in=26.2K
+hong2012,water,narrow_rectangular,4.779,840.0,195.0,37.5,-1.0,-1.0,stainless_steel,140000.0,8.5,fig7,2026-05-29,Hong2012; P=0.195MPa G=840 dT_sub_in=37.5K
+hong2012,water,narrow_rectangular,4.779,840.0,195.0,50.3,-1.0,-1.0,stainless_steel,130000.0,9.5,fig7,2026-05-29,Hong2012; P=0.195MPa G=840 dT_sub_in=50.3K
+alyahia2017,water,narrow_rectangular,4.504,118.0,101.325,60.0,-1.0,-1.0,aluminum,89440.0,16.0,fig8,2026-05-29,AlYahia2017; G=118 T_in=40C q_from_legend dT_from_axial_Twall
+alyahia2017,water,narrow_rectangular,4.504,118.0,101.325,55.0,-1.0,-1.0,aluminum,81140.0,16.0,fig8,2026-05-29,AlYahia2017; G=118 T_in=45C q_from_legend dT_from_axial_Twall
+alyahia2017,water,narrow_rectangular,4.504,118.0,101.325,50.0,-1.0,-1.0,aluminum,76010.0,15.5,fig8,2026-05-29,AlYahia2017; G=118 T_in=50C q_from_legend dT_from_axial_Twall
+alyahia2017,water,narrow_rectangular,4.504,118.0,101.325,45.0,-1.0,-1.0,aluminum,69620.0,15.5,fig8,2026-05-29,AlYahia2017; G=118 T_in=55C q_from_legend dT_from_axial_Twall
+alyahia2017,water,narrow_rectangular,4.504,473.0,101.325,45.0,-1.0,-1.0,aluminum,190000.0,14.5,fig7b,2026-05-29,AlYahia2017; G=473 T_in=55C ONB from boiling curve
+alyahia2017,water,narrow_rectangular,4.504,473.0,101.325,40.0,-1.0,-1.0,aluminum,185000.0,14.0,fig7b,2026-05-29,AlYahia2017; G=473 T_in=60C ONB from boiling curve
+alyahia2017,water,narrow_rectangular,4.504,473.0,101.325,35.0,-1.0,-1.0,aluminum,175000.0,13.0,fig7b,2026-05-29,AlYahia2017; G=473 T_in=65C ONB from boiling curve
+cheng2022,water,narrow_rectangular,3.495,100.0,145.0,40.34,-1.0,-1.0,stainless_steel,15000.0,3.1,fig10,2026-05-29,Cheng2022; chan=a G=100 Tin=70C
+cheng2022,water,narrow_rectangular,3.495,100.0,145.0,40.34,-1.0,-1.0,stainless_steel,17000.0,3.2,fig10,2026-05-29,Cheng2022; chan=a G=100 Tin=70C
+cheng2022,water,narrow_rectangular,3.495,100.0,145.0,40.34,-1.0,-1.0,stainless_steel,30000.0,3.3,fig10,2026-05-29,Cheng2022; chan=a G=100 Tin=70C
+cheng2022,water,narrow_rectangular,3.495,100.0,145.0,40.34,-1.0,-1.0,stainless_steel,38000.0,3.3,fig10,2026-05-29,Cheng2022; chan=a G=100 Tin=70C
+cheng2022,water,narrow_rectangular,3.495,100.0,145.0,40.34,-1.0,-1.0,stainless_steel,40000.0,4.3,fig10,2026-05-29,Cheng2022; chan=a G=100 Tin=70C
+cheng2022,water,narrow_rectangular,3.495,100.0,145.0,40.34,-1.0,-1.0,stainless_steel,44000.0,4.95,fig10,2026-05-29,Cheng2022; chan=a G=100 Tin=70C
+cheng2022,water,narrow_rectangular,3.495,100.0,145.0,40.34,-1.0,-1.0,stainless_steel,46000.0,3.75,fig10,2026-05-29,Cheng2022; chan=a G=100 Tin=70C
+cheng2022,water,narrow_rectangular,3.495,100.0,145.0,40.34,-1.0,-1.0,stainless_steel,48000.0,3.9,fig10,2026-05-29,Cheng2022; chan=a G=100 Tin=70C
+cheng2022,water,narrow_rectangular,3.495,100.0,145.0,30.34,-1.0,-1.0,stainless_steel,29000.0,2.5,fig10,2026-05-29,Cheng2022; chan=a G=100 Tin=80C
+cheng2022,water,narrow_rectangular,3.495,100.0,145.0,30.34,-1.0,-1.0,stainless_steel,30000.0,3.85,fig10,2026-05-29,Cheng2022; chan=a G=100 Tin=80C
+cheng2022,water,narrow_rectangular,3.495,100.0,145.0,30.34,-1.0,-1.0,stainless_steel,31000.0,4.15,fig10,2026-05-29,Cheng2022; chan=a G=100 Tin=80C
+cheng2022,water,narrow_rectangular,3.495,100.0,145.0,30.34,-1.0,-1.0,stainless_steel,50000.0,4.1,fig10,2026-05-29,Cheng2022; chan=a G=100 Tin=80C
+cheng2022,water,narrow_rectangular,3.495,100.0,145.0,20.34,-1.0,-1.0,stainless_steel,14000.0,3.2,fig10,2026-05-29,Cheng2022; chan=a G=100 Tin=90C
+cheng2022,water,narrow_rectangular,3.495,100.0,145.0,20.34,-1.0,-1.0,stainless_steel,15000.0,3.1,fig10,2026-05-29,Cheng2022; chan=a G=100 Tin=90C
+cheng2022,water,narrow_rectangular,3.495,100.0,145.0,20.34,-1.0,-1.0,stainless_steel,17000.0,2.5,fig10,2026-05-29,Cheng2022; chan=a G=100 Tin=90C
+cheng2022,water,narrow_rectangular,3.495,100.0,145.0,20.34,-1.0,-1.0,stainless_steel,18000.0,2.1,fig10,2026-05-29,Cheng2022; chan=a G=100 Tin=90C
+cheng2022,water,narrow_rectangular,3.495,100.0,145.0,20.34,-1.0,-1.0,stainless_steel,20000.0,1.85,fig10,2026-05-29,Cheng2022; chan=a G=100 Tin=90C
+cheng2022,water,narrow_rectangular,3.495,200.0,145.0,20.34,-1.0,-1.0,stainless_steel,15000.0,2.6,fig12,2026-05-29,Cheng2022; chan=a G=200 Tin=90C
+cheng2022,water,narrow_rectangular,3.495,200.0,145.0,20.34,-1.0,-1.0,stainless_steel,16000.0,2.3,fig12,2026-05-29,Cheng2022; chan=a G=200 Tin=90C
+cheng2022,water,narrow_rectangular,3.495,200.0,145.0,20.34,-1.0,-1.0,stainless_steel,18000.0,2.6,fig12,2026-05-29,Cheng2022; chan=a G=200 Tin=90C
+cheng2022,water,narrow_rectangular,3.495,200.0,145.0,20.34,-1.0,-1.0,stainless_steel,22000.0,2.6,fig12,2026-05-29,Cheng2022; chan=a G=200 Tin=90C
+cheng2022,water,narrow_rectangular,3.495,200.0,145.0,20.34,-1.0,-1.0,stainless_steel,25000.0,3.3,fig12,2026-05-29,Cheng2022; chan=a G=200 Tin=90C
+cheng2022,water,narrow_rectangular,3.495,300.0,145.0,20.34,-1.0,-1.0,stainless_steel,17000.0,3.1,fig12,2026-05-29,Cheng2022; chan=a G=300 Tin=90C
+cheng2022,water,narrow_rectangular,3.495,300.0,145.0,20.34,-1.0,-1.0,stainless_steel,25000.0,3.2,fig12,2026-05-29,Cheng2022; chan=a G=300 Tin=90C
+cheng2022,water,narrow_rectangular,3.495,300.0,145.0,20.34,-1.0,-1.0,stainless_steel,28000.0,2.8,fig12,2026-05-29,Cheng2022; chan=a G=300 Tin=90C
+cheng2022,water,narrow_rectangular,3.495,300.0,145.0,20.34,-1.0,-1.0,stainless_steel,29000.0,3.0,fig12,2026-05-29,Cheng2022; chan=a G=300 Tin=90C
+cheng2022,water,narrow_rectangular,3.495,300.0,145.0,20.34,-1.0,-1.0,stainless_steel,30000.0,3.15,fig12,2026-05-29,Cheng2022; chan=a G=300 Tin=90C
+cheng2022,water,narrow_rectangular,3.495,300.0,145.0,20.34,-1.0,-1.0,stainless_steel,31000.0,4.05,fig12,2026-05-29,Cheng2022; chan=a G=300 Tin=90C
+cheng2022,water,narrow_rectangular,3.495,300.0,145.0,20.34,-1.0,-1.0,stainless_steel,32000.0,4.05,fig12,2026-05-29,Cheng2022; chan=a G=300 Tin=90C
+cheng2022,water,narrow_rectangular,5.35,100.0,145.0,40.34,-1.0,-1.0,stainless_steel,17000.0,4.25,fig11,2026-05-29,Cheng2022; chan=b G=100 Tin=70C
+cheng2022,water,narrow_rectangular,5.35,100.0,145.0,40.34,-1.0,-1.0,stainless_steel,28000.0,4.5,fig11,2026-05-29,Cheng2022; chan=b G=100 Tin=70C
+cheng2022,water,narrow_rectangular,5.35,100.0,145.0,40.34,-1.0,-1.0,stainless_steel,30000.0,4.5,fig11,2026-05-29,Cheng2022; chan=b G=100 Tin=70C
+cheng2022,water,narrow_rectangular,5.35,100.0,145.0,40.34,-1.0,-1.0,stainless_steel,44000.0,4.5,fig11,2026-05-29,Cheng2022; chan=b G=100 Tin=70C
+cheng2022,water,narrow_rectangular,5.35,100.0,145.0,40.34,-1.0,-1.0,stainless_steel,46000.0,4.7,fig11,2026-05-29,Cheng2022; chan=b G=100 Tin=70C
+cheng2022,water,narrow_rectangular,5.35,100.0,145.0,40.34,-1.0,-1.0,stainless_steel,47000.0,4.75,fig11,2026-05-29,Cheng2022; chan=b G=100 Tin=70C
+cheng2022,water,narrow_rectangular,5.35,100.0,145.0,30.34,-1.0,-1.0,stainless_steel,17000.0,3.5,fig11,2026-05-29,Cheng2022; chan=b G=100 Tin=80C
+cheng2022,water,narrow_rectangular,5.35,100.0,145.0,30.34,-1.0,-1.0,stainless_steel,28000.0,3.5,fig11,2026-05-29,Cheng2022; chan=b G=100 Tin=80C
+cheng2022,water,narrow_rectangular,5.35,100.0,145.0,30.34,-1.0,-1.0,stainless_steel,32000.0,3.55,fig11,2026-05-29,Cheng2022; chan=b G=100 Tin=80C
+cheng2022,water,narrow_rectangular,5.35,100.0,145.0,30.34,-1.0,-1.0,stainless_steel,35000.0,3.6,fig11,2026-05-29,Cheng2022; chan=b G=100 Tin=80C
+cheng2022,water,narrow_rectangular,5.35,100.0,145.0,30.34,-1.0,-1.0,stainless_steel,38000.0,3.65,fig11,2026-05-29,Cheng2022; chan=b G=100 Tin=80C
+cheng2022,water,narrow_rectangular,5.35,100.0,145.0,20.34,-1.0,-1.0,stainless_steel,16000.0,3.4,fig11,2026-05-29,Cheng2022; chan=b G=100 Tin=90C
+cheng2022,water,narrow_rectangular,5.35,100.0,145.0,20.34,-1.0,-1.0,stainless_steel,17000.0,3.45,fig11,2026-05-29,Cheng2022; chan=b G=100 Tin=90C
+cheng2022,water,narrow_rectangular,5.35,100.0,145.0,20.34,-1.0,-1.0,stainless_steel,20000.0,3.1,fig11,2026-05-29,Cheng2022; chan=b G=100 Tin=90C
+cheng2022,water,narrow_rectangular,5.35,100.0,145.0,20.34,-1.0,-1.0,stainless_steel,21000.0,3.35,fig11,2026-05-29,Cheng2022; chan=b G=100 Tin=90C
+cheng2022,water,narrow_rectangular,5.35,100.0,145.0,20.34,-1.0,-1.0,stainless_steel,28000.0,3.1,fig11,2026-05-29,Cheng2022; chan=b G=100 Tin=90C
+cheng2022,water,narrow_rectangular,5.35,200.0,145.0,20.34,-1.0,-1.0,stainless_steel,18000.0,3.1,fig13,2026-05-29,Cheng2022; chan=b G=200 Tin=90C
+cheng2022,water,narrow_rectangular,5.35,200.0,145.0,20.34,-1.0,-1.0,stainless_steel,22000.0,3.5,fig13,2026-05-29,Cheng2022; chan=b G=200 Tin=90C
+cheng2022,water,narrow_rectangular,5.35,200.0,145.0,20.34,-1.0,-1.0,stainless_steel,25000.0,3.2,fig13,2026-05-29,Cheng2022; chan=b G=200 Tin=90C
+cheng2022,water,narrow_rectangular,5.35,200.0,145.0,20.34,-1.0,-1.0,stainless_steel,28000.0,3.3,fig13,2026-05-29,Cheng2022; chan=b G=200 Tin=90C
+cheng2022,water,narrow_rectangular,5.35,300.0,145.0,20.34,-1.0,-1.0,stainless_steel,19000.0,4.7,fig13,2026-05-29,Cheng2022; chan=b G=300 Tin=90C
+cheng2022,water,narrow_rectangular,5.35,300.0,145.0,20.34,-1.0,-1.0,stainless_steel,25000.0,4.4,fig13,2026-05-29,Cheng2022; chan=b G=300 Tin=90C
+cheng2022,water,narrow_rectangular,5.35,300.0,145.0,20.34,-1.0,-1.0,stainless_steel,27000.0,4.6,fig13,2026-05-29,Cheng2022; chan=b G=300 Tin=90C
+cheng2022,water,narrow_rectangular,5.35,300.0,145.0,20.34,-1.0,-1.0,stainless_steel,29000.0,4.05,fig13,2026-05-29,Cheng2022; chan=b G=300 Tin=90C
+cheng2022,water,narrow_rectangular,5.35,300.0,145.0,20.34,-1.0,-1.0,stainless_steel,30000.0,4.1,fig13,2026-05-29,Cheng2022; chan=b G=300 Tin=90C
