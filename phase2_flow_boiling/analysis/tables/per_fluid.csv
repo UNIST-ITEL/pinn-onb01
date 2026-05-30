@@ -1,3 +1,3 @@
 fluid,n_test,rmse_dT_PINN,rmse_dT_Hsu_,rmse_dT_Sato,rmse_dT_Berg,rmse_dT_Kand,rmse_dT_Basu
-water,35,1.9733,4.5152,4.5152,3.9982,4.5152,4.7059
-water_DIW,18,1.3168,4.9621,4.9621,3.1204,4.9621,5.5409
+water,38,2.1245,4.3641,4.3641,3.8678,4.3641,4.5629
+water_DIW,18,0.6043,4.9621,4.9621,3.1204,4.9621,5.5409

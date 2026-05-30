@@ -14,21 +14,25 @@ _Last updated: 2026-05-29_
 | Hong 2012 | 6 | Stainless, P=180~195 kPa, G=507~840 | Fig 6/7 |
 | Al-Yahia 2017 | 7 | Aluminum, P=101.3 kPa, G=118~473 | Fig 7/8 |
 | Cheng 2022 | 54 | Stainless, P=145 kPa, G=100~300, 2채널(D_h=3.50/5.35mm) | Fig 10~13 |
+| Qu & Mudawar 2002 | 20 | DIW microchannel, P=120 kPa, G=174~1318, D_h=0.349mm (최소) | Fig 10/11/12 |
+
+> Qu2002: ONB 출구 발생 → delta_T_sub_K=출구(국소) 과냉도(2~30K) 채택. q는 planform-area 기준. ΔT_onb는 Fig12 계열식별 11행만.
 
 ---
 
 ### 데이터 정제 이력
 
-원시 데이터: **536행** → 최종: **324행**
+원시 데이터: **536행** → 정제 후 324행 → Qu2002 추가 **344행**
 
-| 단계 | 제거 대상 | 사유 | 행 수 |
+| 단계 | 변경 대상 | 사유 | 행 수 |
 |---|---|---|---|
-| v5→v6 | basu2002 fig11 | 풀비등 parity 데이터 (G=-1, ΔT_sub=-1 전량, series=Past/Pres_theta*) | −88 |
-| v5→v6 | bergles1964 fig7 | P_kPa=-1 (압력 미기록, 유체물성 계산 불가) | −26 |
-| v6→v7 | basu2002 fig10 | G=-1, ΔT_sub=-1 전량 — 풀비등 데이터, q=-1 전부 | −98 |
-| **합계** | | | **−212행** |
+| v5→v6 | −basu2002 fig11 | 풀비등 parity 데이터 (G=-1, ΔT_sub=-1 전량, series=Past/Pres_theta*) | −88 |
+| v5→v6 | −bergles1964 fig7 | P_kPa=-1 (압력 미기록, 유체물성 계산 불가) | −26 |
+| v6→v7 | −basu2002 fig10 | G=-1, ΔT_sub=-1 전량 — 풀비등 데이터, q=-1 전부 | −98 |
+| v7→v8 | +qu2002 | 마이크로채널 confinement coverage (D_h=0.349mm) | +20 |
+| **합계** | | | **−192행** |
 
-**최종 dataset (324행) paper별:**
+**최종 dataset (344행) paper별:**
 
 | paper_id | 행 수 |
 |---|---|
@@ -36,6 +40,7 @@ _Last updated: 2026-05-29_
 | forrest2016 | 72 |
 | kuang2025 | 66 |
 | cheng2022 | 54 |
+| qu2002 | 20 |
 | alyahia2017 | 7 |
 | hong2012 | 6 |
 | kandlikar1991 | 4 |
@@ -51,13 +56,34 @@ _Last updated: 2026-05-29_
 | v4 | 403행 | 263/55/60 | — | — | — | — | — | w_data_q 1→2 (개선 없음) |
 | v5 | 536행 (+4 논문) | 370/77/87 | 5.56 K | 2.82 K | 0.545 | 1211 kW/m² | 0.733 | 데이터 확장 |
 | v6 | 422행 (−fig11,−fig7) | 290/61/69 | 4.02 K | 2.43 K | 0.623 | 151 kW/m² | 0.703 | 풀비등/P미상 제거 |
-| **v7** | **324행 (−fig10)** | **222/47/53** | **1.85 K** | **1.30 K** | **0.769** | **187 kW/m²** | **0.544** | **basu2002 완전 제거** |
+| v7 | 324행 (−fig10) | 222/47/53 | 1.85 K | 1.30 K | 0.769 | 187 kW/m² | 0.544 | basu2002 완전 제거 |
+| v8 | 344행 (+qu2002) | 236/50/56 | 2.03 K | 1.41 K | 0.706 | 135 kW/m² | 0.780 | 마이크로채널 추가 (D_h=0.349mm) |
+| **v9** | **344행 (=v8)** | **236/50/56** | **1.91 K** | **1.31 K** | **0.740** | **154 kW/m²** | **0.713** | **one-sided Hsu coupling (하한)** |
+
+> v7→v8: q 대폭 개선 (RMSE_q 187→135 kW/m², R²_q 0.544→0.780), ΔT 소폭 후퇴 (1.85→2.03K).
+> v8→v9: Hsu coupling 등식→one-sided hinge. ΔT 개선 (2.03→1.91K, R²_ΔT 0.706→0.740), q 소폭 후퇴 (135→154 kW/m²).
+> **Pattern B 해소 검증**: cheng2022(과냉도 tension 원인) test 9행 mean_err +0.03K, RMSE 0.62K (무편향).
+> 3~5K 구간 계통적 과소예측 제거. 남은 저온 오차는 kuang2025 고압(2500~5000kPa) 외삽(Pattern C)만.
+> **현재 best = v9** (물리적으로 올바른 coupling + ΔT 우수).
+
+**v9 vs 기존 상관식 (test n_dT=34, 동일 split):**
+
+| 방법 | RMSE_ΔT | MAE_ΔT | R²_ΔT | RMSE_q | R²_q |
+|---|---|---|---|---|---|
+| **PINN v9** | **1.91 K** | **1.31 K** | **0.740** | **154 kW/m²** | **0.713** |
+| Bergles-Rohsenow 1964 | 3.73 K | 2.96 K | 0.013 | 1670 kW/m² | −59.2 |
+| Hsu 1962 | 4.49 K | 3.70 K | −0.436 | 2745 kW/m² | −162 |
+| Sato-Matsumura 1964 | 4.49 K | 3.70 K | −0.436 | 2745 kW/m² | −162 |
+| Kandlikar 1991 | 4.49 K | 3.70 K | −0.436 | 2745 kW/m² | −162 |
+| Basu 2002 | 4.78 K | 3.98 K | −0.625 | 3366 kW/m² | −244 |
+
+> PINN v9: ΔT **1.95배** (vs Bergles 3.73K), q RMSE **11배** (vs Bergles 1670 kW/m²) 우위.
 
 **v7 vs 기존 상관식 (test n_dT=32):**
 
 | 방법 | RMSE_ΔT | MAE_ΔT | R²_ΔT | RMSE_q | R²_q |
 |---|---|---|---|---|---|
-| **PINN v7** | **1.85 K** | **1.30 K** | **0.769** | **187 kW/m²** | **0.544** |
+| PINN v7 | 1.85 K | 1.30 K | 0.769 | 187 kW/m² | 0.544 |
 | Bergles-Rohsenow 1964 | 3.82 K | 3.08 K | 0.014 | 1721 kW/m² | −60.1 |
 | Hsu 1962 | 4.62 K | 3.86 K | −0.438 | 2829 kW/m² | −164 |
 | Sato-Matsumura 1964 | 4.62 K | 3.86 K | −0.438 | 2829 kW/m² | −164 |
@@ -85,8 +111,10 @@ _Last updated: 2026-05-29_
 | B | cheng2022 (저G, P=145kPa) | Hsu coupling tension: Hsu≈0.06K vs 실측 2~5K | −0.16K (미세 과소예측) |
 | C | kuang2025 (P=500kPa, 희소 조건) | 훈련 외삽 영역 | +1.70K 과대예측 |
 
-패턴 B 원인: `w_hsu=0.5` loss가 저q(15~44 kW/m²) 고과냉도(ΔT_sub=20~40K) 조건에서
-Hsu 예측(0.06K)으로 당기는 tension 발생. 고과냉도 flow boiling에서 Hsu 공식 부적합.
+패턴 B 원인: Hsu self-consistency coupling(`loss_hsu_coupling`, w=0.05)이 등식
+`ΔT_pred = C_hsu_nd·√q_star`(순수 포화 pool Hsu)을 강제 → 저q(15~44 kW/m²) 고과냉도
+(ΔT_sub=20~40K)에서 Hsu≈0.06K로 하향 당김. 고과냉도 flow boiling에서 Hsu는 하한.
+→ **v9에서 one-sided hinge로 해소 (ΔT_pred ≥ ΔT_Hsu만 페널티). cheng2022 RMSE 0.62K, 무편향.**
 
 ---
 
@@ -95,15 +123,18 @@ Hsu 예측(0.06K)으로 당기는 tension 발생. 고과냉도 flow boiling에�
 | 버전 | 경로 |
 |---|---|
 | v3 (Phase 1 transfer) | `experiments/checkpoints/phase2_v3_phase1_transfer/best_model.pt` |
-| v7 (현재 best) | `experiments/checkpoints/phase2_v7_no_pool_boiling/best_model.pt` |
+| v7 (ΔT-only best) | `experiments/checkpoints/phase2_v7_no_pool_boiling/best_model.pt` |
+| v8 (microchannel) | `experiments/checkpoints/phase2_v8_microchannel_qu/best_model.pt` |
+| **v9 (현재 best)** | `experiments/checkpoints/phase2_v9_hsu_onesided/best_model.pt` |
 
 ---
 
 ### 다음 단계
 
-- [ ] **v8**: Hsu coupling 수정 — 고과냉도 조건(ΔT_sub > 15K)에서 `w_hsu` 가중치 감소
-      또는 subcooled-flow 보정항 추가 (패턴 B 해소 목표)
-- [ ] 추가 논문 데이터 수집 (Qu 2002 미처리)
+- [x] ~~Qu 2002 데이터 수집~~ → v8 완료 (20행, q R²_q 0.544→0.780)
+- [x] ~~v9 Hsu coupling 보정~~ → 완료 (one-sided hinge, ΔT 1.91K/R²0.740, Pattern B 해소)
+- [ ] Pattern C 검토: kuang2025 고압(2500~5000kPa) 외삽 과대예측 (희소 조건 데이터 보강 or 압력 무차원화 점검)
+- [ ] M7-M9: NS/Energy PDE residual 활성화 (plan Stage 3)
 - [ ] manuscript M5 단계 초안 작성
 
 ---
@@ -121,3 +152,8 @@ Hsu 예측(0.06K)으로 당기는 tension 발생. 고과냉도 flow boiling에�
 | `0b93e1a` | v6 results: RMSE_ΔT 4.02K, RMSE_q 151 kW/m² |
 | `8516b89` | Remove basu2002 G=-1 rows; add v7 config (324 rows) |
 | `d427e41` | v7 results: RMSE_ΔT 1.85K, R²_ΔT 0.769 |
+| `8da5f1a` | Add PROGRESS_LOG.md |
+| `b670234` | Add Qu & Mudawar 2002 microchannel data (20 rows) |
+| `e01cb1e` | Add v8 config (344 rows) |
+| `1fd758b` | v8 results: RMSE_q 135kW/m², R²_q 0.780 |
+| `76b7373` | Add one-sided Hsu coupling (v9) |
