@@ -84,7 +84,9 @@ def _flow_feat_from_row(row: pd.Series) -> FlowFeatures:
     ch_type = str(row["channel_type"])
     dtsub = float(row["delta_T_sub_K"]) if row["delta_T_sub_K"] > 0 else None
     fluid = str(row["fluid"])
-    P_kPa = float(row["P_kPa"]) if row["P_kPa"] > 0 else 101.325
+    # Pass raw P (incl. -1 = unknown) so the encoder can set P_mask=0 and
+    # impute atmospheric internally; property nondim still falls back to 1 atm.
+    P_kPa = float(row["P_kPa"])
     q_onb = float(row["q_onb_W_m2"]) if row["q_onb_W_m2"] > 0 else None
     return FlowFeatures.from_dataset_row(
         G_kg_m2s=max(G, 0.0),

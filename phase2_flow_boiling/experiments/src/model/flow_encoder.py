@@ -4,7 +4,7 @@ flow_encoder.py — Flow condition encoder for Phase 2 flow boiling ONB PINN.
 Maps raw flow variables (Re, G, Bo, We, ΔT_sub, D_h, channel type) to a
 latent vector z_flow consumed by the FlowBoilingPINN via FiLM conditioning.
 
-Channel layout (FLOW_NUMERIC_CHANNELS = 9):
+Channel layout (FLOW_NUMERIC_CHANNELS = 11):
     0: log10(Re) / 5               -- Re typically 100-100,000; /5 → ~0.4-1.0
     1: log10(G / G_ref)            -- G_ref = 1000 kg/m²s; normalised mass flux
     2: log10(Bo × 1e4 + 1)        -- Boiling number Bo=q''/(G h_fg), small; +1 avoids log(0)
@@ -14,6 +14,8 @@ Channel layout (FLOW_NUMERIC_CHANNELS = 9):
     6: log10(D_h_mm + 0.01)        -- D_h in mm; log spans micro(0.05mm) to tube(15mm)
     7: channel_sin                 -- sin encoding of channel_type (see _CHANNEL_ENC)
     8: channel_cos                 -- cos encoding
+    9: log10(P_r)                  -- reduced pressure P_r=P/P_crit (v10); P↑→ΔT_ONB↓ (trend #4)
+   10: P_mask                      -- 1 if P provided, else 0 (atmospheric imputed)
 
 Channel type encoding (sin/cos of evenly spaced angles, periodic-safe):
     tube_circular   → angle 0
@@ -47,10 +49,23 @@ def channel_type_to_sincos(ch: str) -> tuple[float, float]:
 
 
 # ── Input dimensionality ──────────────────────────────────────────────────────
-FLOW_NUMERIC_CHANNELS: int = 9
+FLOW_NUMERIC_CHANNELS: int = 11
 
 # Reference values for normalization
 _G_REF = 1000.0   # kg/m²s
+
+# Critical pressure [kPa] per fluid for reduced pressure P_r = P/P_crit (v10).
+# Used as a direct flow feature so the network can learn the P↑→ΔT_ONB↓ trend
+# (CLAUDE.md physical trend #4) instead of inferring it only via properties.
+_P_CRIT_KPA: dict[str, float] = {
+    "water":  22064.0,
+    "R-11":    4408.0,
+    "R-113":   3392.0,
+    "R-12":    4136.0,
+    "R-134a":  4059.0,
+    "R-123":   3662.0,
+}
+_P_ATM_KPA = 101.325
 
 
 @dataclass(frozen=True)
@@ -157,8 +172,19 @@ def encode_flow_to_tensor(
     s, c = channel_type_to_sincos(feat.channel_type)
     ch7, ch8 = s, c
 
+    # Reduced pressure P_r = P/P_crit (v10). Missing P → atmospheric, mask=0.
+    P_crit = _P_CRIT_KPA.get(feat.fluid.split("_")[0], _P_CRIT_KPA["water"])
+    if feat.P_kPa is not None and feat.P_kPa > 0:
+        P_use = feat.P_kPa
+        ch10  = 1.0
+    else:
+        P_use = _P_ATM_KPA
+        ch10  = 0.0
+    P_r  = max(P_use / P_crit, 1e-6)
+    ch9  = math.log10(P_r)
+
     return torch.tensor(
-        [ch0, ch1, ch2, ch3, ch4, ch5, ch6, ch7, ch8],
+        [ch0, ch1, ch2, ch3, ch4, ch5, ch6, ch7, ch8, ch9, ch10],
         dtype=dtype,
     )
 

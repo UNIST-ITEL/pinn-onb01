@@ -284,7 +284,7 @@ def _monotone_sweep_loss(
     model:             "FlowBoilingPINN",
     base_surf_numeric: Tensor,    # (9,) — representative surface condition
     base_surf_cat:     Tensor,    # ()   — integer category
-    base_flow_numeric: Tensor,    # (9,) — base flow condition
+    base_flow_numeric: Tensor,    # (FLOW_NUMERIC_CHANNELS,) — base flow condition
     channel_idx:       int,       # which flow_numeric channel to sweep
     n_points:          int,
     sweep_range:       tuple[float, float],
@@ -539,7 +539,7 @@ if __name__ == "__main__":
             "numeric":      torch.randn(B, 9),
             "category_id":  torch.zeros(B, dtype=torch.long),
         },
-        "flow_numeric":     torch.randn(B, 9) * 0.3,
+        "flow_numeric":     torch.randn(B, 11) * 0.3,
         "q_onb_star":       torch.rand(B) * 2.0 + 0.1,
         "delta_T_onb_star": torch.rand(B) * 5.0 + 0.5,
         "has_q":            torch.ones(B, dtype=torch.bool),
@@ -554,7 +554,7 @@ if __name__ == "__main__":
             "numeric":      torch.randn(N_hsu, 9),
             "category_id":  torch.zeros(N_hsu, dtype=torch.long),
         },
-        "flow_numeric":     torch.randn(N_hsu, 9) * 0.3,
+        "flow_numeric":     torch.randn(N_hsu, 11) * 0.3,
         "Re":               torch.rand(N_hsu) * 49600 + 400,     # 400-50k
         "Pr":               torch.full((N_hsu,), 1.76),           # water ~100°C
         "D_h_m":            torch.rand(N_hsu) * 0.009 + 0.001,   # 1-10 mm
