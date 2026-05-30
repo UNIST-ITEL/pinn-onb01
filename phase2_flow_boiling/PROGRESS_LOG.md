@@ -58,13 +58,17 @@ _Last updated: 2026-05-29_
 | v6 | 422행 (−fig11,−fig7) | 290/61/69 | 4.02 K | 2.43 K | 0.623 | 151 kW/m² | 0.703 | 풀비등/P미상 제거 |
 | v7 | 324행 (−fig10) | 222/47/53 | 1.85 K | 1.30 K | 0.769 | 187 kW/m² | 0.544 | basu2002 완전 제거 |
 | v8 | 344행 (+qu2002) | 236/50/56 | 2.03 K | 1.41 K | 0.706 | 135 kW/m² | 0.780 | 마이크로채널 추가 (D_h=0.349mm) |
-| **v9** | **344행 (=v8)** | **236/50/56** | **1.91 K** | **1.31 K** | **0.740** | **154 kW/m²** | **0.713** | **one-sided Hsu coupling (하한)** |
+| v9 | 344행 (=v8) | 236/50/56 | 1.91 K | 1.31 K | 0.740 | 154 kW/m² | 0.713 | one-sided Hsu coupling (하한) |
+| **v10** | **344행 (=v8)** | **236/50/56** | **2.00 K** | **1.32 K** | **0.717** | **148 kW/m²** | **0.734** | **환산압력 P_r 직접 입력 (9→11채널)** |
 
 > v7→v8: q 대폭 개선 (RMSE_q 187→135 kW/m², R²_q 0.544→0.780), ΔT 소폭 후퇴 (1.85→2.03K).
 > v8→v9: Hsu coupling 등식→one-sided hinge. ΔT 개선 (2.03→1.91K, R²_ΔT 0.706→0.740), q 소폭 후퇴 (135→154 kW/m²).
-> **Pattern B 해소 검증**: cheng2022(과냉도 tension 원인) test 9행 mean_err +0.03K, RMSE 0.62K (무편향).
-> 3~5K 구간 계통적 과소예측 제거. 남은 저온 오차는 kuang2025 고압(2500~5000kPa) 외삽(Pattern C)만.
-> **현재 best = v9** (물리적으로 올바른 coupling + ΔT 우수).
+> **Pattern B 해소**: cheng2022 test 9행 mean_err +0.03K, RMSE 0.62K (무편향).
+> v9→v10: 압력 직접 입력. ΔT 소폭 후퇴 (1.91→2.00K), q 개선 (R²_q 0.713→0.734).
+> **Pattern C 부분 해소**: corr(P,예측) +0.010→−0.020 (부호 전환, 실측 −0.137 방향). Fig8b sweep
+> 300→3500kPa 하강경향 추종 (v9는 평탄). 고압 bias 3500/4500/5000kPa: v9 +1.9~2.5K → v10 +0.5~1.8K.
+> 잔여 오차는 P=4500/5000(각 학습 1점) 외삽 한계 → 데이터 보강 필요.
+> **모델 선택**: v9(ΔT 최저, 압력 물리 없음) vs v10(경향 #4 학습, q 우수). 물리 정합성 우선 시 v10.
 
 **v9 vs 기존 상관식 (test n_dT=34, 동일 split):**
 
@@ -125,7 +129,8 @@ _Last updated: 2026-05-29_
 | v3 (Phase 1 transfer) | `experiments/checkpoints/phase2_v3_phase1_transfer/best_model.pt` |
 | v7 (ΔT-only best) | `experiments/checkpoints/phase2_v7_no_pool_boiling/best_model.pt` |
 | v8 (microchannel) | `experiments/checkpoints/phase2_v8_microchannel_qu/best_model.pt` |
-| **v9 (현재 best)** | `experiments/checkpoints/phase2_v9_hsu_onesided/best_model.pt` |
+| v9 (ΔT 최저, 압력 물리 없음) | `experiments/checkpoints/phase2_v9_hsu_onesided/best_model.pt` |
+| **v10 (압력 물리 학습, 권장)** | `experiments/checkpoints/phase2_v10_pressure_feature/best_model.pt` |
 
 ---
 
@@ -133,7 +138,8 @@ _Last updated: 2026-05-29_
 
 - [x] ~~Qu 2002 데이터 수집~~ → v8 완료 (20행, q R²_q 0.544→0.780)
 - [x] ~~v9 Hsu coupling 보정~~ → 완료 (one-sided hinge, ΔT 1.91K/R²0.740, Pattern B 해소)
-- [ ] Pattern C 검토: kuang2025 고압(2500~5000kPa) 외삽 과대예측 (희소 조건 데이터 보강 or 압력 무차원화 점검)
+- [x] ~~Pattern C 검토~~ → v10 환산압력 입력으로 부분 해소 (corr 부호 전환, 경향 #4 학습)
+- [ ] 고압 flow boiling 데이터 보강 (P=3000~5000kPa 단일점 → kuang2025 외 출처) — Pattern C 잔여 외삽 해소
 - [ ] M7-M9: NS/Energy PDE residual 활성화 (plan Stage 3)
 - [ ] manuscript M5 단계 초안 작성
 
@@ -157,3 +163,5 @@ _Last updated: 2026-05-29_
 | `e01cb1e` | Add v8 config (344 rows) |
 | `1fd758b` | v8 results: RMSE_q 135kW/m², R²_q 0.780 |
 | `76b7373` | Add one-sided Hsu coupling (v9) |
+| `67ef0ab` | v9 results: RMSE_ΔT 1.91K, Pattern B resolved |
+| `8619236` | Add reduced pressure feature (v10): fix Pattern C |
