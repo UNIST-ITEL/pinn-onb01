@@ -20,8 +20,21 @@ ONB site; data reported without an axial location use $x^{\*}=0.5$.
 \subsection{Architecture}
 \label{sec:arch}
 
-The network has three parts.
-% TODO: add architecture schematic (figures/architecture.pdf) and \label{fig:arch}.
+The network (Fig.~\ref{fig:arch}) has three parts.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{architecture.png}
+\caption{Surface- and flow-conditioned PINN. A frozen surface encoder
+(transfer-learned from the Phase~1 pool-boiling model) and a new flow encoder
+produce latent vectors $\mathbf{z}_s,\mathbf{z}_f$ that condition a six-layer
+backbone in the axial coordinate $x^{*}$ through feature-wise linear modulation
+(FiLM). Three heads output the ONB wall superheat $\dTonb^{*}$, heat flux
+$q^{*}$ and an auxiliary temperature field $T^{*}(x^{*})$. Training combines a
+masked data loss with a flow-aware Hsu collocation constraint, a one-sided Hsu
+self-consistency coupling and monotonicity penalties.}
+\label{fig:arch}
+\end{figure}
 
 \paragraph{Surface encoder (transfer-learned, frozen).}
 Surface morphology---arithmetic roughness $R_a$, static contact angle $\theta$
