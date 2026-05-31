@@ -185,7 +185,11 @@ _Last updated: 2026-05-31_
 - [x] ~~M7-M9 PDE residual~~ → **Negative result**: 완전 NS 불가(스칼라 regressor), 1D 에너지·소프트 제약은
       과구속/2차-그래디언트 불안정으로 fit 붕괴. v11이 이미 경향 만족. 코드는 옵션 보존. (위 분석 참조)
 - [ ] manuscript M5 단계 초안 작성 (v11 결과 기반)
-- [ ] (선택) M10: Deep ensemble UQ / inverse — v11 위에서
+- [x] ~~M10 Deep Ensemble UQ (K=5)~~ → 완료. Ensemble mean ΔT 1.72K/R²0.796 (단일 v11 1.84/0.768 개선).
+      Epistemic std 평균 0.51K, 1σ coverage 28%(과소) → 재보정 ×4.7 필요, aleatoric(heteroscedastic) 미모델 한계.
+      `analysis/tables/ensemble_uq_metrics.md`, `analysis/figures/ensemble_uq.png`.
+- [ ] manuscript M5 단계 초안 작성 (v11 + ensemble UQ 결과 기반)
+- [ ] (선택) heteroscedastic head로 aleatoric 추가 → full calibration
 
 ---
 
