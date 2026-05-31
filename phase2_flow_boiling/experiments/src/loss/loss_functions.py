@@ -53,6 +53,7 @@ class LossComponents:
     L_mono_Re:     Tensor
     L_mono_G:      Tensor
     L_mono_sub:    Tensor
+    L_mono_P:      Tensor
     L_continuity:  Tensor
     L_momentum:    Tensor
     L_energy:      Tensor
@@ -71,9 +72,10 @@ class LossWeights:
     w_mono_Re:     float = 0.1
     w_mono_G:      float = 0.1
     w_mono_sub:    float = 0.1
+    w_mono_P:      float = 0.0   # P↑ → ΔT_onb↓ (trend #4); needs P_r feature (v10+)
     w_continuity:  float = 0.0
     w_momentum:    float = 0.0
-    w_energy:      float = 0.0
+    w_energy:      float = 0.0   # 1D advection-dominated energy residual on T_star (M7-M9)
 
     @classmethod
     def from_config(cls, cfg: dict) -> "LossWeights":
@@ -86,6 +88,7 @@ class LossWeights:
             w_mono_Re=float(lc.get("w_mono_Re",        0.1)),
             w_mono_G=float(lc.get("w_mono_G",          0.1)),
             w_mono_sub=float(lc.get("w_mono_sub",      0.1)),
+            w_mono_P=float(lc.get("w_mono_P",          0.0)),
             w_continuity=float(lc.get("w_continuity",  0.0)),
             w_momentum=float(lc.get("w_momentum",      0.0)),
             w_energy=float(lc.get("w_energy",          0.0)),
@@ -167,6 +170,7 @@ def loss_hsu_coupling(
     C_hsu_nd:         Tensor,   # (B,)  per-sample coefficient (from dataset)
     *,
     eps: float = 1e-6,
+    one_sided: bool = False,
 ) -> Tensor:
     """
     Enforce physical self-consistency between the two model heads.
@@ -176,10 +180,21 @@ def loss_hsu_coupling(
 
     Applied to ALL samples — no ground-truth label needed.
     q-only samples (235/378) gain indirect ΔT training signal here.
+
+    one_sided : if True, treat the saturated-pool Hsu superheat as a *lower
+        bound* and penalise only ΔT_pred < ΔT_Hsu (relu hinge). Physically, bulk
+        subcooling and forced convection RAISE the required wall superheat for
+        ONB, so ΔT_ONB ≥ ΔT_Hsu,sat always holds. Equality coupling (False)
+        wrongly pulls high-subcooling predictions toward the near-zero
+        saturated-pool Hsu value (Pattern B). [Restored v9 code: lost to an
+        OneDrive sync revert after commit 76b7373; v10/v11 ran equality-only.]
     """
     q_star  = pred_q_onb_star.squeeze(-1).clamp(min=eps)
     dT_pred = pred_dT_onb_star.squeeze(-1)
     dT_hsu  = C_hsu_nd * torch.sqrt(q_star)
+    if one_sided:
+        deficit = F.relu(dT_hsu - dT_pred)
+        return deficit.pow(2).mean()
     return F.mse_loss(dT_pred, dT_hsu)
 
 
@@ -339,12 +354,13 @@ def loss_monotonicity_flow(
     sweep_Re_range:      tuple[float, float] = (0.4, 1.0),    # log10(Re)/5 range
     sweep_G_range:       tuple[float, float] = (-0.5, 0.5),   # log10(G/G_ref) range
     sweep_sub_range:     tuple[float, float] = (0.0, 0.25),   # ΔT_sub_star range
+    sweep_P_range:       tuple[float, float] = (-2.3, -0.6),  # log10(P_r) range (~0.5-5.5 MPa water)
     margin:              float = 1e-3,
-) -> tuple[Tensor, Tensor, Tensor]:
-    """Return (L_mono_Re, L_mono_G, L_mono_sub)."""
+) -> tuple[Tensor, Tensor, Tensor, Tensor]:
+    """Return (L_mono_Re, L_mono_G, L_mono_sub, L_mono_P)."""
 
     # Flow encoder channel indices (from flow_encoder.py):
-    #   0: log10(Re)/5, 1: log10(G/G_ref), 4: delta_T_sub_star
+    #   0: log10(Re)/5, 1: log10(G/G_ref), 4: delta_T_sub_star, 9: log10(P_r)
 
     L_Re = _monotone_sweep_loss(
         model, base_surf_numeric, base_surf_cat, base_flow_numeric,
@@ -370,14 +386,76 @@ def loss_monotonicity_flow(
         sign=+1,       # ΔT_sub↑ → dT_onb↑
         margin=margin,
     )
-    return L_Re, L_G, L_sub
+    L_P = _monotone_sweep_loss(
+        model, base_surf_numeric, base_surf_cat, base_flow_numeric,
+        channel_idx=9,
+        n_points=n_points,
+        sweep_range=sweep_P_range,
+        sign=-1,       # P↑ → dT_onb↓  (trend #4, Bergles-Rohsenow)
+        margin=margin,
+    )
+    return L_Re, L_G, L_sub, L_P
 
 
-# ── PDE stubs (M7-M9) ─────────────────────────────────────────────────────────
+# ── 1D energy residual (M7-M9) ────────────────────────────────────────────────
 
-def loss_pde_stub(device: torch.device | str = "cpu") -> Tensor:
-    """Placeholder PDE residual — returns 0.  Activated in M7-M9."""
-    return torch.zeros(1, device=device)
+def loss_energy_1d(
+    model:             "FlowBoilingPINN",
+    base_surf_numeric: Tensor,    # (n_surf,) representative surface condition
+    base_surf_cat:     Tensor,    # () integer category
+    base_flow_numeric: Tensor,    # (FLOW_NUMERIC_CHANNELS,) base flow condition
+    *,
+    n_points:    int   = 64,
+    w_curv:      float = 1.0,
+    w_monotone:  float = 1.0,
+) -> Tensor:
+    """1D advection-dominated energy residual on the T_star head.
+
+    Physics (single-phase subcooled liquid region upstream of ONB):
+      The axial bulk energy balance for constant wall heat flux is
+          ρ c_p u dT/dx = q'' P_h / A_c + k ∂²T/∂x²   (axial conduction).
+      At the flow Péclet numbers here (Re~1e4, Pr~1-7 ⇒ Pe~1e4-1e5) axial
+      conduction is negligible, so the balance reduces to
+          dT/dx = const > 0   ⇒   ∂²T*/∂x*² ≈ 0  and  ∂T*/∂x* > 0.
+      i.e. the streamwise temperature rises monotonically and ~linearly.
+
+    The residual softly enforces this on the (otherwise unsupervised) T_star
+    field, turning the shared backbone into a physics-regularised regressor:
+      L_energy = w_curv·mean[(∂²T*/∂x*²)²] + w_monotone·mean[ReLU(-∂T*/∂x*)²].
+
+    Collocation: x_star ∈ (0,1) at one representative (surface, flow) condition,
+    autograd through the full forward to obtain ∂T*/∂x* and ∂²T*/∂x*².
+    """
+    device = next(model.parameters()).device
+
+    # enable_grad so the residual also works when called under torch.no_grad()
+    # (e.g. the validation pass), where we still want to report its value.
+    with torch.enable_grad():
+        x_star = torch.linspace(0.02, 0.98, n_points, device=device).unsqueeze(-1)
+        x_star.requires_grad_(True)
+
+        surf_num = base_surf_numeric.unsqueeze(0).expand(n_points, -1).to(device)
+        surf_cat = base_surf_cat.unsqueeze(0).expand(n_points).to(device)
+        flow_num = base_flow_numeric.unsqueeze(0).expand(n_points, -1).to(device)
+        surface_features = {"numeric": surf_num, "category_id": surf_cat}
+
+        out = model(x_star, surface_features, flow_num)
+        T = out.T_star  # (N,) or (N,1)
+        if T.dim() == 1:
+            T = T.unsqueeze(-1)
+
+        dT_dx = torch.autograd.grad(
+            T, x_star, grad_outputs=torch.ones_like(T),
+            create_graph=True, retain_graph=True,
+        )[0]                                              # (N,1)
+        d2T_dx2 = torch.autograd.grad(
+            dT_dx, x_star, grad_outputs=torch.ones_like(dT_dx),
+            create_graph=True, retain_graph=True,
+        )[0]                                              # (N,1)
+
+        L_curv     = (d2T_dx2 ** 2).mean()
+        L_monotone = (F.relu(-dT_dx) ** 2).mean()
+        return w_curv * L_curv + w_monotone * L_monotone
 
 
 # ── Total loss ────────────────────────────────────────────────────────────────
@@ -392,8 +470,10 @@ def total_loss(
     collocation_mono: dict[str, Tensor] | None = None,
     C_hsu:            float = 0.5,
     hsu_margin:       float = 0.0,
+    hsu_coupling_one_sided: bool = False,
     mono_margin:      float = 1e-3,
     n_mono_points:    int   = 20,
+    n_energy_points:  int   = 64,
     log_scale_q:      bool  = True,
 ) -> LossComponents:
     """
@@ -446,12 +526,18 @@ def total_loss(
     # ── Hsu self-consistency coupling: ΔT_pred = Hsu(q_pred) ────────────────
     if weights.w_hsu_coupling > 0 and "C_hsu_nd" in batch:
         C_hsu_nd = batch["C_hsu_nd"].to(device)
-        L_hsu_cp = loss_hsu_coupling(out.q_onb_star, out.delta_T_onb_star, C_hsu_nd)
+        L_hsu_cp = loss_hsu_coupling(
+            out.q_onb_star, out.delta_T_onb_star, C_hsu_nd,
+            one_sided=hsu_coupling_one_sided,
+        )
     else:
         L_hsu_cp = zero
 
     # ── Monotonicity constraints ─────────────────────────────────────────────
-    if (weights.w_mono_Re > 0 or weights.w_mono_G > 0 or weights.w_mono_sub > 0):
+    need_mono = (weights.w_mono_Re > 0 or weights.w_mono_G > 0
+                 or weights.w_mono_sub > 0 or weights.w_mono_P > 0)
+    need_energy = weights.w_energy > 0
+    if need_mono or need_energy:
         if collocation_mono is not None:
             base_sn  = collocation_mono["surf_numeric"].to(device)
             base_sc_ = collocation_mono["surf_cat_id"].to(device)
@@ -462,17 +548,27 @@ def total_loss(
             base_sc_ = surf_cat[0].detach()
             base_fn  = flow_num[0].detach()
 
-        L_Re, L_G, L_sub = loss_monotonicity_flow(
+    if need_mono:
+        L_Re, L_G, L_sub, L_P = loss_monotonicity_flow(
             model, base_sn, base_sc_, base_fn,
             n_points=n_mono_points, margin=mono_margin,
         )
     else:
-        L_Re = L_G = L_sub = zero
+        L_Re = L_G = L_sub = L_P = zero
 
-    # ── PDE stubs (M7-M9) ────────────────────────────────────────────────────
-    L_cont = loss_pde_stub(device) if weights.w_continuity > 0 else zero
-    L_mom  = loss_pde_stub(device) if weights.w_momentum   > 0 else zero
-    L_ene  = loss_pde_stub(device) if weights.w_energy     > 0 else zero
+    # ── PDE residuals (M7-M9) ────────────────────────────────────────────────
+    # Continuity/momentum require velocity & pressure fields the model does not
+    # output (scalar-ONB regressor) → not implemented. The 1D advection-dominated
+    # energy residual on the T_star head IS implemented (loss_energy_1d).
+    L_cont = zero
+    L_mom  = zero
+    if need_energy:
+        L_ene = loss_energy_1d(
+            model, base_sn, base_sc_, base_fn,
+            n_points=n_energy_points,
+        )
+    else:
+        L_ene = zero
 
     # ── Weighted sum ─────────────────────────────────────────────────────────
     total = (
@@ -483,6 +579,7 @@ def total_loss(
       + weights.w_mono_Re      * L_Re
       + weights.w_mono_G       * L_G
       + weights.w_mono_sub     * L_sub
+      + weights.w_mono_P       * L_P
       + weights.w_continuity   * L_cont
       + weights.w_momentum     * L_mom
       + weights.w_energy       * L_ene
@@ -501,6 +598,7 @@ def total_loss(
         L_mono_Re     = L_Re,
         L_mono_G     = L_G,
         L_mono_sub   = L_sub,
+        L_mono_P     = L_P,
         L_continuity = L_cont,
         L_momentum   = L_mom,
         L_energy     = L_ene,

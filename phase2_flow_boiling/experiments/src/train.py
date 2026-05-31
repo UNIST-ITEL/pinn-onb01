@@ -262,7 +262,9 @@ def _compute_loss(
         collocation_hsu=hsu_coll,
         collocation_mono=mono_base,
         C_hsu=cfg.get("hsu_constraint", {}).get("C_hsu", 0.5),
+        hsu_coupling_one_sided=cfg.get("hsu_constraint", {}).get("coupling_one_sided", False),
         n_mono_points=cfg.get("collocation", {}).get("n_mono_points", 20),
+        n_energy_points=cfg.get("collocation", {}).get("n_energy_points", 64),
     )
 
 

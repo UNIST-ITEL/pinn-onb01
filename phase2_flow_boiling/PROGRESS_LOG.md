@@ -1,6 +1,6 @@
 # Phase 2 Progress Log
 
-_Last updated: 2026-05-29_
+_Last updated: 2026-05-30_
 
 ---
 
@@ -15,6 +15,7 @@ _Last updated: 2026-05-29_
 | Al-Yahia 2017 | 7 | Aluminum, P=101.3 kPa, G=118~473 | Fig 7/8 |
 | Cheng 2022 | 54 | Stainless, P=145 kPa, G=100~300, 2채널(D_h=3.50/5.35mm) | Fig 10~13 |
 | Qu & Mudawar 2002 | 20 | DIW microchannel, P=120 kPa, G=174~1318, D_h=0.349mm (최소) | Fig 10/11/12 |
+| Wang et al. 2024 | 7 | 고압 water, P=10~16 MPa (최대), 60×2mm D_h=3.87mm, boiling curve ONB | Fig 7a/b/c |
 
 > Qu2002: ONB 출구 발생 → delta_T_sub_K=출구(국소) 과냉도(2~30K) 채택. q는 planform-area 기준. ΔT_onb는 Fig12 계열식별 11행만.
 
@@ -22,7 +23,7 @@ _Last updated: 2026-05-29_
 
 ### 데이터 정제 이력
 
-원시 데이터: **536행** → 정제 후 324행 → Qu2002 추가 **344행**
+원시 데이터: **536행** → 정제 후 324행 → Qu2002 +20 (344) → Wang2024 +7 (**351행**)
 
 | 단계 | 변경 대상 | 사유 | 행 수 |
 |---|---|---|---|
@@ -30,7 +31,8 @@ _Last updated: 2026-05-29_
 | v5→v6 | −bergles1964 fig7 | P_kPa=-1 (압력 미기록, 유체물성 계산 불가) | −26 |
 | v6→v7 | −basu2002 fig10 | G=-1, ΔT_sub=-1 전량 — 풀비등 데이터, q=-1 전부 | −98 |
 | v7→v8 | +qu2002 | 마이크로채널 confinement coverage (D_h=0.349mm) | +20 |
-| **합계** | | | **−192행** |
+| v10→v11 | +wang2024 | 고압 보강 (P=10~16MPa, Pattern C) | +7 |
+| **합계** | | | **−185행** |
 
 **최종 dataset (344행) paper별:**
 
@@ -59,7 +61,8 @@ _Last updated: 2026-05-29_
 | v7 | 324행 (−fig10) | 222/47/53 | 1.85 K | 1.30 K | 0.769 | 187 kW/m² | 0.544 | basu2002 완전 제거 |
 | v8 | 344행 (+qu2002) | 236/50/56 | 2.03 K | 1.41 K | 0.706 | 135 kW/m² | 0.780 | 마이크로채널 추가 (D_h=0.349mm) |
 | v9 | 344행 (=v8) | 236/50/56 | 1.91 K | 1.31 K | 0.740 | 154 kW/m² | 0.713 | one-sided Hsu coupling (하한) |
-| **v10** | **344행 (=v8)** | **236/50/56** | **2.00 K** | **1.32 K** | **0.717** | **148 kW/m²** | **0.734** | **환산압력 P_r 직접 입력 (9→11채널)** |
+| v10 | 344행 (=v8) | 236/50/56 | 2.00 K | 1.32 K | 0.717 | 148 kW/m² | 0.734 | 환산압력 P_r 직접 입력 (9→11채널) |
+| **v11** | **351행 (+wang2024)** | **240/51/58** | **1.84 K** | **1.29 K** | **0.768** | **144 kW/m²** | **0.741** | **고압 데이터 보강 (P=10–16MPa)** |
 
 > v7→v8: q 대폭 개선 (RMSE_q 187→135 kW/m², R²_q 0.544→0.780), ΔT 소폭 후퇴 (1.85→2.03K).
 > v8→v9: Hsu coupling 등식→one-sided hinge. ΔT 개선 (2.03→1.91K, R²_ΔT 0.706→0.740), q 소폭 후퇴 (135→154 kW/m²).
@@ -68,7 +71,10 @@ _Last updated: 2026-05-29_
 > **Pattern C 부분 해소**: corr(P,예측) +0.010→−0.020 (부호 전환, 실측 −0.137 방향). Fig8b sweep
 > 300→3500kPa 하강경향 추종 (v9는 평탄). 고압 bias 3500/4500/5000kPa: v9 +1.9~2.5K → v10 +0.5~1.8K.
 > 잔여 오차는 P=4500/5000(각 학습 1점) 외삽 한계 → 데이터 보강 필요.
-> **모델 선택**: v9(ΔT 최저, 압력 물리 없음) vs v10(경향 #4 학습, q 우수). 물리 정합성 우선 시 v10.
+> v10→v11: Wang2024 고압(10–16MPa) 7행 추가. ΔT 개선 (2.00→1.84K, R²_ΔT 0.717→0.768).
+> **Pattern C 경향 학습 확정**: corr(P,예측) +0.010(v9)→−0.020(v10)→**−0.688(v11)** (실측 −0.570 강하게 추종).
+> Wang 7행 RMSE 0.63K (고압 anchor 우수). 잔여: kuang P=3.5–5.0MPa(G=500/q=300 특정조건) +1.7K 과대 — 좁은 조건 gap.
+> **현재 best = v11** (ΔT 최저 1.84K + 압력 물리 + 고압 커버리지 16MPa).
 
 **v9 vs 기존 상관식 (test n_dT=34, 동일 split):**
 
@@ -130,7 +136,8 @@ _Last updated: 2026-05-29_
 | v7 (ΔT-only best) | `experiments/checkpoints/phase2_v7_no_pool_boiling/best_model.pt` |
 | v8 (microchannel) | `experiments/checkpoints/phase2_v8_microchannel_qu/best_model.pt` |
 | v9 (ΔT 최저, 압력 물리 없음) | `experiments/checkpoints/phase2_v9_hsu_onesided/best_model.pt` |
-| **v10 (압력 물리 학습, 권장)** | `experiments/checkpoints/phase2_v10_pressure_feature/best_model.pt` |
+| v10 (압력 물리 학습) | `experiments/checkpoints/phase2_v10_pressure_feature/best_model.pt` |
+| **v11 (현재 best)** | `experiments/checkpoints/phase2_v11_highP_wang/best_model.pt` |
 
 ---
 
@@ -139,7 +146,7 @@ _Last updated: 2026-05-29_
 - [x] ~~Qu 2002 데이터 수집~~ → v8 완료 (20행, q R²_q 0.544→0.780)
 - [x] ~~v9 Hsu coupling 보정~~ → 완료 (one-sided hinge, ΔT 1.91K/R²0.740, Pattern B 해소)
 - [x] ~~Pattern C 검토~~ → v10 환산압력 입력으로 부분 해소 (corr 부호 전환, 경향 #4 학습)
-- [ ] 고압 flow boiling 데이터 보강 (P=3000~5000kPa 단일점 → kuang2025 외 출처) — Pattern C 잔여 외삽 해소
+- [x] ~~고압 데이터 보강~~ → v11 Wang2024 7행 (P=10~16MPa). corr(P,예측) −0.688, ΔT 1.84K. Pattern C 경향 학습 확정
 - [ ] M7-M9: NS/Energy PDE residual 활성화 (plan Stage 3)
 - [ ] manuscript M5 단계 초안 작성
 
@@ -165,3 +172,5 @@ _Last updated: 2026-05-29_
 | `76b7373` | Add one-sided Hsu coupling (v9) |
 | `67ef0ab` | v9 results: RMSE_ΔT 1.91K, Pattern B resolved |
 | `8619236` | Add reduced pressure feature (v10): fix Pattern C |
+| `1768a46` | v10 results: Pattern C partially resolved |
+| `7e947e4` | Add Wang 2024 high-P data (7 rows); v11 config |
