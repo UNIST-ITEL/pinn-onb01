@@ -53,9 +53,20 @@ pool-boiling contamination (Section~\ref{sec:data}) was the single largest
 gain, cutting the $\dTonb$ RMSE from \SI{4.0}{K} to \SI{1.85}{K}; adding the
 microchannel data sharpened $\qonb$ ($R^2$ from $0.54$ to $0.78$); and the
 high-pressure anchors with the reduced-pressure feature lowered $\dTonb$ RMSE to
-\SI{1.84}{K} while fixing the pressure trend. The frozen pool-boiling surface
-encoder supplies the surface representation at no additional flow-data cost,
-consistent with the transfer-learning premise of the study.
+\SI{1.84}{K} while fixing the pressure trend (Fig.~\ref{fig:ablation}). The
+frozen pool-boiling surface encoder supplies the surface representation at no
+additional flow-data cost, consistent with the transfer-learning premise of the
+study.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.82\linewidth]{fig_ablation_progression.png}
+\caption{Test accuracy progression across model versions. Bars: $\dTonb$ RMSE;
+line: $R^2$. Annotations mark the change at each step (data curation,
+microchannel and high-pressure data, one-sided Hsu coupling, reduced-pressure
+feature). Wall-superheat error falls by 76\% from the transfer baseline.}
+\label{fig:ablation}
+\end{figure}
 
 \subsection{Physics consistency}
 \label{sec:physcon}
@@ -86,17 +97,39 @@ high-pressure subset. Adding reduced pressure as an explicit input feature
 flipped the sign of the predicted correlation, and adding the
 \SI{10}{}--\SI{16}{MPa} anchors strengthened it to $-0.69$ (measured $-0.57$
 over the combined high-pressure data); the model then tracks the Wang et al.\
-pressure sweep in the correct descending direction. Property-based
-nondimensionalization alone is therefore insufficient to encode the pressure
-dependence of incipience; an explicit reduced-pressure input is required.
+pressure sweep in the correct descending direction (Fig.~\ref{fig:ptrend}).
+Property-based nondimensionalization alone is therefore insufficient to encode
+the pressure dependence of incipience; an explicit reduced-pressure input is
+required.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.72\linewidth]{fig_pressure_trend.png}
+\caption{Measured (solid) and predicted (dashed) ONB wall superheat versus
+pressure along two fixed-condition sweeps. The model reproduces the
+$P\!\uparrow\!\Rightarrow\!\dTonb\!\downarrow$ trend; a residual
+over-prediction persists in the intermediate-pressure ($3.5$--\SI{5}{MPa})
+single-source pocket (Section~\ref{sec:discussion}).}
+\label{fig:ptrend}
+\end{figure}
 
 \subsubsection{Remaining trends}
 On representative sweeps the model satisfies $\dTsub\!\uparrow\!\Rightarrow\!
 \dTonb\!\uparrow$ and, through the Hsu coupling and the data,
 $q\!\uparrow\!\Rightarrow\!\dTonb\!\uparrow$ (in-source correlations
-$+0.57$ to $+0.88$). The Reynolds- and mass-flux sensitivities are weak and
-nearly flat at fixed pressure, consistent with experimental reports that ONB
-superheat depends only mildly on mass flux in this regime.
+$+0.57$ to $+0.88$); both are shown in Fig.~\ref{fig:trends}. The Reynolds- and
+mass-flux sensitivities are weak and nearly flat at fixed pressure, consistent
+with experimental reports that ONB superheat depends only mildly on mass flux
+in this regime.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{fig_physics_trends.png}
+\caption{Physical-trend consistency. (a)~Model prediction increases
+monotonically with subcooling. (b)~Measured ONB superheat increases with heat
+flux across sources, the dependence enforced through the Hsu coupling.}
+\label{fig:trends}
+\end{figure}
 
 \subsection{Uncertainty quantification}
 \label{sec:uq}
