@@ -34,7 +34,7 @@ _Last updated: 2026-05-31_
 | v10→v11 | +wang2024 | 고압 보강 (P=10~16MPa, Pattern C) | +7 |
 | **합계** | | | **−185행** |
 
-**최종 dataset (344행) paper별:**
+**최종 dataset (351행) paper별:**
 
 | paper_id | 행 수 |
 |---|---|
@@ -44,6 +44,7 @@ _Last updated: 2026-05-31_
 | cheng2022 | 54 |
 | qu2002 | 20 |
 | alyahia2017 | 7 |
+| wang2024 | 7 |
 | hong2012 | 6 |
 | kandlikar1991 | 4 |
 | bergles1964 | 3 |
