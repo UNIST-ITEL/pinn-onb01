@@ -12,7 +12,22 @@ conservative operating points in microchannel electronics cooling and a
 sharper boiling-incipience boundary in compact refrigerant evaporators. Because
 a single model spans $\Dh = 0.35$--\SI{9.5}{mm} and $P=0.1$--\SI{16}{MPa}, the
 same predictor serves applications previously requiring different correlations,
-from atmospheric microchannels to high-pressure nuclear channels.
+from atmospheric microchannels to high-pressure nuclear channels. As a concrete
+artefact, Fig.~\ref{fig:designmap} renders the model as a design map: predicted
+$\dTonb$ over the mass-flux--pressure plane for a representative stainless
+channel, directly usable to place an operating point relative to incipience. The
+map encodes the learned physics---superheat falling with pressure and rising
+with mass flux at low pressure---in a single continuous surface.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.72\linewidth]{fig_design_map.png}
+\caption{Predicted ONB wall superheat over the mass-flux--pressure plane for a
+representative stainless channel ($\Dh=\SI{3}{mm}$, $\dTsub=\SI{20}{K}$, water).
+Such a map turns the model into a direct design tool for placing operating
+points relative to boiling incipience.}
+\label{fig:designmap}
+\end{figure}
 
 \subsection{Why an explicit reduced-pressure feature matters}
 
