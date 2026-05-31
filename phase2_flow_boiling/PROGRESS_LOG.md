@@ -184,12 +184,40 @@ _Last updated: 2026-05-31_
 - [x] ~~고압 데이터 보강~~ → v11 Wang2024 7행 (P=10~16MPa). corr(P,예측) −0.688, ΔT 1.84K. Pattern C 경향 학습 확정
 - [x] ~~M7-M9 PDE residual~~ → **Negative result**: 완전 NS 불가(스칼라 regressor), 1D 에너지·소프트 제약은
       과구속/2차-그래디언트 불안정으로 fit 붕괴. v11이 이미 경향 만족. 코드는 옵션 보존. (위 분석 참조)
-- [ ] manuscript M5 단계 초안 작성 (v11 결과 기반)
 - [x] ~~M10 Deep Ensemble UQ (K=5)~~ → 완료. Ensemble mean ΔT 1.72K/R²0.796 (단일 v11 1.84/0.768 개선).
       Epistemic std 평균 0.51K, 1σ coverage 28%(과소) → 재보정 ×4.7 필요, aleatoric(heteroscedastic) 미모델 한계.
       `analysis/tables/ensemble_uq_metrics.md`, `analysis/figures/ensemble_uq.png`.
-- [ ] manuscript M5 단계 초안 작성 (v11 + ensemble UQ 결과 기반)
+- [x] ~~manuscript M5 초안~~ → 완료. 6섹션+abstract (~5,250단어), 11 figures, 2 tables, 57 refs. polish 완료.
+      `manuscript/main.tex` + `sections/` + `figures/`(자체완결).
+- [ ] **(재개 지점) 개별 그림 수정** ⭐ — 휴식 후 figure별 다듬기. 인벤토리는 아래 § Figure 인벤토리.
+- [ ] LaTeX 컴파일 (이 머신 toolchain 없음 → Phase 1 머신/Overleaf)
+- [ ] co-author·funding·acknowledgements 기입 (현재 TBD)
 - [ ] (선택) heteroscedastic head로 aleatoric 추가 → full calibration
+- [ ] (선택) inverse problem (측정 ΔT_ONB → r_c 분포)
+
+---
+
+### Figure 인벤토리 (재개용 — 개별 그림 수정 작업)
+
+manuscript는 **11 figure 환경**(파일 12개; parity는 2-panel). 모든 figure는 **재현 가능**.
+논문용 사본: `manuscript/figures/` (png+pdf), 원본/재생성: `analysis/figures/`.
+graphicspath = `{figures/}` 단일.
+
+| Fig label | 파일 | 섹션 | 생성 방법 | 비고 |
+|---|---|---|---|---|
+| fig:arch | architecture.png | Methods 2.2 | inline matplotlib 블록도 | 수동 좌표 — 박스/화살표 조정 가능 |
+| fig:concept | fig_onb_concept.png | Methods 2.3 | inline matplotlib schematic | (a)ONB식별 (b)Hsu 하한; 도식적 수치 |
+| fig:coverage | fig_coverage_map.png | Data 3.1 | CSV scatter (P vs D_h, size=G) | source별 색 |
+| fig:dist | fig_data_distributions.png | Data 3.1 | CSV 6-panel 히스토그램 | |
+| fig:parity | parity_dT_onb_test.png + parity_q_onb_test.png | Results 4.1 | `evaluate.py` + inline log-parity 스크립트 | v11 test |
+| fig:persource | fig_per_source_rmse.png | Results 4.1 | v11 전체추론 per-source RMSE bar | |
+| fig:ablation | fig_ablation_progression.png | Results 4.2 | 하드코딩 v3→v11 값 막대+선 | 값은 위 실험표 |
+| fig:ptrend | fig_pressure_trend.png | Results 4.3.2 | v11 추론, kuang/wang P-sweep | 고압 잔여 uptick 정직 표시 |
+| fig:trends | fig_physics_trends.png | Results 4.3.3 | v11 ΔT_sub sweep + q-data scatter | 2-panel (P패널 제거함) |
+| fig:uq | ensemble_uq.png | Results 4.4 | 5-멤버 추론 (parity±2σ/calib/std-vs-P) | math.erf 사용 (scipy 없음) |
+| fig:designmap | fig_design_map.png | Discussion 5.1 | v11 (G,P) 격자 추론 contour | q=None(Bo=0) |
+
+**그림 수정 시 주의**: ① 생성 스크립트는 inline(세션 transcript)에 있음 — 영구화하려면 `analysis/scripts/`로 저장 권장. ② 수정 후 `manuscript/figures/`로 **png+pdf 둘 다** 재복사 필요. ③ scipy 미설치(math.erf 우회). ④ v9 체크포인트는 9-ch flow encoder라 현재 11-ch 코드로 로드 불가(압력경향 v9 overlay 불가). ⑤ OneDrive 되돌림 이력 있음 → 편집 후 즉시 커밋.
 
 ---
 
@@ -215,3 +243,11 @@ _Last updated: 2026-05-31_
 | `8619236` | Add reduced pressure feature (v10): fix Pattern C |
 | `1768a46` | v10 results: Pattern C partially resolved |
 | `7e947e4` | Add Wang 2024 high-P data (7 rows); v11 config |
+| `155fdd1` | v11 results: RMSE_ΔT 1.84K (FINAL best) |
+| `156a39b` | M7-M9 energy+P-mono; RESTORE v9 one-sided (OneDrive fix) |
+| `7921b74` | M7-M9 negative result documented; v11=best |
+| `8472c01`/`5bedacf` | M10 Deep Ensemble K=5 + UQ analysis |
+| `8e348e9` | M5 manuscript first draft (IJHMT) + bib |
+| `ffd3841`/`9f4c8c8`/`e76e57f` | manuscript figures (→11) |
+| `e373b51` | manuscript English polish |
+| `ef8185d` | consolidate figures → manuscript/figures/ |
