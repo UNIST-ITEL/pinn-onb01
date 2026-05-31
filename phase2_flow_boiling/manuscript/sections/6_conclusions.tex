@@ -1,0 +1,40 @@
+\section{Conclusions}
+\label{sec:conclusions}
+
+We presented a surface- and flow-conditioned physics-informed neural network
+for the onset of nucleate boiling in subcooled forced convection, built by
+transfer-learning a frozen surface encoder from a pool-boiling PINN and adding a
+dedicated flow encoder. The principal findings are:
+
+\begin{enumerate}
+\item \textbf{Accuracy and breadth.} On 351 curated ONB points spanning
+$\Dh=0.35$--\SI{9.5}{mm} and $P=0.1$--\SI{16}{MPa}, the model predicts the ONB
+wall superheat with a test RMSE of \SI{1.84}{K} ($R^2=0.77$) and heat flux with
+\SI{144}{kW\,m^{-2}} ($R^2=0.74$), $1.9$--$2.6\times$ and over an order of
+magnitude more accurate, respectively, than five classical correlations on the
+same split.
+
+\item \textbf{Hsu as a lower bound.} Imposing the Hsu nucleation criterion as a
+one-sided lower bound, rather than an equality, eliminates a systematic
+low-superheat bias in the high-subcooling regime, consistent with the physics
+that subcooling and convection raise the required wall superheat.
+
+\item \textbf{Explicit reduced pressure.} The first-order
+$P\!\uparrow\!\Rightarrow\!\dTonb\!\downarrow$ trend is not recoverable from
+property-based nondimensionalization alone; supplying reduced pressure as a
+direct input feature, together with high-pressure training anchors, restores it
+(predicted--pressure correlation $+0.01\!\to\!-0.69$).
+
+\item \textbf{Uncertainty.} A five-member deep ensemble improves accuracy
+($\dTonb$ RMSE \SI{1.72}{K}) and provides epistemic uncertainty; an honest
+calibration analysis shows aleatoric scatter dominates and must be modelled for
+fully calibrated intervals.
+\end{enumerate}
+
+The framework offers an accurate, physically consistent and uncertainty-aware
+ONB predictor across an unprecedented parameter range, and demonstrates that a
+pool-boiling surface representation transfers usefully to forced convection.
+Future work will add a heteroscedastic variance head for calibrated aleatoric
+uncertainty, broaden refrigerant and high-pressure coverage, solve the inverse
+problem (inferring the active-cavity spectrum from measured incipience), and
+extend toward transient and critical-heat-flux operation (Phase~3).

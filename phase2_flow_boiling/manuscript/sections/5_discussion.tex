@@ -1,0 +1,57 @@
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{Engineering implications}
+
+Across the assembled range the model halves the wall-superheat error of the
+best classical correlation (\SI{1.84}{K} versus \SI{3.7}{K}) and is more than an
+order of magnitude better on heat flux. For design this translates into a
+tighter incipience margin: a thermal-margin uncertainty of $\sim\!\SI{4}{K}$
+typical of correlation scatter is reduced to $\sim\!\SI{2}{K}$, allowing less
+conservative operating points in microchannel electronics cooling and a
+sharper boiling-incipience boundary in compact refrigerant evaporators. Because
+a single model spans $\Dh = 0.35$--\SI{9.5}{mm} and $P=0.1$--\SI{16}{MPa}, the
+same predictor serves applications previously requiring different correlations,
+from atmospheric microchannels to high-pressure nuclear channels.
+
+\subsection{Why an explicit reduced-pressure feature matters}
+
+The pressure result (Section~\ref{sec:patternC}) is methodologically general.
+It is tempting to assume that nondimensionalising targets and inputs with
+pressure-dependent fluid properties lets a network ``see'' pressure implicitly.
+We find this is not so for incipience: the property variations enter the
+Reynolds, Weber and Boiling numbers too weakly for the network to recover the
+first-order $P\!\uparrow\!\Rightarrow\!\dTonb\!\downarrow$ trend, and the model
+remained pressure-blind until reduced pressure was supplied as a direct input.
+Practitioners building data-driven boiling models should include pressure (or
+reduced pressure) explicitly rather than relying on property-based
+nondimensionalization to encode it.
+
+\subsection{Physics-regularized regression versus full PINN}
+
+The model is a physics-regularized regressor, not a field-resolving PINN. This
+is a deliberate choice for sparse, heterogeneous incipience data: the scalar
+ONB targets are what experiments report and what design needs, and soft Hsu and
+monotonicity constraints inject the relevant physics without the data demands
+and ill-posedness of full Navier--Stokes residuals on a scalar problem. Our
+attempt to add a one-dimensional energy residual on an auxiliary temperature
+field confirmed the trade-off: it regularised only an unsupervised field and
+destabilised optimisation, with no accuracy benefit. Full field resolution
+remains attractive where dense field data or trustworthy CFD are available, and
+is a natural Phase~3 direction.
+
+\subsection{Limitations}
+
+Three limitations bound the present claims. First, the dataset, though wide in
+range, is modest in size (351 points) and dominated by water; refrigerant and
+non-aqueous coverage is thin, and the high-pressure end rests on a single study,
+so extrapolation beyond \SI{16}{MPa} or to untested fluids is unverified.
+Second, surface descriptors are sparse in the flow-boiling literature---most
+records lack measured roughness and contact angle---so the transferred surface
+encoder is exercised less here than in pool boiling. Third, the uncertainty
+quantification captures epistemic but not aleatoric uncertainty, under-covering
+by $\sim\!4.7\times$; calibrated intervals presently require the interim
+rescaling, pending a heteroscedastic head. Finally, a narrow
+intermediate-high-pressure, low-mass-flux pocket (a single source's
+$3.5$--\SI{5}{MPa} runs) retains a residual over-prediction of $\sim\!\SI{1.7}{K}$,
+reflecting a data gap rather than a model defect.

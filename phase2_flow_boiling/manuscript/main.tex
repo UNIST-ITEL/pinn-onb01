@@ -1,0 +1,91 @@
+%% Phase 2 — Surface- and flow-conditioned PINN for ONB in subcooled flow boiling
+%% IJHMT (elsarticle). First draft — 2026-05-31.
+%% Build: pdflatex main && bibtex main && pdflatex main && pdflatex main
+\documentclass[preprint,12pt]{elsarticle}
+
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\usepackage[hidelinks]{hyperref}
+\usepackage{lineno}
+\linenumbers
+
+\journal{International Journal of Heat and Mass Transfer}
+
+\graphicspath{{figures/}{../analysis/figures/}}
+
+\newcommand{\dTonb}{\Delta T_{\mathrm{ONB}}}
+\newcommand{\qonb}{q''_{\mathrm{ONB}}}
+\newcommand{\dTsub}{\Delta T_{\mathrm{sub}}}
+\newcommand{\Dh}{D_{\mathrm{h}}}
+
+\begin{document}
+
+\begin{frontmatter}
+
+\title{A surface- and flow-conditioned physics-informed neural network
+for the onset of nucleate boiling in subcooled forced convection,
+transfer-learned from pool boiling}
+
+\author[unist]{Jaeseon Lee}
+\author[unist]{\textit{[co-authors TBD]}}
+\address[unist]{Department of Mechanical Engineering, UNIST, Ulsan, Republic of Korea}
+
+\begin{abstract}
+The onset of nucleate boiling (ONB) marks the transition from single-phase
+convection to two-phase heat transfer and sets a design limit for
+high-flux thermal systems. Classical incipience correlations (Hsu,
+Davis--Anderson, Bergles--Rohsenow, Sato--Matsumura, Basu) were calibrated for
+narrow parameter windows and transfer poorly across the wide range of
+pressure, mass flux, channel size and subcooling encountered in modern
+applications. We develop a physics-regularized neural network that predicts the
+ONB wall superheat $\dTonb$ and heat flux $\qonb$ from surface descriptors and
+flow conditions. The surface encoder is transfer-learned from a pool-boiling
+PINN (Phase 1) and frozen; a new flow encoder ingests Reynolds number, mass
+flux, Boiling and Weber numbers, hydraulic diameter, channel geometry, inlet
+subcooling and \emph{reduced pressure}, conditioning a shared backbone through
+feature-wise linear modulation. Training couples a heteroscedastically weighted
+data loss with a flow-aware Hsu nucleation constraint imposed as a
+\emph{one-sided lower bound} on the wall superheat, plus monotonicity penalties.
+On a curated set of 351 ONB points from nine experimental studies, spanning
+$\Dh = 0.35$--$\SI{9.5}{mm}$, $P = 0.1$--$\SI{16}{MPa}$,
+$G = 100$--$\SI{2000}{kg\,m^{-2}\,s^{-1}}$ and water and refrigerants, the model
+attains a test $\dTonb$ RMSE of \SI{1.84}{K} ($R^2 = 0.77$), roughly two to
+twelve times more accurate than the classical correlations evaluated on the
+same split. A reduced-pressure input feature recovers the physically required
+$P\!\uparrow\!\Rightarrow\!\dTonb\!\downarrow$ trend that property-only
+nondimensionalization fails to learn. A five-member deep ensemble improves
+accuracy ($\dTonb$ RMSE \SI{1.72}{K}) and supplies epistemic uncertainty; a
+calibration analysis shows that aleatoric scatter dominates the residual and
+must be modelled for fully calibrated intervals. The framework provides an
+accurate, physically consistent and uncertainty-aware ONB predictor across an
+unprecedented parameter range.
+\end{abstract}
+
+\begin{keyword}
+onset of nucleate boiling \sep subcooled flow boiling \sep
+physics-informed neural network \sep transfer learning \sep
+uncertainty quantification \sep reduced pressure
+\end{keyword}
+
+\end{frontmatter}
+
+\input{sections/1_introduction}
+\input{sections/2_methodology}
+\input{sections/3_data}
+\input{sections/4_results}
+\input{sections/5_discussion}
+\input{sections/6_conclusions}
+
+\section*{Data and code availability}
+The curated ONB dataset, model code, trained checkpoints and analysis scripts
+are available at \url{https://github.com/UNIST-ITEL/pinn-onb01} (Phase~2).
+
+\section*{Acknowledgements}
+\textit{[funding TBD]}
+
+\bibliographystyle{elsarticle-num}
+\bibliography{references}
+
+\end{document}

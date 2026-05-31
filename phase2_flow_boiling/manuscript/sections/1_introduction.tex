@@ -1,0 +1,70 @@
+\section{Introduction}
+\label{sec:intro}
+
+The onset of nucleate boiling (ONB) is the point at which the first vapour
+bubbles nucleate and grow on a heated wall, marking the departure of a boiling
+curve from its single-phase line. In forced-convection subcooled flow it
+governs the lower bound of two-phase operation in microchannel electronics
+cooling, the thermal-margin budget of nuclear fuel assemblies, and the design
+of compact refrigerant evaporators. Predicting ONB accurately therefore has
+direct engineering value: an over-conservative incipience estimate wastes
+pumping power and surface area, while an under-conservative one risks premature
+boiling, flow instability and, downstream, departure from nucleate boiling.
+
+Classical ONB models predict the wall superheat $\dTonb = T_w - T_{\mathrm{sat}}$
+at incipience from a force or thermal balance on a nucleating bubble. The Hsu
+\cite{HSU1962} criterion and its descendants---Davis and Anderson
+\cite{DAVIS1966}, Bergles and Rohsenow \cite{BERGLES1964}, Sato and Matsumura
+\cite{SATOMATSUMURA1964}, and the mechanistic model of Basu et al. \cite{BASU2002}---each
+embed assumptions (saturated bulk, a specific cavity-size spectrum, a fixed
+thermal-layer thickness) calibrated within a narrow experimental window. As a
+result they extrapolate poorly: applied outside their calibration range they
+can err by an order of magnitude, and they disagree with one another by several
+kelvin even on canonical water data. Modern applications, however, span a
+parameter space far wider than any single correlation was built for---hydraulic
+diameters from tens of micrometres to centimetres, pressures from atmospheric to
+the nuclear range, mass fluxes over an order of magnitude, and both water and
+low-GWP refrigerants---so a predictor that remains accurate and physically
+consistent \emph{across} that space is needed.
+
+Data-driven and physics-informed neural networks (PINNs) offer a route to such
+breadth, but two obstacles recur in boiling. First, ONB data are scarce and
+heterogeneous, scattered across decades of literature in incompatible units and
+reporting conventions; a purely data-driven fit overfits and violates known
+physical trends. Second, the relevant conservation laws (mass, momentum, energy
+with phase change) are stiff and, near incipience, only weakly constrain the
+scalar quantity of interest, so a full field-resolving PINN is both
+data-hungry and ill-posed for sparse incipience data.
+
+In a companion study (Phase~1) we showed that a \emph{physics-regularized}
+network---one that predicts the scalar ONB targets directly while being
+softly constrained by the Hsu nucleation criterion and physical
+monotonicity---outperforms classical correlations for pool boiling and learns a
+transferable representation of surface morphology (roughness, contact angle,
+cavity spectrum). The present work extends that framework to subcooled forced
+convection. The central question is whether the pool-boiling surface
+representation can be \emph{reused} and combined with a flow representation to
+predict ONB over the much larger forced-convection parameter space.
+
+Our contributions are:
+\begin{enumerate}
+\item A surface- and flow-conditioned PINN that transfer-learns a frozen
+pool-boiling surface encoder and adds a dedicated flow encoder, predicting both
+$\dTonb$ and $\qonb$ across $\Dh = 0.35$--\SI{9.5}{mm} and
+$P = 0.1$--\SI{16}{MPa}.
+\item Identification and resolution of two systematic failure modes: a
+subcooling--Hsu conflict at low superheat, fixed by imposing the Hsu criterion
+as a one-sided \emph{lower bound}; and a pressure-insensitivity, fixed by adding
+\emph{reduced pressure} as an explicit input feature so the network recovers the
+$P\!\uparrow\!\Rightarrow\!\dTonb\!\downarrow$ trend.
+\item A deep-ensemble uncertainty quantification with an honest calibration
+analysis distinguishing epistemic from the dominant aleatoric scatter.
+\item A curated, openly released dataset of 351 ONB points harmonised from nine
+studies, with explicit removal of pool-boiling contamination.
+\end{enumerate}
+
+The remainder of the paper formulates the problem and architecture
+(Section~\ref{sec:method}), describes the data (Section~\ref{sec:data}),
+presents forward accuracy, physics consistency and uncertainty
+(Section~\ref{sec:results}), discusses implications and limitations
+(Section~\ref{sec:discussion}) and concludes (Section~\ref{sec:conclusions}).

@@ -1,0 +1,65 @@
+\section{Data}
+\label{sec:data}
+
+\subsection{Sources and harmonisation}
+
+We assembled 351 ONB points from nine experimental studies
+(Table~\ref{tab:sources}), digitised from boiling curves, axial
+wall-temperature distributions and parity plots. Each record carries fluid,
+channel type, hydraulic diameter $\Dh$, mass flux $G$, pressure $P$, inlet (or
+local) subcooling $\dTsub$, surface descriptors where available, and the ONB
+targets $\qonb$ and/or $\dTonb$. All quantities were converted to SI and to the
+naming convention of the modelling code; saturation properties were recomputed
+with CoolProp at the reported pressure.
+
+\begin{table}[t]
+\centering
+\caption{Experimental sources of the curated ONB dataset (351 points).}
+\label{tab:sources}
+\small
+\begin{tabular}{lrll}
+\toprule
+Source & $n$ & Fluid & Range highlights \\
+\midrule
+Liu et al.\ \cite{LIU2005}        & 112 & water (DIW) & silicon microchannel \\
+Forrest et al.\ \cite{FORREST2016}&  72 & water       & oxidised/clean MTR channel \\
+Kuang et al.\ \cite{ONB2024NARROW}    &  66 & water       & $P=0.3$--\SI{5.0}{MPa}, $\Dh$ 3.8--7.4\,mm \\
+Cheng et al.\ \cite{CHENG2022}    &  54 & water       & rect.\ channels, $\Dh$ 3.5/5.3\,mm \\
+Qu \& Mudawar \cite{QUMUDAWAR2002}       &  20 & water (DIW) & microchannel, $\Dh=\SI{0.349}{mm}$ \\
+Al-Yahia \& Jo \cite{ALYAHIA2017} &   7 & water       & one-side-heated rect.\ channel \\
+Wang et al.\ \cite{WANG2024}      &   7 & water       & \textbf{$P=10$--\SI{16}{MPa}} (nuclear) \\
+Hong et al.\ \cite{HONG2012}      &   6 & water       & narrow rect.\ channel \\
+Kandlikar \cite{KANDLIKAR1991}    &   4 & water       & subcooled flow \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The assembled set spans hydraulic diameters of $0.35$--\SI{9.5}{mm}, pressures
+of $0.1$--\SI{16}{MPa}, mass fluxes of $100$--\SI{2000}{kg\,m^{-2}\,s^{-1}} and
+inlet subcoolings up to \SI{150}{K}, predominantly for water with a minority of
+refrigerant records. To our knowledge this is the widest pressure and
+length-scale coverage assembled for a single ONB model.
+
+\subsection{Curation and pool-boiling decontamination}
+
+Aggregating heterogeneous literature requires care. Several candidate records,
+although tabulated as ``ONB'', were on inspection pool-boiling parity data
+(no mass flux, no subcooling) or carried unknown pressure that precludes
+property evaluation. Including them degraded the model and corrupted the
+pressure dependence. We therefore removed (i) multi-fluid pool-boiling parity
+points with absent $G$ and $\dTsub$, and (ii) records with unreported pressure,
+yielding the final flow-boiling set. Dataset-schema flags retain provenance for
+every retained point.
+
+\subsection{Microchannel and high-pressure anchors}
+
+Two additions were made specifically to broaden coverage. The Qu and Mudawar
+microchannel data \cite{QUMUDAWAR2002} ($\Dh=\SI{0.349}{mm}$) anchor the
+confinement-dominated end; here the ONB occurs near the channel exit, so the
+local (outlet) subcooling is used. The Wang et al.\ high-pressure data
+\cite{WANG2024} ($P=10$--\SI{16}{MPa}, $60\times\SI{2}{mm}$ channel) anchor the
+nuclear end, with ONB identified from the single-phase-to-boiling knee of each
+boiling curve; the wall superheat falls from $\sim\!\SI{3.5}{K}$ at
+\SI{10}{MPa} to $\sim\!\SI{1.5}{K}$ at \SI{16}{MPa}, a clean
+$P\!\uparrow\!\Rightarrow\!\dTonb\!\downarrow$ sequence that the model is asked
+to reproduce.

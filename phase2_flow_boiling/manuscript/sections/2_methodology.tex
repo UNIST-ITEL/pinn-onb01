@@ -1,0 +1,115 @@
+\section{Methodology}
+\label{sec:method}
+
+\subsection{Problem statement and nondimensionalization}
+
+We seek a map from a surface descriptor $\mathbf{s}$ and a flow condition
+$\mathbf{f}$ to the ONB wall superheat and heat flux,
+\begin{equation}
+(\mathbf{s},\mathbf{f}) \;\longmapsto\; (\dTonb,\ \qonb),
+\end{equation}
+where $\dTonb = T_w - T_{\mathrm{sat}}(P)$ and $\qonb$ is the heat flux at
+incipience. Targets are nondimensionalised per sample using fluid properties
+at the local saturation state: $\dTonb^{\*} = \dTonb/\dTonb_{\mathrm{ref}}$ with
+a fixed reference $\dTonb_{\mathrm{ref}}=\SI{20}{K}$ (mid-range of the
+physical $2$--\SI{30}{K} window for water), and $q^{\*}=\qonb/q_{\mathrm{ref}}$
+with a capillary-scaled $q_{\mathrm{ref}}$. Fluid properties are evaluated with
+CoolProp \cite{COOLPROP}. The axial coordinate $x^{\*}=x/L\in[0,1]$ locates the
+ONB site; data reported without an axial location use $x^{\*}=0.5$.
+
+\subsection{Architecture}
+\label{sec:arch}
+
+The network has three parts.
+% TODO: add architecture schematic (figures/architecture.pdf) and \label{fig:arch}.
+
+\paragraph{Surface encoder (transfer-learned, frozen).}
+Surface morphology---arithmetic roughness $R_a$, static contact angle $\theta$
+and a categorical surface/treatment label---is embedded by the encoder trained
+in Phase~1 on pool-boiling data. The upstream feature-extraction layers are
+loaded from the Phase~1 checkpoint and held frozen; only a thin projection to
+the Phase~2 latent dimension is re-initialised (the latent widths differ,
+$32\!\to\!16$). Freezing both preserves the pool-boiling surface knowledge and
+prevents the small flow-boiling dataset from corrupting it.
+
+\paragraph{Flow encoder (new).}
+Flow conditions are encoded by an eleven-channel descriptor: $\log_{10}\!Re/5$,
+$\log_{10}(G/G_{\mathrm{ref}})$, $\log_{10}(Bo\!\cdot\!10^4{+}1)$,
+$\log_{10}(We{+}1)$, the subcooling ratio $\dTsub/T_{\mathrm{sat}}$ with a
+provided/missing mask, $\log_{10}(\Dh{+}0.01)$, a sine--cosine encoding of
+channel geometry (tube / rectangular / microchannel), and the
+\emph{reduced pressure} $\log_{10}(P/P_{\mathrm{crit}})$ with a
+provided/missing mask. The reduced-pressure channel is essential: without it
+(Section~\ref{sec:patternC}) the network cannot represent the strong
+$P\!\uparrow\!\Rightarrow\!\dTonb\!\downarrow$ dependence, because that
+dependence enters property-based groups only weakly. Missing pressures
+(literature reporting gaps) are imputed at atmospheric with the mask set to
+zero, letting the network distinguish measured from imputed values.
+
+\paragraph{Backbone and heads.}
+The two latent vectors condition a six-layer multilayer-perceptron backbone in
+$x^{\*}$ through feature-wise linear modulation (FiLM). Three positive
+soft-plus heads output $\dTonb^{\*}$, $q^{\*}$ and an auxiliary temperature
+field $T^{\*}(x^{\*})$. The model has $\sim$\,$9.9\times10^{4}$ parameters.
+
+\subsection{Loss function}
+\label{sec:loss}
+
+The model is a \emph{physics-regularized regressor}: it fits the scalar ONB
+data while soft physical constraints shape the solution. The total loss is
+\begin{equation}
+\mathcal{L} = w_q\mathcal{L}_q + w_{\Delta T}\mathcal{L}_{\Delta T}
++ w_{\mathrm{Hsu}}\mathcal{L}_{\mathrm{Hsu}}
++ w_{\mathrm{cp}}\mathcal{L}_{\mathrm{cp}}
++ \!\!\sum_{\xi\in\{Re,G,\dTsub\}}\!\! w_\xi\,\mathcal{L}^{\mathrm{mono}}_{\xi}.
+\label{eq:loss}
+\end{equation}
+$\mathcal{L}_q,\mathcal{L}_{\Delta T}$ are masked errors on the available
+targets (log-scaled for $q$). $\mathcal{L}_{\mathrm{Hsu}}$ is a flow-aware Hsu
+constraint on collocation points: the Hsu discriminant uses a thermal-layer
+thickness $\delta_t = C\,\Dh/\mathrm{Nu}$ with $\mathrm{Nu}$ from
+Dittus--Boelter, so that nucleation feasibility responds to the flow.
+
+\paragraph{One-sided Hsu coupling.}
+$\mathcal{L}_{\mathrm{cp}}$ enforces self-consistency between the two heads
+through the Hsu relation $\dTonb^{\*}=C_{\mathrm{Hsu}}\sqrt{q^{\*}}$. Crucially
+this is applied as a \emph{one-sided lower bound},
+\begin{equation}
+\mathcal{L}_{\mathrm{cp}} = \big\langle\,
+\mathrm{ReLU}\!\big(C_{\mathrm{Hsu}}\sqrt{q^{\*}}-\dTonb^{\*}\big)^2\big\rangle,
+\label{eq:onesided}
+\end{equation}
+penalising predictions \emph{below} the saturated-pool Hsu superheat but not
+above it. The rationale is physical: bulk subcooling and forced convection
+\emph{raise} the wall superheat required for incipience, so the
+saturated-pool value is a lower bound, $\dTonb \ge \dTonb^{\mathrm{Hsu,sat}}$.
+An equality coupling (the naive choice) instead drags the high-subcooling,
+low-heat-flux predictions toward the near-zero saturated value and biases them
+low; the one-sided form removes that spurious pull
+(Section~\ref{sec:patternB}).
+
+\paragraph{Monotonicity.}
+$\mathcal{L}^{\mathrm{mono}}_{\xi}$ penalise violations of the expected sign of
+$\partial\dTonb/\partial\xi$ along one-dimensional sweeps of Reynolds number,
+mass flux and subcooling, evaluated on synthetic collocation points.
+
+\paragraph{On full PDE residuals.}
+We deliberately do \emph{not} impose Navier--Stokes (continuity, momentum)
+residuals. The model outputs scalar incipience quantities, not resolved
+velocity and pressure fields, so those residuals are undefined here. We
+explored adding a one-dimensional advection-dominated energy residual on the
+auxiliary $T^{\*}(x^{\*})$ head; it destabilised training (its second-order
+autograd gradients dominate the gradient-clip budget and starve the data loss)
+while regularising only an unsupervised field, and was not adopted. Full
+field-resolving treatment is left to future work; the present
+physics-regularized formulation already enforces the relevant scalar trends
+(Section~\ref{sec:physcon}).
+
+\subsection{Training}
+
+Parameters are optimised with a two-stage schedule (Adam with cosine decay,
+then L-BFGS polishing), the surface encoder frozen throughout. Hsu and
+monotonicity collocation batches are resampled each epoch. Unless noted, the
+data are split 70/15/15 stratified by source study; for the deep ensemble
+(Section~\ref{sec:uq}) the split is held fixed while the initialisation seed is
+varied.
