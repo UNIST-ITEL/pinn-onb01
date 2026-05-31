@@ -1,6 +1,6 @@
 # Phase 2 Progress Log
 
-_Last updated: 2026-05-30_
+_Last updated: 2026-05-31_
 
 ---
 
@@ -74,7 +74,13 @@ _Last updated: 2026-05-30_
 > v10→v11: Wang2024 고압(10–16MPa) 7행 추가. ΔT 개선 (2.00→1.84K, R²_ΔT 0.717→0.768).
 > **Pattern C 경향 학습 확정**: corr(P,예측) +0.010(v9)→−0.020(v10)→**−0.688(v11)** (실측 −0.570 강하게 추종).
 > Wang 7행 RMSE 0.63K (고압 anchor 우수). 잔여: kuang P=3.5–5.0MPa(G=500/q=300 특정조건) +1.7K 과대 — 좁은 조건 gap.
-> **현재 best = v11** (ΔT 최저 1.84K + 압력 물리 + 고압 커버리지 16MPa).
+> **FINAL best = v11** (ΔT 최저 1.84K + 압력 물리 + 고압 커버리지 16MPa).
+
+| v12 | 351행 | 236/50/56 | 3.94 K | — | **−0.06** | — | — | M7-M9: +energy(.05)+P-mono+one-sided → **실패** |
+| v13 | 351행 | 236/50/56 | 3.88 K | — | **−0.03** | — | — | energy .05→.002 → **여전히 실패** |
+| v14 | 351행 | 236/50/56 | — | — | — | — | — | equality+P-mono+energy → Stage1 정체(조기중단) |
+
+> v12/13/14 모두 **데이터 fit 붕괴(R² 음수)**. M7-M9 negative result (아래 분석). v11 유지.
 
 **v9 vs 기존 상관식 (test n_dT=34, 동일 split):**
 
@@ -128,6 +134,33 @@ _Last updated: 2026-05-30_
 
 ---
 
+**M7-M9 PDE residual 탐색 — Negative Result (2026-05-31)**
+
+목표: NS+Energy PDE residual 활성화 (plan Stage 3). **결론: 현 스칼라-ONB regressor
+아키텍처에 부적합. v11 유지.**
+
+1. **완전 NS 불가능**: 모델은 (surface, flow, x*) → (ΔT_onb*, q_onb*, T*) 스칼라 출력기.
+   속도(u,v)·압력 필드가 없어 continuity/momentum residual 정의 불가. → 미구현(weight 0).
+
+2. **1D 에너지 residual (`loss_energy_1d`) 구현·검증**: head_T에 고-Pe 이류지배 balance
+   (dT*/dx*>0, d²T*/dx*²≈0, autograd 1·2차). **불안정**: 2차 autograd 그래디언트가
+   grad_clip(1.0) 예산 독점 → 데이터 손실 굶음. w_energy=0.05(v12)·0.002(v13) 모두
+   test R² 음수. 게다가 head_T는 **데이터 supervision 없는 보조 필드**라 가치 한계적.
+
+3. **trend-hardening 소프트 제약 (P-mono 등)**: 모델이 단조성을 **"평탄화"로 trivially
+   만족**(v11 Re/G sweep이 ΔT 거의 무변화인 이유 — flat이 mono loss 최소화). 강제력 약함.
+   P-mono+energy를 v11에 쌓으면 데이터 fit 붕괴 (v12/13/14 R² 음수).
+
+4. **근본 원인**: v11은 이미 물리-정합 해 근처에 잘 튜닝됨. 추가 PDE/제약은 데이터를
+   **과구속**해 fit을 해침. 물리 경향은 이미 **아키텍처(압력 피처)+데이터+Hsu coupling**으로
+   확보 (ΔT_sub✓, q✓, P부분✓; Re/G는 평탄·무해).
+
+**조치**: 코드(`loss_energy_1d`, w_mono_P, one-sided coupling)는 옵션으로 보존(기본 비활성).
+완전 field-resolving PINN은 future work (plan 리스크노트의 "physics-regularized regressor
+철학" 그대로). v9 one-sided coupling은 OneDrive가 되돌렸던 것을 156a39b에서 복원(기본 false).
+
+---
+
 ### 체크포인트 위치
 
 | 버전 | 경로 |
@@ -137,7 +170,8 @@ _Last updated: 2026-05-30_
 | v8 (microchannel) | `experiments/checkpoints/phase2_v8_microchannel_qu/best_model.pt` |
 | v9 (ΔT 최저, 압력 물리 없음) | `experiments/checkpoints/phase2_v9_hsu_onesided/best_model.pt` |
 | v10 (압력 물리 학습) | `experiments/checkpoints/phase2_v10_pressure_feature/best_model.pt` |
-| **v11 (현재 best)** | `experiments/checkpoints/phase2_v11_highP_wang/best_model.pt` |
+| **v11 (FINAL best ⭐)** | `experiments/checkpoints/phase2_v11_highP_wang/best_model.pt` |
+| v12-v14 (실패, 미커밋) | M7-M9 PDE/제약 실험, R² 음수 — 디스크에만, git 미포함 |
 
 ---
 
@@ -147,8 +181,10 @@ _Last updated: 2026-05-30_
 - [x] ~~v9 Hsu coupling 보정~~ → 완료 (one-sided hinge, ΔT 1.91K/R²0.740, Pattern B 해소)
 - [x] ~~Pattern C 검토~~ → v10 환산압력 입력으로 부분 해소 (corr 부호 전환, 경향 #4 학습)
 - [x] ~~고압 데이터 보강~~ → v11 Wang2024 7행 (P=10~16MPa). corr(P,예측) −0.688, ΔT 1.84K. Pattern C 경향 학습 확정
-- [ ] M7-M9: NS/Energy PDE residual 활성화 (plan Stage 3)
-- [ ] manuscript M5 단계 초안 작성
+- [x] ~~M7-M9 PDE residual~~ → **Negative result**: 완전 NS 불가(스칼라 regressor), 1D 에너지·소프트 제약은
+      과구속/2차-그래디언트 불안정으로 fit 붕괴. v11이 이미 경향 만족. 코드는 옵션 보존. (위 분석 참조)
+- [ ] manuscript M5 단계 초안 작성 (v11 결과 기반)
+- [ ] (선택) M10: Deep ensemble UQ / inverse — v11 위에서
 
 ---
 
