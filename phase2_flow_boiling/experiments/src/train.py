@@ -97,11 +97,15 @@ def build_datasets(cfg: dict) -> tuple[FlowBoilingDataset, FlowBoilingDataset, F
     csv = Path(cfg["data"]["csv_path"])
     if not csv.is_absolute():
         csv = _PROJ / csv
+    exp = cfg.get("experiment", {})
+    # split_seed is held FIXED across a deep ensemble (members share the same
+    # train/val/test split); only the init/SGD seed varies. Falls back to seed.
+    split_seed = exp.get("split_seed", exp.get("seed", 42))
     kw = dict(
         csv_path=csv,
         train_frac=cfg["data"].get("train_frac", 0.70),
         val_frac=cfg["data"].get("val_frac", 0.15),
-        seed=cfg.get("experiment", {}).get("seed", 42),
+        seed=split_seed,
         exclude_onb_not_found=cfg["data"].get("exclude_onb_not_found", True),
     )
     return (
