@@ -45,20 +45,21 @@ flow conditions. The surface encoder is transfer-learned from a pool-boiling
 PINN (Phase 1) and frozen; a new flow encoder ingests Reynolds number, mass
 flux, Boiling and Weber numbers, hydraulic diameter, channel geometry, inlet
 subcooling and \emph{reduced pressure}, conditioning a shared backbone through
-feature-wise linear modulation. Training couples a heteroscedastically weighted
-data loss with a flow-aware Hsu nucleation constraint imposed as a
-\emph{one-sided lower bound} on the wall superheat, plus monotonicity penalties.
-On a curated set of 351 ONB points from nine experimental studies, spanning
+feature-wise linear modulation. Training couples a masked data loss with a
+flow-aware Hsu nucleation constraint, imposed as a \emph{one-sided lower bound}
+on the wall superheat, and monotonicity penalties.
+On a curated set of 351 ONB points from nine experimental studies---spanning
 $\Dh = 0.35$--$\SI{9.5}{mm}$, $P = 0.1$--$\SI{16}{MPa}$,
-$G = 100$--$\SI{2000}{kg\,m^{-2}\,s^{-1}}$ and water and refrigerants, the model
-attains a test $\dTonb$ RMSE of \SI{1.84}{K} ($R^2 = 0.77$), roughly two to
-twelve times more accurate than the classical correlations evaluated on the
-same split. A reduced-pressure input feature recovers the physically required
-$P\!\uparrow\!\Rightarrow\!\dTonb\!\downarrow$ trend that property-only
-nondimensionalization fails to learn. A five-member deep ensemble improves
-accuracy ($\dTonb$ RMSE \SI{1.72}{K}) and supplies epistemic uncertainty; a
-calibration analysis shows that aleatoric scatter dominates the residual and
-must be modelled for fully calibrated intervals. The framework provides an
+$G = 100$--$\SI{2000}{kg\,m^{-2}\,s^{-1}}$, water and refrigerants---the model
+attains a test $\dTonb$ RMSE of \SI{1.84}{K} ($R^2 = 0.77$). This is about
+two-fold more accurate on wall superheat, and more than an order of magnitude
+more accurate on heat flux, than the classical correlations on the same split.
+Crucially, an explicit reduced-pressure input recovers the
+$P\!\uparrow\!\Rightarrow\!\dTonb\!\downarrow$ dependence that property-based
+nondimensionalization alone fails to learn. A five-member deep ensemble lowers
+the error further ($\dTonb$ RMSE \SI{1.72}{K}) and supplies epistemic
+uncertainty; a calibration analysis shows that aleatoric scatter dominates the
+residual and must be modelled for fully calibrated intervals. The framework provides an
 accurate, physically consistent and uncertainty-aware ONB predictor across an
 unprecedented parameter range.
 \end{abstract}
