@@ -1,6 +1,6 @@
 # Phase 2 Progress Log
 
-_Last updated: 2026-05-31_
+_Last updated: 2026-06-02_
 
 ---
 
@@ -217,7 +217,8 @@ graphicspath = `{figures/}` 단일.
 | fig:uq | ensemble_uq.png | Results 4.4 | 5-멤버 추론 (parity±2σ/calib/std-vs-P) | math.erf 사용 (scipy 없음) |
 | fig:designmap | fig_design_map.png | Discussion 5.1 | v11 (G,P) 격자 추론 contour | q=None(Bo=0) |
 
-**그림 수정 시 주의**: ① 생성 스크립트는 inline(세션 transcript)에 있음 — 영구화하려면 `analysis/scripts/`로 저장 권장. ② 수정 후 `manuscript/figures/`로 **png+pdf 둘 다** 재복사 필요. ③ scipy 미설치(math.erf 우회). ④ v9 체크포인트는 9-ch flow encoder라 현재 11-ch 코드로 로드 불가(압력경향 v9 overlay 불가). ⑤ OneDrive 되돌림 이력 있음 → 편집 후 즉시 커밋.
+**그림 수정 작업 방법 (영구화 완료, 2026-06-02)**: 생성 스크립트가 `analysis/scripts/fig_*.py`로 저장됨 (그림 1개=스크립트 1개, `figlib.py` 공유 헬퍼). phase2 root에서 `python analysis/scripts/<fig>.py` 실행하면 **analysis/figures/ + manuscript/figures/ 양쪽에 png+pdf 자동 저장**(복사 누락 없음). 목록·매핑은 `analysis/scripts/README.md`.
+> 주의: ① scipy 미설치(math.erf 우회). ② v9 체크포인트는 9-ch라 현재 11-ch 코드로 로드 불가. ③ `fig_ablation_progression.py` 값은 위 실험표에서 하드코딩 — 변경 시 동기화. ④ OneDrive 되돌림 이력 → 편집 후 즉시 커밋.
 
 ---
 
