@@ -24,11 +24,10 @@ def main() -> None:
     _hist(axs[0, 0], df.P_kPa / 1000, "Pressure [MPa]", log=True)
     _hist(axs[0, 1], df.D_h_mm, "$D_h$ [mm]", log=True)
     _hist(axs[0, 2], df.G_kg_m2s, "Mass flux G [kg m$^{-2}$s$^{-1}$]")
-    _hist(axs[1, 0], df.delta_T_sub_K, "Subcooling $\\Delta T_{sub}$ [K]")
+    _hist(axs[1, 0], df.delta_T_sub_K, "Inlet/local subcooling $\\Delta T_{sub}$ [K]")
     _hist(axs[1, 1], df.delta_T_onb_K, "$\\Delta T_{ONB}$ [K]")
     _hist(axs[1, 2], df.q_onb_W_m2 / 1e3, "$q''_{ONB}$ [kW m$^{-2}$]", log=True)
-    fig.suptitle("Distributions of the curated ONB dataset (351 points)", fontsize=12)
-    fig.tight_layout(rect=[0, 0, 1, 0.97])
+    fig.tight_layout()
     save_fig(fig, "fig_data_distributions")
 
 
