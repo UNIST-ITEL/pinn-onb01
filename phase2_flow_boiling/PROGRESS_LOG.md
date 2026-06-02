@@ -208,7 +208,7 @@ graphicspath = `{figures/}` 단일.
 | Fig # | 검토 | label | 파일 | 섹션 | 생성 방법 | 비고 |
 |---|---|---|---|---|---|---|
 | **1** | ✅ | fig:arch | architecture.png | Methods 2.2 | inline matplotlib 블록도 | (2026-06-02) in-figure 제목·중복 FiLM 라벨 제거 + 행 중심선(6.7/4.3/2.1) 정렬 + 내부 phase ID('Phase-1','new') → 독자용 표현(transfer-learned/frozen, trained from scratch, 박스 내부) + Training objective 박스 3줄·우측 정렬(heads 오른쪽 끝 x=14.8) + predictions/backprop 화살표로 학습루프 명시 |
-| **2** | ☐ | fig:concept | fig_onb_concept.png | Methods 2.3 | inline matplotlib schematic | (a)ONB식별 (b)Hsu 하한; 도식적 수치 |
+| **2** | ✅ | fig:concept | fig_onb_concept.png | Methods 2.3 | (a) schematic + (b) 실제 v11 데이터 | (2026-06-02) (a) 곡선이 ONB에서 연결되도록 수정(연속 T_w, 기울기 꺾임 + single-phase 점선 연장) + (b) 무작위 합성점 → 실제 193점 측정 ΔT_ONB vs per-point 포화 Hsu ΔT_Hsu,sat 산점도(대각선 하한, 96% 위, forbidden 음영). caption·\dThsu 매크로 갱신 |
 | **3** | ☐ | fig:coverage | fig_coverage_map.png | Data 3.1 | CSV scatter (P vs D_h, size=G) | source별 색 |
 | **4** | ☐ | fig:dist | fig_data_distributions.png | Data 3.1 | CSV 6-panel 히스토그램 | |
 | **5** | ☐ | fig:persource | fig_per_source_rmse.png | Results 4.1 | v11 전체추론 per-source RMSE bar | |
