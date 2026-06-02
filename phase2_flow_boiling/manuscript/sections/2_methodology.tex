@@ -10,8 +10,8 @@ $\mathbf{f}$ to the ONB wall superheat and heat flux,
 \end{equation}
 where $\dTonb = T_w - T_{\mathrm{sat}}(P)$ and $\qonb$ is the heat flux at
 incipience. Targets are nondimensionalised per sample using fluid properties
-at the local saturation state: $\dTonb^{\*} = \dTonb/\dTonb_{\mathrm{ref}}$ with
-a fixed reference $\dTonb_{\mathrm{ref}}=\SI{20}{K}$ (mid-range of the
+at the local saturation state: $\dTonb^{\*} = \dTonb/\Delta T_{\mathrm{ref}}$ with
+a fixed reference $\Delta T_{\mathrm{ref}}=\SI{20}{K}$ (mid-range of the
 physical $2$--\SI{30}{K} window for water), and $q^{\*}=\qonb/q_{\mathrm{ref}}$
 with a capillary-scaled $q_{\mathrm{ref}}$. Fluid properties are evaluated with
 CoolProp \cite{COOLPROP}. The axial coordinate $x^{\*}=x/L\in[0,1]$ locates the
@@ -25,14 +25,11 @@ The network (Fig.~\ref{fig:arch}) has three parts.
 \begin{figure}[t]
 \centering
 \includegraphics[width=\linewidth]{architecture.png}
-\caption{Surface- and flow-conditioned PINN. A frozen surface encoder
-(transfer-learned from the Phase~1 pool-boiling model) and a new flow encoder
-produce latent vectors $\mathbf{z}_s,\mathbf{z}_f$ that condition a six-layer
-backbone in the axial coordinate $x^{*}$ through feature-wise linear modulation
-(FiLM). Three heads output the ONB wall superheat $\dTonb^{*}$, heat flux
-$q^{*}$ and an auxiliary temperature field $T^{*}(x^{*})$. Training combines a
-masked data loss with a flow-aware Hsu collocation constraint, a one-sided Hsu
-self-consistency coupling and monotonicity penalties.}
+\caption{Surface- and flow-conditioned PINN. A frozen, transfer-learned surface
+encoder and a new flow encoder produce latent vectors $\mathbf{z}_s,\mathbf{z}_f$
+that condition a six-layer backbone in the axial coordinate $x^{*}$ via
+feature-wise linear modulation (FiLM); three heads output $\dTonb^{*}$, $q^{*}$
+and an auxiliary field $T^{*}(x^{*})$.}
 \label{fig:arch}
 \end{figure}
 
@@ -106,16 +103,11 @@ the Hsu criterion.
 \begin{figure}[t]
 \centering
 \includegraphics[width=\linewidth]{fig_onb_concept.png}
-\caption{(a)~\emph{ONB identification from the boiling curve.} ONB is identified
-as the departure of the wall temperature from its single-phase line (the slope
-drops as nucleate boiling begins; the dashed line is the single-phase
-extrapolation, i.e.\ the overheating that boiling avoids); the excess over
-saturation is $\dTonb$. (b)~\emph{Hsu criterion as a one-sided lower bound.}
-Measured subcooled-flow ONB superheat against the per-point saturated-pool Hsu
-superheat $\dThsu$ (evaluated with fluid properties at each operating point). The
-diagonal is the one-sided lower bound $\dTonb\ge\dThsu$: nearly all measurements
-lie on or above it---bulk subcooling and forced convection raise the incipience
-superheat---which motivates the one-sided coupling of Eq.~\eqref{eq:onesided}.}
+\caption{(a)~ONB as the departure of the wall temperature from its single-phase
+line (dashed: single-phase extrapolation); the excess over saturation is
+$\dTonb$. (b)~Measured ONB superheat versus the per-point saturated-pool Hsu
+superheat $\dThsu$; the diagonal is the one-sided lower bound $\dTonb\ge\dThsu$,
+and nearly all data lie on or above it.}
 \label{fig:concept}
 \end{figure}
 

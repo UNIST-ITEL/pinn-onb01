@@ -5,8 +5,9 @@ The onset of nucleate boiling (ONB) is the point at which the first vapour
 bubbles nucleate and grow on a heated wall, marking the departure of a boiling
 curve from its single-phase line. In forced-convection subcooled flow it
 governs the lower bound of two-phase operation in microchannel electronics
-cooling, the thermal-margin budget of nuclear fuel assemblies, and the design
-of compact refrigerant evaporators. Predicting ONB accurately therefore has
+cooling \cite{KANDLIKAR2004, LEEMUDAWAR2008}, the thermal-margin budget of
+nuclear fuel assemblies, and the design of compact refrigerant evaporators
+\cite{TIBIRICA2012}. Predicting ONB accurately therefore has
 direct engineering value: an over-conservative incipience estimate wastes
 pumping power and surface area, while an under-conservative one risks premature
 boiling, flow instability and, downstream, departure from nucleate boiling.
@@ -15,20 +16,25 @@ Classical ONB models predict the wall superheat $\dTonb = T_w - T_{\mathrm{sat}}
 at incipience from a force or thermal balance on a nucleating bubble. The Hsu
 \cite{HSU1962} criterion and its descendants---Davis and Anderson
 \cite{DAVIS1966}, Bergles and Rohsenow \cite{BERGLES1964}, Sato and Matsumura
-\cite{SATOMATSUMURA1964}, and the mechanistic model of Basu et al. \cite{BASU2002}---each
+\cite{SATOMATSUMURA1964}, and the mechanistic model of Basu et al. \cite{BASU2002}, together with later
+incipience and subcooled-boiling treatments \cite{FROST1967, THOM1965}---each
 embed assumptions (saturated bulk, a specific cavity-size spectrum, a fixed
 thermal-layer thickness) calibrated within a narrow experimental window. As a
 result they extrapolate poorly: applied outside their calibration range they
 can err by an order of magnitude, and they disagree with one another by several
-kelvin even on canonical water data. Modern applications, however, span a
+kelvin even on canonical water data; recent measurements further reveal strong
+sensitivity to subcooling and channel geometry that the classical forms do not
+capture \cite{HARIRCHIAN2009, CONDEFONTENLA2024}. Modern applications, however, span a
 parameter space far wider than any single correlation was built for---hydraulic
 diameters from tens of micrometres to centimetres, pressures from atmospheric to
 the nuclear range, mass fluxes over an order of magnitude, and both water and
-low-GWP refrigerants---so a predictor that remains accurate and physically
-consistent \emph{across} that space is needed.
+low-GWP refrigerants \cite{LOWGWPREVIEW2023}---so a predictor that remains
+accurate and physically consistent \emph{across} that space is needed.
 
 Data-driven and physics-informed neural networks (PINNs) offer a route to such
-breadth, but two obstacles recur in boiling. First, ONB data are scarce and
+breadth \cite{CAI2021, JIN2021}, and recent studies apply them to two-phase and
+boiling heat transfer \cite{JALILI2024a, VIDHYARTHI2025}; but two obstacles
+recur in boiling. First, ONB data are scarce and
 heterogeneous, scattered across decades of literature in incompatible units and
 reporting conventions; a purely data-driven fit overfits and violates known
 physical trends. Second, the relevant conservation laws (mass, momentum, energy
@@ -41,10 +47,12 @@ network---one that predicts the scalar ONB targets directly while being
 softly constrained by the Hsu nucleation criterion and physical
 monotonicity---outperforms classical correlations for pool boiling and learns a
 transferable representation of surface morphology (roughness, contact angle,
-cavity spectrum). The present work extends that framework to subcooled forced
-convection. The central question is whether the pool-boiling surface
-representation can be \emph{reused} and combined with a flow representation to
-predict ONB over the much larger forced-convection parameter space.
+cavity spectrum) \cite{JAFARI2016, VONTAS2021}. The present work extends that
+framework to subcooled forced convection. The central question is whether the
+pool-boiling surface representation can be \emph{reused}---in the spirit of
+transfer-learned physics-informed models \cite{PRANTIKOS2023, JALILI2024b}---and
+combined with a flow representation to predict ONB over the much larger
+forced-convection parameter space.
 
 Our contributions are:
 \begin{enumerate}

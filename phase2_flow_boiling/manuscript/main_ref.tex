@@ -1,7 +1,7 @@
 %==============================================================================
-% Phase 2 — Surface- and flow-conditioned PINN for ONB in subcooled flow boiling
-% Target journal: International Journal of Heat and Mass Transfer (IJHMT)
-% Class:          elsarticle  (style aligned with main_ref.tex)
+% Two-Phase Microchannel Heatsink Design Optimization manuscript main file
+% Target journal: Applied Thermal Engineering (ATE)
+% Class:          elsarticle
 %==============================================================================
 \documentclass[review,1p,12pt,a4paper]{elsarticle}
 
@@ -13,6 +13,7 @@
 %-- Math, units, symbols ------------------------------------------------------
 \usepackage{amsmath, amssymb, amsfonts, mathtools}
 \usepackage[separate-uncertainty=true, range-units=single, list-units=single]{siunitx}
+% ATE/Elsevier convention: comma thousands separator for plain numerals.
 \sisetup{group-separator={,}, group-minimum-digits=4, group-digits=integer, output-decimal-marker={.}}
 
 %-- Graphics, tables ----------------------------------------------------------
@@ -40,32 +41,34 @@
 %-- Bibliography (natbib via elsarticle) --------------------------------------
 \bibliographystyle{elsarticle-num-names}
 
-%-- Custom macros -------------------------------------------------------------
+%-- Custom macros (optional) --------------------------------------------------
 \newcommand{\dTonb}{\Delta T_{\mathrm{ONB}}}
-\newcommand{\qpp}{q^{\prime\prime}}
-\newcommand{\qonb}{q''_{\mathrm{ONB}}}
 \newcommand{\dTsub}{\Delta T_{\mathrm{sub}}}
-\newcommand{\dThsu}{\Delta T_{\mathrm{Hsu,sat}}}
-\newcommand{\Dh}{D_{\mathrm{h}}}
-\newcommand{\Tsat}{T_{\mathrm{sat}}}
+\newcommand{\qpp}{q^{\prime\prime}}
 \newcommand{\rhol}{\rho_{\ell}}
 \newcommand{\rhov}{\rho_{v}}
+\newcommand{\kl}{k_{\ell}}
+\newcommand{\cpl}{c_{p,\ell}}
 \newcommand{\hfg}{h_{fg}}
+\newcommand{\sigmas}{\sigma}
+\newcommand{\Tsat}{T_{\mathrm{sat}}}
+\newcommand{\Lc}{L_{c}}
 
-\journal{International Journal of Heat and Mass Transfer}
+
+% Elsevier elsarticle highlights environment fallback (must be defined before document start)
+\newenvironment{highlights}{\begin{itemize}}{\end{itemize}}
 
 \begin{document}
-\linenumbers % Activate line numbers for the review draft
+\linenumbers % Activate line numbers
 
 \begin{frontmatter}
 
-\title{A surface- and flow-conditioned physics-informed neural network
-for the onset of nucleate boiling in subcooled forced convection,
-transfer-learned from pool boiling}
+\title{Machine Learning-Accelerated Two-Phase Microchannel Cold Plate \\
+       Design Optimization for Extreme-Density Hotspot Cooling}
 
 \author[unist]{Jaeseon Lee\corref{cor1}\fnref{orcid_jsl}}
 \ead{JaeseonLee@unist.ac.kr}
-% TODO: add Phase-2 co-author(s) here, e.g. \author[unist]{Co Author}
+\author[unist]{Yujin Kim}
 
 \fntext[orcid_jsl]{ORCID: \href{https://orcid.org/0000-0003-1996-6086}{0000-0003-1996-6086}}
 
@@ -81,54 +84,48 @@ Fax: +82-52-217-2419.}
 
 \end{frontmatter}
 
-%==============================================================================
-% Highlights
-%==============================================================================
 \section*{Highlights}
 \input{sections/0_highlights}
 
 %==============================================================================
-% Nomenclature
-%==============================================================================
-\input{sections/0_nomenclature}
-
-%==============================================================================
 % Sections
 %==============================================================================
+\input{sections/0_nomenclature}
 \input{sections/1_introduction}
-\input{sections/2_methodology}
+\input{sections/2_formulation}
 \input{sections/3_data}
-\input{sections/4_results}
-\input{sections/5_discussion}
+\input{sections/4_architecture}
+\input{sections/5_results_discussion}
 \input{sections/6_conclusions}
-
-%==============================================================================
-% Data and code availability
-%==============================================================================
-\section*{Data and code availability}
-\addcontentsline{toc}{section}{Data and code availability}
-The curated ONB dataset, model code, trained checkpoints and analysis scripts
-are available at \url{https://github.com/UNIST-ITEL/pinn-onb01} (Phase~2).
 
 %==============================================================================
 % Acknowledgements
 %==============================================================================
 \section*{Acknowledgements}
 \addcontentsline{toc}{section}{Acknowledgements}
-\textit{[Funding sources to be confirmed.]}
-% Template (verify applicability before submission):
-% This study was supported by the National Research Foundation of Korea (NRF),
-% funded by the Ministry of Science and ICT, and by a KETEP grant funded by the
-% Ministry of Trade, Industry \& Energy of the Republic of Korea.
+This study was supported by the research funding through the National
+Research Foundation of Korea (NRF), funded by the Ministry of Science and
+ICT (Grant No.\ NRF-2023R1A2C2006930 and NRF-2020R1A5A8018822), and through
+a Korea Institute of Energy Technology Evaluation and Planning (KETEP)
+grant funded by the Ministry of Trade, Industry \& Energy (Grant No.\
+RS-2024-00436521) of the Republic of Korea.
 
 %==============================================================================
-% CRediT author contribution statement
+% CRediT Author Contributions
 %==============================================================================
 \section*{CRediT author contribution statement}
 \addcontentsline{toc}{section}{CRediT author contribution statement}
-\textbf{Jaeseon Lee:} Conceptualization, Methodology, Supervision, Project
+\textbf{Jaeseon Lee:} Conceptualization, Supervision, Project
 administration, Funding acquisition, Writing -- Review \& Editing.
-% TODO: complete author roles once the co-author list is final.
+\textbf{Yujin Kim:} Methodology, Software, Investigation, Formal analysis,
+Data curation, Validation, Visualization, Writing -- Original Draft.
+
+%==============================================================================
+% Data availability
+%==============================================================================
+\section*{Data availability}
+\addcontentsline{toc}{section}{Data availability}
+The raw and processed data that support the findings of this study are available from the corresponding author upon reasonable request.
 
 %==============================================================================
 % Declaration of competing interests

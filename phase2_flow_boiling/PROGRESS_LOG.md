@@ -190,7 +190,7 @@ _Last updated: 2026-06-02_
 - [x] ~~manuscript M5 초안~~ → 완료. 6섹션+abstract (~5,250단어), 11 figures, 2 tables, 57 refs. polish 완료.
       `manuscript/main.tex` + `sections/` + `figures/`(자체완결).
 - [ ] **(재개 지점) 개별 그림 수정** ⭐ — 휴식 후 figure별 다듬기. 인벤토리는 아래 § Figure 인벤토리.
-- [ ] LaTeX 컴파일 (이 머신 toolchain 없음 → Phase 1 머신/Overleaf)
+- [x] ~~LaTeX 컴파일~~ → **로컬 빌드 가능** (2026-06-03): Tectonic 0.16.9 설치(`brew`), `tectonic manuscript/main.tex` 로 21p PDF 생성. main_ref.tex 기준 스타일 전환(elsarticle review/1p, 패키지 세트, frontmatter+CRediT/Data/Competing), abstract 234단어(0_abstract), highlights(0_highlights, itemize 인라인)·nomenclature(0_nomenclature) 추가, 참고문헌 15→31, 캡션 3–4줄 트리밍. 컴파일 차단 버그 1건 수정(`\dTonb_{ref}` 이중 아래첨자). 빌드 산출물 .gitignore 처리.
 - [ ] co-author·funding·acknowledgements 기입 (현재 TBD)
 - [ ] (선택) heteroscedastic head로 aleatoric 추가 → full calibration
 - [ ] (선택) inverse problem (측정 ΔT_ONB → r_c 분포)

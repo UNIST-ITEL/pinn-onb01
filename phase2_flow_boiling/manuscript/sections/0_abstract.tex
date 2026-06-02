@@ -1,0 +1,32 @@
+\begin{abstract}
+The onset of nucleate boiling (ONB) sets a design limit for high-flux thermal
+systems, yet classical incipience correlations (Hsu, Davis--Anderson,
+Bergles--Rohsenow, Sato--Matsumura, Basu) were calibrated for narrow windows and
+transfer poorly across the pressure, mass flux, channel size and subcooling of
+modern applications. We develop a physics-regularized neural network that
+predicts the ONB wall superheat $\dTonb$ and heat flux $\qonb$ from surface
+descriptors and flow conditions. A surface encoder transfer-learned from a
+pool-boiling PINN is frozen, while a new flow encoder ingests Reynolds, Boiling
+and Weber numbers, mass flux, hydraulic diameter, channel geometry, subcooling
+and \emph{reduced pressure}, conditioning a shared backbone through feature-wise
+linear modulation. Training couples a masked data loss with a flow-aware Hsu
+nucleation constraint imposed as a \emph{one-sided lower bound}, plus
+monotonicity penalties. On a curated set of 351 ONB points from nine
+studies---spanning $\Dh = 0.35$--$\SI{9.5}{mm}$, $P = 0.1$--$\SI{16}{MPa}$,
+$G = 100$--$\SI{2000}{kg\,m^{-2}\,s^{-1}}$, water and refrigerants---the model
+attains a test $\dTonb$ RMSE of \SI{1.84}{K} ($R^2 = 0.77$): about two-fold more
+accurate on wall superheat and over an order of magnitude more accurate on heat
+flux than the correlations. An explicit reduced-pressure input recovers the
+$P\!\uparrow\!\Rightarrow\!\dTonb\!\downarrow$ dependence that property-based
+nondimensionalization alone fails to learn. A five-member deep ensemble lowers
+the error to \SI{1.72}{K} and supplies epistemic uncertainty; a calibration
+analysis shows aleatoric scatter dominates the residual. The framework provides
+an accurate, physically consistent and uncertainty-aware ONB predictor across an
+unprecedented parameter range.
+\end{abstract}
+
+\begin{keyword}
+onset of nucleate boiling \sep subcooled flow boiling \sep
+physics-informed neural network \sep transfer learning \sep
+uncertainty quantification \sep reduced pressure
+\end{keyword}

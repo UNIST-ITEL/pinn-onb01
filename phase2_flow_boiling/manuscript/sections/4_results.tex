@@ -81,11 +81,9 @@ study.
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.82\linewidth]{fig_ablation_progression.png}
-\caption{Test accuracy progression across the successive model stages
-S1--S8. Bars: $\dTonb$ RMSE; line: $R^2$. Annotations mark the change at each
-step (data curation, microchannel and high-pressure data, one-sided Hsu
-coupling, reduced-pressure feature). Wall-superheat error falls by 76\% from the
-transfer baseline (S1).}
+\caption{Test accuracy across the successive model stages S1--S8. Bars:
+$\dTonb$ RMSE; line: $R^2$; annotations mark the change at each step.
+Wall-superheat error falls 76\% from the transfer baseline (S1).}
 \label{fig:ablation}
 \end{figure}
 
@@ -127,12 +125,10 @@ required.
 \centering
 \includegraphics[width=0.72\linewidth]{fig_pressure_trend.png}
 \caption{Measured (solid) and predicted (dashed) ONB wall superheat versus
-pressure along two fixed-condition sweeps (Kuang 2024: $G=500$, $q''=300$;
+pressure for two fixed-condition sweeps (Kuang 2024: $G=500$, $q''=300$;
 Wang 2024: $G=1000$, $q''=200$; $G$ in kg\,m$^{-2}$s$^{-1}$, $q''$ in
-kW\,m$^{-2}$). The model reproduces the
-$P\!\uparrow\!\Rightarrow\!\dTonb\!\downarrow$ trend; a residual over-prediction
-persists in the intermediate-pressure ($3.5$--\SI{5}{MPa}) single-source pocket
-(Section~\ref{sec:discussion}).}
+kW\,m$^{-2}$). A residual over-prediction persists in the $3.5$--\SI{5}{MPa}
+single-source pocket.}
 \label{fig:ptrend}
 \end{figure}
 
@@ -152,12 +148,10 @@ Fig.~\ref{fig:designmap}.
 \begin{figure}[t]
 \centering
 \includegraphics[width=\linewidth]{fig_physics_trends.png}
-\caption{Physical-trend consistency. (a)~The model prediction increases
-monotonically with subcooling, recovering the correct sign of
-$\partial\dTonb/\partial\dTsub$; the magnitude is small (a fraction of a kelvin
-over the range), as for the Reynolds-number and mass-flux sensitivities.
-(b)~Measured ONB superheat increases with heat flux across sources, the
-dependence enforced through the Hsu coupling.}
+\caption{Physical-trend consistency. (a)~Model prediction increases
+monotonically with subcooling---correct sign but small magnitude (a fraction of
+a kelvin, as for Reynolds number and mass flux). (b)~Measured ONB superheat
+rises with heat flux across sources.}
 \label{fig:trends}
 \end{figure}
 
@@ -190,10 +184,9 @@ aleatoric/structural rather than a lack of model consensus.
 \centering
 \includegraphics[width=\linewidth]{ensemble_uq.png}
 \caption{Deep-ensemble ($K=5$) uncertainty. (a)~Test parity with $\pm2\sigma$
-epistemic bars. (b)~Calibration: observed coverage (the fraction of points whose
-error falls within $\pm k\sigma$) versus the interval half-width $k$; the
-epistemic-only spread (pink) under-covers, while a $4.7\times$ rescaling (green)
-approaches the Gaussian ideal (dashed). (c)~Epistemic standard deviation versus
-pressure.}
+epistemic bars. (b)~Calibration: observed coverage versus interval half-width
+$k$ ($\times\sigma$); the epistemic-only spread (pink) under-covers, a
+$4.7\times$ rescaling (green) nears the Gaussian ideal (dashed). (c)~Epistemic
+spread versus pressure.}
 \label{fig:uq}
 \end{figure}

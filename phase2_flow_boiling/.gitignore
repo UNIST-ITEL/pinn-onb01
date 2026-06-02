@@ -1,0 +1,5 @@
+# Phase 2 manuscript build output (regenerable: `tectonic manuscript/main.tex`).
+# LaTeX auxiliary files (*.aux, *.log, *.blg, *.out, ...) are covered by the
+# workspace-root .gitignore; only the compiled PDF needs a rule here so that it
+# does not collide with the committed figure PDFs under manuscript/figures/.
+manuscript/main.pdf
