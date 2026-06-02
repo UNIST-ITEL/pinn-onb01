@@ -16,7 +16,7 @@ def _log_parity(ax, true, pred, label, color="#2196F3"):
     hi = max(true.max(), pred.max()) * 1.4
     t = np.array([lo, hi])
     ax.fill_between(t, t * 0.8, t * 1.2, color="gray", alpha=0.12, label="±20%")
-    ax.plot(t, t, "k--", lw=1.0, label="±0%")
+    ax.plot(t, t, "k--", lw=1.0, label="1:1")
     ax.scatter(true, pred, s=28, color=color, alpha=0.75, zorder=3, label=label)
     ax.set_xscale("log"); ax.set_yscale("log")
     ax.set_xlim(lo, hi); ax.set_ylim(lo, hi); ax.set_aspect("equal")
@@ -52,17 +52,17 @@ def main() -> None:
 
     r, m, r2, n = _metrics(pdT, tdT)
     fig, ax = plt.subplots(figsize=(6, 6))
-    _log_parity(ax, tdT, pdT, f"PINN (Phase 2)\nRMSE={r:.2f} K  MAE={m:.2f} K\nR²={r2:.3f}  (n={n})")
+    _log_parity(ax, tdT, pdT, f"PINN\nRMSE={r:.2f} K  MAE={m:.2f} K\nR²={r2:.3f}  (n={n})")
     ax.set_xlabel("Measured $\\Delta T_{ONB}$ [K]"); ax.set_ylabel("Predicted $\\Delta T_{ONB}$ [K]")
-    ax.set_title("ONB Wall Superheat Parity — test split (log scale)")
+    ax.set_title("(a)", loc="left", fontweight="bold", fontsize=12)
     save_fig(fig, "parity_dT_onb_test")
 
     r, m, r2, n = _metrics(pq, tq)
     fig, ax = plt.subplots(figsize=(6, 6))
-    _log_parity(ax, tq, pq, f"PINN (Phase 2)\nRMSE={r:.0f} kW/m²  MAE={m:.0f} kW/m²\nR²={r2:.3f}  (n={n})",
+    _log_parity(ax, tq, pq, f"PINN\nRMSE={r:.0f} kW m$^{{-2}}$  MAE={m:.0f} kW m$^{{-2}}$\nR²={r2:.3f}  (n={n})",
                 color="#E91E63")
-    ax.set_xlabel("Measured $q''_{ONB}$ [kW/m²]"); ax.set_ylabel("Predicted $q''_{ONB}$ [kW/m²]")
-    ax.set_title("ONB Heat Flux Parity — test split (log scale)")
+    ax.set_xlabel("Measured $q''_{ONB}$ [kW m$^{-2}$]"); ax.set_ylabel("Predicted $q''_{ONB}$ [kW m$^{-2}$]")
+    ax.set_title("(b)", loc="left", fontweight="bold", fontsize=12)
     save_fig(fig, "parity_q_onb_test")
 
 

@@ -212,7 +212,7 @@ graphicspath = `{figures/}` 단일.
 | **3** | ✅ | fig:coverage | fig_coverage_map.png | Data 3.1 | CSV scatter (P vs D_h, size=G) | (2026-06-02) in-figure 제목 제거 + G 크기 범례 추가(200/600/1000) → 마커 크기 정량화. G 범례+source 범례 둘 다 좌상단 적층(우하단 데이터 가림 해소) |
 | **4** | ✅ | fig:dist | fig_data_distributions.png | Data 3.1 | CSV 6-panel 히스토그램 | (2026-06-02) suptitle 제거 + subcooling 라벨 "Inlet/local subcooling"으로 정확화(스크립트↔PNG drift 해소) + caption에 n-varies 주석 |
 | **5** | ✅ | fig:persource | fig_per_source_rmse.png | Results 4.1 | v11 전체추론 per-source RMSE bar | (2026-06-02) in-figure 제목 제거 + y라벨 정돈("Kuang 2024" 등). ⚠️ 본문(4_results)도 재서술: stale("~0.6–2.5K,Kuang최대,균일")→실제(대형sweep≤1.2K 잘맞음, 소수-n 문헌셋 Qu/Forrest/Bergles/Kandlikar 3–5.7K가 잔차 carry) |
-| **6** | ☐ | fig:parity | parity_dT_onb_test.png + parity_q_onb_test.png | Results 4.1 | `evaluate.py` + inline log-parity 스크립트 | v11 test (2-panel) |
+| **6** | ✅ | fig:parity | parity_dT_onb_test.png + parity_q_onb_test.png | Results 4.1 | `fig_parity.py` (v11 test) | (2026-06-02) in-figure 제목 제거→(a)/(b) 라벨 + ±0%→1:1 + 단위 SI통일(kW m⁻²) + caption (a)/(b) |
 | **7** | ☐ | fig:ablation | fig_ablation_progression.png | Results 4.2 | 하드코딩 v3→v11 값 막대+선 | 값은 위 실험표 |
 | **8** | ☐ | fig:ptrend | fig_pressure_trend.png | Results 4.3.2 | v11 추론, kuang/wang P-sweep | 고압 잔여 uptick 정직 표시 |
 | **9** | ☐ | fig:trends | fig_physics_trends.png | Results 4.3.3 | v11 ΔT_sub sweep + q-data scatter | 2-panel (P패널 제거함) |
