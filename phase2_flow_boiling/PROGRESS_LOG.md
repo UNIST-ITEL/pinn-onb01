@@ -211,7 +211,7 @@ graphicspath = `{figures/}` 단일.
 | **2** | ✅ | fig:concept | fig_onb_concept.png | Methods 2.3 | (a) schematic + (b) 실제 v11 데이터 | (2026-06-02) (a) 곡선이 ONB에서 연결되도록 수정(연속 T_w, 기울기 꺾임 + single-phase 점선 연장) + (b) 무작위 합성점 → 실제 193점 측정 ΔT_ONB vs per-point 포화 Hsu ΔT_Hsu,sat 산점도(대각선 하한, 96% 위, forbidden 음영). caption·\dThsu 매크로 갱신 |
 | **3** | ✅ | fig:coverage | fig_coverage_map.png | Data 3.1 | CSV scatter (P vs D_h, size=G) | (2026-06-02) in-figure 제목 제거 + G 크기 범례 추가(200/600/1000) → 마커 크기 정량화. G 범례+source 범례 둘 다 좌상단 적층(우하단 데이터 가림 해소) |
 | **4** | ✅ | fig:dist | fig_data_distributions.png | Data 3.1 | CSV 6-panel 히스토그램 | (2026-06-02) suptitle 제거 + subcooling 라벨 "Inlet/local subcooling"으로 정확화(스크립트↔PNG drift 해소) + caption에 n-varies 주석 |
-| **5** | ☐ | fig:persource | fig_per_source_rmse.png | Results 4.1 | v11 전체추론 per-source RMSE bar | |
+| **5** | ✅ | fig:persource | fig_per_source_rmse.png | Results 4.1 | v11 전체추론 per-source RMSE bar | (2026-06-02) in-figure 제목 제거 + y라벨 정돈("Kuang 2024" 등). ⚠️ 본문(4_results)도 재서술: stale("~0.6–2.5K,Kuang최대,균일")→실제(대형sweep≤1.2K 잘맞음, 소수-n 문헌셋 Qu/Forrest/Bergles/Kandlikar 3–5.7K가 잔차 carry) |
 | **6** | ☐ | fig:parity | parity_dT_onb_test.png + parity_q_onb_test.png | Results 4.1 | `evaluate.py` + inline log-parity 스크립트 | v11 test (2-panel) |
 | **7** | ☐ | fig:ablation | fig_ablation_progression.png | Results 4.2 | 하드코딩 v3→v11 값 막대+선 | 값은 위 실험표 |
 | **8** | ☐ | fig:ptrend | fig_pressure_trend.png | Results 4.3.2 | v11 추론, kuang/wang P-sweep | 고압 잔여 uptick 정직 표시 |

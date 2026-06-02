@@ -3,7 +3,7 @@ from __future__ import annotations
 import warnings; warnings.filterwarnings("ignore")
 import numpy as np, pandas as pd
 import matplotlib.pyplot as plt
-from figlib import set_style, save_fig, load_v11, load_dataframe, predict_dT
+from figlib import set_style, save_fig, load_v11, load_dataframe, predict_dT, SOURCE_LABELS
 
 
 def main() -> None:
@@ -17,10 +17,12 @@ def main() -> None:
            .sort_values("rmse"))
     fig, ax = plt.subplots(figsize=(8, 4.5))
     ax.barh(range(len(g)), g.rmse, color="#26A69A", edgecolor="k", lw=0.4)
+    # Reader-facing source labels (bergles1964 is not in the shared map used by
+    # the coverage figure, so add it locally rather than touch figlib).
+    labels = {**SOURCE_LABELS, "bergles1964": "Bergles 1964"}
     ax.set_yticks(range(len(g)))
-    ax.set_yticklabels([f"{i} (n={int(n)})" for i, n in zip(g.index, g.n)])
+    ax.set_yticklabels([f"{labels.get(i, i)} (n={int(n)})" for i, n in zip(g.index, g.n)])
     ax.set_xlabel("$\\Delta T_{ONB}$ RMSE [K]")
-    ax.set_title("Per-source wall-superheat error (PINN v11, all data)")
     ax.axvline(1.84, ls="--", color="#C62828", lw=1.2)
     ax.text(1.9, 0.1, "overall test 1.84 K", color="#C62828", fontsize=8.5)
     for i, r in enumerate(g.rmse):
