@@ -66,18 +66,18 @@ def main() -> None:
     ax[0].set_xscale("log"); ax[0].set_yscale("log"); ax[0].set_xlim(lo, hi); ax[0].set_ylim(lo, hi)
     ax[0].set_aspect("equal"); ax[0].set_xlabel("Measured $\\Delta T_{ONB}$ [K]")
     ax[0].set_ylabel("Predicted $\\Delta T_{ONB}$ [K]")
-    ax[0].set_title("(a) Ensemble parity (K=5, ±2σ)"); ax[0].legend(fontsize=8, loc="upper left")
+    ax[0].set_title("(a)", loc="left", fontweight="bold", fontsize=12); ax[0].legend(fontsize=8, loc="upper left")
 
     ks = np.linspace(0.1, 3.5, 40)
     ax[1].plot(ks, [gauss(k) for k in ks], "k--", lw=1, label="Gaussian ideal")
     ax[1].plot(ks, [cov(k) for k in ks], "o-", ms=3, color="#E91E63", label="epistemic only")
     ax[1].plot(ks, [cov(k * s68) for k in ks], "s-", ms=3, color="#4CAF50", label=f"recalibrated (×{s68:.1f})")
-    ax[1].set_xlabel("k (× std)"); ax[1].set_ylabel("Observed coverage")
-    ax[1].set_title("(b) Calibration"); ax[1].legend(fontsize=8); ax[1].set_ylim(0, 1.02)
+    ax[1].set_xlabel("$k$  (interval half-width in units of $\\sigma$)"); ax[1].set_ylabel("Observed coverage")
+    ax[1].set_title("(b)", loc="left", fontweight="bold", fontsize=12); ax[1].legend(fontsize=8); ax[1].set_ylim(0, 1.02)
 
     ax[2].scatter(df.loc[has_dT, "P_kPa"] / 1000, sd, s=32, c="#FF9800", alpha=0.85, edgecolor="none")
     ax[2].set_xscale("log"); ax[2].set_xlabel("Pressure [MPa]")
-    ax[2].set_ylabel("Epistemic std $\\Delta T$ [K]"); ax[2].set_title("(c) Uncertainty vs pressure")
+    ax[2].set_ylabel("Epistemic std $\\Delta T$ [K]"); ax[2].set_title("(c)", loc="left", fontweight="bold", fontsize=12)
     save_fig(fig, "ensemble_uq")
     print(f"recalibration factor ≈ {s68:.1f};  mean std {sd.mean():.3f} K;  "
           f"1σ cov {cov(1)*100:.0f}%  2σ cov {cov(2)*100:.0f}%")
