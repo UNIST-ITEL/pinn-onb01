@@ -10,7 +10,7 @@ import warnings; warnings.filterwarnings("ignore")
 import numpy as np, torch
 import matplotlib.pyplot as plt
 from torch.utils.data import DataLoader
-from figlib import set_style, save_fig, load_v11, load_dataframe
+from figlib import set_style, save_fig, load_v11, load_dataframe, SOURCE_LABELS
 from data.dataset import collate_fn
 
 # flow_numeric channel indices: 4 = ΔT_sub/T_sat
@@ -38,21 +38,28 @@ def main() -> None:
 
     fig, axs = plt.subplots(1, 2, figsize=(10, 4.4))
     xs = np.linspace(0, 0.25, 30)
-    axs[0].plot(xs * T_SAT_APPROX, sweep(CH_SUB, (0, 0.25)), "-", color="#2E7D32", lw=2.4)
+    ya = sweep(CH_SUB, (0, 0.25))
+    dT_axis = xs * T_SAT_APPROX
+    axs[0].plot(dT_axis, ya, "-", color="#2E7D32", lw=2.4)
     axs[0].set_xlabel("$\\Delta T_{sub}$ [K]"); axs[0].set_ylabel("predicted $\\Delta T_{ONB}$ [K]")
-    axs[0].set_title("(a) Subcooling: $\\Delta T_{sub}\\!\\uparrow\\Rightarrow\\Delta T_{ONB}\\!\\uparrow$  (model)")
+    axs[0].set_title("(a)", loc="left", fontweight="bold", fontsize=12)
+    # The sign is correct but the magnitude is small — state it so the zoomed
+    # y-axis is not read as a strong dependence.
+    axs[0].annotate(f"monotonic, but weak:\n$\\Delta(\\Delta T_{{ONB}})\\approx{ya[-1]-ya[0]:+.2f}$ K "
+                    f"over 0–{dT_axis[-1]:.0f} K",
+                    xy=(0.05, 0.93), xycoords="axes fraction", fontsize=8.5, va="top", color="#2E7D32")
 
     for pid, c in [("cheng2022", "#6A1B9A"), ("qu2002", "#00838F"),
                    ("kuang2025", "#EF6C00"), ("liu2005", "#1565C0")]:
         d = df[(df.paper_id == pid) & (df.delta_T_onb_K > 0) & (df.q_onb_W_m2 > 0)]
         if len(d):
-            axs[1].scatter(d.q_onb_W_m2 / 1e3, d.delta_T_onb_K, s=20, color=c, alpha=0.65, label=pid)
+            axs[1].scatter(d.q_onb_W_m2 / 1e3, d.delta_T_onb_K, s=20, color=c, alpha=0.65,
+                           label=SOURCE_LABELS.get(pid, pid))
     axs[1].set_xscale("log"); axs[1].set_xlabel("$q''_{ONB}$ [kW m$^{-2}$]")
     axs[1].set_ylabel("$\\Delta T_{ONB}$ [K]")
-    axs[1].set_title("(b) Heat flux: $q\\!\\uparrow\\Rightarrow\\Delta T_{ONB}\\!\\uparrow$  (data, $r$=0.6–0.9)")
+    axs[1].set_title("(b)", loc="left", fontweight="bold", fontsize=12)
     axs[1].legend(fontsize=8)
-    fig.suptitle("Physical-trend consistency (subcooling and heat-flux dependence)", fontsize=12)
-    fig.tight_layout(rect=[0, 0, 1, 0.95])
+    fig.tight_layout()
     save_fig(fig, "fig_physics_trends")
 
 

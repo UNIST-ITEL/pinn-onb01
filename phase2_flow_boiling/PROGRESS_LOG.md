@@ -215,7 +215,7 @@ graphicspath = `{figures/}` 단일.
 | **6** | ✅ | fig:parity | parity_dT_onb_test.png + parity_q_onb_test.png | Results 4.1 | `fig_parity.py` (v11 test) | (2026-06-02) in-figure 제목 제거→(a)/(b) 라벨 + ±0%→1:1 + 단위 SI통일(kW m⁻²) + caption (a)/(b) |
 | **7** | ✅ | fig:ablation | fig_ablation_progression.png | Results 4.2 | 하드코딩 값 막대+선 | (2026-06-02) in-figure 제목 제거 + x축 내부 v번호→순차 S1–S8(매핑 S1=v3,S2=v5,S3=v6,S4=v7,S5=v8,S6=v9,S7=v10,S8=v11; 주석보존) + −basu2002→−Basu 2002. 값은 위 실험표 |
 | **8** | ✅ | fig:ptrend | fig_pressure_trend.png | Results 4.3.2 | v11 추론, kuang/wang P-sweep | (2026-06-02) in-figure 제목+"(trend #4)" 제거 + legend "(PINN v11)"→"(predicted)" + corr박스 "(v11)"→"(with P feature)" + source명/q'' 표기 + caption 단위. 고압 잔여 uptick 정직 표시 |
-| **9** | ☐ | fig:trends | fig_physics_trends.png | Results 4.3.3 | v11 ΔT_sub sweep + q-data scatter | 2-panel (P패널 제거함) |
+| **9** | ✅ | fig:trends | fig_physics_trends.png | Results 4.3.3 | v11 ΔT_sub sweep + q-data scatter | (2026-06-02) suptitle 제거+(a)/(b) 라벨 + (b)출처명 정돈 + ⚠️(a) auto-zoom 과대표현→"monotonic but weak Δ≈+0.09K/95K" 주석(동적) + caption·본문 "sign맞음/크기약함" 정직화. 2-panel (P패널 제거함) |
 | **10** | ☐ | fig:uq | ensemble_uq.png | Results 4.4 | 5-멤버 추론 (parity±2σ/calib/std-vs-P) | math.erf 사용 (scipy 없음) |
 | **11** | ☐ | fig:designmap | fig_design_map.png | Discussion 5.1 | v11 (G,P) 격자 추론 contour | q=None(Bo=0) |
 
