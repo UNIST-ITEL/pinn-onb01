@@ -203,19 +203,21 @@ manuscript는 **11 figure 환경**(파일 12개; parity는 2-panel). 모든 figu
 논문용 사본: `manuscript/figures/` (png+pdf), 원본/재생성: `analysis/figures/`.
 graphicspath = `{figures/}` 단일.
 
-| Fig label | 파일 | 섹션 | 생성 방법 | 비고 |
-|---|---|---|---|---|
-| fig:arch | architecture.png | Methods 2.2 | inline matplotlib 블록도 | 수동 좌표 — 박스/화살표 조정 가능 |
-| fig:concept | fig_onb_concept.png | Methods 2.3 | inline matplotlib schematic | (a)ONB식별 (b)Hsu 하한; 도식적 수치 |
-| fig:coverage | fig_coverage_map.png | Data 3.1 | CSV scatter (P vs D_h, size=G) | source별 색 |
-| fig:dist | fig_data_distributions.png | Data 3.1 | CSV 6-panel 히스토그램 | |
-| fig:parity | parity_dT_onb_test.png + parity_q_onb_test.png | Results 4.1 | `evaluate.py` + inline log-parity 스크립트 | v11 test |
-| fig:persource | fig_per_source_rmse.png | Results 4.1 | v11 전체추론 per-source RMSE bar | |
-| fig:ablation | fig_ablation_progression.png | Results 4.2 | 하드코딩 v3→v11 값 막대+선 | 값은 위 실험표 |
-| fig:ptrend | fig_pressure_trend.png | Results 4.3.2 | v11 추론, kuang/wang P-sweep | 고압 잔여 uptick 정직 표시 |
-| fig:trends | fig_physics_trends.png | Results 4.3.3 | v11 ΔT_sub sweep + q-data scatter | 2-panel (P패널 제거함) |
-| fig:uq | ensemble_uq.png | Results 4.4 | 5-멤버 추론 (parity±2σ/calib/std-vs-P) | math.erf 사용 (scipy 없음) |
-| fig:designmap | fig_design_map.png | Discussion 5.1 | v11 (G,P) 격자 추론 contour | q=None(Bo=0) |
+> **Fig # = 원고 컴파일 순서** (`\input` §1→6 안에서 `\begin{figure}` 등장 순서). 파일/스크립트명은 미변경(참조표만). 개별 그림 수정은 이 순서대로 진행. (검토 상태: ☐ 미검토 / ✅ 완료)
+
+| Fig # | 검토 | label | 파일 | 섹션 | 생성 방법 | 비고 |
+|---|---|---|---|---|---|---|
+| **1** | ✅ | fig:arch | architecture.png | Methods 2.2 | inline matplotlib 블록도 | (2026-06-02) in-figure 제목·중복 FiLM 라벨 제거 + 행 중심선(6.7/4.3/2.1) 정렬 + 내부 phase ID('Phase-1','new') → 독자용 표현(transfer-learned/frozen, trained from scratch, 박스 내부) + Training objective 박스 3줄·우측 정렬(heads 오른쪽 끝 x=14.8) + predictions/backprop 화살표로 학습루프 명시 |
+| **2** | ☐ | fig:concept | fig_onb_concept.png | Methods 2.3 | inline matplotlib schematic | (a)ONB식별 (b)Hsu 하한; 도식적 수치 |
+| **3** | ☐ | fig:coverage | fig_coverage_map.png | Data 3.1 | CSV scatter (P vs D_h, size=G) | source별 색 |
+| **4** | ☐ | fig:dist | fig_data_distributions.png | Data 3.1 | CSV 6-panel 히스토그램 | |
+| **5** | ☐ | fig:persource | fig_per_source_rmse.png | Results 4.1 | v11 전체추론 per-source RMSE bar | |
+| **6** | ☐ | fig:parity | parity_dT_onb_test.png + parity_q_onb_test.png | Results 4.1 | `evaluate.py` + inline log-parity 스크립트 | v11 test (2-panel) |
+| **7** | ☐ | fig:ablation | fig_ablation_progression.png | Results 4.2 | 하드코딩 v3→v11 값 막대+선 | 값은 위 실험표 |
+| **8** | ☐ | fig:ptrend | fig_pressure_trend.png | Results 4.3.2 | v11 추론, kuang/wang P-sweep | 고압 잔여 uptick 정직 표시 |
+| **9** | ☐ | fig:trends | fig_physics_trends.png | Results 4.3.3 | v11 ΔT_sub sweep + q-data scatter | 2-panel (P패널 제거함) |
+| **10** | ☐ | fig:uq | ensemble_uq.png | Results 4.4 | 5-멤버 추론 (parity±2σ/calib/std-vs-P) | math.erf 사용 (scipy 없음) |
+| **11** | ☐ | fig:designmap | fig_design_map.png | Discussion 5.1 | v11 (G,P) 격자 추론 contour | q=None(Bo=0) |
 
 **그림 수정 작업 방법 (영구화 완료, 2026-06-02)**: 생성 스크립트가 `analysis/scripts/fig_*.py`로 저장됨 (그림 1개=스크립트 1개, `figlib.py` 공유 헬퍼). phase2 root에서 `python analysis/scripts/<fig>.py` 실행하면 **analysis/figures/ + manuscript/figures/ 양쪽에 png+pdf 자동 저장**(복사 누락 없음). 목록·매핑은 `analysis/scripts/README.md`.
 > 주의: ① scipy 미설치(math.erf 우회). ② v9 체크포인트는 9-ch라 현재 11-ch 코드로 로드 불가. ③ `fig_ablation_progression.py` 값은 위 실험표에서 하드코딩 — 변경 시 동기화. ④ OneDrive 되돌림 이력 → 편집 후 즉시 커밋.
