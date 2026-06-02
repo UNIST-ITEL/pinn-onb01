@@ -217,7 +217,7 @@ graphicspath = `{figures/}` 단일.
 | **8** | ✅ | fig:ptrend | fig_pressure_trend.png | Results 4.3.2 | v11 추론, kuang/wang P-sweep | (2026-06-02) in-figure 제목+"(trend #4)" 제거 + legend "(PINN v11)"→"(predicted)" + corr박스 "(v11)"→"(with P feature)" + source명/q'' 표기 + caption 단위. 고압 잔여 uptick 정직 표시 |
 | **9** | ✅ | fig:trends | fig_physics_trends.png | Results 4.3.3 | v11 ΔT_sub sweep + q-data scatter | (2026-06-02) suptitle 제거+(a)/(b) 라벨 + (b)출처명 정돈 + ⚠️(a) auto-zoom 과대표현→"monotonic but weak Δ≈+0.09K/95K" 주석(동적) + caption·본문 "sign맞음/크기약함" 정직화. 2-panel (P패널 제거함) |
 | **10** | ✅ | fig:uq | ensemble_uq.png | Results 4.4 | 5-멤버 추론 (parity±2σ/calib/std-vs-P) | (2026-06-02) 패널 제목→(a)/(b)/(c) 라벨 + (b) x축 "k (× std)"→"k (interval half-width in units of σ)" 명확화(소문자 k=σ배수, K=5 앙상블과 구분) + caption에 coverage 정의. 본문 수치(0.51K,28%/42%,×4.7) 일치 검증. math.erf (scipy 없음) |
-| **11** | ☐ | fig:designmap | fig_design_map.png | Discussion 5.1 | v11 (G,P) 격자 추론 contour | q=None(Bo=0) |
+| **11** | ✅ | fig:designmap | fig_design_map.png | Discussion 5.1 | v11 (G,P) 격자 추론 contour | (2026-06-02) in-figure 제목 제거(조건은 caption). ⚠️ §4.3.3 본문 모순 수정: "Re/G weak·flat"→실제는 압력 의존(저압 G↑⇒ΔT↑ 강함 5.4K/0.15MPa, 고압 약함 1.2K; probe 검증), §5.1·Fig11과 일관. q=None(Bo=0) |
 
 **그림 수정 작업 방법 (영구화 완료, 2026-06-02)**: 생성 스크립트가 `analysis/scripts/fig_*.py`로 저장됨 (그림 1개=스크립트 1개, `figlib.py` 공유 헬퍼). phase2 root에서 `python analysis/scripts/<fig>.py` 실행하면 **analysis/figures/ + manuscript/figures/ 양쪽에 png+pdf 자동 저장**(복사 누락 없음). 목록·매핑은 `analysis/scripts/README.md`.
 > 주의: ① scipy 미설치(math.erf 우회). ② v9 체크포인트는 9-ch라 현재 11-ch 코드로 로드 불가. ③ `fig_ablation_progression.py` 값은 위 실험표에서 하드코딩 — 변경 시 동기화. ④ OneDrive 되돌림 이력 → 편집 후 즉시 커밋.

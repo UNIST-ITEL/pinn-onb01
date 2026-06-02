@@ -50,9 +50,7 @@ def main() -> None:
     ax.clabel(cs, inline=True, fontsize=7, fmt="%.1f")
     ax.set_yscale("log")
     ax.set_xlabel("Mass flux $G$ [kg m$^{-2}$s$^{-1}$]"); ax.set_ylabel("Pressure $P$ [MPa]")
-    ax.set_title("Design map: predicted $\\Delta T_{ONB}$ [K]\n"
-                 "(stainless, $D_h$=3 mm, $\\Delta T_{sub}$=20 K, water)")
-    plt.colorbar(cf, ax=ax, label="$\\Delta T_{ONB}$ [K]")
+    plt.colorbar(cf, ax=ax, label="predicted $\\Delta T_{ONB}$ [K]")
     save_fig(fig, "fig_design_map")
 
 
