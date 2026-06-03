@@ -11,10 +11,11 @@ and Weber numbers, mass flux, hydraulic diameter, channel geometry, subcooling
 and \emph{reduced pressure}, conditioning a shared backbone through feature-wise
 linear modulation. Training couples a masked data loss with a flow-aware Hsu
 nucleation constraint imposed as a \emph{one-sided lower bound}, plus
-monotonicity penalties. On a curated set of 351 ONB points from nine
+monotonicity penalties. On a curated set of 351 ONB points from ten
 studies---spanning $\Dh = 0.35$--$\SI{9.5}{mm}$, $P = 0.1$--$\SI{16}{MPa}$,
-$G = 100$--$\SI{2000}{kg\,m^{-2}\,s^{-1}}$, water and refrigerants---the model
-attains a test $\dTonb$ RMSE of \SI{1.84}{K} ($R^2 = 0.77$): about two-fold more
+$G = 100$--$\SI{2000}{kg\,m^{-2}\,s^{-1}}$, predominantly water with limited
+refrigerant coverage---the model attains a test $\dTonb$ RMSE of \SI{1.84}{K}
+($R^2 = 0.77$): about two-fold more
 accurate on wall superheat and over an order of magnitude more accurate on heat
 flux than the correlations. An explicit reduced-pressure input recovers the
 $P\!\uparrow\!\Rightarrow\!\dTonb\!\downarrow$ dependence that property-based

@@ -17,7 +17,15 @@ artefact, Fig.~\ref{fig:designmap} renders the model as a design map: predicted
 $\dTonb$ over the mass-flux--pressure plane for a representative stainless
 channel, directly usable to place an operating point relative to incipience. The
 map encodes the learned physics---superheat falling with pressure and rising
-with mass flux at low pressure---in a single continuous surface.
+with mass flux at low pressure---in a single continuous surface. The
+pressure-dependent mass-flux sensitivity is itself physically consistent: a
+higher mass flux thins the thermal boundary layer and so raises the superheat
+required for a cavity to reach the nucleation condition, but the magnitude of
+that effect scales with the intrinsic incipience superheat
+($\propto\sigma\Tsat/\rhov\hfg$), which is large at low pressure and small at
+high pressure. The convective thinning therefore produces a several-kelvin swing
+near atmospheric pressure but only a faint one in the high-pressure, dense-vapour
+limit, exactly the trend the design map displays.
 
 \begin{figure}[t]
 \centering
