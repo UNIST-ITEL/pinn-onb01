@@ -1,6 +1,53 @@
 # Phase 2 Progress Log
 
-_Last updated: 2026-06-02_
+_Last updated: 2026-06-03_
+
+---
+
+## 세션 요약 (2026-06-02 ~ 06-03) — Figure 검토 + Manuscript 포맷 + 로컬 빌드
+
+### 1. Figure 검토·수정 (11/11 완료)
+
+원고 컴파일 순서로 Fig 1–11 넘버링 후 그림 1개씩 *그림+caption+스크립트* 진단→수정→재생성→커밋. 공통 정리: **in-figure 제목 제거**(caption이 제목 역할), **내부 식별자 제거**("Phase 2"/"v11"/"(trend #4)"/paper_id/비연속 버전번호), **SI 단위 통일**(kW m⁻²), 멀티패널 `(a)/(b)` 라벨.
+
+| Fig | 커밋 | 핵심 |
+|---|---|---|
+| 1 arch | `61b1337` | 중복 FiLM·제목 제거, 행 정렬, 내부 phase ID→독자 표현, predictions/backprop 학습루프 |
+| 2 concept | `8603a55` | **(a) 물리오류 수정**(곡선 ONB 연결), **(b) 합성점→실제 193점** Hsu 하한 |
+| 3 coverage | `fd16c8b` | G 크기 범례 추가, 범례 좌상단 적층 |
+| 4 dist | `e784727` | suptitle 제거, subcooling 라벨 drift 수정 |
+| 5 persource | `47db434` | ⚠️ **본문 stale 수치 재서술**(대형sweep 우수/소수-n 문헌셋이 잔차 carry) |
+| 6 parity | `c05ba29` | (a)/(b), 1:1선, SI단위, "Phase 2" 제거 |
+| 7 ablation | `1620991` | x축 v번호→순차 S1–S8 |
+| 8 ptrend | `1e7f9d4` | "(PINN v11)"→"(predicted)", corr박스 "(with P feature)", 단위 |
+| 9 trends | `c62a94e` | ⚠️ **(a) auto-zoom 과대표현→"weak Δ≈+0.09K" 주석** + 본문 정직화 |
+| 10 uq | `2942c83` | (a)/(b)/(c), (b) x축 k 의미 명확화 |
+| 11 designmap | `51b640c` | ⚠️ **§4.3.3 모순 수정**: "Re/G flat"→압력 의존(저압 G↑⇒ΔT↑ 5.4K, probe 검증) |
+
+**⭐ 본문 정확성 이슈 3건**(그림이 본문 오류를 드러냄): Fig 5 per-source 서술, Fig 9 subcooling 크기, Fig 11/§4.3.3 G 압력의존성 — 모두 실측/probe로 검증 후 재서술. 공저자 검토 권장.
+
+### 2. Manuscript 포맷 전환 + front/back matter (커밋 `039d02b`)
+
+`main_ref.tex`(lab ATE 템플릿) 기준으로 스타일 통일:
+- **Preamble**: elsarticle `[review,1p,12pt,a4paper]` + 패키지 세트(inputenc/fontenc/lmodern, amsmath/mathtools, siunitx+sisetup, booktabs/multirow/array/longtable, geometry, hyperref+cleveref, microtype), bibstyle `elsarticle-num-names`, CRediT·Data availability·Competing interests 블록.
+- **Abstract** → `sections/0_abstract.tex`, **234단어**(≤250) + keyword 분리.
+- **Highlights** → `sections/0_highlights.tex`, 5개(각 ≤85자). ⚠️ elsarticle `highlights` env는 박스 버퍼만 하고 `\elsarticleprelims` 없으면 출력 안 됨 → **일반 itemize 인라인**으로 변경해 해결.
+- **Nomenclature** → `sections/0_nomenclature.tex`(Latin/Greek/무차원/약어).
+- **참고문헌 15→31**: intro 6곳에 PINN/전이학습/flow boiling/표면효과 인용 추가. author 미상 placeholder `LI2019` 제외→완전한 `HARIRCHIAN2009`로 교체.
+- **캡션**: 8개 3–4줄로 트리밍(본문 중복 제거). Fig 4·5·6은 이미 짧아 유지.
+
+### 3. 로컬 LaTeX 빌드 환경
+
+- **Tectonic 0.16.9** 설치(`brew install tectonic`). 빌드: `cd manuscript && tectonic main.tex && open main.pdf`.
+- 컴파일 차단 버그 1건 수정: `\dTonb_{\mathrm{ref}}` 이중 아래첨자 → `\Delta T_{\mathrm{ref}}` (원고가 한 번도 컴파일 안 됐던 latent 버그).
+- 결과: **21p PDF, 인용 31개 전부 해결, bibtex 경고 0**.
+- 빌드 산출물: aux류는 루트 .gitignore가 처리, `manuscript/main.pdf`는 phase2 `.gitignore` 신설로 제외.
+
+### 4. 남은 placeholder/확인 (미해결)
+
+- **`\*` 무차원 별표 15곳** — math 모드 `\*`는 별표(*)가 아닌 줄바꿈 곱셈기호. PDF에서 `x*`,`ΔT*`,`q*` 위첨자 렌더링 확인 필요 → 잘못되면 `\*`→`*` 일괄 수정.
+- **저자·펀딩·CRediT** — `% TODO` placeholder.
+- (선택) 신규 16개 인용 적절성 공저자 검토, bib 미사용 엔트리(26개) 정리.
 
 ---
 
