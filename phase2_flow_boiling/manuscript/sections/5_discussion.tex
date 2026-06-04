@@ -63,16 +63,26 @@ is a natural Phase~3 direction.
 
 \subsection{Limitations}
 
-Four limitations bound the present claims. First, the dataset, though wide in
-range, is modest in size (351 points) and dominated by water; refrigerant and
-non-aqueous coverage is thin, and the high-pressure end rests on a single study,
-so extrapolation beyond \SI{16}{MPa} or to untested fluids is unverified.
-Second, surface descriptors are sparse in the flow-boiling literature---most
-records lack measured roughness and contact angle---so the transferred surface
-encoder is exercised less here than in pool boiling. Third, the uncertainty
-quantification captures epistemic but not aleatoric uncertainty, under-covering
-by $\sim\!4.7\times$; calibrated intervals presently require the interim
-rescaling, pending a heteroscedastic head. Fourth, a narrow
-intermediate-pressure, low-mass-flux pocket (a single source's
-$3.5$--\SI{5}{MPa} runs) retains a residual over-prediction of $\sim\!\SI{1.7}{K}$
-that reflects a data gap rather than a model defect.
+Five limitations bound the present claims. First and most important, the
+headline accuracy reflects \emph{interpolation within the sampled studies}:
+under leave-one-study-out cross-validation (Section~\ref{sec:loso},
+Table~\ref{tab:loso}) the wall-superheat error rises to $5.7$--\SI{10.9}{K}, so
+the model should be applied for interpolation within the trained envelope rather
+than extrapolated to an entirely unseen study, fluid or geometry. Second, the
+dataset, though wide in range, is modest in size (351 points) and dominated by
+water; refrigerant and non-aqueous coverage is thin, and the high-pressure end
+rests on a single study, so behaviour beyond \SI{16}{MPa} is unverified. Third,
+surface descriptors are sparse in the flow-boiling literature---most records
+lack measured roughness and contact angle---so the transferred surface encoder
+acts mainly as a frozen prior (Table~\ref{tab:ablation}) and is exercised less
+here than in pool boiling. Fourth, the uncertainty quantification captures
+epistemic but not aleatoric uncertainty, under-covering by $\sim\!4.7\times$;
+calibrated intervals presently require the interim rescaling, pending a
+heteroscedastic variance head that would learn the data scatter directly.
+Fifth, the flow-aware Hsu constraint evaluates the thermal-boundary-layer
+thickness with a single turbulent (Dittus--Boelter) Nusselt correlation
+across all flow regimes; a regime-dependent (laminar/transitional/turbulent)
+form would be more rigorous for the low-Reynolds microchannel data and is a
+natural refinement. A narrow intermediate-pressure, low-mass-flux pocket (a
+single source's $3.5$--\SI{5}{MPa} runs) also retains a residual over-prediction
+of $\sim\!\SI{1.7}{K}$ that reflects a data gap rather than a model defect.

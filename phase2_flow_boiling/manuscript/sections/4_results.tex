@@ -75,10 +75,18 @@ pool-boiling contamination (Section~\ref{sec:data}) was the single largest
 gain, cutting the $\dTonb$ RMSE from \SI{4.0}{K} to \SI{1.85}{K}; adding the
 microchannel data sharpened $\qonb$ ($R^2$ from $0.54$ to $0.78$); and the
 high-pressure anchors with the reduced-pressure feature lowered $\dTonb$ RMSE to
-\SI{1.84}{K} while fixing the pressure trend (Fig.~\ref{fig:ablation}). The
-frozen pool-boiling surface encoder supplies the surface representation at no
-additional flow-data cost, consistent with the transfer-learning premise of the
-study.
+\SI{1.84}{K} while fixing the pressure trend (Fig.~\ref{fig:ablation}).
+
+A controlled ablation isolates the role of the transferred surface encoder
+(Table~\ref{tab:ablation}). A surface encoder trained from random
+initialisation matches the frozen transferred one on wall superheat
+(\SI{1.77}{K} vs \SI{1.84}{K}), so transfer learning is not required for raw
+accuracy. Its value is rather that of an \emph{informative frozen prior}: the
+frozen transferred encoder outperforms a frozen \emph{random} encoder by about
+\SI{0.5}{K} (\SI{1.84}{K} vs \SI{2.36}{K}) at no additional trainable cost. This
+matters because most flow-boiling studies omit the surface descriptors $R_a$ and
+$\theta$, so a frozen prior that already encodes a sensible cavity-activation
+representation regularises the model where those inputs are missing.
 
 \begin{figure}[t]
 \centering
@@ -88,6 +96,61 @@ $\dTonb$ RMSE; line: $R^2$; annotations mark the change at each step.
 Wall-superheat error falls 76\% from the transfer baseline (S1).}
 \label{fig:ablation}
 \end{figure}
+
+\begin{table}[t]
+\centering
+\caption{Transfer-learning ablation (same test split, $n_{\dTonb}=36$). A
+trained encoder matches the frozen transferred one; the transferred prior beats
+a frozen \emph{random} encoder.}
+\label{tab:ablation}
+\small
+\begin{tabular}{llcc}
+\toprule
+Variant & Surface encoder & RMSE$_{\dTonb}$ (K) & $R^2_{\dTonb}$ \\
+\midrule
+A (this work) & transferred, frozen   & \textbf{1.84} & 0.77 \\
+B            & random init, trained  & 1.77 & 0.78 \\
+C            & random init, frozen   & 2.36 & 0.62 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Cross-study generalization}
+\label{sec:loso}
+
+The \SI{1.84}{K} test error above uses a per-study stratified split, in which
+every study contributes to both training and test; it therefore measures
+interpolation \emph{within} the sampled studies. To probe genuine
+study-to-study extrapolation we retrain under leave-one-study-out (LOSO): one
+study is held out \emph{entirely} as the test set while the model trains on the
+other nine (Table~\ref{tab:loso}). Accuracy degrades sharply---to
+$5.7$--\SI{10.9}{K} with strongly negative $R^2$---for every held-out study,
+including a central, low-pressure one (Cheng). The model thus interpolates
+reliably within the trained envelope but does not extrapolate to an entirely
+unseen study. We regard interpolation within the envelope as its intended
+operating regime and return to this limitation in
+Section~\ref{sec:discussion}.
+
+\begin{table}[t]
+\centering
+\caption{Leave-one-study-out generalization: each study is held out entirely as
+the test set and the model trains on the remaining nine. The within-envelope
+stratified split is shown for reference.}
+\label{tab:loso}
+\small
+\begin{tabular}{llcc}
+\toprule
+Held-out study & Regime & RMSE$_{\dTonb}$ (K) & $R^2_{\dTonb}$ \\
+\midrule
+Wang \cite{WANG2024}          & high pressure, 10--16\,MPa & 5.70  & $-87$ \\
+Qu \& Mudawar \cite{QUMUDAWAR2002} & microchannel, 0.35\,mm     & 7.70  & $-1.5$ \\
+Liu \cite{LIU2005}            & microchannel               & 6.87  & $-2.9$ \\
+Cheng \cite{CHENG2022}        & narrow channel             & 10.9  & $-227$ \\
+\midrule
+\textbf{Stratified split (ref.)} & all studies            & \textbf{1.84} & \textbf{0.77} \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \subsection{Physics consistency}
 \label{sec:physcon}

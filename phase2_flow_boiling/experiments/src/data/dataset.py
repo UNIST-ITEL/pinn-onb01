@@ -167,6 +167,7 @@ class FlowBoilingDataset(Dataset):
         val_frac: float = 0.15,
         seed: int = 42,
         exclude_onb_not_found: bool = True,
+        holdout_paper: str | None = None,
     ) -> None:
         self.csv_path = Path(csv_path)
         df = pd.read_csv(self.csv_path)
@@ -179,8 +180,12 @@ class FlowBoilingDataset(Dataset):
         has_dT = df["delta_T_onb_K"] > 0
         df = df[has_q | has_dT].reset_index(drop=True)
 
-        # Stratified split by paper_id
-        if split != "all":
+        # Leave-one-study-out (LOSO): the held-out paper is the entire test set;
+        # train/val are drawn from the remaining studies only. Otherwise use the
+        # default per-paper stratified split.
+        if holdout_paper is not None:
+            df = self._loso_split(df, split, holdout_paper, train_frac, val_frac, seed)
+        elif split != "all":
             df = self._stratified_split(df, split, train_frac, val_frac, seed)
 
         self._df = df.reset_index(drop=True)
@@ -208,6 +213,34 @@ class FlowBoilingDataset(Dataset):
             test_idx.extend(idx[n_train + n_val:])
         mapping = {"train": train_idx, "val": val_idx, "test": test_idx}
         return df.loc[mapping[split]]
+
+    def _loso_split(
+        self,
+        df: pd.DataFrame,
+        split: str,
+        holdout_paper: str,
+        train_frac: float,
+        val_frac: float,
+        seed: int,
+    ) -> pd.DataFrame:
+        """Leave-one-study-out split: holdout_paper -> test; rest -> train/val."""
+        import numpy as np
+        if holdout_paper not in set(df["paper_id"]):
+            raise ValueError(f"holdout_paper '{holdout_paper}' not in dataset")
+        if split == "test":
+            return df.loc[df.index[df["paper_id"] == holdout_paper].tolist()]
+        # train/val drawn from the remaining studies, stratified by paper_id
+        rng = np.random.default_rng(seed)
+        tr_ratio = train_frac / (train_frac + val_frac)
+        train_idx, val_idx = [], []
+        rest = [p for p in df["paper_id"].unique() if p != holdout_paper]
+        for pid in rest:
+            idx = df.index[df["paper_id"] == pid].tolist()
+            rng.shuffle(idx)
+            n_tr = max(1, int(len(idx) * tr_ratio))
+            train_idx.extend(idx[:n_tr])
+            val_idx.extend(idx[n_tr:])
+        return df.loc[train_idx if split == "train" else val_idx]
 
     def _precompute(self) -> None:
         """Pre-encode all rows into tensors for fast __getitem__."""

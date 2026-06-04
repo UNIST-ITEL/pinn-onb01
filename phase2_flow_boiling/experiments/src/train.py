@@ -107,6 +107,7 @@ def build_datasets(cfg: dict) -> tuple[FlowBoilingDataset, FlowBoilingDataset, F
         val_frac=cfg["data"].get("val_frac", 0.15),
         seed=split_seed,
         exclude_onb_not_found=cfg["data"].get("exclude_onb_not_found", True),
+        holdout_paper=cfg["data"].get("holdout_paper", None),
     )
     return (
         FlowBoilingDataset(**kw, split="train"),
