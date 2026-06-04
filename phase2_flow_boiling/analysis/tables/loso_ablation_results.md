@@ -40,6 +40,24 @@ frozen transferred encoder (A) clearly beats the frozen *random* encoder (C,
 2.36 K): the transferred representation is an **informative frozen prior**,
 worth ~0.5 K when surface descriptors are sparse, at no extra trainable cost.
 
+## Conditional-Nusselt robustness check (Hsu constraint closure)
+
+The flow-aware Hsu constraint uses Nu to set the thermal-boundary-layer
+thickness $\delta_t = C\,D_h/Nu$. The main model uses the turbulent
+Dittus--Boelter Nu for all rows; the consult flagged this as unphysical for the
+low-Reynolds microchannel subset. We added a config-gated regime-dependent Nu
+(`loss.hsu_constraint.nu_model = conditional`): laminar $Nu=4.36$ (Re ≤ 2300),
+Gnielinski (2300 < Re < 1e4), Dittus--Boelter (Re ≥ 1e4), and retrained.
+
+| Hsu Nu closure | Test ΔT RMSE [K] | R²_ΔT | Test q RMSE [kW/m²] | R²_q |
+|---|---|---|---|---|
+| Dittus--Boelter (v11, main) | 1.84 | 0.768 | 144 | 0.741 |
+| **Conditional (regime-dependent)** | **1.78** | **0.784** | **136** | **0.767** |
+
+The regime-dependent closure is physically preferable and *marginally improves*
+all metrics, so the constraint is robust to this choice (and a desk-review attack
+on the single-Nu assumption is pre-empted). Config: `phase2_condnu.yaml`.
+
 ## Provenance
 
 - Configs: `experiments/configs/phase2_loso_{wang,qu,liu,cheng}.yaml`,

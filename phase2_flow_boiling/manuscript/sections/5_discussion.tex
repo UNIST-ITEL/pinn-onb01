@@ -63,7 +63,7 @@ is a natural Phase~3 direction.
 
 \subsection{Limitations}
 
-Five limitations bound the present claims. First and most important, the
+Several limitations bound the present claims. First and most important, the
 headline accuracy reflects \emph{interpolation within the sampled studies}:
 under leave-one-study-out cross-validation (Section~\ref{sec:loso},
 Table~\ref{tab:loso}) the wall-superheat error rises to $5.7$--\SI{10.9}{K}, so
@@ -79,10 +79,13 @@ here than in pool boiling. Fourth, the uncertainty quantification captures
 epistemic but not aleatoric uncertainty, under-covering by $\sim\!4.7\times$;
 calibrated intervals presently require the interim rescaling, pending a
 heteroscedastic variance head that would learn the data scatter directly.
-Fifth, the flow-aware Hsu constraint evaluates the thermal-boundary-layer
-thickness with a single turbulent (Dittus--Boelter) Nusselt correlation
-across all flow regimes; a regime-dependent (laminar/transitional/turbulent)
-form would be more rigorous for the low-Reynolds microchannel data and is a
-natural refinement. A narrow intermediate-pressure, low-mass-flux pocket (a
-single source's $3.5$--\SI{5}{MPa} runs) also retains a residual over-prediction
-of $\sim\!\SI{1.7}{K}$ that reflects a data gap rather than a model defect.
+Fifth, the flow-aware Hsu constraint sets the thermal-boundary-layer thickness
+through a Nusselt correlation; the main results use the turbulent Dittus--Boelter
+form, which is not strictly appropriate for the low-Reynolds microchannel subset.
+We therefore re-trained with a physically preferable regime-dependent closure
+(laminar $Nu=4.36$, Gnielinski transition, Dittus--Boelter turbulent) and found
+the test wall-superheat RMSE essentially unchanged, in fact marginally improved
+(\SI{1.78}{K} vs \SI{1.84}{K}); the constraint is thus robust to this choice.
+Finally, a narrow intermediate-pressure, low-mass-flux pocket (a single source's
+$3.5$--\SI{5}{MPa} runs) retains a residual over-prediction of
+$\sim\!\SI{1.7}{K}$ that reflects a data gap rather than a model defect.

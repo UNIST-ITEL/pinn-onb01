@@ -205,6 +205,34 @@ def _nu_dittus_boelter(Re: Tensor, Pr: Tensor) -> Tensor:
     return 0.023 * Re.pow(0.8) * Pr.pow(0.4)
 
 
+def _nu_conditional(Re: Tensor, Pr: Tensor) -> Tensor:
+    """Regime-dependent Nusselt number for the Hsu boundary-layer thickness.
+
+        Nu = 4.36                                   (laminar,    Re <= 2300)
+           = Gnielinski                             (transition, 2300 < Re < 1e4)
+           = 0.023 Re^0.8 Pr^0.4 (Dittus--Boelter)  (turbulent,  Re >= 1e4)
+
+    The unused branches are evaluated on clamped inputs so torch.where stays
+    finite/differentiable everywhere.
+    """
+    Re_c = Re.clamp(min=1.0)
+    Pr_c = Pr.clamp(min=0.5)
+    nu_lam = torch.full_like(Re_c, 4.36)
+    # Gnielinski with a friction factor; clamp Re into its valid band first so
+    # the (unused) branch stays finite for laminar/turbulent samples.
+    Re_g = Re_c.clamp(min=2300.0, max=1.0e5)
+    f = (0.79 * torch.log(Re_g) - 1.64).pow(-2)
+    nu_gni = (f / 8.0) * (Re_g - 1000.0) * Pr_c \
+        / (1.0 + 12.7 * torch.sqrt(f / 8.0) * (Pr_c.pow(2.0 / 3.0) - 1.0))
+    nu_db = 0.023 * Re_c.pow(0.8) * Pr_c.pow(0.4)
+    nu = torch.where(Re_c <= 2300.0, nu_lam,
+                     torch.where(Re_c < 1.0e4, nu_gni, nu_db))
+    return nu.clamp(min=1e-6)
+
+
+_NU_MODELS = {"dittus_boelter": _nu_dittus_boelter, "conditional": _nu_conditional}
+
+
 def _hsu_discriminant_flow(
     delta_T_onb_K: Tensor,   # (N,) wall superheat at ONB [K]
     q_onb_W_m2:    Tensor,   # (N,) heat flux at ONB [W/m²]
@@ -215,6 +243,7 @@ def _hsu_discriminant_flow(
     *,
     C_hsu:    float = 0.5,
     eps:      float = 1e-10,
+    nu_model: str   = "dittus_boelter",
 ) -> Tensor:
     """
     Hsu discriminant D = 1 − 8 σ T_sat c_pl / (ρ_v h_fg² δ_t).
@@ -222,8 +251,8 @@ def _hsu_discriminant_flow(
 
     δ_t = C_hsu × D_h / Nu(Re, Pr)    ← flow-modified thermal boundary layer
     """
-    # Thermal boundary layer thickness
-    Nu    = _nu_dittus_boelter(Re.clamp(min=400.0), Pr.clamp(min=0.5))
+    # Thermal boundary layer thickness (Nu model selectable per config)
+    Nu    = _NU_MODELS[nu_model](Re.clamp(min=400.0), Pr.clamp(min=0.5))
     delta_t = C_hsu * D_h_m / Nu.clamp(min=1e-6)
 
     # Vapour density (ideal gas approximation for ρ_v if not available in scales)
@@ -254,6 +283,7 @@ def loss_hsu_flow(
     C_hsu:  float = 0.5,
     margin: float = 0.0,
     eps:    float = 1e-10,
+    nu_model: str = "dittus_boelter",
 ) -> Tensor:
     """
     Soft Hsu constraint on collocation points.
@@ -286,7 +316,7 @@ def loss_hsu_flow(
 
     D = _hsu_discriminant_flow(
         dT_onb_K, q_onb_Wm2, Re, Pr, D_h_m, sc,
-        C_hsu=C_hsu, eps=eps,
+        C_hsu=C_hsu, eps=eps, nu_model=nu_model,
     )
 
     hinge = F.relu(margin - D)
@@ -475,6 +505,7 @@ def total_loss(
     n_mono_points:    int   = 20,
     n_energy_points:  int   = 64,
     log_scale_q:      bool  = True,
+    nu_model:         str   = "dittus_boelter",
 ) -> LossComponents:
     """
     Compute all loss terms and return a LossComponents bundle.
@@ -518,7 +549,7 @@ def total_loss(
     if weights.w_hsu > 0 and collocation_hsu is not None:
         L_hsu = loss_hsu_flow(
             model, collocation_hsu, sc,
-            C_hsu=C_hsu, margin=hsu_margin,
+            C_hsu=C_hsu, margin=hsu_margin, nu_model=nu_model,
         )
     else:
         L_hsu = zero
