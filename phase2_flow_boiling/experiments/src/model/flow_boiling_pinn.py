@@ -116,6 +116,7 @@ class FlowBoilingOutputs:
     q_onb_star: torch.Tensor
     z_surface: torch.Tensor
     z_flow: torch.Tensor
+    log_var_dT: torch.Tensor | None = None   # heteroscedastic aleatoric log-variance (ΔT*)
 
     def as_dict(self) -> dict[str, torch.Tensor]:
         return {k: getattr(self, k) for k in self.__dataclass_fields__}
@@ -152,6 +153,7 @@ class FlowBoilingPINN(nn.Module):
         flow_encoder_hidden: int = 32,
         flow_encoder_dropout: float = 0.1,
         freeze_surface_encoder: bool = False,
+        heteroscedastic: bool = False,
         seed: int | None = None,
     ) -> None:
         super().__init__()
@@ -201,6 +203,11 @@ class FlowBoilingPINN(nn.Module):
         self.head_T      = _OutputHead(hidden_dim, head_hidden, positive=False)
         self.head_dT_onb = _OutputHead(hidden_dim, head_hidden, positive=True)
         self.head_q_onb  = _OutputHead(hidden_dim, head_hidden, positive=True)
+        # Optional heteroscedastic head: predicts log-variance of ΔT* (aleatoric).
+        self.heteroscedastic = heteroscedastic
+        self.head_logvar_dT = (
+            _OutputHead(hidden_dim, head_hidden, positive=False) if heteroscedastic else None
+        )
 
     # ── Parameter counts ──────────────────────────────────────────────────────
     @property
@@ -260,12 +267,14 @@ class FlowBoilingPINN(nn.Module):
         z_f = self.flow_encoder(flow_numeric)          # (B, latent_f)
         h   = self._backbone(x_star, z_s, z_f)
 
+        log_var_dT = self.head_logvar_dT(h) if self.head_logvar_dT is not None else None
         return FlowBoilingOutputs(
             T_star=self.head_T(h),
             delta_T_onb_star=self.head_dT_onb(h),
             q_onb_star=self.head_q_onb(h),
             z_surface=z_s,
             z_flow=z_f,
+            log_var_dT=log_var_dT,
         )
 
     # ── PDE-only forward (M7-M9: NS + energy residuals) ──────────────────────

@@ -545,6 +545,17 @@ def total_loss(
         log_scale_q=log_scale_q,
     )
 
+    # Heteroscedastic aleatoric loss: when the model carries a ΔT log-variance
+    # head, replace the ΔT MSE with a Gaussian negative log-likelihood so the
+    # network learns a per-point variance instead of relying on ensemble spread.
+    if getattr(out, "log_var_dT", None) is not None:
+        pdt = out.delta_T_onb_star.squeeze(-1)
+        tdt = true_dT.squeeze(-1)
+        lv  = out.log_var_dT.squeeze(-1).clamp(-7.0, 7.0)
+        mdt = has_dT & torch.isfinite(tdt)
+        if mdt.any():
+            L_dT = (0.5 * ((pdt[mdt] - tdt[mdt]) ** 2 * torch.exp(-lv[mdt]) + lv[mdt])).mean()
+
     # ── Hsu flow constraint ──────────────────────────────────────────────────
     if weights.w_hsu > 0 and collocation_hsu is not None:
         L_hsu = loss_hsu_flow(

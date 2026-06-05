@@ -66,6 +66,7 @@ def build_model(cfg: dict, device: torch.device) -> FlowBoilingPINN:
         head_hidden=m.get("head_hidden", 48),
         flow_encoder_hidden=m.get("flow_encoder_hidden", 32),
         flow_encoder_dropout=m.get("flow_encoder_dropout", 0.1),
+        heteroscedastic=m.get("heteroscedastic", False),
         seed=cfg.get("experiment", {}).get("seed", 42),
     ).to(device)
 

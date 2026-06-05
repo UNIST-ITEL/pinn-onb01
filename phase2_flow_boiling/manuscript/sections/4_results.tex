@@ -238,9 +238,12 @@ spread captures only epistemic (model) disagreement, whereas the dominant
 uncertainty here is aleatoric: digitisation error and genuine experimental
 scatter of order \SI{1}{K}. A single scaling factor of $4.7$ yields
 well-calibrated intervals as an interim measure (green curve,
-Fig.~\ref{fig:uq}b); a heteroscedastic variance head, which would learn the
-aleatoric component directly, is identified as the proper remedy and left to
-future work. Notably the epistemic spread does \emph{not} flag the
+Fig.~\ref{fig:uq}b). The principled alternative---a heteroscedastic variance
+head trained by negative log-likelihood---was implemented and tested, but at the
+present data scale it did not improve calibration ($1\sigma$ coverage unchanged
+at $28\%$) and slightly degraded accuracy, indicating that a reliable per-point
+aleatoric variance is not learnable from $\sim\!240$ heterogeneous points
+(Section~\ref{sec:discussion}). Notably the epistemic spread does \emph{not} flag the
 high-pressure region as uncertain (the members agree there, anchored by the
 Wang et al.\ data), confirming that the residual error there is
 aleatoric/structural rather than a lack of model consensus.

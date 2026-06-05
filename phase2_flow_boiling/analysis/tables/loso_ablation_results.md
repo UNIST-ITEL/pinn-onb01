@@ -58,6 +58,26 @@ The regime-dependent closure is physically preferable and *marginally improves*
 all metrics, so the constraint is robust to this choice (and a desk-review attack
 on the single-Nu assumption is pre-empted). Config: `phase2_condnu.yaml`.
 
+## Heteroscedastic aleatoric UQ — negative result
+
+The consult recommended replacing the interim $4.7\times$ ensemble rescaling with
+a heteroscedastic variance head trained by Gaussian NLL. We implemented it (a
+ΔT log-variance head + NLL data loss, `model.heteroscedastic = true`) and trained
+a single model.
+
+| Model | Test ΔT RMSE [K] | 1σ coverage | 2σ coverage | mean σ [K] |
+|---|---|---|---|---|
+| Ensemble (epistemic) + interim rescale | 1.84 | 28% (rescaled to ~68%) | 42% | 0.51 |
+| **Heteroscedastic single model** | **2.13** | **28%** | 58% | 0.67 |
+
+The variance head does **not** fix calibration: 1σ coverage stays at 28%
+(ideal 68%) and accuracy degrades (1.84 → 2.13 K). With only ~240 heterogeneous
+training ΔT points, the NLL collapses the variance on the training set and
+under-covers on test. Conclusion: a per-point aleatoric model is **not learnable
+at this data scale**; we did not extend it to the ensemble. The interim
+rescaling remains the pragmatic choice, and richer/larger data is the real
+prerequisite. Config: `phase2_hetero.yaml`; eval: `analysis/scripts/eval_hetero_calib.py`.
+
 ## Provenance
 
 - Configs: `experiments/configs/phase2_loso_{wang,qu,liu,cheng}.yaml`,
