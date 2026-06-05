@@ -1,6 +1,34 @@
 # Phase 2 Progress Log
 
-_Last updated: 2026-06-03_
+_Last updated: 2026-06-05_
+
+---
+
+## 세션 요약 (2026-06-03 ~ 06-05) — Journal consult 반영 (text 개정 + 실험 4종)
+
+`manuscript/journal_consult01.md`, `~02.md` (투고 전략·진단 리포트) 반영. 권고를
+**텍스트 개정(A)**과 **실험(B)**으로 나눠 처리. 모든 표는 **실제 학습 결과**(consult의
+예시 수치·날조 없음). 로컬 Tectonic 빌드로 매 단계 검증.
+
+### (A) 텍스트 개정 — 커밋 `a19bfd5`
+- **원고 위생(desk-reject 방지)**: 인용된 bib 5개 편집노트 제거(HARIRCHIAN2009 등), placeholder TIBIRICA2012(DOI 오류) → SAITOH2007 교체, Acknowledgements `[Funding TBD]` → lab grant 문구.
+- **Table 1↔Fig 5 출처 수 모순 수정**: Bergles(n=3) 누락(합 348≠351) → 추가, "nine"→"ten studies". Fig 5 캡션 n 의미 명시.
+- 제목 단축(PINN+micro/nuclear+transfer+reduced-pressure), abstract 톤다운("predominantly water"), intro Conde-Fontenla 경쟁자·ONB niche 프레이밍, Fig 11 G-민감도 메커니즘.
+
+### (B) 실험 4종 (실측)
+| 실험 | 커밋 | 결과 |
+|---|---|---|
+| **LOSO** (4 studies) | `47db...→b1` | held-out study test RMSE 5.7(Wang)/7.7(Qu)/6.9(Liu)/**10.9(Cheng)** K vs in-dist 1.84 → "1.84는 study-내 보간" 정직 보고. `dataset.py holdout_paper` 구현. |
+| **TL ablation** (3-way) | 〃 | A(frozen+transfer)≈B(trained) 1.84/1.77, A≫C(frozen-random) 2.36 → 전이=정보성 frozen prior(정확도 prerequisite 아님). |
+| **conditional-Nu** | `5c83ed7` | regime별 Nu(laminar4.36/Gnielinski/D-B) → 1.84→**1.78K** 개선. consult 약점1 해소(robustness). config-gated. |
+| **heteroscedastic UQ** | `3627c8a` | log-var head+NLL 구현·검증 → **negative result**: 1σ coverage 28% 그대로, 정확도 1.84→2.13K 악화 (~240 이종점으론 per-point σ 학습 불가). interim rescale 유지. |
+
+→ 리뷰어 Q1(분할)·Q2(전이)·약점1(Nu)·약점2(UQ)를 **실험으로 정량 대응**. manuscript 23p, 인용 31, 표 4종(metrics/ablation/LOSO + 본문). 결과 기록: `analysis/tables/loso_ablation_results.md`.
+
+### 남은 것 (선택)
+- consult가 권한 LOSO/ablation/conditional-Nu/heteroscedastic 모두 처리됨. heteroscedastic은 데이터 규모 한계로 negative(정직 보고).
+- (선택) conditional-Nu를 최종 모델로 채택 시 전체 figure 재생성 필요(현재는 robustness check로 보고).
+- 저자·CRediT·grant 번호 최종 확인, `\*` 별표 렌더링 점검(이전 세션 미해결).
 
 ---
 
