@@ -9,14 +9,15 @@ import numpy as np
 import matplotlib.pyplot as plt
 from figlib import set_style, save_fig
 
-# Reader-facing sequential stages S1–S8 (internal config/checkpoint versions in
+# Reader-facing sequential stages S1–S9 (internal config/checkpoint versions in
 # parentheses, see PROGRESS_LOG.md § 훈련 실험 결과): S1=v3, S2=v5, S3=v6, S4=v7,
-# S5=v8, S6=v9, S7=v10, S8=v11 (v4 produced no gain and is omitted).
-STAGES = ["S1", "S2", "S3", "S4", "S5", "S6", "S7", "S8"]
-RMSE = [7.56, 5.56, 4.02, 1.85, 2.03, 1.91, 2.00, 1.84]   # test RMSE_dT [K]
-R2   = [0.377, 0.545, 0.623, 0.769, 0.706, 0.740, 0.717, 0.768]
+# S5=v8, S6=v9, S7=v10, S8=v11, S9=conditional-Nu (final) (v4 omitted).
+STAGES = ["S1", "S2", "S3", "S4", "S5", "S6", "S7", "S8", "S9"]
+RMSE = [7.56, 5.56, 4.02, 1.85, 2.03, 1.91, 2.00, 1.84, 1.77]   # test RMSE_dT [K]
+R2   = [0.377, 0.545, 0.623, 0.769, 0.706, 0.740, 0.717, 0.768, 0.785]
 CHG  = ["transfer\nbaseline", "+4 papers", "clean\n(−pool/P)", "−Basu 2002\n(all pool)",
-        "+microchannel\n(Qu)", "one-sided\nHsu", "reduced\npressure", "+high-P\n(Wang)"]
+        "+microchannel\n(Qu)", "one-sided\nHsu", "reduced\npressure", "+high-P\n(Wang)",
+        "conditional\nNu"]
 
 
 def main() -> None:
@@ -31,9 +32,9 @@ def main() -> None:
     ax2 = ax1.twinx(); ax2.plot(x, R2, "o-", color="#E65100", lw=2, ms=6)
     ax2.set_ylabel("$R^2_{\\Delta T_{ONB}}$", color="#E65100"); ax2.set_ylim(0, 1)
     ax2.spines["top"].set_visible(False)
-    ax1.annotate("", xy=(7, 1.84), xytext=(0, 7.56),
+    ax1.annotate("", xy=(8, 1.77), xytext=(0, 7.56),
                  arrowprops=dict(arrowstyle="->", color="#388E3C", lw=1.5, alpha=0.5))
-    ax1.text(3.2, 6.3, "−76% RMSE", color="#388E3C", fontsize=10, rotation=-20)
+    ax1.text(3.2, 6.3, "−77% RMSE", color="#388E3C", fontsize=10, rotation=-20)
     save_fig(fig, "fig_ablation_progression")
 
 

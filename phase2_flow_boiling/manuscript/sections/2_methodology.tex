@@ -77,8 +77,9 @@ data while soft physical constraints shape the solution. The total loss is
 $\mathcal{L}_q,\mathcal{L}_{\Delta T}$ are masked errors on the available
 targets (log-scaled for $q$). $\mathcal{L}_{\mathrm{Hsu}}$ is a flow-aware Hsu
 constraint on collocation points: the Hsu discriminant uses a thermal-layer
-thickness $\delta_t = C\,\Dh/\mathrm{Nu}$ with $\mathrm{Nu}$ from
-Dittus--Boelter, so that nucleation feasibility responds to the flow.
+thickness $\delta_t = C\,\Dh/\mathrm{Nu}$ with a regime-dependent $\mathrm{Nu}$
+(laminar $Nu=4.36$, Gnielinski transitional, Dittus--Boelter turbulent), so that
+nucleation feasibility responds to the flow across laminar and turbulent regimes.
 
 \paragraph{One-sided Hsu coupling.}
 $\mathcal{L}_{\mathrm{cp}}$ enforces self-consistency between the two heads

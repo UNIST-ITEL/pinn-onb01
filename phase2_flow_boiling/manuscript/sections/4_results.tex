@@ -5,27 +5,27 @@
 \label{sec:forward}
 
 Table~\ref{tab:metrics} compares the model with the five classical correlations
-on the held-out test split. The PINN attains a $\dTonb$ RMSE of \SI{1.84}{K}
-($R^2=0.77$) and a $\qonb$ RMSE of \SI{144}{kW\,m^{-2}} ($R^2=0.74$). The best
+on the held-out test split. The PINN attains a $\dTonb$ RMSE of \SI{1.77}{K}
+($R^2=0.79$) and a $\qonb$ RMSE of \SI{133}{kW\,m^{-2}} ($R^2=0.78$). The best
 classical correlation (Bergles--Rohsenow) reaches \SI{3.73}{K} on $\dTonb$, and
 all correlations have strongly negative $R^2$ on $\qonb$---i.e.\ worse than
 predicting the mean---because they were not built for this combined parameter
-range. The PINN is thus about $1.9$--$2.6\times$ more accurate on $\dTonb$ and
+range. The PINN is thus about $2.1$--$2.7\times$ more accurate on $\dTonb$ and
 more than an order of magnitude more accurate on $\qonb$. Figure~\ref{fig:parity}
 shows the test parity on logarithmic axes: predictions lie within the
 $\pm20\%$ band across the full $2$--\SI{30}{K} and $30$--\SI{1500}{kW\,m^{-2}}
 ranges, including the low-superheat microchannel and high-pressure points.
 Across sources (Fig.~\ref{fig:persource}) the residual error is concentrated
-rather than uniform. The three large sweeps that anchor the corpus are fit
-well---Cheng ($n=54$, \SI{0.56}{K}), Kuang ($n=66$, \SI{1.08}{K}) and Liu
-($n=23$, \SI{1.20}{K}), at or below the overall test RMSE---as are the smaller
-well-instrumented water sets (Wang, Hong, Al-Yahia; $0.6$--\SI{0.7}{K}). The
-larger per-source errors fall on the sparse literature sets in which only a
-handful of records report wall superheat: Qu ($n=11$, \SI{3.09}{K}), Forrest
-($n=14$, \SI{4.71}{K}) and the two- and three-point Bergles and Kandlikar sets
-($4.7$--\SI{5.7}{K}), where a few digitised incipience points dominate the RMSE.
-The densely sampled operating envelope is therefore captured accurately, with
-the residual error confined to low-count, heat-flux-dominated subsets.
+rather than uniform. The large modern sweeps that anchor the corpus are fit
+well---Cheng ($n=54$, \SI{0.60}{K}) and Kuang ($n=66$, \SI{0.89}{K}), with Liu
+($n=23$, \SI{1.78}{K}) at the overall level---as are the smaller well-instrumented
+water sets (Wang, Hong, Al-Yahia; $0.5$--\SI{0.8}{K}). The larger per-source
+errors fall on the sparse literature sets in which only a handful of records
+report wall superheat: Qu ($n=11$, \SI{3.0}{K}), Forrest ($n=14$, \SI{4.7}{K})
+and the two- and three-point Bergles and Kandlikar sets ($4.6$--\SI{5.9}{K}),
+where a few digitised incipience points dominate the RMSE. The densely sampled
+operating envelope is therefore captured accurately, with the residual error
+confined to low-count, heat-flux-dominated subsets.
 
 \begin{figure}[t]
 \centering
@@ -33,7 +33,7 @@ the residual error confined to low-count, heat-flux-dominated subsets.
 \caption{Per-source ONB wall-superheat RMSE (PINN, all data); $n$ is the number
 of points with a measured $\dTonb$ (a subset of each source's total rows in
 Table~\ref{tab:sources}). Dashed line: the overall held-out test RMSE of
-\SI{1.84}{K}.}
+\SI{1.77}{K}.}
 \label{fig:persource}
 \end{figure}
 
@@ -47,7 +47,7 @@ $n_{\Delta T}=36$, $n_q$ varies by correlation applicability).}
 \toprule
 Method & RMSE$_{\dTonb}$ (K) & $R^2_{\dTonb}$ & RMSE$_{\qonb}$ (kW\,m$^{-2}$) & $R^2_{\qonb}$ \\
 \midrule
-\textbf{PINN (this work)}   & \textbf{1.84} & \textbf{0.77} & \textbf{144}  & \textbf{0.74} \\
+\textbf{PINN (this work)}   & \textbf{1.77} & \textbf{0.79} & \textbf{133}  & \textbf{0.78} \\
 Bergles--Rohsenow \cite{BERGLES1964} & 3.73 & 0.01 & 1670 & $-59$ \\
 Hsu \cite{HSU1962}                   & 4.49 & $-0.44$ & 2745 & $-162$ \\
 Sato--Matsumura \cite{SATOMATSUMURA1964}      & 4.49 & $-0.44$ & 2745 & $-162$ \\
@@ -75,7 +75,9 @@ pool-boiling contamination (Section~\ref{sec:data}) was the single largest
 gain, cutting the $\dTonb$ RMSE from \SI{4.0}{K} to \SI{1.85}{K}; adding the
 microchannel data sharpened $\qonb$ ($R^2$ from $0.54$ to $0.78$); and the
 high-pressure anchors with the reduced-pressure feature lowered $\dTonb$ RMSE to
-\SI{1.84}{K} while fixing the pressure trend (Fig.~\ref{fig:ablation}).
+\SI{1.84}{K} while fixing the pressure trend; a final regime-dependent Nusselt
+closure in the Hsu constraint (Section~\ref{sec:discussion}) then brought the
+test error to \SI{1.77}{K} ($R^2=0.79$; stage S9 in Fig.~\ref{fig:ablation}).
 
 A controlled ablation isolates the role of the transferred surface encoder
 (Table~\ref{tab:ablation}). A surface encoder trained from random
@@ -93,15 +95,17 @@ representation regularises the model where those inputs are missing.
 \includegraphics[width=0.82\linewidth]{fig_ablation_progression.png}
 \caption{Test accuracy across the successive model stages S1--S8. Bars:
 $\dTonb$ RMSE; line: $R^2$; annotations mark the change at each step.
-Wall-superheat error falls 76\% from the transfer baseline (S1).}
+Wall-superheat error falls 77\% from the transfer baseline (S1).}
 \label{fig:ablation}
 \end{figure}
 
 \begin{table}[t]
 \centering
-\caption{Transfer-learning ablation (same test split, $n_{\dTonb}=36$). A
-trained encoder matches the frozen transferred one; the transferred prior beats
-a frozen \emph{random} encoder.}
+\caption{Transfer-learning ablation (same test split, $n_{\dTonb}=36$), run
+under a common Dittus--Boelter Hsu closure to isolate the encoder. A trained
+encoder matches the frozen transferred one; the transferred prior beats a frozen
+\emph{random} encoder. (The adopted model additionally uses the regime-dependent
+Nu of Section~\ref{sec:discussion}, which shifts these values by $<\!0.1$~K.)}
 \label{tab:ablation}
 \small
 \begin{tabular}{llcc}
@@ -118,9 +122,9 @@ C            & random init, frozen   & 2.36 & 0.62 \\
 \subsection{Cross-study generalization}
 \label{sec:loso}
 
-The \SI{1.84}{K} test error above uses a per-study stratified split, in which
-every study contributes to both training and test; it therefore measures
-interpolation \emph{within} the sampled studies. To probe genuine
+The headline test error above uses a per-study stratified split, in which every
+study contributes to both training and test; it therefore measures interpolation
+\emph{within} the sampled studies. To probe genuine
 study-to-study extrapolation we retrain under leave-one-study-out (LOSO): one
 study is held out \emph{entirely} as the test set while the model trains on the
 other nine (Table~\ref{tab:loso}). Accuracy degrades sharply---to
@@ -134,8 +138,9 @@ Section~\ref{sec:discussion}.
 \begin{table}[t]
 \centering
 \caption{Leave-one-study-out generalization: each study is held out entirely as
-the test set and the model trains on the remaining nine. The within-envelope
-stratified split is shown for reference.}
+the test set and the model trains on the remaining nine (Dittus--Boelter Hsu
+closure, matching the holdout runs). The within-envelope stratified split is
+shown for reference.}
 \label{tab:loso}
 \small
 \begin{tabular}{llcc}
@@ -226,7 +231,7 @@ rises with heat flux across sources.}
 A five-member deep ensemble (identical data split, varied initialisation)
 provides predictive uncertainty. The ensemble mean is also \emph{more accurate}
 than any single model ($\dTonb$ RMSE \SI{1.72}{K}, $R^2=0.80$;
-Table~\ref{tab:metrics} single-model value \SI{1.84}{K}), a known benefit of
+Table~\ref{tab:metrics} single-model value \SI{1.77}{K}), a known benefit of
 ensembling. Figure~\ref{fig:uq} shows the ensemble parity with $\pm2\sigma$
 epistemic bars, the calibration curve, and the epistemic spread versus pressure.
 

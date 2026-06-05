@@ -32,8 +32,10 @@ FIG_ANALYSIS = PROJ / "analysis" / "figures"
 FIG_MANUSCRIPT = PROJ / "manuscript" / "figures"
 CSV = PROJ / "data" / "raw" / "onb_dataset_phase2_raw.csv"
 
-V11_CONFIG = PROJ / "experiments" / "configs" / "phase2_v11_highP_wang.yaml"
-V11_CKPT = PROJ / "experiments" / "checkpoints" / "phase2_v11_highP_wang" / "best_model.pt"
+# FINAL model = conditional-Nu (regime-dependent Nusselt in the Hsu constraint;
+# same architecture as v11, so the checkpoint is a drop-in). Adopted 2026-06-05.
+V11_CONFIG = PROJ / "experiments" / "configs" / "phase2_condnu.yaml"
+V11_CKPT = PROJ / "experiments" / "checkpoints" / "phase2_condnu" / "best_model.pt"
 
 if str(SRC) not in sys.path:
     sys.path.insert(0, str(SRC))

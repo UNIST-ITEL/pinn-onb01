@@ -23,8 +23,8 @@ def main() -> None:
     ax.set_yticks(range(len(g)))
     ax.set_yticklabels([f"{labels.get(i, i)} (n={int(n)})" for i, n in zip(g.index, g.n)])
     ax.set_xlabel("$\\Delta T_{ONB}$ RMSE [K]")
-    ax.axvline(1.84, ls="--", color="#C62828", lw=1.2)
-    ax.text(1.9, 0.1, "overall test 1.84 K", color="#C62828", fontsize=8.5)
+    ax.axvline(1.77, ls="--", color="#C62828", lw=1.2)
+    ax.text(1.83, 0.1, "overall test 1.77 K", color="#C62828", fontsize=8.5)
     for i, r in enumerate(g.rmse):
         ax.text(r + 0.05, i, f"{r:.2f}", va="center", fontsize=8)
     fig.tight_layout()

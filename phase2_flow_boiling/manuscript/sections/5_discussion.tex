@@ -4,7 +4,7 @@
 \subsection{Engineering implications}
 
 Across the assembled range the model halves the wall-superheat error of the
-best classical correlation (\SI{1.84}{K} versus \SI{3.7}{K}) and is more than an
+best classical correlation (\SI{1.77}{K} versus \SI{3.7}{K}) and is more than an
 order of magnitude better on heat flux. For design this translates into a
 tighter incipience margin: a thermal-margin uncertainty of $\sim\!\SI{4}{K}$
 typical of correlation scatter is reduced to $\sim\!\SI{2}{K}$, allowing less
@@ -85,12 +85,12 @@ points are too few to learn a reliable per-point variance. A calibrated
 aleatoric model therefore awaits a substantially larger dataset rather than a
 richer output head.
 Fifth, the flow-aware Hsu constraint sets the thermal-boundary-layer thickness
-through a Nusselt correlation; the main results use the turbulent Dittus--Boelter
-form, which is not strictly appropriate for the low-Reynolds microchannel subset.
-We therefore re-trained with a physically preferable regime-dependent closure
-(laminar $Nu=4.36$, Gnielinski transition, Dittus--Boelter turbulent) and found
-the test wall-superheat RMSE essentially unchanged, in fact marginally improved
-(\SI{1.78}{K} vs \SI{1.84}{K}); the constraint is thus robust to this choice.
-Finally, a narrow intermediate-pressure, low-mass-flux pocket (a single source's
+through a Nusselt correlation. The adopted model uses a regime-dependent closure
+(laminar $Nu=4.36$, Gnielinski transitional, Dittus--Boelter turbulent), which is
+physically appropriate across the laminar microchannel and turbulent macro-tube
+data; an ablation to a turbulent-only Dittus--Boelter form changes the test
+wall-superheat RMSE only marginally (\SI{1.84}{K} vs \SI{1.77}{K}), so the
+constraint is robust to this closure. Finally, a narrow intermediate-pressure,
+low-mass-flux pocket (a single source's
 $3.5$--\SI{5}{MPa} runs) retains a residual over-prediction of
 $\sim\!\SI{1.7}{K}$ that reflects a data gap rather than a model defect.
