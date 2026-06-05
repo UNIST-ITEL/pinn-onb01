@@ -1,6 +1,6 @@
 # Phase 2 Progress Log
 
-_Last updated: 2026-06-05_
+_Last updated: 2026-06-06_
 
 ---
 
@@ -25,10 +25,17 @@ _Last updated: 2026-06-05_
 
 → 리뷰어 Q1(분할)·Q2(전이)·약점1(Nu)·약점2(UQ)를 **실험으로 정량 대응**. manuscript 23p, 인용 31, 표 4종(metrics/ablation/LOSO + 본문). 결과 기록: `analysis/tables/loso_ablation_results.md`.
 
+### conditional-Nu 최종 모델 채택 (2026-06-06, 커밋 `aaabd31` 등)
+- conditional-Nu를 **최종 모델로 채택**, 전체 model-기반 figure 재생성 완료:
+  - figlib `load_v11` → `phase2_condnu` 체크포인트(동일 아키텍처 drop-in)
+  - Fig 5/6/8/9/11 재생성, Fig 7에 S9(conditional-Nu) 추가, **Fig 10 앙상블 5개 condnu 재학습** 후 재생성
+- **headline 전 섹션 갱신**: 단일 ΔT 1.84→**1.77K**(R² 0.79), q 144→133(R² 0.78), 앙상블 mean 1.72→**1.73K**, 재보정 4.7→4.1×, ~2.1–2.7×. abstract/highlights/Table 2/§4.1(per-source 포함)/§4.4/conclusions/§5.
+- §2 Nu→regime-dependent, §5.4 5번째 "D-B 채택"→"conditional 채택, D-B는 ablation"으로 프레이밍 전환.
+- 잔존 "1.84"는 의도된 D-B ablation/LOSO ref/S8 progression(캡션 주석)만. 빌드 23p clean.
+
 ### 남은 것 (선택)
-- consult가 권한 LOSO/ablation/conditional-Nu/heteroscedastic 모두 처리됨. heteroscedastic은 데이터 규모 한계로 negative(정직 보고).
-- (선택) conditional-Nu를 최종 모델로 채택 시 전체 figure 재생성 필요(현재는 robustness check로 보고).
 - 저자·CRediT·grant 번호 최종 확인, `\*` 별표 렌더링 점검(이전 세션 미해결).
+- (선택) LOSO/ablation 표를 conditional-Nu 파이프라인으로 재실행(현재는 D-B-pipeline 주석; closure 효과 <0.1K라 결론 불변).
 
 ---
 
