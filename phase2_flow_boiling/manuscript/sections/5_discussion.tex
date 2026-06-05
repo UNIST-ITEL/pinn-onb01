@@ -76,11 +76,11 @@ surface descriptors are sparse in the flow-boiling literature---most records
 lack measured roughness and contact angle---so the transferred surface encoder
 acts mainly as a frozen prior (Table~\ref{tab:ablation}) and is exercised less
 here than in pool boiling. Fourth, the uncertainty quantification captures
-epistemic but not aleatoric uncertainty, under-covering by $\sim\!4.7\times$, so
+epistemic but not aleatoric uncertainty, under-covering by $\sim\!4\times$, so
 calibrated intervals presently require the interim rescaling. We tested the
 obvious remedy---a heteroscedastic variance head trained by Gaussian negative
-log-likelihood---but at this data scale it did not help: $1\sigma$ coverage
-stayed at $28\%$ and accuracy fell to \SI{2.13}{K}, as $\sim\!240$ heterogeneous
+log-likelihood---but at this data scale it did not help: $1\sigma$ coverage was
+only $28\%$ and accuracy fell to \SI{2.13}{K}, as $\sim\!240$ heterogeneous
 points are too few to learn a reliable per-point variance. A calibrated
 aleatoric model therefore awaits a substantially larger dataset rather than a
 richer output head.

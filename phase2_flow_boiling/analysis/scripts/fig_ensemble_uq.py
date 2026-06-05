@@ -1,6 +1,6 @@
 """fig:uq — deep-ensemble (K=5) UQ: parity ±2σ, calibration, std vs pressure.
 
-Loads the 5 ensemble members (phase2_v11ens_s42..s46, shared split_seed=42),
+Loads the 5 ensemble members (phase2_condnuens_s42..s46, shared split_seed=42),
 computes mean/std on the test split, and the (epistemic-only) calibration.
 Also writes analysis/tables/ensemble_uq_test.csv. Uses math.erf (no scipy).
 """
@@ -25,9 +25,9 @@ def main() -> None:
 
     preds_dT, preds_q = [], []
     for s in SEEDS:
-        cfg = load_config(str(PROJ / "experiments" / "configs" / f"phase2_v11ens_s{s}.yaml"))
+        cfg = load_config(str(PROJ / "experiments" / "configs" / f"phase2_condnuens_s{s}.yaml"))
         m = build_model(cfg, device)
-        ck = PROJ / "experiments" / "checkpoints" / f"phase2_v11ens_s{s}" / "best_model.pt"
+        ck = PROJ / "experiments" / "checkpoints" / f"phase2_condnuens_s{s}" / "best_model.pt"
         m.load_state_dict(torch.load(str(ck), map_location=device)["model_state"]); m.eval()
         pdT, pq = [], []
         with torch.no_grad():

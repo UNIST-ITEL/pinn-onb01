@@ -230,23 +230,23 @@ rises with heat flux across sources.}
 
 A five-member deep ensemble (identical data split, varied initialisation)
 provides predictive uncertainty. The ensemble mean is also \emph{more accurate}
-than any single model ($\dTonb$ RMSE \SI{1.72}{K}, $R^2=0.80$;
+than any single model ($\dTonb$ RMSE \SI{1.73}{K}, $R^2=0.80$;
 Table~\ref{tab:metrics} single-model value \SI{1.77}{K}), a known benefit of
 ensembling. Figure~\ref{fig:uq} shows the ensemble parity with $\pm2\sigma$
 epistemic bars, the calibration curve, and the epistemic spread versus pressure.
 
 The calibration analysis is deliberately honest. The mean epistemic standard
-deviation is \SI{0.51}{K}, and the $1\sigma$/$2\sigma$ coverages are only
-$28\%$/$42\%$ (ideal $68\%$/$95\%$): the ensemble \emph{under}-estimates total
-predictive uncertainty by roughly $4.7\times$. This is expected---deep-ensemble
+deviation is \SI{0.34}{K}, and the $1\sigma$/$2\sigma$ coverages are only
+$11\%$/$39\%$ (ideal $68\%$/$95\%$): the ensemble \emph{under}-estimates total
+predictive uncertainty by roughly $4\times$. This is expected---deep-ensemble
 spread captures only epistemic (model) disagreement, whereas the dominant
 uncertainty here is aleatoric: digitisation error and genuine experimental
-scatter of order \SI{1}{K}. A single scaling factor of $4.7$ yields
+scatter of order \SI{1}{K}. A single scaling factor of $4.1$ yields
 well-calibrated intervals as an interim measure (green curve,
 Fig.~\ref{fig:uq}b). The principled alternative---a heteroscedastic variance
 head trained by negative log-likelihood---was implemented and tested, but at the
-present data scale it did not improve calibration ($1\sigma$ coverage unchanged
-at $28\%$) and slightly degraded accuracy, indicating that a reliable per-point
+present data scale it did not improve calibration ($1\sigma$ coverage only
+$28\%$) and slightly degraded accuracy, indicating that a reliable per-point
 aleatoric variance is not learnable from $\sim\!240$ heterogeneous points
 (Section~\ref{sec:discussion}). Notably the epistemic spread does \emph{not} flag the
 high-pressure region as uncertain (the members agree there, anchored by the
@@ -259,7 +259,7 @@ aleatoric/structural rather than a lack of model consensus.
 \caption{Deep-ensemble ($K=5$) uncertainty. (a)~Test parity with $\pm2\sigma$
 epistemic bars. (b)~Calibration: observed coverage versus interval half-width
 $k$ ($\times\sigma$); the epistemic-only spread (pink) under-covers, a
-$4.7\times$ rescaling (green) nears the Gaussian ideal (dashed). (c)~Epistemic
+$4.1\times$ rescaling (green) nears the Gaussian ideal (dashed). (c)~Epistemic
 spread versus pressure.}
 \label{fig:uq}
 \end{figure}
